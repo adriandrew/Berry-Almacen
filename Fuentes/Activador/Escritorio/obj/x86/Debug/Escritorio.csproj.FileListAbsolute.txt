@@ -1,0 +1,101 @@
+C:\Users\Administrator\Desktop\Berry EYE\InicioSesion\Escritorio\bin\x86\Debug\PrincipalBerry.exe.config
+C:\Users\Administrator\Desktop\Berry EYE\InicioSesion\Escritorio\bin\x86\Debug\PrincipalBerry.exe
+C:\Users\Administrator\Desktop\Berry EYE\InicioSesion\Escritorio\bin\x86\Debug\PrincipalBerry.pdb
+C:\Users\Administrator\Desktop\Berry EYE\InicioSesion\Escritorio\bin\x86\Debug\Entidades.dll
+C:\Users\Administrator\Desktop\Berry EYE\InicioSesion\Escritorio\bin\x86\Debug\Logica.dll
+C:\Users\Administrator\Desktop\Berry EYE\InicioSesion\Escritorio\bin\x86\Debug\Entidades.pdb
+C:\Users\Administrator\Desktop\Berry EYE\InicioSesion\Escritorio\bin\x86\Debug\Logica.pdb
+C:\Users\Administrator\Desktop\Berry EYE\InicioSesion\Escritorio\obj\x86\Debug\Escritorio.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\Berry EYE\InicioSesion\Escritorio\obj\x86\Debug\Escritorio.PanelControl.resources
+C:\Users\Administrator\Desktop\Berry EYE\InicioSesion\Escritorio\obj\x86\Debug\Escritorio.AdministrarEmpresas.resources
+C:\Users\Administrator\Desktop\Berry EYE\InicioSesion\Escritorio\obj\x86\Debug\Escritorio.Principal.resources
+C:\Users\Administrator\Desktop\Berry EYE\InicioSesion\Escritorio\obj\x86\Debug\Principal.Properties.Resources.resources
+C:\Users\Administrator\Desktop\Berry EYE\InicioSesion\Escritorio\obj\x86\Debug\Escritorio.csproj.GenerateResource.Cache
+C:\Users\Administrator\Desktop\Berry EYE\InicioSesion\Escritorio\obj\x86\Debug\PrincipalBerry.exe.licenses
+C:\Users\Administrator\Desktop\Berry EYE\InicioSesion\Escritorio\obj\x86\Debug\PrincipalBerry.exe
+C:\Users\Administrator\Desktop\Berry EYE\InicioSesion\Escritorio\obj\x86\Debug\PrincipalBerry.pdb
+C:\Users\Administrator\Desktop\Berry EYE\Principal\Escritorio\bin\x86\Debug\PrincipalBerry.exe.config
+C:\Users\Administrator\Desktop\Berry EYE\Principal\Escritorio\bin\x86\Debug\PrincipalBerry.exe
+C:\Users\Administrator\Desktop\Berry EYE\Principal\Escritorio\bin\x86\Debug\PrincipalBerry.pdb
+C:\Users\Administrator\Desktop\Berry EYE\Principal\Escritorio\bin\x86\Debug\Entidades.dll
+C:\Users\Administrator\Desktop\Berry EYE\Principal\Escritorio\bin\x86\Debug\Logica.dll
+C:\Users\Administrator\Desktop\Berry EYE\Principal\Escritorio\bin\x86\Debug\Entidades.pdb
+C:\Users\Administrator\Desktop\Berry EYE\Principal\Escritorio\bin\x86\Debug\Logica.pdb
+C:\Users\Administrator\Desktop\Berry EYE\Principal\Escritorio\obj\x86\Debug\Escritorio.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\Berry EYE\Principal\Escritorio\obj\x86\Debug\Escritorio.PanelControl.resources
+C:\Users\Administrator\Desktop\Berry EYE\Principal\Escritorio\obj\x86\Debug\Escritorio.AdministrarEmpresas.resources
+C:\Users\Administrator\Desktop\Berry EYE\Principal\Escritorio\obj\x86\Debug\Escritorio.Principal.resources
+C:\Users\Administrator\Desktop\Berry EYE\Principal\Escritorio\obj\x86\Debug\Principal.Properties.Resources.resources
+C:\Users\Administrator\Desktop\Berry EYE\Principal\Escritorio\obj\x86\Debug\Escritorio.csproj.GenerateResource.Cache
+C:\Users\Administrator\Desktop\Berry EYE\Principal\Escritorio\obj\x86\Debug\PrincipalBerry.exe.licenses
+C:\Users\Administrator\Desktop\Berry EYE\Principal\Escritorio\obj\x86\Debug\PrincipalBerry.exe
+C:\Users\Administrator\Desktop\Berry EYE\Principal\Escritorio\obj\x86\Debug\PrincipalBerry.pdb
+C:\Users\Andrew\Desktop\Fuentes\Principal\Escritorio\bin\x86\Debug\PrincipalBerry.exe.config
+C:\Users\Andrew\Desktop\Fuentes\Principal\Escritorio\bin\x86\Debug\PrincipalBerry.exe
+C:\Users\Andrew\Desktop\Fuentes\Principal\Escritorio\bin\x86\Debug\PrincipalBerry.pdb
+C:\Users\Andrew\Desktop\Fuentes\Principal\Escritorio\bin\x86\Debug\Entidades.dll
+C:\Users\Andrew\Desktop\Fuentes\Principal\Escritorio\bin\x86\Debug\Logica.dll
+C:\Users\Andrew\Desktop\Fuentes\Principal\Escritorio\bin\x86\Debug\Entidades.pdb
+C:\Users\Andrew\Desktop\Fuentes\Principal\Escritorio\bin\x86\Debug\Logica.pdb
+C:\Users\Andrew\Desktop\Fuentes\Principal\Escritorio\obj\x86\Debug\Escritorio.csprojResolveAssemblyReference.cache
+C:\Users\Andrew\Desktop\Fuentes\Principal\Escritorio\obj\x86\Debug\Escritorio.PanelControl.resources
+C:\Users\Andrew\Desktop\Fuentes\Principal\Escritorio\obj\x86\Debug\Escritorio.AdministrarEmpresas.resources
+C:\Users\Andrew\Desktop\Fuentes\Principal\Escritorio\obj\x86\Debug\Escritorio.Principal.resources
+C:\Users\Andrew\Desktop\Fuentes\Principal\Escritorio\obj\x86\Debug\Principal.Properties.Resources.resources
+C:\Users\Andrew\Desktop\Fuentes\Principal\Escritorio\obj\x86\Debug\Escritorio.csproj.GenerateResource.Cache
+C:\Users\Andrew\Desktop\Fuentes\Principal\Escritorio\obj\x86\Debug\PrincipalBerry.exe.licenses
+C:\Users\Andrew\Desktop\Fuentes\Principal\Escritorio\obj\x86\Debug\PrincipalBerry.exe
+C:\Users\Andrew\Desktop\Fuentes\Principal\Escritorio\obj\x86\Debug\PrincipalBerry.pdb
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Principal\Escritorio\bin\x86\Debug\PrincipalBerry.exe.config
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Principal\Escritorio\bin\x86\Debug\PrincipalBerry.exe
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Principal\Escritorio\bin\x86\Debug\PrincipalBerry.pdb
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Principal\Escritorio\bin\x86\Debug\Entidades.dll
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Principal\Escritorio\bin\x86\Debug\Logica.dll
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Principal\Escritorio\bin\x86\Debug\Entidades.pdb
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Principal\Escritorio\bin\x86\Debug\Logica.pdb
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Principal\Escritorio\obj\x86\Debug\Escritorio.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Principal\Escritorio\obj\x86\Debug\Escritorio.PanelControl.resources
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Principal\Escritorio\obj\x86\Debug\Escritorio.AdministrarEmpresas.resources
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Principal\Escritorio\obj\x86\Debug\Escritorio.Principal.resources
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Principal\Escritorio\obj\x86\Debug\Principal.Properties.Resources.resources
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Principal\Escritorio\obj\x86\Debug\Principal.Properties.Resource.resources
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Principal\Escritorio\obj\x86\Debug\Escritorio.csproj.GenerateResource.Cache
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Principal\Escritorio\obj\x86\Debug\PrincipalBerry.exe.licenses
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Principal\Escritorio\obj\x86\Debug\PrincipalBerry.exe
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Principal\Escritorio\obj\x86\Debug\PrincipalBerry.pdb
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Principal\Escritorio\bin\x86\Debug\PrincipalBerry.exe.config
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Principal\Escritorio\bin\x86\Debug\PrincipalBerry.exe
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Principal\Escritorio\bin\x86\Debug\PrincipalBerry.pdb
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Principal\Escritorio\bin\x86\Debug\Entidades.dll
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Principal\Escritorio\bin\x86\Debug\Logica.dll
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Principal\Escritorio\bin\x86\Debug\Entidades.pdb
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Principal\Escritorio\bin\x86\Debug\Logica.pdb
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Principal\Escritorio\obj\x86\Debug\Escritorio.csprojResolveAssemblyReference.cache
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Principal\Escritorio\obj\x86\Debug\Escritorio.PanelControl.resources
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Principal\Escritorio\obj\x86\Debug\Escritorio.AdministrarEmpresas.resources
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Principal\Escritorio\obj\x86\Debug\Escritorio.Principal.resources
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Principal\Escritorio\obj\x86\Debug\PrincipalBerry.Properties.Resources.resources
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Principal\Escritorio\obj\x86\Debug\PrincipalBerry.Properties.Resource.resources
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Principal\Escritorio\obj\x86\Debug\Escritorio.csproj.GenerateResource.Cache
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Principal\Escritorio\obj\x86\Debug\PrincipalBerry.exe.licenses
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Principal\Escritorio\obj\x86\Debug\PrincipalBerry.exe
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Principal\Escritorio\obj\x86\Debug\PrincipalBerry.pdb
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Activador\Escritorio\bin\x86\Debug\Activador.exe.config
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Activador\Escritorio\bin\x86\Debug\Activador.exe.manifest
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Activador\Escritorio\bin\x86\Debug\Activador.application
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Activador\Escritorio\bin\x86\Debug\Activador.exe
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Activador\Escritorio\bin\x86\Debug\Activador.pdb
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Activador\Escritorio\bin\x86\Debug\EntidadesActivador.dll
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Activador\Escritorio\bin\x86\Debug\LogicaActivador.dll
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Activador\Escritorio\bin\x86\Debug\EntidadesActivador.pdb
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Activador\Escritorio\bin\x86\Debug\LogicaActivador.pdb
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Activador\Escritorio\obj\x86\Debug\Escritorio.csprojResolveAssemblyReference.cache
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Activador\Escritorio\obj\x86\Debug\Escritorio.Principal.resources
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Activador\Escritorio\obj\x86\Debug\Activador.Properties.Resources.resources
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Activador\Escritorio\obj\x86\Debug\Activador.Properties.Resource.resources
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Activador\Escritorio\obj\x86\Debug\Escritorio.csproj.GenerateResource.Cache
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Activador\Escritorio\obj\x86\Debug\Activador.exe.licenses
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Activador\Escritorio\obj\x86\Debug\Activador.exe.manifest
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Activador\Escritorio\obj\x86\Debug\Activador.application
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Activador\Escritorio\obj\x86\Debug\Activador.exe
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Activador\Escritorio\obj\x86\Debug\Activador.pdb

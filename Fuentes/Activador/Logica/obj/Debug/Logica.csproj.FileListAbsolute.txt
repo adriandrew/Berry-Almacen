@@ -1,0 +1,22 @@
+C:\Users\Administrator\Desktop\Berry EYE\InicioSesion\Logica\bin\Debug\Logica.dll
+C:\Users\Administrator\Desktop\Berry EYE\InicioSesion\Logica\bin\Debug\Logica.pdb
+C:\Users\Administrator\Desktop\Berry EYE\InicioSesion\Logica\obj\Debug\Logica.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\Berry EYE\InicioSesion\Logica\obj\Debug\Logica.dll
+C:\Users\Administrator\Desktop\Berry EYE\InicioSesion\Logica\obj\Debug\Logica.pdb
+C:\Users\Administrator\Desktop\Berry EYE\Principal\Logica\bin\Debug\Logica.dll
+C:\Users\Administrator\Desktop\Berry EYE\Principal\Logica\bin\Debug\Logica.pdb
+C:\Users\Administrator\Desktop\Berry EYE\Principal\Logica\obj\Debug\Logica.dll
+C:\Users\Administrator\Desktop\Berry EYE\Principal\Logica\obj\Debug\Logica.pdb
+C:\Users\Andrew\Desktop\Fuentes\Principal\Logica\bin\Debug\Logica.dll
+C:\Users\Andrew\Desktop\Fuentes\Principal\Logica\bin\Debug\Logica.pdb
+C:\Users\Andrew\Desktop\Fuentes\Principal\Logica\obj\Debug\Logica.dll
+C:\Users\Andrew\Desktop\Fuentes\Principal\Logica\obj\Debug\Logica.pdb
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Principal\Logica\bin\Debug\Logica.dll
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Principal\Logica\bin\Debug\Logica.pdb
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Principal\Logica\obj\Debug\Logica.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Principal\Logica\obj\Debug\Logica.dll
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Principal\Logica\obj\Debug\Logica.pdb
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Principal\Logica\bin\Debug\Logica.dll
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Principal\Logica\bin\Debug\Logica.pdb
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Principal\Logica\obj\Debug\Logica.dll
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Principal\Logica\obj\Debug\Logica.pdb

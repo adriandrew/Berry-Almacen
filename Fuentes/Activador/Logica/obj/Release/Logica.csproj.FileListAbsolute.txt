@@ -1,0 +1,24 @@
+C:\Users\Administrator\Desktop\Berry EYE\Principal\Logica\bin\Release\Logica.dll
+C:\Users\Administrator\Desktop\Berry EYE\Principal\Logica\bin\Release\Logica.pdb
+C:\Users\Administrator\Desktop\Berry EYE\Principal\Logica\obj\Release\Logica.dll
+C:\Users\Administrator\Desktop\Berry EYE\Principal\Logica\obj\Release\Logica.pdb
+C:\Users\Andrew\Desktop\Fuentes\Principal\Logica\bin\Release\Logica.dll
+C:\Users\Andrew\Desktop\Fuentes\Principal\Logica\bin\Release\Logica.pdb
+C:\Users\Andrew\Desktop\Fuentes\Principal\Logica\obj\Release\Logica.dll
+C:\Users\Andrew\Desktop\Fuentes\Principal\Logica\obj\Release\Logica.pdb
+C:\Users\Andrew\Desktop\Proyecto Berry\Fuentes Modificados\Principal\Logica\bin\Release\Logica.dll
+C:\Users\Andrew\Desktop\Proyecto Berry\Fuentes Modificados\Principal\Logica\bin\Release\Logica.pdb
+C:\Users\Andrew\Desktop\Proyecto Berry\Fuentes Modificados\Principal\Logica\obj\Release\Logica.dll
+C:\Users\Andrew\Desktop\Proyecto Berry\Fuentes Modificados\Principal\Logica\obj\Release\Logica.pdb
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Principal\Logica\bin\Release\Logica.dll
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Principal\Logica\bin\Release\Logica.pdb
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Principal\Logica\obj\Release\Logica.dll
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Principal\Logica\obj\Release\Logica.pdb
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Principal\Logica\bin\Release\Logica.dll
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Principal\Logica\bin\Release\Logica.pdb
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Principal\Logica\obj\Release\Logica.dll
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Principal\Logica\obj\Release\Logica.pdb
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Activador\Logica\bin\Release\LogicaActivador.dll
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Activador\Logica\bin\Release\LogicaActivador.pdb
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Activador\Logica\obj\Release\LogicaActivador.dll
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Activador\Logica\obj\Release\LogicaActivador.pdb

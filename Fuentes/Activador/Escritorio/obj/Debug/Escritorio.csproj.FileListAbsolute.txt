@@ -1,0 +1,25 @@
+c:\users\administrator\documents\visual studio 2012\Projects\Principal\Escritorio\bin\Debug\Escritorio.exe.config
+c:\users\administrator\documents\visual studio 2012\Projects\Principal\Escritorio\obj\Debug\Escritorio.csprojResolveAssemblyReference.cache
+c:\users\administrator\documents\visual studio 2012\Projects\Principal\Escritorio\obj\Debug\Escritorio.Principal.resources
+c:\users\administrator\documents\visual studio 2012\Projects\Principal\Escritorio\obj\Debug\Escritorio.Properties.Resources.resources
+c:\users\administrator\documents\visual studio 2012\Projects\Principal\Escritorio\obj\Debug\Escritorio.csproj.GenerateResource.Cache
+c:\users\administrator\documents\visual studio 2012\Projects\Principal\Escritorio\bin\Debug\Escritorio.exe
+c:\users\administrator\documents\visual studio 2012\Projects\Principal\Escritorio\bin\Debug\Escritorio.pdb
+c:\users\administrator\documents\visual studio 2012\Projects\Principal\Escritorio\obj\Debug\Escritorio.exe
+c:\users\administrator\documents\visual studio 2012\Projects\Principal\Escritorio\obj\Debug\Escritorio.pdb
+c:\users\administrator\documents\visual studio 2012\Projects\Principal\Escritorio\obj\Debug\Escritorio.exe.licenses
+C:\Users\Administrator\Desktop\Berry EYE\InicioSesion\Escritorio\bin\Debug\Escritorio.exe.config
+C:\Users\Administrator\Desktop\Berry EYE\InicioSesion\Escritorio\bin\Debug\Escritorio.exe
+C:\Users\Administrator\Desktop\Berry EYE\InicioSesion\Escritorio\bin\Debug\Escritorio.pdb
+C:\Users\Administrator\Desktop\Berry EYE\InicioSesion\Escritorio\bin\Debug\Entidades.dll
+C:\Users\Administrator\Desktop\Berry EYE\InicioSesion\Escritorio\bin\Debug\Entidades.pdb
+C:\Users\Administrator\Desktop\Berry EYE\InicioSesion\Escritorio\obj\Debug\Escritorio.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\Berry EYE\InicioSesion\Escritorio\obj\Debug\Escritorio.PanelControl.resources
+C:\Users\Administrator\Desktop\Berry EYE\InicioSesion\Escritorio\obj\Debug\Escritorio.AdministrarEmpresas.resources
+C:\Users\Administrator\Desktop\Berry EYE\InicioSesion\Escritorio\obj\Debug\Escritorio.Principal.resources
+C:\Users\Administrator\Desktop\Berry EYE\InicioSesion\Escritorio\obj\Debug\Escritorio.Properties.Resources.resources
+C:\Users\Administrator\Desktop\Berry EYE\InicioSesion\Escritorio\obj\Debug\Escritorio.csproj.GenerateResource.Cache
+C:\Users\Administrator\Desktop\Berry EYE\InicioSesion\Escritorio\obj\Debug\Escritorio.exe.licenses
+C:\Users\Administrator\Desktop\Berry EYE\InicioSesion\Escritorio\obj\Debug\Escritorio.exe
+C:\Users\Administrator\Desktop\Berry EYE\InicioSesion\Escritorio\obj\Debug\Escritorio.pdb
+C:\Users\Administrator\Desktop\Berry EYE\InicioSesion\Escritorio\bin\Debug\PrincipalBerry.exe.config

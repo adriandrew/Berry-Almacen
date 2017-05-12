@@ -1,0 +1,14 @@
+C:\Users\Administrator\Desktop\Berry EYE\InicioSesion\Escritorio\bin\Release\PrincipalBerry.exe.config
+C:\Users\Administrator\Desktop\Berry EYE\InicioSesion\Escritorio\bin\Release\PrincipalBerry.exe
+C:\Users\Administrator\Desktop\Berry EYE\InicioSesion\Escritorio\bin\Release\PrincipalBerry.pdb
+C:\Users\Administrator\Desktop\Berry EYE\InicioSesion\Escritorio\bin\Release\Entidades.dll
+C:\Users\Administrator\Desktop\Berry EYE\InicioSesion\Escritorio\bin\Release\Entidades.pdb
+C:\Users\Administrator\Desktop\Berry EYE\InicioSesion\Escritorio\obj\Release\Escritorio.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\Berry EYE\InicioSesion\Escritorio\obj\Release\Escritorio.PanelControl.resources
+C:\Users\Administrator\Desktop\Berry EYE\InicioSesion\Escritorio\obj\Release\Escritorio.AdministrarEmpresas.resources
+C:\Users\Administrator\Desktop\Berry EYE\InicioSesion\Escritorio\obj\Release\Escritorio.Principal.resources
+C:\Users\Administrator\Desktop\Berry EYE\InicioSesion\Escritorio\obj\Release\Principal.Properties.Resources.resources
+C:\Users\Administrator\Desktop\Berry EYE\InicioSesion\Escritorio\obj\Release\Escritorio.csproj.GenerateResource.Cache
+C:\Users\Administrator\Desktop\Berry EYE\InicioSesion\Escritorio\obj\Release\PrincipalBerry.exe.licenses
+C:\Users\Administrator\Desktop\Berry EYE\InicioSesion\Escritorio\obj\Release\PrincipalBerry.exe
+C:\Users\Administrator\Desktop\Berry EYE\InicioSesion\Escritorio\obj\Release\PrincipalBerry.pdb

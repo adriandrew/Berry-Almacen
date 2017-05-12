@@ -1,0 +1,5 @@
+C:\Users\Administrator\Desktop\Berry EYE\InicioSesion\Entidades\bin\x64\Release\Entidades.dll
+C:\Users\Administrator\Desktop\Berry EYE\InicioSesion\Entidades\bin\x64\Release\Entidades.pdb
+C:\Users\Administrator\Desktop\Berry EYE\InicioSesion\Entidades\obj\x64\Release\Entidades.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\Berry EYE\InicioSesion\Entidades\obj\x64\Release\Entidades.dll
+C:\Users\Administrator\Desktop\Berry EYE\InicioSesion\Entidades\obj\x64\Release\Entidades.pdb

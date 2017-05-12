@@ -1,0 +1,30 @@
+c:\users\administrator\documents\visual studio 2012\Projects\Principal\Entidades\bin\Debug\Entidades.dll
+c:\users\administrator\documents\visual studio 2012\Projects\Principal\Entidades\bin\Debug\Entidades.pdb
+c:\users\administrator\documents\visual studio 2012\Projects\Principal\Entidades\obj\Debug\Entidades.csprojResolveAssemblyReference.cache
+c:\users\administrator\documents\visual studio 2012\Projects\Principal\Entidades\obj\Debug\Entidades.dll
+c:\users\administrator\documents\visual studio 2012\Projects\Principal\Entidades\obj\Debug\Entidades.pdb
+C:\Users\Administrator\Desktop\Berry EYE\InicioSesion\Entidades\bin\Debug\Entidades.dll
+C:\Users\Administrator\Desktop\Berry EYE\InicioSesion\Entidades\bin\Debug\Entidades.pdb
+C:\Users\Administrator\Desktop\Berry EYE\InicioSesion\Entidades\obj\Debug\Entidades.dll
+C:\Users\Administrator\Desktop\Berry EYE\InicioSesion\Entidades\obj\Debug\Entidades.pdb
+C:\Users\Administrator\Desktop\Berry EYE\InicioSesion\Entidades\obj\Debug\Entidades.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\Berry EYE\Principal\Entidades\bin\Debug\Entidades.dll
+C:\Users\Administrator\Desktop\Berry EYE\Principal\Entidades\bin\Debug\Entidades.pdb
+C:\Users\Administrator\Desktop\Berry EYE\Principal\Entidades\obj\Debug\Entidades.dll
+C:\Users\Administrator\Desktop\Berry EYE\Principal\Entidades\obj\Debug\Entidades.pdb
+C:\Users\Andrew\Desktop\Fuentes\Principal\Entidades\bin\Debug\Entidades.dll
+C:\Users\Andrew\Desktop\Fuentes\Principal\Entidades\bin\Debug\Entidades.pdb
+C:\Users\Andrew\Desktop\Fuentes\Principal\Entidades\obj\Debug\Entidades.dll
+C:\Users\Andrew\Desktop\Fuentes\Principal\Entidades\obj\Debug\Entidades.pdb
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Principal\Entidades\bin\Debug\Entidades.dll
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Principal\Entidades\bin\Debug\Entidades.pdb
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Principal\Entidades\obj\Debug\Entidades.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Principal\Entidades\obj\Debug\Entidades.dll
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Principal\Entidades\obj\Debug\Entidades.pdb
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Principal\Entidades\bin\Debug\Entidades.dll
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Principal\Entidades\bin\Debug\Entidades.pdb
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Principal\Entidades\bin\Debug\Logica.dll
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Principal\Entidades\bin\Debug\Logica.pdb
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Principal\Entidades\obj\Debug\Entidades.csprojResolveAssemblyReference.cache
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Principal\Entidades\obj\Debug\Entidades.dll
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Principal\Entidades\obj\Debug\Entidades.pdb

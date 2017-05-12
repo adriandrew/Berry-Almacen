@@ -1,0 +1,142 @@
+C:\Users\Administrator\Desktop\Berry EYE\InicioSesion\Escritorio\obj\x86\Release\Escritorio.PanelControl.resources
+C:\Users\Administrator\Desktop\Berry EYE\InicioSesion\Escritorio\obj\x86\Release\Escritorio.AdministrarEmpresas.resources
+C:\Users\Administrator\Desktop\Berry EYE\InicioSesion\Escritorio\obj\x86\Release\Escritorio.Principal.resources
+C:\Users\Administrator\Desktop\Berry EYE\InicioSesion\Escritorio\obj\x86\Release\Principal.Properties.Resources.resources
+C:\Users\Administrator\Desktop\Berry EYE\InicioSesion\Escritorio\obj\x86\Release\Escritorio.csproj.GenerateResource.Cache
+C:\Users\Administrator\Desktop\Berry EYE\InicioSesion\Escritorio\obj\x86\Release\PrincipalBerry.exe.licenses
+C:\Users\Administrator\Desktop\Berry EYE\InicioSesion\Escritorio\bin\x86\Release\PrincipalBerry.exe.config
+C:\Users\Administrator\Desktop\Berry EYE\Principal\Escritorio\bin\x86\Release\PrincipalBerry.exe.config
+C:\Users\Administrator\Desktop\Berry EYE\Principal\Escritorio\bin\x86\Release\PrincipalBerry.exe
+C:\Users\Administrator\Desktop\Berry EYE\Principal\Escritorio\bin\x86\Release\PrincipalBerry.pdb
+C:\Users\Administrator\Desktop\Berry EYE\Principal\Escritorio\bin\x86\Release\Entidades.dll
+C:\Users\Administrator\Desktop\Berry EYE\Principal\Escritorio\bin\x86\Release\Logica.dll
+C:\Users\Administrator\Desktop\Berry EYE\Principal\Escritorio\bin\x86\Release\Entidades.pdb
+C:\Users\Administrator\Desktop\Berry EYE\Principal\Escritorio\bin\x86\Release\Logica.pdb
+C:\Users\Administrator\Desktop\Berry EYE\Principal\Escritorio\obj\x86\Release\Escritorio.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\Berry EYE\Principal\Escritorio\obj\x86\Release\Escritorio.PanelControl.resources
+C:\Users\Administrator\Desktop\Berry EYE\Principal\Escritorio\obj\x86\Release\Escritorio.AdministrarEmpresas.resources
+C:\Users\Administrator\Desktop\Berry EYE\Principal\Escritorio\obj\x86\Release\Escritorio.Principal.resources
+C:\Users\Administrator\Desktop\Berry EYE\Principal\Escritorio\obj\x86\Release\Principal.Properties.Resources.resources
+C:\Users\Administrator\Desktop\Berry EYE\Principal\Escritorio\obj\x86\Release\Escritorio.csproj.GenerateResource.Cache
+C:\Users\Administrator\Desktop\Berry EYE\Principal\Escritorio\obj\x86\Release\PrincipalBerry.exe.licenses
+C:\Users\Administrator\Desktop\Berry EYE\Principal\Escritorio\obj\x86\Release\PrincipalBerry.exe
+C:\Users\Administrator\Desktop\Berry EYE\Principal\Escritorio\obj\x86\Release\PrincipalBerry.pdb
+C:\Users\Andrew\Desktop\Fuentes\Principal\Escritorio\bin\x86\Release\PrincipalBerry.exe.config
+C:\Users\Andrew\Desktop\Fuentes\Principal\Escritorio\bin\x86\Release\PrincipalBerry.exe
+C:\Users\Andrew\Desktop\Fuentes\Principal\Escritorio\bin\x86\Release\PrincipalBerry.pdb
+C:\Users\Andrew\Desktop\Fuentes\Principal\Escritorio\bin\x86\Release\Entidades.dll
+C:\Users\Andrew\Desktop\Fuentes\Principal\Escritorio\bin\x86\Release\Logica.dll
+C:\Users\Andrew\Desktop\Fuentes\Principal\Escritorio\bin\x86\Release\Entidades.pdb
+C:\Users\Andrew\Desktop\Fuentes\Principal\Escritorio\bin\x86\Release\Logica.pdb
+C:\Users\Andrew\Desktop\Fuentes\Principal\Escritorio\obj\x86\Release\Escritorio.csprojResolveAssemblyReference.cache
+C:\Users\Andrew\Desktop\Fuentes\Principal\Escritorio\obj\x86\Release\Escritorio.PanelControl.resources
+C:\Users\Andrew\Desktop\Fuentes\Principal\Escritorio\obj\x86\Release\Escritorio.AdministrarEmpresas.resources
+C:\Users\Andrew\Desktop\Fuentes\Principal\Escritorio\obj\x86\Release\Escritorio.Principal.resources
+C:\Users\Andrew\Desktop\Fuentes\Principal\Escritorio\obj\x86\Release\Principal.Properties.Resources.resources
+C:\Users\Andrew\Desktop\Fuentes\Principal\Escritorio\obj\x86\Release\Escritorio.csproj.GenerateResource.Cache
+C:\Users\Andrew\Desktop\Fuentes\Principal\Escritorio\obj\x86\Release\PrincipalBerry.exe.licenses
+C:\Users\Andrew\Desktop\Fuentes\Principal\Escritorio\obj\x86\Release\PrincipalBerry.exe
+C:\Users\Andrew\Desktop\Fuentes\Principal\Escritorio\obj\x86\Release\PrincipalBerry.pdb
+C:\Users\Andrew\Desktop\Proyecto Berry\Fuentes Modificados\Principal\Escritorio\bin\x86\Release\PrincipalBerry.exe.config
+C:\Users\Andrew\Desktop\Proyecto Berry\Fuentes Modificados\Principal\Escritorio\bin\x86\Release\PrincipalBerry.exe
+C:\Users\Andrew\Desktop\Proyecto Berry\Fuentes Modificados\Principal\Escritorio\bin\x86\Release\PrincipalBerry.pdb
+C:\Users\Andrew\Desktop\Proyecto Berry\Fuentes Modificados\Principal\Escritorio\bin\x86\Release\Entidades.dll
+C:\Users\Andrew\Desktop\Proyecto Berry\Fuentes Modificados\Principal\Escritorio\bin\x86\Release\Logica.dll
+C:\Users\Andrew\Desktop\Proyecto Berry\Fuentes Modificados\Principal\Escritorio\bin\x86\Release\Entidades.pdb
+C:\Users\Andrew\Desktop\Proyecto Berry\Fuentes Modificados\Principal\Escritorio\bin\x86\Release\Logica.pdb
+C:\Users\Andrew\Desktop\Proyecto Berry\Fuentes Modificados\Principal\Escritorio\obj\x86\Release\Escritorio.csprojResolveAssemblyReference.cache
+C:\Users\Andrew\Desktop\Proyecto Berry\Fuentes Modificados\Principal\Escritorio\obj\x86\Release\Escritorio.PanelControl.resources
+C:\Users\Andrew\Desktop\Proyecto Berry\Fuentes Modificados\Principal\Escritorio\obj\x86\Release\Escritorio.AdministrarEmpresas.resources
+C:\Users\Andrew\Desktop\Proyecto Berry\Fuentes Modificados\Principal\Escritorio\obj\x86\Release\Escritorio.Principal.resources
+C:\Users\Andrew\Desktop\Proyecto Berry\Fuentes Modificados\Principal\Escritorio\obj\x86\Release\Principal.Properties.Resources.resources
+C:\Users\Andrew\Desktop\Proyecto Berry\Fuentes Modificados\Principal\Escritorio\obj\x86\Release\Escritorio.csproj.GenerateResource.Cache
+C:\Users\Andrew\Desktop\Proyecto Berry\Fuentes Modificados\Principal\Escritorio\obj\x86\Release\PrincipalBerry.exe.licenses
+C:\Users\Andrew\Desktop\Proyecto Berry\Fuentes Modificados\Principal\Escritorio\obj\x86\Release\PrincipalBerry.exe
+C:\Users\Andrew\Desktop\Proyecto Berry\Fuentes Modificados\Principal\Escritorio\obj\x86\Release\PrincipalBerry.pdb
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Principal\Escritorio\bin\x86\Release\PrincipalBerry.exe.config
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Principal\Escritorio\bin\x86\Release\PrincipalBerry.exe
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Principal\Escritorio\bin\x86\Release\PrincipalBerry.pdb
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Principal\Escritorio\bin\x86\Release\Entidades.dll
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Principal\Escritorio\bin\x86\Release\Logica.dll
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Principal\Escritorio\bin\x86\Release\Entidades.pdb
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Principal\Escritorio\bin\x86\Release\Logica.pdb
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Principal\Escritorio\obj\x86\Release\Escritorio.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Principal\Escritorio\obj\x86\Release\Escritorio.PanelControl.resources
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Principal\Escritorio\obj\x86\Release\Escritorio.AdministrarEmpresas.resources
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Principal\Escritorio\obj\x86\Release\Escritorio.Principal.resources
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Principal\Escritorio\obj\x86\Release\PrincipalBerry.Properties.Resources.resources
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Principal\Escritorio\obj\x86\Release\PrincipalBerry.Properties.Resource.resources
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Principal\Escritorio\obj\x86\Release\Escritorio.csproj.GenerateResource.Cache
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Principal\Escritorio\obj\x86\Release\PrincipalBerry.exe.licenses
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Principal\Escritorio\obj\x86\Release\PrincipalBerry.exe
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Principal\Escritorio\obj\x86\Release\PrincipalBerry.pdb
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Principal\Escritorio\bin\x86\Release\PrincipalBerry.exe.config
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Principal\Escritorio\bin\x86\Release\PrincipalBerry.exe
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Principal\Escritorio\bin\x86\Release\PrincipalBerry.pdb
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Principal\Escritorio\bin\x86\Release\Entidades.dll
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Principal\Escritorio\bin\x86\Release\Logica.dll
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Principal\Escritorio\bin\x86\Release\Entidades.pdb
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Principal\Escritorio\bin\x86\Release\Logica.pdb
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Principal\Escritorio\obj\x86\Release\Escritorio.csprojResolveAssemblyReference.cache
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Principal\Escritorio\obj\x86\Release\Escritorio.PanelControl.resources
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Principal\Escritorio\obj\x86\Release\Escritorio.AdministrarEmpresas.resources
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Principal\Escritorio\obj\x86\Release\Escritorio.Principal.resources
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Principal\Escritorio\obj\x86\Release\PrincipalBerry.Properties.Resources.resources
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Principal\Escritorio\obj\x86\Release\PrincipalBerry.Properties.Resource.resources
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Principal\Escritorio\obj\x86\Release\Escritorio.csproj.GenerateResource.Cache
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Principal\Escritorio\obj\x86\Release\PrincipalBerry.exe.licenses
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Principal\Escritorio\obj\x86\Release\PrincipalBerry.exe
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Principal\Escritorio\obj\x86\Release\PrincipalBerry.pdb
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Activador\Escritorio\bin\x86\Release\Activador.exe.manifest
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Activador\Escritorio\bin\x86\Release\Activador.application
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Activador\Escritorio\bin\x86\Release\Activador.exe
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Activador\Escritorio\bin\x86\Release\Activador.pdb
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Activador\Escritorio\bin\x86\Release\EntidadesActivador.dll
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Activador\Escritorio\bin\x86\Release\LogicaActivador.dll
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Activador\Escritorio\bin\x86\Release\EntidadesActivador.pdb
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Activador\Escritorio\bin\x86\Release\LogicaActivador.pdb
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Activador\Escritorio\obj\x86\Release\Escritorio.csprojResolveAssemblyReference.cache
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Activador\Escritorio\obj\x86\Release\Escritorio.Principal.resources
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Activador\Escritorio\obj\x86\Release\Activador.Properties.Resources.resources
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Activador\Escritorio\obj\x86\Release\Activador.Properties.Resource.resources
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Activador\Escritorio\obj\x86\Release\Escritorio.csproj.GenerateResource.Cache
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Activador\Escritorio\obj\x86\Release\Activador.exe.licenses
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Activador\Escritorio\obj\x86\Release\Activador.exe.manifest
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Activador\Escritorio\obj\x86\Release\Activador.application
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Activador\Escritorio\obj\x86\Release\Activador.exe
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Activador\Escritorio\obj\x86\Release\Activador.pdb
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes Modificados\Activador\Escritorio\bin\x86\Release\Activador.exe.manifest
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes Modificados\Activador\Escritorio\bin\x86\Release\Activador.application
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes Modificados\Activador\Escritorio\bin\x86\Release\Activador.exe
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes Modificados\Activador\Escritorio\bin\x86\Release\Activador.pdb
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes Modificados\Activador\Escritorio\bin\x86\Release\EntidadesActivador.dll
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes Modificados\Activador\Escritorio\bin\x86\Release\LogicaActivador.dll
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes Modificados\Activador\Escritorio\bin\x86\Release\EntidadesActivador.pdb
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes Modificados\Activador\Escritorio\bin\x86\Release\LogicaActivador.pdb
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes Modificados\Activador\Escritorio\obj\x86\Release\Escritorio.Principal.resources
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes Modificados\Activador\Escritorio\obj\x86\Release\Activador.Properties.Resources.resources
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes Modificados\Activador\Escritorio\obj\x86\Release\Activador.Properties.Resource.resources
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes Modificados\Activador\Escritorio\obj\x86\Release\Escritorio.csproj.GenerateResource.Cache
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes Modificados\Activador\Escritorio\obj\x86\Release\Activador.exe.licenses
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes Modificados\Activador\Escritorio\obj\x86\Release\Activador.exe.manifest
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes Modificados\Activador\Escritorio\obj\x86\Release\Activador.application
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes Modificados\Activador\Escritorio\obj\x86\Release\Activador.exe
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes Modificados\Activador\Escritorio\obj\x86\Release\Activador.pdb
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Activador\Escritorio\bin\x86\Release\Activador.exe.manifest
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Activador\Escritorio\bin\x86\Release\Activador.application
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Activador\Escritorio\bin\x86\Release\Activador.exe
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Activador\Escritorio\bin\x86\Release\Activador.pdb
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Activador\Escritorio\bin\x86\Release\EntidadesActivador.dll
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Activador\Escritorio\bin\x86\Release\LogicaActivador.dll
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Activador\Escritorio\bin\x86\Release\EntidadesActivador.pdb
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Activador\Escritorio\bin\x86\Release\LogicaActivador.pdb
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Activador\Escritorio\obj\x86\Release\Escritorio.csprojResolveAssemblyReference.cache
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Activador\Escritorio\obj\x86\Release\Escritorio.Principal.resources
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Activador\Escritorio\obj\x86\Release\Activador.Properties.Resources.resources
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Activador\Escritorio\obj\x86\Release\Activador.Properties.Resource.resources
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Activador\Escritorio\obj\x86\Release\Escritorio.csproj.GenerateResource.Cache
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Activador\Escritorio\obj\x86\Release\Activador.exe.licenses
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Activador\Escritorio\obj\x86\Release\Activador.exe.manifest
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Activador\Escritorio\obj\x86\Release\Activador.application
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Activador\Escritorio\obj\x86\Release\Activador.exe
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Activador\Escritorio\obj\x86\Release\Activador.pdb

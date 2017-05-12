@@ -1,0 +1,4 @@
+C:\Users\Administrator\Desktop\Berry EYE\InicioSesion\Entidades\bin\x64\Debug\Entidades.dll
+C:\Users\Administrator\Desktop\Berry EYE\InicioSesion\Entidades\bin\x64\Debug\Entidades.pdb
+C:\Users\Administrator\Desktop\Berry EYE\InicioSesion\Entidades\obj\x64\Debug\Entidades.dll
+C:\Users\Administrator\Desktop\Berry EYE\InicioSesion\Entidades\obj\x64\Debug\Entidades.pdb
