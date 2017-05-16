@@ -1,0 +1,35 @@
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Catalogos\Escritorio\bin\Release\CatalogosBerry.exe.config
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Catalogos\Escritorio\bin\Release\CatalogosBerry.exe
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Catalogos\Escritorio\bin\Release\CatalogosBerry.pdb
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Catalogos\Escritorio\bin\Release\CatalogosBerry.xml
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Catalogos\Escritorio\bin\Release\EntidadesCatalogos.dll
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Catalogos\Escritorio\bin\Release\LogicaCatalogos.dll
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Catalogos\Escritorio\bin\Release\EntidadesCatalogos.pdb
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Catalogos\Escritorio\bin\Release\EntidadesCatalogos.xml
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Catalogos\Escritorio\bin\Release\LogicaCatalogos.pdb
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Catalogos\Escritorio\bin\Release\LogicaCatalogos.xml
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Catalogos\Escritorio\obj\Release\Escritorio.vbprojResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Catalogos\Escritorio\obj\Release\Catalogos.Resources.resources
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Catalogos\Escritorio\obj\Release\Catalogos.Principal.resources
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Catalogos\Escritorio\obj\Release\Escritorio.vbproj.GenerateResource.Cache
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Catalogos\Escritorio\obj\Release\CatalogosBerry.exe
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Catalogos\Escritorio\obj\Release\CatalogosBerry.xml
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Catalogos\Escritorio\obj\Release\CatalogosBerry.pdb
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes\Catalogos\Escritorio\bin\Release\EYE01.exe.config
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes\Catalogos\Escritorio\bin\Release\EYE01.exe
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes\Catalogos\Escritorio\bin\Release\EYE01.pdb
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes\Catalogos\Escritorio\bin\Release\EYE01.xml
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes\Catalogos\Escritorio\bin\Release\EntidadesCatalogos.dll
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes\Catalogos\Escritorio\bin\Release\LogicaCatalogos.dll
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes\Catalogos\Escritorio\bin\Release\EntidadesCatalogos.pdb
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes\Catalogos\Escritorio\bin\Release\EntidadesCatalogos.xml
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes\Catalogos\Escritorio\bin\Release\LogicaCatalogos.pdb
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes\Catalogos\Escritorio\bin\Release\LogicaCatalogos.xml
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes\Catalogos\Escritorio\obj\Release\Escritorio.vbprojResolveAssemblyReference.cache
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes\Catalogos\Escritorio\obj\Release\Catalogos.Resources.resources
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes\Catalogos\Escritorio\obj\Release\Catalogos.Principal.resources
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes\Catalogos\Escritorio\obj\Release\Escritorio.vbproj.GenerateResource.Cache
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes\Catalogos\Escritorio\obj\Release\EYE01.exe.licenses
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes\Catalogos\Escritorio\obj\Release\EYE01.exe
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes\Catalogos\Escritorio\obj\Release\EYE01.xml
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes\Catalogos\Escritorio\obj\Release\EYE01.pdb

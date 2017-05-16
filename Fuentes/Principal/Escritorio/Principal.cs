@@ -724,13 +724,14 @@ namespace Escritorio
             if (this.tieneParametros)
             {
                 Logica.Directorios.ObtenerParametros(); // Se obtienen los parametros.
+                Logica.Usuarios.ObtenerParametros(); // Se obtienen los parametros.
                 Principal.esConexionPrincipalCorrecta = true; // Se supone que debe ser una conexión correcta si tiene parametros.
             }
             else
             {
                 if (Principal.esCambioDirectorio) // Si viene de cambiar el directorio, se toma el id que seleccionó, de lo contrario, se carga el predeterminado.
                 {
-                    ConsultarInformacionDirectoriosPorId(Principal.idDirectorioSeleccionado);
+                    ConsultarInformacionDirectorioPorId(Principal.idDirectorioSeleccionado);
                 }
                 else
                 { 
@@ -749,21 +750,21 @@ namespace Escritorio
             baseDatos.ConfigurarConexionCatalogo();
             baseDatos.ConfigurarConexionAlmacen();
             string resultado = string.Empty;
-            resultado = baseDatos.ProbarConexion(Entidades.BaseDatos.conexionConfiguracion);
+            resultado = baseDatos.ProbarConexion(Entidades.BaseDatos.conexionConfiguracion); // Se valida la conexión.
             if (!string.IsNullOrEmpty(resultado))
             {
                 MostrarMensaje(resultado);
                 Principal.esConexionesVariasCorrecta = false;
                 return;
             }
-            resultado = baseDatos.ProbarConexion(Entidades.BaseDatos.conexionCatalogo);
+            resultado = baseDatos.ProbarConexion(Entidades.BaseDatos.conexionCatalogo); // Se valida la conexión.
             if (!string.IsNullOrEmpty(resultado))
             {
                 MostrarMensaje(resultado);
                 Principal.esConexionesVariasCorrecta = false;
                 return;
             }
-            resultado = baseDatos.ProbarConexion(Entidades.BaseDatos.conexionAlmacen);
+            resultado = baseDatos.ProbarConexion(Entidades.BaseDatos.conexionAlmacen); // Se valida la conexión.
             if (!string.IsNullOrEmpty(resultado))
             {
                 MostrarMensaje(resultado);
@@ -810,7 +811,7 @@ namespace Escritorio
 
         }
 
-        private void ConsultarInformacionDirectoriosPorId(int id)
+        private void ConsultarInformacionDirectorioPorId(int id)
         {
 
             directorios.Id = id;
@@ -1156,11 +1157,11 @@ namespace Escritorio
             ejecutarPrograma.UseShellExecute = true;
             ejecutarPrograma.FileName = nombre + ".exe";
             ejecutarPrograma.WorkingDirectory = Directory.GetCurrentDirectory();
-            ejecutarPrograma.Arguments = Logica.Directorios.id.ToString().Trim().Replace(" ", "|") + " " + Logica.Directorios.nombre.ToString().Trim().Replace(" ", "|") + " " + Logica.Directorios.descripcion.ToString().Trim().Replace(" ", "|") + " " + Logica.Directorios.rutaLogo.ToString().Trim().Replace(" ", "|") + " " + Logica.Directorios.esPredeterminado.ToString().Trim().Replace(" ", "|") + " " + Logica.Directorios.instanciaSql.ToString().Trim().Replace(" ", "|") + " " + Logica.Directorios.usuarioSql.ToString().Trim().Replace(" ", "|") + " " + Logica.Directorios.contrasenaSql.ToString().Trim().Replace(" ", "|") + " " + "Aquí terminan los de datos principales, indice 9 ;)".Replace(" ", "|") + " " + Logica.Usuarios.id.ToString().Trim().Replace(" ", "|") + " " + "Aquí terminan los de usuario, indice 10 ;)".Replace(" ", "|");
+            ejecutarPrograma.Arguments = Logica.Directorios.id.ToString().Trim().Replace(" ", "|") + " " + Logica.Directorios.nombre.ToString().Trim().Replace(" ", "|") + " " + Logica.Directorios.descripcion.ToString().Trim().Replace(" ", "|") + " " + Logica.Directorios.rutaLogo.ToString().Trim().Replace(" ", "|") + " " + Logica.Directorios.esPredeterminado.ToString().Trim().Replace(" ", "|") + " " + Logica.Directorios.instanciaSql.ToString().Trim().Replace(" ", "|") + " " + Logica.Directorios.usuarioSql.ToString().Trim().Replace(" ", "|") + " " + Logica.Directorios.contrasenaSql.ToString().Trim().Replace(" ", "|") + " " + "Aquí terminan los de directorios, indice 9 ;)".Replace(" ", "|") + " " + Logica.Usuarios.id.ToString().Trim().Replace(" ", "|") + " " + "Aquí terminan los de usuario, indice 11 ;)".Replace(" ", "|");
             try
             {
                 var proceso = Process.Start(ejecutarPrograma);
-                proceso.WaitForInputIdle();  
+                proceso.WaitForInputIdle();
                 if (salir)
                 { 
                     if (this.ShowIcon)

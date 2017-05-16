@@ -39,9 +39,9 @@ namespace Entidades
         public List<SubProgramas> ObtenerMenuListado()
         {
 
-            List<SubProgramas> lista = new List<SubProgramas>();
             try
             {
+                List<SubProgramas> lista = new List<SubProgramas>();
                 SqlCommand comando = new SqlCommand();
                 comando.Connection = BaseDatos.conexionConfiguracion;
                 comando.CommandText = "SELECT SP.* FROM SubProgramas AS SP LEFT JOIN (SELECT * FROM BloqueoUsuarios WHERE IdUsuario = @idUsuario) AS BU ON (SP.IdModulo = BU.IdModulo AND SP.IdPrograma = BU.IdPrograma AND SP.Id = BU.IdSubPrograma) WHERE SP.IdModulo = @idModulo AND SP.IdPrograma = @idPrograma AND BU.IdUsuario IS NULL";
@@ -108,9 +108,9 @@ namespace Entidades
         public DataTable ObtenerListadoReporte()
         {
 
-            DataTable datos = new DataTable();
             try
             {
+                DataTable datos = new DataTable();
                 SqlCommand comando = new SqlCommand();
                 comando.Connection = BaseDatos.conexionConfiguracion;
                 string condicion = string.Empty;

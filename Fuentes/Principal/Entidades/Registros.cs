@@ -195,9 +195,9 @@ namespace Entidades
         public List<Registros> ObtenerListadoPorNombreEquipo()
         {
 
-            List<Registros> lista = new List<Registros>();
             try
             {
+                List<Registros> lista = new List<Registros>();
                 SqlCommand comando = new SqlCommand();
                 comando.Connection = BaseDatos.conexionConfiguracion;
                 comando.CommandText = "SELECT * FROM Registros WHERE NombreEquipo=@nombreEquipo";

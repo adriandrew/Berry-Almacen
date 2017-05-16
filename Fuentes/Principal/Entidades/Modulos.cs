@@ -33,9 +33,9 @@ namespace Entidades
         public List<Modulos> ObtenerListado()
         {
 
-            List<Modulos> lista = new List<Modulos>();
             try
             {
+                List<Modulos> lista = new List<Modulos>();
                 SqlCommand comando = new SqlCommand();
                 comando.Connection = BaseDatos.conexionConfiguracion;
                 comando.CommandText = "SELECT * FROM Modulos"; 
@@ -67,9 +67,9 @@ namespace Entidades
         public List<Modulos> ObtenerListadoPorId()
         {
 
-            List<Modulos> lista = new List<Modulos>();
             try
             {
+                List<Modulos> lista = new List<Modulos>();
                 SqlCommand comando = new SqlCommand();
                 comando.Connection = BaseDatos.conexionConfiguracion;
                 comando.CommandText = "SELECT * FROM Modulos WHERE Id=@id";
@@ -102,9 +102,9 @@ namespace Entidades
         public List<Modulos> ObtenerMenuListado()
         {
 
-            List<Modulos> lista = new List<Modulos>();
             try
             {
+                List<Modulos> lista = new List<Modulos>();
                 SqlCommand comando = new SqlCommand();
                 comando.Connection = BaseDatos.conexionConfiguracion;
                 comando.CommandText = "SELECT M.* FROM Modulos AS M LEFT JOIN (SELECT * FROM BloqueoUsuarios WHERE IdUsuario = @idUsuario) AS BU ON (M.Id = BU.IdModulo) WHERE BU.IdUsuario IS NULL";
@@ -138,9 +138,9 @@ namespace Entidades
         public DataTable ObtenerListadoReporte()
         {
 
-            DataTable datos = new DataTable();
             try
             {
+                DataTable datos = new DataTable();
                 SqlCommand comando = new SqlCommand();
                 comando.Connection = BaseDatos.conexionConfiguracion;
                 comando.CommandText = "SELECT Id, Nombre, Prefijo FROM Modulos";

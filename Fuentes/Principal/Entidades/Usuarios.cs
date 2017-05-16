@@ -129,9 +129,9 @@ namespace Entidades
         public List<Usuarios> ObtenerListadoPorNombre()
         {
 
-            List<Usuarios> lista = new List<Usuarios>();
             try
             {
+                List<Usuarios> lista = new List<Usuarios>();
                 SqlCommand comando = new SqlCommand();
                 comando.Connection = BaseDatos.conexionCatalogo;
                 comando.CommandText = "SELECT * FROM Usuarios WHERE Nombre=@nombre"; 
@@ -200,9 +200,9 @@ namespace Entidades
         public List<Usuarios> ObtenerListado()
         {
 
-            List<Usuarios> lista = new List<Usuarios>();
             try
             {
+                List<Usuarios> lista = new List<Usuarios>();
                 SqlCommand comando = new SqlCommand();
                 comando.Connection = BaseDatos.conexionCatalogo;
                 comando.CommandText = "SELECT * FROM Usuarios";
@@ -236,9 +236,9 @@ namespace Entidades
         public List<Usuarios> ObtenerListadoPorId()
         {
 
-            List<Usuarios> lista = new List<Usuarios>();
             try
             {
+                List<Usuarios> lista = new List<Usuarios>();
                 SqlCommand comando = new SqlCommand();
                 comando.Connection = BaseDatos.conexionCatalogo;
                 comando.CommandText = "SELECT * FROM Usuarios WHERE Id=@id";

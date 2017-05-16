@@ -29,6 +29,7 @@ namespace Escritorio
         public static string nombreDirectorio = string.Empty;
         public int filaModulosDeProgramas = -1;
         public int filaProgramasDeSubProgramas = -1;
+        // Variables de tamaños y posiciones de spreads.
         public int anchoTotal = 0; public int altoTotal = 0;
         public int anchoMitad = 0; public int altoMitad = 0;
         public int anchoTercio = 0;

@@ -33,9 +33,9 @@ namespace Entidades
         public List<Licencia> ObtenerListado()
         {
 
-            List<Licencia> lista = new List<Licencia>();
             try
             {
+                List<Licencia> lista = new List<Licencia>();
                 SqlCeCommand comando = new SqlCeCommand();
                 comando.Connection = BaseDatos.conexionPrincipal;
                 comando.CommandText = "SELECT * FROM Licencia"; 

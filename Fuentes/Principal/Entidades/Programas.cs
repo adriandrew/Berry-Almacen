@@ -33,9 +33,9 @@ namespace Entidades
         public List<Programas> ObtenerListado()
         {
 
-            List<Programas> lista = new List<Programas>();
             try
             {
+                List<Programas> lista = new List<Programas>();
                 SqlCommand comando = new SqlCommand();
                 comando.Connection = BaseDatos.conexionConfiguracion;
                 comando.CommandText = "SELECT * FROM Programas"; 
@@ -67,9 +67,9 @@ namespace Entidades
         public List<Programas> ObtenerMenuListado()
         {
 
-            List<Programas> lista = new List<Programas>();
             try
             {
+                List<Programas> lista = new List<Programas>();
                 SqlCommand comando = new SqlCommand();
                 comando.Connection = BaseDatos.conexionConfiguracion;
                 //comando.CommandText = "SELECT IdModulo, Id, Nombre FROM Programas WHERE IdModulo=@idModulo";
@@ -104,9 +104,9 @@ namespace Entidades
         public DataTable ObtenerListadoReporte()
         {
 
-            DataTable datos = new DataTable();
             try
             {
+                DataTable datos = new DataTable();
                 SqlCommand comando = new SqlCommand();
                 comando.Connection = BaseDatos.conexionConfiguracion;
                 string condicion = string.Empty;
