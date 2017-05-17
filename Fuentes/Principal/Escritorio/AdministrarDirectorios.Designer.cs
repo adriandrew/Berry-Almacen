@@ -104,7 +104,7 @@
             this.pnlPie.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlPie.Controls.Add(this.lblDescripcionTooltip);
             this.pnlPie.Controls.Add(this.btnSalir);
-            this.pnlPie.Location = new System.Drawing.Point(0, 571);
+            this.pnlPie.Location = new System.Drawing.Point(0, 570);
             this.pnlPie.Name = "pnlPie";
             this.pnlPie.Size = new System.Drawing.Size(1034, 60);
             this.pnlPie.TabIndex = 14;
@@ -144,7 +144,7 @@
             this.pnlContenido.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.pnlContenido.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.pnlContenido.BackColor = System.Drawing.Color.DarkSlateGray;
             this.pnlContenido.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.pnlContenido.Controls.Add(this.pnlEncabezado);
             this.pnlContenido.Controls.Add(this.pnlCuerpo);
@@ -152,7 +152,7 @@
             this.pnlContenido.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pnlContenido.Location = new System.Drawing.Point(0, 0);
             this.pnlContenido.Name = "pnlContenido";
-            this.pnlContenido.Size = new System.Drawing.Size(1038, 634);
+            this.pnlContenido.Size = new System.Drawing.Size(1034, 630);
             this.pnlContenido.TabIndex = 3;
             this.pnlContenido.MouseEnter += new System.EventHandler(this.pnlContenido_MouseEnter);
             // 
@@ -166,7 +166,7 @@
             this.pnlCuerpo.Controls.Add(this.spDirectorios);
             this.pnlCuerpo.Location = new System.Drawing.Point(0, 78);
             this.pnlCuerpo.Name = "pnlCuerpo";
-            this.pnlCuerpo.Size = new System.Drawing.Size(1034, 490);
+            this.pnlCuerpo.Size = new System.Drawing.Size(1030, 490);
             this.pnlCuerpo.TabIndex = 12;
             this.pnlCuerpo.MouseEnter += new System.EventHandler(this.pnlCuerpo_MouseEnter);
             // 
@@ -241,12 +241,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Gray;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1034, 631);
             this.Controls.Add(this.pnlContenido);
+            this.ForeColor = System.Drawing.Color.Black;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AdministrarDirectorios";
             this.Text = "Directorios";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.AdministrarDirectorios_FormClosed);
             this.Load += new System.EventHandler(this.AdministrarDirectorios_Load);
             this.pnlEncabezado.ResumeLayout(false);

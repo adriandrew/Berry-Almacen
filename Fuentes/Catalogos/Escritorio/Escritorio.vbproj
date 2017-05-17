@@ -72,7 +72,7 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Logo3.ico</ApplicationIcon>
+    <ApplicationIcon>Logos\Logo3.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="FarPoint.CalcEngine, Version=5.0.3518.2008, Culture=neutral, PublicKeyToken=327c3516b1b18457" />
@@ -164,9 +164,11 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Logo.ico" />
-    <Content Include="Logo2.ico" />
-    <Content Include="Logo3.ico" />
+    <Content Include="Logos\Logo.ico" />
+    <Content Include="Logos\Logo2.ico" />
+    <Content Include="Logos\Logo3.ico" />
+    <None Include="Logos\Logo3.png" />
+    <Content Include="Logos\Logo4.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

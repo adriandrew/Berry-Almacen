@@ -16,7 +16,8 @@ namespace Escritorio
 {
     public partial class Principal : Form
     {
-
+        
+        // Variables de objetos de entidades.
         public Entidades.BaseDatos baseDatos = new Entidades.BaseDatos();
         public Entidades.Directorios directorios = new Entidades.Directorios(); 
         public Entidades.Usuarios usuarios = new Entidades.Usuarios();
@@ -26,24 +27,23 @@ namespace Escritorio
         public Entidades.BloqueoUsuarios bloqueoUsuarios = new Entidades.BloqueoUsuarios();
         public Entidades.Licencia licencia = new Entidades.Licencia();
         public Entidades.Registros registros = new Entidades.Registros(); 
-        public ProcessStartInfo ejecutarPrograma = new ProcessStartInfo();
-        public static bool esConexionesVariasCorrecta = false;
-        public static bool esConexionPrincipalCorrecta = false;
-        public bool tieneParametros = false;
-        public static bool esCambioDirectorio = false; public static int idDirectorioSeleccionado;
-        public bool tieneSesionActivada = false;
-        public bool esInicioSesion = true;
-        public int idUsuarioSesion = 0; public int idModuloSesion = 0; public int idProgramaSesion = 0; public int idSubProgramaSesion = 0;
-        public string nombreEstePrograma = string.Empty;
-        public string nombreProgramaAbierto = string.Empty;
-        public bool estaCerrando = false; public bool estaAbriendoPrograma = false;
-        public int diasDePrueba = 15;
+        // Variables de menú.
         public Color colorCuadroOriginal = Color.Transparent;
         public int nivelMenu = 1; // 1 módulo, 2 programa y 3 subprograma.
-        public string nombreEsteEquipo = System.Environment.MachineName;
-        // Variables de spread.
+        // Variables de formatos de spread.
         public static int tamañoLetraSpread = 12; public static string tipoLetraSpread = "Microsoft Sans Serif";
         public static int alturaEncabezadosGrandeSpread = 45; public static int alturaEncabezadosChicoSpread = 35; public static int alturaFilasSpread = 25;
+        // Variables generales.
+        public static bool esConexionesVariasCorrecta = false; public static bool esConexionPrincipalCorrecta = false;
+        public static bool esCambioDirectorio = false; public static int idDirectorioSeleccionado;
+        public bool tieneParametros = false; public bool tieneSesionActivada = false;
+        public int idUsuarioSesion = 0; public int idModuloSesion = 0; public int idProgramaSesion = 0; public int idSubProgramaSesion = 0;
+        public string nombreEstePrograma = string.Empty; public string nombreProgramaAbierto = string.Empty;
+        public bool estaCerrando = false; public bool estaAbriendoPrograma = false;
+        public string nombreEsteEquipo = System.Environment.MachineName;
+        public bool esInicioSesion = true;
+        public ProcessStartInfo ejecutarPrograma = new ProcessStartInfo();
+        public int diasDePrueba = 15;
          
         public bool esPrueba = false;
 

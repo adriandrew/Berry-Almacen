@@ -1,5 +1,5 @@
 ﻿Public Class Programas
 
-    Public Shared prefijo As String
+    Public Shared prefijoBaseDatosAlmacen As String
 
 End Class

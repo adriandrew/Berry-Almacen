@@ -85,6 +85,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Almacenes.vb" />
+    <Compile Include="Articulos.vb" />
     <Compile Include="BaseDatos.vb" />
     <Compile Include="Familias.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -102,6 +103,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="SubFamilias.vb" />
+    <Compile Include="UnidadesMedidas.vb" />
     <Compile Include="Usuarios.vb" />
   </ItemGroup>
   <ItemGroup>

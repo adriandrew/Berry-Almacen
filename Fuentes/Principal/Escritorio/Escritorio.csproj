@@ -67,7 +67,7 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Logo3.ico</ApplicationIcon>
+    <ApplicationIcon>Logos\Logo3.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <SignAssembly>false</SignAssembly>
@@ -193,12 +193,11 @@
     <Content Include="Iconos Usados\save-48.png" />
     <Content Include="Iconos Usados\sorting_arrows_horizontal-48.png" />
     <Content Include="Iconos Usados\user-48.png" />
-    <Content Include="Logo.ico" />
-    <Content Include="Logo2.ico" />
-    <Content Include="Logo3.ico" />
+    <Content Include="Logos\Logo3.ico" />
+    <Content Include="Logos\Logo4.ico" />
+    <Content Include="Logos\Logo4.png" />
+    <None Include="Logos\Logo5.png" />
     <None Include="Logos\Logo3.png" />
-    <None Include="Logos\hiedra.jpg" />
-    <None Include="Logos\smooth-ivy.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

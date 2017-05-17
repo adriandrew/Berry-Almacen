@@ -1,8 +1,9 @@
 ﻿Imports System.Data.SqlClient
 
-Public Class Familias
+Public Class SubFamilias
 
     Private idAlmacen As Integer
+    Private idFamilia As Integer
     Private id As Integer
     Private nombre As String
 
@@ -12,6 +13,14 @@ Public Class Familias
         End Get
         Set(value As Integer)
             idAlmacen = value
+        End Set
+    End Property
+    Public Property EIdFamilia() As Integer
+        Get
+            Return idFamilia
+        End Get
+        Set(value As Integer)
+            idFamilia = value
         End Set
     End Property
     Public Property EId() As Integer
@@ -36,8 +45,9 @@ Public Class Familias
         Try
             Dim comando As New SqlCommand()
             comando.Connection = BaseDatos.conexionCatalogo
-            comando.CommandText = "INSERT INTO " & LogicaCatalogos.Programas.prefijoBaseDatosAlmacen & "Familias (IdAlmacen, Id, Nombre) VALUES (@idAlmacen, @id, @nombre)"
+            comando.CommandText = "INSERT INTO " & LogicaCatalogos.Programas.prefijoBaseDatosAlmacen & "SubFamilias (IdAlmacen, IdFamilia, Id, Nombre) VALUES (@idAlmacen, @idFamilia, @id, @nombre)"
             comando.Parameters.AddWithValue("@idAlmacen", Me.EIdAlmacen)
+            comando.Parameters.AddWithValue("@idFamilia", Me.EIdFamilia)
             comando.Parameters.AddWithValue("@id", Me.EId)
             comando.Parameters.AddWithValue("@nombre", Me.ENombre)
             BaseDatos.conexionCatalogo.Open()
@@ -60,11 +70,15 @@ Public Class Familias
             If (Me.EIdAlmacen > 0) Then
                 condicion &= " AND IdAlmacen=@idAlmacen"
             End If
+            If (Me.EIdFamilia > 0) Then
+                condicion &= " AND IdFamilia=@idFamilia"
+            End If
             If (Me.EId > 0) Then
                 condicion &= " AND Id=@id"
             End If
-            comando.CommandText = "DELETE FROM " & LogicaCatalogos.Programas.prefijoBaseDatosAlmacen & "Familias WHERE 0=0 " & condicion
+            comando.CommandText = "DELETE FROM " & LogicaCatalogos.Programas.prefijoBaseDatosAlmacen & "SubFamilias WHERE 0=0 " & condicion
             comando.Parameters.AddWithValue("@idAlmacen", Me.EIdAlmacen)
+            comando.Parameters.AddWithValue("@idFamilia", Me.EIdFamilia)
             comando.Parameters.AddWithValue("@id", Me.id)
             BaseDatos.conexionCatalogo.Open()
             comando.ExecuteNonQuery()
@@ -87,11 +101,15 @@ Public Class Familias
             If Me.EIdAlmacen > 0 Then
                 condicion &= " AND IdAlmacen=@idAlmacen"
             End If
+            If Me.EIdFamilia > 0 Then
+                condicion &= " AND IdFamilia=@idFamilia"
+            End If
             If Me.EId > 0 Then
                 condicion &= " AND Id=@id"
             End If
-            comando.CommandText = "SELECT Id, Nombre FROM " & LogicaCatalogos.Programas.prefijoBaseDatosAlmacen & "Familias WHERE 0=0 " & condicion & " ORDER BY IdAlmacen, Id ASC"
+            comando.CommandText = "SELECT Id, Nombre FROM " & LogicaCatalogos.Programas.prefijoBaseDatosAlmacen & "SubFamilias WHERE 0=0 " & condicion & " ORDER BY IdAlmacen, IdFamilia, Id ASC"
             comando.Parameters.AddWithValue("@idAlmacen", Me.EIdAlmacen)
+            comando.Parameters.AddWithValue("@idFamilia", Me.EIdFamilia)
             comando.Parameters.AddWithValue("@id", Me.EId)
             BaseDatos.conexionCatalogo.Open()
             Dim dataReader As SqlDataReader

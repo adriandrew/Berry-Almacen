@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Principal));
+            this.temporizador = new System.Windows.Forms.Timer(this.components);
             this.pnlContenido = new System.Windows.Forms.Panel();
             this.pnlIniciarSesion = new System.Windows.Forms.Panel();
             this.txtContraseña = new System.Windows.Forms.TextBox();
@@ -47,17 +48,21 @@
             this.btnSalir = new System.Windows.Forms.Button();
             this.btnCambiarDirectorio = new System.Windows.Forms.Button();
             this.pnlEncabezado = new System.Windows.Forms.Panel();
+            this.lblEncabezadoLicencia = new System.Windows.Forms.Label();
             this.lblEncabezadoUsuario = new System.Windows.Forms.Label();
             this.lblEncabezadoDirectorio = new System.Windows.Forms.Label();
             this.lblEncabezadoPrograma = new System.Windows.Forms.Label();
-            this.temporizador = new System.Windows.Forms.Timer(this.components);
-            this.lblEncabezadoLicencia = new System.Windows.Forms.Label();
             this.pnlContenido.SuspendLayout();
             this.pnlIniciarSesion.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picUsuario)).BeginInit();
             this.pnlPie.SuspendLayout();
             this.pnlEncabezado.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // temporizador
+            // 
+            this.temporizador.Interval = 1;
+            this.temporizador.Tick += new System.EventHandler(this.temporizador_Tick);
             // 
             // pnlContenido
             // 
@@ -199,9 +204,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlMenu.AutoScroll = true;
             this.pnlMenu.BackColor = System.Drawing.Color.Transparent;
-            this.pnlMenu.Location = new System.Drawing.Point(3, 78);
+            this.pnlMenu.Location = new System.Drawing.Point(3, 77);
             this.pnlMenu.Name = "pnlMenu";
-            this.pnlMenu.Size = new System.Drawing.Size(1028, 486);
+            this.pnlMenu.Size = new System.Drawing.Size(1028, 490);
             this.pnlMenu.TabIndex = 9;
             this.pnlMenu.Visible = false;
             this.pnlMenu.MouseEnter += new System.EventHandler(this.pnlMenu_MouseEnter);
@@ -210,14 +215,15 @@
             // 
             this.pnlPie.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.pnlPie.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.pnlPie.BackColor = System.Drawing.Color.Black;
             this.pnlPie.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlPie.Controls.Add(this.btnRegresarMenu);
             this.pnlPie.Controls.Add(this.btnAyuda);
             this.pnlPie.Controls.Add(this.lblDescripcionTooltip);
             this.pnlPie.Controls.Add(this.btnSalir);
             this.pnlPie.Controls.Add(this.btnCambiarDirectorio);
-            this.pnlPie.Location = new System.Drawing.Point(0, 567);
+            this.pnlPie.ForeColor = System.Drawing.Color.White;
+            this.pnlPie.Location = new System.Drawing.Point(0, 570);
             this.pnlPie.Name = "pnlPie";
             this.pnlPie.Size = new System.Drawing.Size(1034, 60);
             this.pnlPie.TabIndex = 8;
@@ -315,17 +321,29 @@
             // 
             this.pnlEncabezado.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.pnlEncabezado.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.pnlEncabezado.BackColor = System.Drawing.Color.Black;
             this.pnlEncabezado.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlEncabezado.Controls.Add(this.lblEncabezadoLicencia);
             this.pnlEncabezado.Controls.Add(this.lblEncabezadoUsuario);
             this.pnlEncabezado.Controls.Add(this.lblEncabezadoDirectorio);
             this.pnlEncabezado.Controls.Add(this.lblEncabezadoPrograma);
+            this.pnlEncabezado.ForeColor = System.Drawing.Color.White;
             this.pnlEncabezado.Location = new System.Drawing.Point(0, 0);
             this.pnlEncabezado.Name = "pnlEncabezado";
             this.pnlEncabezado.Size = new System.Drawing.Size(1034, 75);
             this.pnlEncabezado.TabIndex = 7;
             this.pnlEncabezado.MouseEnter += new System.EventHandler(this.pnlEncabezado_MouseEnter);
+            // 
+            // lblEncabezadoLicencia
+            // 
+            this.lblEncabezadoLicencia.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblEncabezadoLicencia.AutoSize = true;
+            this.lblEncabezadoLicencia.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEncabezadoLicencia.ForeColor = System.Drawing.Color.White;
+            this.lblEncabezadoLicencia.Location = new System.Drawing.Point(600, 0);
+            this.lblEncabezadoLicencia.Name = "lblEncabezadoLicencia";
+            this.lblEncabezadoLicencia.Size = new System.Drawing.Size(0, 33);
+            this.lblEncabezadoLicencia.TabIndex = 5;
             // 
             // lblEncabezadoUsuario
             // 
@@ -358,32 +376,19 @@
             this.lblEncabezadoPrograma.Size = new System.Drawing.Size(0, 33);
             this.lblEncabezadoPrograma.TabIndex = 0;
             // 
-            // temporizador
-            // 
-            this.temporizador.Interval = 1;
-            this.temporizador.Tick += new System.EventHandler(this.temporizador_Tick);
-            // 
-            // lblEncabezadoLicencia
-            // 
-            this.lblEncabezadoLicencia.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblEncabezadoLicencia.AutoSize = true;
-            this.lblEncabezadoLicencia.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEncabezadoLicencia.ForeColor = System.Drawing.Color.White;
-            this.lblEncabezadoLicencia.Location = new System.Drawing.Point(600, 0);
-            this.lblEncabezadoLicencia.Name = "lblEncabezadoLicencia";
-            this.lblEncabezadoLicencia.Size = new System.Drawing.Size(0, 33);
-            this.lblEncabezadoLicencia.TabIndex = 5;
-            // 
             // Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.DimGray;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1034, 631);
             this.Controls.Add(this.pnlContenido);
+            this.DoubleBuffered = true;
+            this.ForeColor = System.Drawing.Color.Black;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Principal";
             this.Text = "Iniciar Sesión y Menú";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Principal_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Principal_FormClosed);
             this.Load += new System.EventHandler(this.Principal_Load);
