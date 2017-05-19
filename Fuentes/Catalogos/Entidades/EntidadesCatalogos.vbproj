@@ -88,6 +88,7 @@
     <Compile Include="Articulos.vb" />
     <Compile Include="BaseDatos.vb" />
     <Compile Include="Familias.vb" />
+    <Compile Include="Monedas.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -103,7 +104,10 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Proveedores.vb" />
     <Compile Include="SubFamilias.vb" />
+    <Compile Include="TiposEntradas.vb" />
+    <Compile Include="TiposSalidas.vb" />
     <Compile Include="UnidadesMedidas.vb" />
     <Compile Include="Usuarios.vb" />
   </ItemGroup>

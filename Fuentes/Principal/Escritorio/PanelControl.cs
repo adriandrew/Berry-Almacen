@@ -11,7 +11,15 @@ namespace Escritorio
 {
     public partial class PanelControl : Form
     {
-
+        
+        // Variables de objetos de entidades.
+        Entidades.Directorios directorios = new Entidades.Directorios();
+        Entidades.Usuarios usuarios = new Entidades.Usuarios();
+        Entidades.Modulos modulos = new Entidades.Modulos();
+        Entidades.Programas programas = new Entidades.Programas();
+        Entidades.SubProgramas subProgramas = new Entidades.SubProgramas();
+        Entidades.BloqueoUsuarios bloqueoUsuarios = new Entidades.BloqueoUsuarios();
+        // Variables de tipos de datos de spread.
         FarPoint.Win.Spread.CellType.TextCellType tipoTexto = new FarPoint.Win.Spread.CellType.TextCellType();
         FarPoint.Win.Spread.CellType.TextCellType tipoTextoContrasena = new FarPoint.Win.Spread.CellType.TextCellType();
         FarPoint.Win.Spread.CellType.NumberCellType tipoEntero = new FarPoint.Win.Spread.CellType.NumberCellType();
@@ -19,21 +27,15 @@ namespace Escritorio
         FarPoint.Win.Spread.CellType.PercentCellType tipoPorcentaje = new FarPoint.Win.Spread.CellType.PercentCellType();
         FarPoint.Win.Spread.CellType.DateTimeCellType tipoHora = new FarPoint.Win.Spread.CellType.DateTimeCellType();
         FarPoint.Win.Spread.CellType.CheckBoxCellType tipoBooleano = new FarPoint.Win.Spread.CellType.CheckBoxCellType();
-        Entidades.Directorios directorios = new Entidades.Directorios();
-        Entidades.Usuarios usuarios = new Entidades.Usuarios();
-        Entidades.Modulos modulos = new Entidades.Modulos();
-        Entidades.Programas programas = new Entidades.Programas();
-        Entidades.SubProgramas subProgramas = new Entidades.SubProgramas();
-        Entidades.BloqueoUsuarios bloqueoUsuarios = new Entidades.BloqueoUsuarios();
-        public int opcionSeleccionada = 0;
-        public static string nombreDirectorio = string.Empty;
-        public int filaModulosDeProgramas = -1;
-        public int filaProgramasDeSubProgramas = -1;
         // Variables de tamaños y posiciones de spreads.
         public int anchoTotal = 0; public int altoTotal = 0;
         public int anchoMitad = 0; public int altoMitad = 0;
         public int anchoTercio = 0;
         public int izquierda = 0; public int arriba = 0;
+        // Variables generales.
+        public int opcionSeleccionada = 0;
+        public static string nombreDirectorio = string.Empty;
+        public int filaModulosDeProgramas = -1; public int filaProgramasDeSubProgramas = -1;
         
         public PanelControl()
         {
@@ -117,7 +119,7 @@ namespace Escritorio
             }
             else if (e.KeyData == Keys.Enter) // Validar.
             {
-                ControlarSpreadEnter2(spUsuarios); 
+                ControlarSpreadEnter(spUsuarios); 
             }
 
         }
@@ -133,7 +135,7 @@ namespace Escritorio
         {
 
             this.Dispose();
-            new Principal().Show();            
+            new Principal().Show();
 
         }
 
@@ -303,7 +305,7 @@ namespace Escritorio
 
             if (e.KeyData == Keys.Enter)
             {
-                ControlarSpreadEnter2(spUsuarios);
+                ControlarSpreadEnter(spUsuarios);
             }
 
         }
@@ -394,7 +396,7 @@ namespace Escritorio
 
             if (e.KeyData == Keys.Enter) // Validar.
             {
-                ControlarSpreadEnter2(spProgramas);
+                ControlarSpreadEnter(spProgramas);
             }
 
         }
@@ -404,7 +406,7 @@ namespace Escritorio
 
             if (e.KeyData == Keys.Enter) // Validar.
             {
-                ControlarSpreadEnter2(spProgramas);
+                ControlarSpreadEnter(spProgramas);
             }
             else if (e.KeyData == Keys.F6) // Eliminar.
             {
@@ -435,7 +437,7 @@ namespace Escritorio
 
             if (e.KeyData == Keys.Enter) // Validar.
             {
-                ControlarSpreadEnter2(spModulos);
+                ControlarSpreadEnter(spModulos);
             }
             else if (e.KeyData == Keys.F6) // Eliminar.
             {
@@ -466,7 +468,7 @@ namespace Escritorio
 
             if (e.KeyData == Keys.Enter) // Validar.
             {
-                ControlarSpreadEnter2(spSubProgramas);
+                ControlarSpreadEnter(spSubProgramas);
             }
             else if (e.KeyData == Keys.F6) // Eliminar.
             {
@@ -549,7 +551,7 @@ namespace Escritorio
             }
             else if (e.KeyData == Keys.Enter) // Validar.
             {
-                ControlarSpreadEnter2(spDirectorios);
+                ControlarSpreadEnter(spDirectorios);
             }
 
         }
@@ -559,7 +561,7 @@ namespace Escritorio
 
             if (e.KeyData == Keys.Enter)
             {
-                ControlarSpreadEnter2(spDirectorios);
+                ControlarSpreadEnter(spDirectorios);
             }
 
         }
@@ -569,7 +571,7 @@ namespace Escritorio
 
             if (e.KeyData == Keys.Enter)
             {
-                ControlarSpreadEnter2(spModulos);
+                ControlarSpreadEnter(spModulos);
             }
 
         }
@@ -579,7 +581,7 @@ namespace Escritorio
 
             if (e.KeyData == Keys.Enter)
             {
-                ControlarSpreadEnter2(spSubProgramas);
+                ControlarSpreadEnter(spSubProgramas);
             }
 
         }
@@ -631,7 +633,7 @@ namespace Escritorio
             
         }
 
-        private void ControlarSpreadEnter2(FarPoint.Win.Spread.FpSpread spread)
+        private void ControlarSpreadEnter(FarPoint.Win.Spread.FpSpread spread)
         {
 
             int fila = spread.ActiveSheet.ActiveRowIndex; 
@@ -724,7 +726,7 @@ namespace Escritorio
         {
 
             spUsuarios.ActiveSheet.ColumnHeader.Rows[0].Font = new Font(Principal.tipoLetraSpread, Principal.tamañoLetraSpread, FontStyle.Bold); Application.DoEvents();
-            ControlarSpreadEnter(spUsuarios);
+            ControlarSpreadEnterASiguienteColumna(spUsuarios);
             int numeracion = 0; 
             spUsuarios.ActiveSheet.Columns[numeracion].Tag = "id"; numeracion += 1;
             spUsuarios.ActiveSheet.Columns[numeracion].Tag = "nombre"; numeracion += 1;
@@ -758,7 +760,7 @@ namespace Escritorio
             if (this.opcionSeleccionada == (int)TipoControl.Modulos)
             {
                 spModulos.ActiveSheet.OperationMode = FarPoint.Win.Spread.OperationMode.Normal; Application.DoEvents(); 
-                ControlarSpreadEnter(spModulos);
+                ControlarSpreadEnterASiguienteColumna(spModulos);
             }
             else
                 spModulos.ActiveSheet.OperationMode = FarPoint.Win.Spread.OperationMode.SingleSelect; Application.DoEvents(); 
@@ -802,7 +804,7 @@ namespace Escritorio
             if (this.opcionSeleccionada == (int)TipoControl.Programas)
             {
                 spProgramas.ActiveSheet.OperationMode = FarPoint.Win.Spread.OperationMode.Normal; Application.DoEvents(); 
-                ControlarSpreadEnter(spProgramas);
+                ControlarSpreadEnterASiguienteColumna(spProgramas);
             }
             else
                 spProgramas.ActiveSheet.OperationMode = FarPoint.Win.Spread.OperationMode.SingleSelect; Application.DoEvents(); 
@@ -855,7 +857,7 @@ namespace Escritorio
             if (this.opcionSeleccionada == (int)TipoControl.SubProgramas)
             {
                 spSubProgramas.ActiveSheet.OperationMode = FarPoint.Win.Spread.OperationMode.Normal; Application.DoEvents(); 
-                ControlarSpreadEnter(spSubProgramas);
+                ControlarSpreadEnterASiguienteColumna(spSubProgramas);
             }
             else
                 spSubProgramas.ActiveSheet.OperationMode = FarPoint.Win.Spread.OperationMode.SingleSelect; Application.DoEvents(); 
@@ -1414,7 +1416,7 @@ namespace Escritorio
              
             spDirectorios.ActiveSheet.ColumnHeader.Rows[0].Font = new Font(Principal.tipoLetraSpread, Principal.tamañoLetraSpread, FontStyle.Bold); Application.DoEvents();
             spDirectorios.ActiveSheet.OperationMode = FarPoint.Win.Spread.OperationMode.Normal; Application.DoEvents(); 
-            ControlarSpreadEnter(spDirectorios); 
+            ControlarSpreadEnterASiguienteColumna(spDirectorios); 
             //int columnas = 8;
             //spDirectorios.ActiveSheet.Columns.Count = columnas; Application.DoEvents();
             int numeracion = 0;
@@ -1453,8 +1455,15 @@ namespace Escritorio
             spDirectorios.ActiveSheet.Rows.Count += 1; Application.DoEvents(); 
 
         }
+         
+        private void EliminarRegistro(FarPoint.Win.Spread.FpSpread spread)
+        {
 
-        private void ControlarSpreadEnter(FarPoint.Win.Spread.FpSpread spread)
+            spread.ActiveSheet.Rows.Remove(spread.ActiveSheet.ActiveRowIndex, 1); 
+
+        }
+         
+        private void ControlarSpreadEnterASiguienteColumna(FarPoint.Win.Spread.FpSpread spread)
         {
 
             FarPoint.Win.Spread.InputMap valor1;
@@ -1470,13 +1479,6 @@ namespace Escritorio
 
         }
 
-        private void EliminarRegistro(FarPoint.Win.Spread.FpSpread spread)
-        {
-
-            spread.ActiveSheet.Rows.Remove(spread.ActiveSheet.ActiveRowIndex, 1); 
-
-        }
-         
         #endregion
 
         #region Enumeraciones

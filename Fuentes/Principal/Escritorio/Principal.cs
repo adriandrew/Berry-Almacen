@@ -45,7 +45,7 @@ namespace Escritorio
         public ProcessStartInfo ejecutarPrograma = new ProcessStartInfo();
         public int diasDePrueba = 15;
          
-        public bool esPrueba = false;
+        public bool esDesarrollo = false;
 
         public Principal()
         {
@@ -62,8 +62,6 @@ namespace Escritorio
             AsignarTooltips();
             AsignarFocos();
             ConfigurarConexiones();
-            CargarEncabezados();
-            CargarTitulosDirectorio();
             this.Cursor = Cursors.Default;
 
         }
@@ -79,8 +77,10 @@ namespace Escritorio
             //}
             //else
             //{ 
-                this.txtUsuario.Focus();
-                VerificarLicencia(); 
+            CargarEncabezados();
+            CargarTitulosDirectorio();
+            VerificarLicencia();
+            this.txtUsuario.Focus();
             //}
 
         }
@@ -697,7 +697,7 @@ namespace Escritorio
         private void ConfigurarConexionPrincipal() 
         {
 
-            if (this.esPrueba)
+            if (this.esDesarrollo)
             {
                 baseDatos.CadenaConexionPrincipal = "C:\\Berry ERP\\DatosPrincipales.sdf";
             }
@@ -716,7 +716,7 @@ namespace Escritorio
  
             // Se verifica si tiene parametros.
 	        string[] parametros = Environment.GetCommandLineArgs().ToArray();
-	        if ((parametros.Length > 1))
+	        if (parametros.Length > 1)
             {
 		        this.tieneParametros = true;
 	        } 
@@ -1028,7 +1028,7 @@ namespace Escritorio
             } 
             int posicionY = 0; int posicionX = 0; // Las posiciones donde inician los controles.
             int margen = 5; // Margen de espacio hacia los lados
-            double cantidadEnAltura = Convert.ToDouble((pnlMenu.Height)) / (alto + margen + 10); // Tamaño de menu entre alto de paneles mas margenes mas 10 de la barra inferior.
+            double cantidadEnAltura = Convert.ToDouble(pnlMenu.Height) / (alto + margen + 10); // Tamaño de menu entre alto de paneles mas margenes mas 10 de la barra inferior.
             cantidadEnAltura = Math.Floor(cantidadEnAltura); // Es la cantidad de controles que caben verticalmente.
             int cantidad = 0; // Cantidad de programas configurados obtenidos desde bd.
             if (this.nivelMenu == (int)Nivel.Modulos)
