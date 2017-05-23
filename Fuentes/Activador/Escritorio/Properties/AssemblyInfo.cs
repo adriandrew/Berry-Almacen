@@ -6,12 +6,12 @@ using System.Runtime.InteropServices;
 // conjunto de atributos. Cambie estos atributos para modificar la información
 // asociada con un ensamblado.
 [assembly: AssemblyTitle("Activador")]
-[assembly: AssemblyDescription("Programa para activar licencia.")]
+[assembly: AssemblyDescription("Programa para Activar o Desactivar Licencia.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Berry")]
-[assembly: AssemblyProduct("Activador")]
+[assembly: AssemblyProduct("ERP Berry")]
 [assembly: AssemblyCopyright("Copyright © Berry 2017")]
-[assembly: AssemblyTrademark("")]
+[assembly: AssemblyTrademark("Berry")]
 [assembly: AssemblyCulture("")]
 
 // Si establece ComVisible como false, los tipos de este ensamblado no estarán visibles 

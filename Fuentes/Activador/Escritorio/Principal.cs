@@ -16,19 +16,21 @@ namespace Escritorio
 {
     public partial class Principal : Form
     {
-         
+
+        // Variables de objetos de entidades.
         Entidades.BaseDatos baseDatos = new Entidades.BaseDatos(); 
         Entidades.Directorios directorios = new Entidades.Directorios();
-        Entidades.Licencia licencia = new Entidades.Licencia(); 
-        ProcessStartInfo ejecutarProgramaPrincipal = new ProcessStartInfo(); 
+        Entidades.Licencia licencia = new Entidades.Licencia();
+        ProcessStartInfo ejecutarProgramaPrincipal = new ProcessStartInfo();
+        // Variables generales.
         public bool tieneParametros = false;
         public bool esInicioSesion = true; 
         public string nombrePrograma = string.Empty;
         public bool estaCerrando = false; public bool estaAbriendoPrograma = false;
-        public int diasDePrueba = 15;
         public bool estaMostrado = false;
-
-        public bool esPrueba = false;
+        public int diasDePrueba = 15;
+        // Variable de desarrollo.
+        public bool esDesarrollo = false;
 
         public Principal()
         {
@@ -399,7 +401,7 @@ namespace Escritorio
         private void ConfigurarConexionPrincipal() 
         {
 
-            if (this.esPrueba)
+            if (this.esDesarrollo)
             {
                 baseDatos.CadenaConexionPrincipal = "C:\\Berry ERP\\DatosPrincipales.sdf";
             }

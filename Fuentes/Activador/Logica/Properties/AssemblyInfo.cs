@@ -5,13 +5,13 @@ using System.Runtime.InteropServices;
 // La información general sobre un ensamblado se controla mediante el siguiente 
 // conjunto de atributos. Cambie estos atributos para modificar la información
 // asociada con un ensamblado.
-[assembly: AssemblyTitle("Logica")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("LógicaActivador")]
+[assembly: AssemblyDescription("Lógica de Negocios.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Berry")]
-[assembly: AssemblyProduct("Logica")]
+[assembly: AssemblyProduct("ERP Berry")]
 [assembly: AssemblyCopyright("Copyright © Berry 2017")]
-[assembly: AssemblyTrademark("")]
+[assembly: AssemblyTrademark("Berry")]
 [assembly: AssemblyCulture("")]
 
 // Si establece ComVisible como false, los tipos de este ensamblado no estarán visibles 

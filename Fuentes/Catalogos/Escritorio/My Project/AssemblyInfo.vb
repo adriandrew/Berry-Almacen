@@ -9,11 +9,11 @@ Imports System.Runtime.InteropServices
 ' Revisar los valores de los atributos del ensamblado
 
 <Assembly: AssemblyTitle("Catálogos")> 
-<Assembly: AssemblyDescription("Catálogos de Almacén exclusivamente.")> 
+<Assembly: AssemblyDescription("Catálogos de Almacén.")> 
 <Assembly: AssemblyCompany("Berry")> 
-<Assembly: AssemblyProduct("Catálogos")> 
+<Assembly: AssemblyProduct("ERP Berry")> 
 <Assembly: AssemblyCopyright("Copyright © Berry 2017")> 
-<Assembly: AssemblyTrademark("")> 
+<Assembly: AssemblyTrademark("Berry")> 
 
 <Assembly: ComVisible(False)>
 

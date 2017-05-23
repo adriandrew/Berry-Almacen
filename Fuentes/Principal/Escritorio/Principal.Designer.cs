@@ -36,7 +36,6 @@
             this.txtContraseña = new System.Windows.Forms.TextBox();
             this.txtUsuario = new System.Windows.Forms.TextBox();
             this.btnEntrar = new System.Windows.Forms.Button();
-            this.btnMostrarOpciones = new System.Windows.Forms.Button();
             this.lblContraseña = new System.Windows.Forms.Label();
             this.lblUsuario = new System.Windows.Forms.Label();
             this.picUsuario = new System.Windows.Forms.PictureBox();
@@ -92,7 +91,6 @@
             this.pnlIniciarSesion.Controls.Add(this.txtContraseña);
             this.pnlIniciarSesion.Controls.Add(this.txtUsuario);
             this.pnlIniciarSesion.Controls.Add(this.btnEntrar);
-            this.pnlIniciarSesion.Controls.Add(this.btnMostrarOpciones);
             this.pnlIniciarSesion.Controls.Add(this.lblContraseña);
             this.pnlIniciarSesion.Controls.Add(this.lblUsuario);
             this.pnlIniciarSesion.Controls.Add(this.picUsuario);
@@ -146,19 +144,6 @@
             this.btnEntrar.UseVisualStyleBackColor = false;
             this.btnEntrar.Click += new System.EventHandler(this.btnIniciarSesion_Click);
             this.btnEntrar.MouseEnter += new System.EventHandler(this.btnEntrar_MouseEnter);
-            // 
-            // btnMostrarOpciones
-            // 
-            this.btnMostrarOpciones.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnMostrarOpciones.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnMostrarOpciones.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnMostrarOpciones.Image = ((System.Drawing.Image)(resources.GetObject("btnMostrarOpciones.Image")));
-            this.btnMostrarOpciones.Location = new System.Drawing.Point(434, 115);
-            this.btnMostrarOpciones.Name = "btnMostrarOpciones";
-            this.btnMostrarOpciones.Size = new System.Drawing.Size(29, 55);
-            this.btnMostrarOpciones.TabIndex = 24;
-            this.btnMostrarOpciones.UseVisualStyleBackColor = false;
-            this.btnMostrarOpciones.Visible = false;
             // 
             // lblContraseña
             // 
@@ -414,7 +399,6 @@
         private System.Windows.Forms.TextBox txtContraseña;
         private System.Windows.Forms.TextBox txtUsuario;
         private System.Windows.Forms.Button btnEntrar;
-        private System.Windows.Forms.Button btnMostrarOpciones;
         private System.Windows.Forms.Label lblContraseña;
         private System.Windows.Forms.Label lblUsuario;
         private System.Windows.Forms.Panel pnlEncabezado;

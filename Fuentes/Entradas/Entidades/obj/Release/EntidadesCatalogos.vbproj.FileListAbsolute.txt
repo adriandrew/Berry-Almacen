@@ -1,0 +1,68 @@
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Catalogos\Entidades\bin\Release\EntidadesCatalogos.dll
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Catalogos\Entidades\bin\Release\EntidadesCatalogos.pdb
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Catalogos\Entidades\bin\Release\EntidadesCatalogos.xml
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Catalogos\Entidades\obj\Release\EntidadesCatalogos.Resources.resources
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Catalogos\Entidades\obj\Release\EntidadesCatalogos.vbproj.GenerateResource.Cache
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Catalogos\Entidades\obj\Release\EntidadesCatalogos.dll
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Catalogos\Entidades\obj\Release\EntidadesCatalogos.xml
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Catalogos\Entidades\obj\Release\EntidadesCatalogos.pdb
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Catalogos\Entidades\bin\Release\EntidadesCatalogos.dll
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Catalogos\Entidades\bin\Release\EntidadesCatalogos.pdb
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Catalogos\Entidades\bin\Release\EntidadesCatalogos.xml
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Catalogos\Entidades\bin\Release\LogicaCatalogos.dll
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Catalogos\Entidades\bin\Release\LogicaCatalogos.pdb
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Catalogos\Entidades\bin\Release\LogicaCatalogos.xml
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Catalogos\Entidades\obj\Release\EntidadesCatalogos.vbprojResolveAssemblyReference.cache
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Catalogos\Entidades\obj\Release\EntidadesCatalogos.Resources.resources
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Catalogos\Entidades\obj\Release\EntidadesCatalogos.vbproj.GenerateResource.Cache
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Catalogos\Entidades\obj\Release\EntidadesCatalogos.dll
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Catalogos\Entidades\obj\Release\EntidadesCatalogos.xml
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Catalogos\Entidades\obj\Release\EntidadesCatalogos.pdb
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes\Catalogos\Entidades\bin\Release\EntidadesCatalogos.dll
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes\Catalogos\Entidades\bin\Release\EntidadesCatalogos.pdb
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes\Catalogos\Entidades\bin\Release\EntidadesCatalogos.xml
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes\Catalogos\Entidades\bin\Release\LogicaCatalogos.dll
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes\Catalogos\Entidades\bin\Release\LogicaCatalogos.pdb
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes\Catalogos\Entidades\bin\Release\LogicaCatalogos.xml
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes\Catalogos\Entidades\obj\Release\EntidadesCatalogos.vbprojResolveAssemblyReference.cache
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes\Catalogos\Entidades\obj\Release\EntidadesCatalogos.Resources.resources
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes\Catalogos\Entidades\obj\Release\EntidadesCatalogos.vbproj.GenerateResource.Cache
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes\Catalogos\Entidades\obj\Release\EntidadesCatalogos.dll
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes\Catalogos\Entidades\obj\Release\EntidadesCatalogos.xml
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes\Catalogos\Entidades\obj\Release\EntidadesCatalogos.pdb
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes Modificados\Catalogos\Entidades\bin\Release\EntidadesCatalogos.dll
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes Modificados\Catalogos\Entidades\bin\Release\EntidadesCatalogos.pdb
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes Modificados\Catalogos\Entidades\bin\Release\EntidadesCatalogos.xml
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes Modificados\Catalogos\Entidades\bin\Release\LogicaCatalogos.dll
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes Modificados\Catalogos\Entidades\bin\Release\LogicaCatalogos.pdb
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes Modificados\Catalogos\Entidades\bin\Release\LogicaCatalogos.xml
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes Modificados\Catalogos\Entidades\obj\Release\EntidadesCatalogos.vbprojResolveAssemblyReference.cache
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes Modificados\Catalogos\Entidades\obj\Release\EntidadesCatalogos.Resources.resources
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes Modificados\Catalogos\Entidades\obj\Release\EntidadesCatalogos.vbproj.GenerateResource.Cache
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes Modificados\Catalogos\Entidades\obj\Release\EntidadesCatalogos.dll
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes Modificados\Catalogos\Entidades\obj\Release\EntidadesCatalogos.xml
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes Modificados\Catalogos\Entidades\obj\Release\EntidadesCatalogos.pdb
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Catalogos\Entidades\bin\Release\EntidadesCatalogos.dll
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Catalogos\Entidades\bin\Release\EntidadesCatalogos.pdb
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Catalogos\Entidades\bin\Release\EntidadesCatalogos.xml
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Catalogos\Entidades\bin\Release\LogicaCatalogos.dll
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Catalogos\Entidades\bin\Release\LogicaCatalogos.pdb
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Catalogos\Entidades\bin\Release\LogicaCatalogos.xml
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Catalogos\Entidades\obj\Release\EntidadesCatalogos.vbprojResolveAssemblyReference.cache
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Catalogos\Entidades\obj\Release\EntidadesCatalogos.Resources.resources
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Catalogos\Entidades\obj\Release\EntidadesCatalogos.vbproj.GenerateResource.Cache
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Catalogos\Entidades\obj\Release\EntidadesCatalogos.dll
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Catalogos\Entidades\obj\Release\EntidadesCatalogos.xml
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Catalogos\Entidades\obj\Release\EntidadesCatalogos.pdb
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Entradas\Entidades\bin\Release\EntidadesCatalogos.dll
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Entradas\Entidades\bin\Release\EntidadesCatalogos.pdb
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Entradas\Entidades\bin\Release\EntidadesCatalogos.xml
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Entradas\Entidades\bin\Release\LogicaCatalogos.dll
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Entradas\Entidades\bin\Release\LogicaCatalogos.pdb
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Entradas\Entidades\bin\Release\LogicaCatalogos.xml
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Entradas\Entidades\obj\Release\EntidadesCatalogos.vbprojResolveAssemblyReference.cache
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Entradas\Entidades\obj\Release\EntidadesCatalogos.Resources.resources
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Entradas\Entidades\obj\Release\EntidadesCatalogos.vbproj.GenerateResource.Cache
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Entradas\Entidades\obj\Release\EntidadesCatalogos.dll
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Entradas\Entidades\obj\Release\EntidadesCatalogos.xml
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Entradas\Entidades\obj\Release\EntidadesCatalogos.pdb

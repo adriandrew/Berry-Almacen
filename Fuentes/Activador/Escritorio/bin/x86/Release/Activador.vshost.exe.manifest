@@ -58,26 +58,26 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Activador.exe" size="1198592">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Activador.exe" size="1198080">
       <assemblyIdentity name="Activador" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>nOwR8mvwIOediLsNt6KK0SWymeg=</dsig:DigestValue>
+        <dsig:DigestValue>01qVZ7JfCMwEXbOdP/I7VJd/Mvo=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="EntidadesActivador.dll" size="10240">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="EntidadesActivador.dll" size="9216">
       <assemblyIdentity name="EntidadesActivador" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>BT+mxEF93r3rPpVFihIf37PY9oY=</dsig:DigestValue>
+        <dsig:DigestValue>DOGWjwF16+z4LJNMZuBM+nOP0kI=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -89,7 +89,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>lpiyj0DNNHoOTKgef37vJuJkEYc=</dsig:DigestValue>
+        <dsig:DigestValue>vYLVK/hiomOzmXNDBA2bxQpgBGI=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

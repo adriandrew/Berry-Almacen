@@ -44,7 +44,7 @@ namespace Escritorio
         public bool esInicioSesion = true;
         public ProcessStartInfo ejecutarPrograma = new ProcessStartInfo();
         public int diasDePrueba = 15;
-         
+        // Variable de desarrollo.
         public bool esDesarrollo = false;
 
         public Principal()
@@ -59,6 +59,7 @@ namespace Escritorio
 
             this.Cursor = Cursors.WaitCursor;
             Centrar();
+            CargarNombrePrograma();
             AsignarTooltips();
             AsignarFocos();
             ConfigurarConexiones();
@@ -69,6 +70,7 @@ namespace Escritorio
         private void Principal_Shown(object sender, EventArgs e)
         {
 
+            this.Cursor = Cursors.WaitCursor;
             if (!Principal.esConexionPrincipalCorrecta)
                 btnCambiarDirectorio.Enabled = false;
             //if (!Principal.esConexionesVariasCorrecta)
@@ -82,6 +84,7 @@ namespace Escritorio
             VerificarLicencia();
             this.txtUsuario.Focus();
             //}
+            this.Cursor = Cursors.Default;
 
         }
 
@@ -417,7 +420,6 @@ namespace Escritorio
                 if (Principal.esConexionesVariasCorrecta) 
                     GuardarEditarRegistro(0, false); 
             }
-            //Application.ExitThread();
             ApplicationExit();
             this.Cursor = Cursors.Default;
 
@@ -659,6 +661,12 @@ namespace Escritorio
             this.Location = Screen.PrimaryScreen.WorkingArea.Location;
             this.Size = Screen.PrimaryScreen.WorkingArea.Size;
             this.Opacity = .98; // Está bien perro esto. Un toque de elegancia.
+
+        }
+
+        private void CargarNombrePrograma()
+        {
+
             this.nombreEstePrograma = this.Text;
 
         }
@@ -671,9 +679,9 @@ namespace Escritorio
             tp.InitialDelay = 0;
             tp.ReshowDelay = 100;
             tp.ShowAlways = true;
+            tp.SetToolTip(this.pnlEncabezado, "Datos Principales.");
             tp.SetToolTip(this.btnCambiarDirectorio, "Cambiar de Directorio.");
             tp.SetToolTip(this.btnEntrar, "Entrar.");
-            tp.SetToolTip(this.btnMostrarOpciones, "Mostrar Opciones.");
             tp.SetToolTip(this.btnSalir, "Salir.");
             tp.SetToolTip(this.btnAyuda, "Ayuda.");
             tp.SetToolTip(this.btnRegresarMenu, "Regresar en el Menú.");
@@ -967,16 +975,12 @@ namespace Escritorio
                 else
                 {
                     nombrePrograma = nombreModulo + idPrograma.ToString().PadLeft(2, '0'); 
-                    this.nombreProgramaAbierto = nombrePrograma;
-                    this.estaAbriendoPrograma = true;
                     AbrirPrograma(nombrePrograma, true);  
                 }
             }
             else if (this.nivelMenu == (int)Nivel.SubProgramas)
             {
                 nombrePrograma = nombreModulo + idPrograma.ToString().PadLeft(2, '0') + idSubPrograma.ToString().PadLeft(2, '0'); 
-                this.nombreProgramaAbierto = nombrePrograma;
-                this.estaAbriendoPrograma = true;
                 AbrirPrograma(nombrePrograma, true);
             }
             this.Cursor = Cursors.Default;
@@ -992,9 +996,8 @@ namespace Escritorio
             // Se generan las opciones de menú.
             List<Entidades.Modulos> listaModulos = new List<Entidades.Modulos>();
             List<Entidades.Programas> listaProgramas = new List<Entidades.Programas>();
-            List<Entidades.SubProgramas> listaSubProgramas = new List<Entidades.SubProgramas>();
-
-            // Esto corresponde al menú de programas.
+            List<Entidades.SubProgramas> listaSubProgramas = new List<Entidades.SubProgramas>(); 
+            // Esto corresponde al desglose de menú.
             if (this.nivelMenu == (int)Nivel.Modulos)
             {
                 modulos.IdUsuario = this.idUsuarioSesion;
@@ -1038,7 +1041,7 @@ namespace Escritorio
             else if (this.nivelMenu == (int)Nivel.SubProgramas)
                 cantidad = listaSubProgramas.Count; 
             int indiceVariable = 0; // Se utiliza para controlar la cantidad de opciones verticales.
-            for (int indice = 0; indice < cantidad; indice++) // Crea controles.
+            for (int indice = 0; indice < cantidad; indice++) // Crea todos los controles.
             {
                 // Se crean los paneles.
                 Panel cuadro = new Panel();
@@ -1053,10 +1056,10 @@ namespace Escritorio
                 else if (this.nivelMenu == (int)Nivel.Programas)
                     cuadro.Name = "pnlPrograma_" + listaProgramas[indice].IdModulo + "_" + listaProgramas[indice].Id;
                 else if (this.nivelMenu == (int)Nivel.SubProgramas)
-                    cuadro.Name = "pnlPrograma_" + listaSubProgramas[indice].IdModuloo + "_" + listaSubProgramas[indice].IdProgramaa + "_" + listaSubProgramas[indice].Id; 
-                cuadro.Click += new System.EventHandler(cuadro_Click); // Se genera el evento desde codigo. 
-                cuadro.MouseEnter += new System.EventHandler(cuadro_MouseEnter); // Se genera el evento desde codigo.
-                cuadro.MouseLeave += new System.EventHandler(cuadro_MouseLeave); // Se genera el evento desde codigo.
+                    cuadro.Name = "pnlPrograma_" + listaSubProgramas[indice].IdModuloo + "_" + listaSubProgramas[indice].IdProgramaa + "_" + listaSubProgramas[indice].Id;
+                cuadro.Click += new System.EventHandler(cuadro_Click); // Se genera el evento desde código. 
+                cuadro.MouseEnter += new System.EventHandler(cuadro_MouseEnter); // Se genera el evento desde código.
+                cuadro.MouseLeave += new System.EventHandler(cuadro_MouseLeave); // Se genera el evento desde código.
                 cuadro.Cursor = Cursors.Hand;
                 pnlMenu.Controls.Add(cuadro); Application.DoEvents();
                 // Se crean las etiquetas de los nombres de los paneles.
@@ -1073,8 +1076,8 @@ namespace Escritorio
                 {
                     if (this.nivelMenu == (int)Nivel.Programas || this.nivelMenu == (int)Nivel.SubProgramas)
                     {
-                            etiquetaNombre.Top = cuadro.Height - etiquetaNombre.Height - 45;
-                            etiquetaNombre.Height = 80;
+                        etiquetaNombre.Top = cuadro.Height - etiquetaNombre.Height - 45;
+                        etiquetaNombre.Height = 80;
                     }
                 }
                 else
@@ -1087,18 +1090,18 @@ namespace Escritorio
                 etiquetaNombre.Text = nombre;
                 etiquetaNombre.ForeColor = Color.White;
                 etiquetaNombre.Font = new Font(Principal.tipoLetraSpread, 20, FontStyle.Regular);
-                etiquetaNombre.Click += new System.EventHandler(etiquetaNombre_Click); // Se genera el evento desde codigo. 
-                etiquetaNombre.MouseEnter += new System.EventHandler(etiquetaNombre_MouseEnter); // Se genera el evento desde codigo.
-                etiquetaNombre.MouseLeave += new System.EventHandler(etiquetaNombre_MouseLeave); // Se genera el evento desde codigo.
+                etiquetaNombre.Click += new System.EventHandler(etiquetaNombre_Click); // Se genera el evento desde código. 
+                etiquetaNombre.MouseEnter += new System.EventHandler(etiquetaNombre_MouseEnter); // Se genera el evento desde código.
+                etiquetaNombre.MouseLeave += new System.EventHandler(etiquetaNombre_MouseLeave); // Se genera el evento desde código.
                 etiquetaNombre.Cursor = Cursors.Hand;
                 cuadro.Controls.Add(etiquetaNombre); Application.DoEvents();
-                // Se calculan y se distribuyen de acuerdo al tamaño del panel del menu.
+                // Se calculan y se distribuyen de acuerdo al tamaño del panel del menú.
                 indiceVariable += 1;
-                if (indiceVariable < Convert.ToInt32(cantidadEnAltura))
+                if (indiceVariable < Convert.ToInt32(cantidadEnAltura)) // Se pinta sobre la misma columna vertical.
                 {
                     posicionY += alto + margen;
                 }
-                else
+                else // Se pinta sobre una nueva columna vertical a la derecha de la actual.
                 {
                     indiceVariable = 0;
                     posicionX += ancho + margen;
@@ -1125,13 +1128,13 @@ namespace Escritorio
         private void CargarTitulosDirectorio()
         {
 
-            this.Text = this.nombreEstePrograma + ": " + Logica.Directorios.nombre;
+            this.Text = "Programa:  " + this.nombreEstePrograma + "              Directorio:  " + Logica.Directorios.nombre + "              Usuario:  " + Logica.Usuarios.nombre;
 
         }
 
         private void CargarEncabezados()
-        { 
-
+        {
+             
             lblEncabezadoPrograma.Text = "Programa: " + this.nombreEstePrograma;
             lblEncabezadoDirectorio.Text = "Directorio: " + Logica.Directorios.nombre;
             lblEncabezadoUsuario.Text = "Usuario: " + Logica.Usuarios.nombre;
@@ -1154,6 +1157,8 @@ namespace Escritorio
         private void AbrirPrograma(string nombre, bool salir)
         {
 
+            this.estaAbriendoPrograma = true;
+            this.nombreProgramaAbierto = nombre;
             ejecutarPrograma.UseShellExecute = true;
             ejecutarPrograma.FileName = nombre + ".exe";
             ejecutarPrograma.WorkingDirectory = Directory.GetCurrentDirectory();

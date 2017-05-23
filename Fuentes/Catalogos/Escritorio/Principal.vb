@@ -36,15 +36,41 @@ Public Class Principal
     ' Variables de eventos de spread.
     Public filaAlmacen As Integer = -1 : Public filaFamilia As Integer = -1 : Public filaSubFamilia As Integer = -1
     ' Variables generales.
+    Public nombreEstePrograma As String = String.Empty
     Public medidasUnaVez As Boolean = False
     Public opcionSeleccionada As Integer = 0
     Public estaCerrando As Boolean = False
     Public ejecutarProgramaPrincipal As New ProcessStartInfo()
     Public prefijoBaseDatosAlmacen As String = "ALM" & "_"
-
+    ' Variable de desarrollo.
     Public esDesarrollo As Boolean = False
 
 #Region "Eventos"
+
+    Private Sub Principal_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+        Me.Cursor = Cursors.WaitCursor
+        Centrar()
+        CargarNombrePrograma()
+        AsignarTooltips()
+        ConfigurarConexiones()
+        Me.Cursor = Cursors.Default
+
+    End Sub
+
+    Private Sub Principal_Shown(sender As Object, e As EventArgs) Handles Me.Shown
+
+        Me.Cursor = Cursors.WaitCursor
+        'If (Not ValidarAccesoTotal()) Then
+        '    Salir()
+        'End If
+        CargarEncabezados()
+        CargarTitulosDirectorio()
+        CargarMedidas()
+        FormatearSpread()
+        Me.Cursor = Cursors.Default
+
+    End Sub
 
     Private Sub Principal_FormClosed(sender As Object, e As FormClosedEventArgs) Handles Me.FormClosed
 
@@ -58,27 +84,10 @@ Public Class Principal
 
     Private Sub Principal_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
 
+        Me.Cursor = Cursors.WaitCursor
         Me.estaCerrando = True
         Desvanecer()
-
-    End Sub
-
-    Private Sub Principal_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
-        Centrar()
-        AsignarTooltips()
-        ConfigurarConexiones()
-        CargarEncabezados()
-
-    End Sub
-
-    Private Sub Principal_Shown(sender As Object, e As EventArgs) Handles Me.Shown
-
-        'If (Not ValidarAccesoTotal()) Then
-        '    Salir()
-        'End If
-        CargarMedidas()
-        FormatearSpread()
+        Me.Cursor = Cursors.Default
 
     End Sub
 
@@ -410,6 +419,80 @@ Public Class Principal
 
     End Sub
 
+    Private Sub rbtnProveedores_CheckedChanged(sender As Object, e As EventArgs) Handles rbtnProveedores.CheckedChanged
+
+        If (rbtnProveedores.Checked) Then
+            SeleccionoProveedores()
+        End If
+
+    End Sub
+
+    Private Sub spVarios_DialogKey(sender As Object, e As FarPoint.Win.Spread.DialogKeyEventArgs) Handles spVarios.DialogKey
+
+        If (e.KeyData = Keys.Enter) Then
+            ControlarSpreadEnter(spVarios)
+        End If
+
+    End Sub
+
+    Private Sub spVarios_KeyDown(sender As Object, e As KeyEventArgs) Handles spVarios.KeyDown
+
+        If (e.KeyData = Keys.Enter) Then
+            ControlarSpreadEnter(spVarios)
+        End If
+
+    End Sub
+
+    Private Sub rbtnMonedas_CheckedChanged(sender As Object, e As EventArgs) Handles rbtnMonedas.CheckedChanged
+
+        If (rbtnMonedas.Checked) Then
+            SeleccionoMonedas()
+        End If
+
+    End Sub
+
+    Private Sub rbtnTiposEntradas_CheckedChanged(sender As Object, e As EventArgs) Handles rbtnTiposEntradas.CheckedChanged
+
+        If (rbtnTiposEntradas.Checked) Then
+            SeleccionoTiposEntradas()
+        End If
+
+    End Sub
+
+    Private Sub rbtnTiposSalidas_CheckedChanged(sender As Object, e As EventArgs) Handles rbtnTiposSalidas.CheckedChanged
+
+        If (rbtnTiposSalidas.Checked) Then
+            SeleccionoTiposSalidas()
+        End If
+
+    End Sub
+
+    Private Sub Principal_Resize(sender As Object, e As EventArgs) Handles MyBase.Resize
+
+        If (Not Me.medidasUnaVez) Then
+            If (pnlMenu.HorizontalScroll.Visible) Then
+                pnlMenu.Height += 15
+                CargarMedidas()
+                Me.medidasUnaVez = True
+            End If
+        Else
+            If (Not pnlMenu.HorizontalScroll.Visible) Then
+                pnlMenu.Height -= 15
+                CargarMedidas()
+                Me.medidasUnaVez = False
+            End If
+        End If
+
+    End Sub
+
+    Private Sub rbtnUnidadesMedidas_CheckedChanged(sender As Object, e As EventArgs) Handles rbtnUnidadesMedidas.CheckedChanged
+
+        If (rbtnUnidadesMedidas.Checked) Then
+            SeleccionoUnidadesMedidas()
+        End If
+
+    End Sub
+
 #End Region
 
 #Region "Métodos"
@@ -490,6 +573,12 @@ Public Class Principal
 
     End Sub
 
+    Private Sub CargarNombrePrograma()
+
+        Me.nombreEstePrograma = Me.Text
+
+    End Sub
+
     Private Sub AsignarTooltips()
 
         Dim tp As New ToolTip()
@@ -497,7 +586,12 @@ Public Class Principal
         tp.InitialDelay = 0
         tp.ReshowDelay = 100
         tp.ShowAlways = True
+        tp.SetToolTip(Me.pnlEncabezado, "Datos Principales.")
+        tp.SetToolTip(Me.btnAyuda, "Ayuda.")
         tp.SetToolTip(Me.btnSalir, "Salir.")
+        tp.SetToolTip(Me.btnGuardar, "Guardar.")
+        tp.SetToolTip(Me.btnEliminar, "Eliminar.")
+        tp.SetToolTip(Me.pnlMenu, "Menú.")
 
     End Sub
 
@@ -548,6 +642,12 @@ Public Class Principal
             LogicaCatalogos.Usuarios.nivel = lista(0).ENivel
             LogicaCatalogos.Usuarios.accesoTotal = lista(0).EAccesoTotal
         End If
+
+    End Sub
+
+    Private Sub CargarTitulosDirectorio()
+
+        Me.Text = "Programa:  " + Me.nombreEstePrograma + "              Directorio:  " + LogicaCatalogos.Directorios.nombre + "              Usuario:  " + LogicaCatalogos.Usuarios.nombre
 
     End Sub
 
@@ -834,9 +934,13 @@ Public Class Principal
         spAlmacenes.ActiveSheet.Columns("nombre").CellType = tipoTexto : Application.DoEvents()
         spAlmacenes.ActiveSheet.Columns("abreviatura").CellType = tipoTexto : Application.DoEvents()
         spAlmacenes.ActiveSheet.AddColumnHeaderSpanCell(0, 0, 1, spAlmacenes.ActiveSheet.Columns.Count) : Application.DoEvents()
+        Dim obligatorio As String = String.Empty
+        If (Me.opcionSeleccionada = OpcionMenu.Almacenes) Then
+            obligatorio = " *"
+        End If
         spAlmacenes.ActiveSheet.ColumnHeader.Cells(0, 0).Value = "A  l  m  a  c  e  n  e  s".ToUpper() : Application.DoEvents()
-        spAlmacenes.ActiveSheet.ColumnHeader.Cells(1, spAlmacenes.ActiveSheet.Columns("id").Index).Value = "No.".ToUpper() : Application.DoEvents()
-        spAlmacenes.ActiveSheet.ColumnHeader.Cells(1, spAlmacenes.ActiveSheet.Columns("nombre").Index).Value = "Nombre".ToUpper() : Application.DoEvents()
+        spAlmacenes.ActiveSheet.ColumnHeader.Cells(1, spAlmacenes.ActiveSheet.Columns("id").Index).Value = "No.".ToUpper() & obligatorio : Application.DoEvents()
+        spAlmacenes.ActiveSheet.ColumnHeader.Cells(1, spAlmacenes.ActiveSheet.Columns("nombre").Index).Value = "Nombre".ToUpper() & obligatorio : Application.DoEvents()
         spAlmacenes.ActiveSheet.ColumnHeader.Cells(1, spAlmacenes.ActiveSheet.Columns("abreviatura").Index).Value = "Abreviatura".ToUpper() : Application.DoEvents()
         If (Me.opcionSeleccionada = OpcionMenu.Almacenes) Then
             spAlmacenes.ActiveSheet.Rows.Count += 1 : Application.DoEvents()
@@ -948,9 +1052,13 @@ Public Class Principal
         spFamilias.ActiveSheet.Columns("id").CellType = tipoEntero : Application.DoEvents()
         spFamilias.ActiveSheet.Columns("nombre").CellType = tipoTexto : Application.DoEvents()
         spFamilias.ActiveSheet.AddColumnHeaderSpanCell(0, 0, 1, spFamilias.ActiveSheet.Columns.Count) : Application.DoEvents()
+        Dim obligatorio As String = String.Empty
+        If (Me.opcionSeleccionada = OpcionMenu.Familias) Then
+            obligatorio = " *"
+        End If
         spFamilias.ActiveSheet.ColumnHeader.Cells(0, 0).Value = "F  a  m  i  l  i  a  s".ToUpper() : Application.DoEvents()
-        spFamilias.ActiveSheet.ColumnHeader.Cells(1, spFamilias.ActiveSheet.Columns("id").Index).Value = "No.".ToUpper() : Application.DoEvents()
-        spFamilias.ActiveSheet.ColumnHeader.Cells(1, spFamilias.ActiveSheet.Columns("nombre").Index).Value = "Nombre".ToUpper() : Application.DoEvents()
+        spFamilias.ActiveSheet.ColumnHeader.Cells(1, spFamilias.ActiveSheet.Columns("id").Index).Value = "No.".ToUpper() & obligatorio : Application.DoEvents()
+        spFamilias.ActiveSheet.ColumnHeader.Cells(1, spFamilias.ActiveSheet.Columns("nombre").Index).Value = "Nombre".ToUpper() & obligatorio : Application.DoEvents()
         If (Me.opcionSeleccionada = OpcionMenu.Familias) Then
             spFamilias.ActiveSheet.Rows.Count += 1 : Application.DoEvents()
         End If
@@ -1057,9 +1165,13 @@ Public Class Principal
         spSubFamilias.ActiveSheet.Columns("id").CellType = tipoEntero : Application.DoEvents()
         spSubFamilias.ActiveSheet.Columns("nombre").CellType = tipoTexto : Application.DoEvents()
         spSubFamilias.ActiveSheet.AddColumnHeaderSpanCell(0, 0, 1, spSubFamilias.ActiveSheet.Columns.Count) : Application.DoEvents()
+        Dim obligatorio As String = String.Empty
+        If (Me.opcionSeleccionada = OpcionMenu.SubFamilias) Then
+            obligatorio = " *"
+        End If
         spSubFamilias.ActiveSheet.ColumnHeader.Cells(0, 0).Value = "S  u  b  F  a  m  i  l  i  a  s".ToUpper() : Application.DoEvents()
-        spSubFamilias.ActiveSheet.ColumnHeader.Cells(1, spSubFamilias.ActiveSheet.Columns("id").Index).Value = "No.".ToUpper() : Application.DoEvents()
-        spSubFamilias.ActiveSheet.ColumnHeader.Cells(1, spSubFamilias.ActiveSheet.Columns("nombre").Index).Value = "Nombre".ToUpper() : Application.DoEvents()
+        spSubFamilias.ActiveSheet.ColumnHeader.Cells(1, spSubFamilias.ActiveSheet.Columns("id").Index).Value = "No.".ToUpper() & obligatorio : Application.DoEvents()
+        spSubFamilias.ActiveSheet.ColumnHeader.Cells(1, spSubFamilias.ActiveSheet.Columns("nombre").Index).Value = "Nombre".ToUpper() & obligatorio : Application.DoEvents()
         If (Me.opcionSeleccionada = OpcionMenu.SubFamilias) Then
             spSubFamilias.ActiveSheet.Rows.Count += 1 : Application.DoEvents()
         End If
@@ -1197,15 +1309,15 @@ Public Class Principal
         spArticulos.ActiveSheet.Columns("nivel").CellType = tipoTexto : Application.DoEvents()
         spArticulos.ActiveSheet.AddColumnHeaderSpanCell(0, 0, 1, spArticulos.ActiveSheet.Columns.Count) : Application.DoEvents()
         spArticulos.ActiveSheet.ColumnHeader.Cells(0, 0).Value = "A  r  t  í  c  u  l  o  s".ToUpper() : Application.DoEvents()
-        spArticulos.ActiveSheet.ColumnHeader.Cells(1, spArticulos.ActiveSheet.Columns("id").Index).Value = "No.".ToUpper() : Application.DoEvents()
-        spArticulos.ActiveSheet.ColumnHeader.Cells(1, spArticulos.ActiveSheet.Columns("nombre").Index).Value = "Nombre".ToUpper() : Application.DoEvents()
+        spArticulos.ActiveSheet.ColumnHeader.Cells(1, spArticulos.ActiveSheet.Columns("id").Index).Value = "No. *".ToUpper() : Application.DoEvents()
+        spArticulos.ActiveSheet.ColumnHeader.Cells(1, spArticulos.ActiveSheet.Columns("nombre").Index).Value = "Nombre *".ToUpper() : Application.DoEvents()
         spArticulos.ActiveSheet.ColumnHeader.Cells(1, spArticulos.ActiveSheet.Columns("nombreComercial").Index).Value = "Nombre Comercial".ToUpper() : Application.DoEvents()
-        spArticulos.ActiveSheet.ColumnHeader.Cells(1, spArticulos.ActiveSheet.Columns("idUnidadMedida").Index).Value = "No.".ToUpper() : Application.DoEvents()
-        spArticulos.ActiveSheet.ColumnHeader.Cells(1, spArticulos.ActiveSheet.Columns("nombreUnidadMedida").Index).Value = "Nombre Unidad Medida".ToUpper() : Application.DoEvents()
+        spArticulos.ActiveSheet.ColumnHeader.Cells(1, spArticulos.ActiveSheet.Columns("idUnidadMedida").Index).Value = "No. *".ToUpper() : Application.DoEvents()
+        spArticulos.ActiveSheet.ColumnHeader.Cells(1, spArticulos.ActiveSheet.Columns("nombreUnidadMedida").Index).Value = "Nombre Unidad Medida *".ToUpper() : Application.DoEvents()
         spArticulos.ActiveSheet.ColumnHeader.Cells(1, spArticulos.ActiveSheet.Columns("cantidadMinima").Index).Value = "Cantidad Mínima".ToUpper() : Application.DoEvents()
         spArticulos.ActiveSheet.ColumnHeader.Cells(1, spArticulos.ActiveSheet.Columns("cantidadMaxima").Index).Value = "Cantidad Máxima".ToUpper() : Application.DoEvents()
-        spArticulos.ActiveSheet.ColumnHeader.Cells(1, spArticulos.ActiveSheet.Columns("precioDolares").Index).Value = "Precio Dolares".ToUpper() : Application.DoEvents()
-        spArticulos.ActiveSheet.ColumnHeader.Cells(1, spArticulos.ActiveSheet.Columns("precioPesos").Index).Value = "Precio Pesos".ToUpper() : Application.DoEvents()
+        spArticulos.ActiveSheet.ColumnHeader.Cells(1, spArticulos.ActiveSheet.Columns("precioDolares").Index).Value = "Precio Dolares *".ToUpper() : Application.DoEvents()
+        spArticulos.ActiveSheet.ColumnHeader.Cells(1, spArticulos.ActiveSheet.Columns("precioPesos").Index).Value = "Precio Pesos *".ToUpper() : Application.DoEvents()
         spArticulos.ActiveSheet.ColumnHeader.Cells(1, spArticulos.ActiveSheet.Columns("seccion").Index).Value = "Sección".ToUpper() : Application.DoEvents()
         spArticulos.ActiveSheet.ColumnHeader.Cells(1, spArticulos.ActiveSheet.Columns("estante").Index).Value = "Estante".ToUpper() : Application.DoEvents()
         spArticulos.ActiveSheet.ColumnHeader.Cells(1, spArticulos.ActiveSheet.Columns("nivel").Index).Value = "Nivel".ToUpper() : Application.DoEvents()
@@ -1342,14 +1454,14 @@ Public Class Principal
         spVarios.ActiveSheet.Columns("correo").CellType = tipoTexto : Application.DoEvents()
         spVarios.ActiveSheet.AddColumnHeaderSpanCell(0, 0, 1, spVarios.ActiveSheet.Columns.Count) : Application.DoEvents()
         spVarios.ActiveSheet.ColumnHeader.Cells(0, 0).Value = "P  r  o  v  e  d  o  r  e  s".ToUpper() : Application.DoEvents()
-        spVarios.ActiveSheet.ColumnHeader.Cells(1, spVarios.ActiveSheet.Columns("id").Index).Value = "No.".ToUpper() : Application.DoEvents()
-        spVarios.ActiveSheet.ColumnHeader.Cells(1, spVarios.ActiveSheet.Columns("nombre").Index).Value = "Nombre".ToUpper() : Application.DoEvents()
+        spVarios.ActiveSheet.ColumnHeader.Cells(1, spVarios.ActiveSheet.Columns("id").Index).Value = "No. *".ToUpper() : Application.DoEvents()
+        spVarios.ActiveSheet.ColumnHeader.Cells(1, spVarios.ActiveSheet.Columns("nombre").Index).Value = "Nombre *".ToUpper() : Application.DoEvents()
         spVarios.ActiveSheet.ColumnHeader.Cells(1, spVarios.ActiveSheet.Columns("rfc").Index).Value = "Rfc".ToUpper() : Application.DoEvents()
         spVarios.ActiveSheet.ColumnHeader.Cells(1, spVarios.ActiveSheet.Columns("domicilio").Index).Value = "Domicilio".ToUpper() : Application.DoEvents()
         spVarios.ActiveSheet.ColumnHeader.Cells(1, spVarios.ActiveSheet.Columns("municipio").Index).Value = "Municipio".ToUpper() : Application.DoEvents()
         spVarios.ActiveSheet.ColumnHeader.Cells(1, spVarios.ActiveSheet.Columns("estado").Index).Value = "Estado".ToUpper() : Application.DoEvents()
         spVarios.ActiveSheet.ColumnHeader.Cells(1, spVarios.ActiveSheet.Columns("telefono").Index).Value = "Teléfono".ToUpper() : Application.DoEvents()
-        spVarios.ActiveSheet.ColumnHeader.Cells(1, spVarios.ActiveSheet.Columns("correo").Index).Value = "Correo".ToUpper() : Application.DoEvents()
+        spVarios.ActiveSheet.ColumnHeader.Cells(1, spVarios.ActiveSheet.Columns("correo").Index).Value = "Correo".ToUpper() : Application.DoEvents() 
         spVarios.ActiveSheet.Rows.Count += 1 : Application.DoEvents()
 
     End Sub
@@ -1442,8 +1554,8 @@ Public Class Principal
         spVarios.ActiveSheet.Columns("nombre").CellType = tipoTexto : Application.DoEvents()
         spVarios.ActiveSheet.AddColumnHeaderSpanCell(0, 0, 1, spVarios.ActiveSheet.Columns.Count) : Application.DoEvents()
         spVarios.ActiveSheet.ColumnHeader.Cells(0, 0).Value = "M  o  n  e  d  a  s".ToUpper() : Application.DoEvents()
-        spVarios.ActiveSheet.ColumnHeader.Cells(1, spVarios.ActiveSheet.Columns("id").Index).Value = "No.".ToUpper() : Application.DoEvents()
-        spVarios.ActiveSheet.ColumnHeader.Cells(1, spVarios.ActiveSheet.Columns("nombre").Index).Value = "Nombre".ToUpper() : Application.DoEvents()
+        spVarios.ActiveSheet.ColumnHeader.Cells(1, spVarios.ActiveSheet.Columns("id").Index).Value = "No. *".ToUpper() : Application.DoEvents()
+        spVarios.ActiveSheet.ColumnHeader.Cells(1, spVarios.ActiveSheet.Columns("nombre").Index).Value = "Nombre *".ToUpper() : Application.DoEvents()
         spVarios.ActiveSheet.Rows.Count += 1 : Application.DoEvents()
 
     End Sub
@@ -1524,8 +1636,8 @@ Public Class Principal
         spVarios.ActiveSheet.Columns("nombre").CellType = tipoTexto : Application.DoEvents()
         spVarios.ActiveSheet.AddColumnHeaderSpanCell(0, 0, 1, spVarios.ActiveSheet.Columns.Count) : Application.DoEvents()
         spVarios.ActiveSheet.ColumnHeader.Cells(0, 0).Value = "T  i  p  o  s      d  e      E  n  t  r  a  d  a  s".ToUpper() : Application.DoEvents()
-        spVarios.ActiveSheet.ColumnHeader.Cells(1, spVarios.ActiveSheet.Columns("id").Index).Value = "No.".ToUpper() : Application.DoEvents()
-        spVarios.ActiveSheet.ColumnHeader.Cells(1, spVarios.ActiveSheet.Columns("nombre").Index).Value = "Nombre".ToUpper() : Application.DoEvents()
+        spVarios.ActiveSheet.ColumnHeader.Cells(1, spVarios.ActiveSheet.Columns("id").Index).Value = "No. *".ToUpper() : Application.DoEvents()
+        spVarios.ActiveSheet.ColumnHeader.Cells(1, spVarios.ActiveSheet.Columns("nombre").Index).Value = "Nombre *".ToUpper() : Application.DoEvents()
         spVarios.ActiveSheet.Rows.Count += 1 : Application.DoEvents()
 
     End Sub
@@ -1606,8 +1718,8 @@ Public Class Principal
         spVarios.ActiveSheet.Columns("nombre").CellType = tipoTexto : Application.DoEvents()
         spVarios.ActiveSheet.AddColumnHeaderSpanCell(0, 0, 1, spVarios.ActiveSheet.Columns.Count) : Application.DoEvents()
         spVarios.ActiveSheet.ColumnHeader.Cells(0, 0).Value = "T  i  p  o  s      d  e      S  a  l  i  d  a  s".ToUpper() : Application.DoEvents()
-        spVarios.ActiveSheet.ColumnHeader.Cells(1, spVarios.ActiveSheet.Columns("id").Index).Value = "No.".ToUpper() : Application.DoEvents()
-        spVarios.ActiveSheet.ColumnHeader.Cells(1, spVarios.ActiveSheet.Columns("nombre").Index).Value = "Nombre".ToUpper() : Application.DoEvents()
+        spVarios.ActiveSheet.ColumnHeader.Cells(1, spVarios.ActiveSheet.Columns("id").Index).Value = "No. *".ToUpper() : Application.DoEvents()
+        spVarios.ActiveSheet.ColumnHeader.Cells(1, spVarios.ActiveSheet.Columns("nombre").Index).Value = "Nombre *".ToUpper() : Application.DoEvents()
         spVarios.ActiveSheet.Rows.Count += 1 : Application.DoEvents()
 
     End Sub
@@ -1689,8 +1801,8 @@ Public Class Principal
         spVarios.ActiveSheet.Columns("nombre").CellType = tipoTexto : Application.DoEvents()
         spVarios.ActiveSheet.AddColumnHeaderSpanCell(0, 0, 1, spVarios.ActiveSheet.Columns.Count) : Application.DoEvents()
         spVarios.ActiveSheet.ColumnHeader.Cells(0, 0).Value = "U  n  i  d  a  d  e  s      d  e      M  e  d  i  d  a  s ".ToUpper() : Application.DoEvents()
-        spVarios.ActiveSheet.ColumnHeader.Cells(1, spVarios.ActiveSheet.Columns("id").Index).Value = "No.".ToUpper() : Application.DoEvents()
-        spVarios.ActiveSheet.ColumnHeader.Cells(1, spVarios.ActiveSheet.Columns("nombre").Index).Value = "Nombre".ToUpper() : Application.DoEvents()
+        spVarios.ActiveSheet.ColumnHeader.Cells(1, spVarios.ActiveSheet.Columns("id").Index).Value = "No. *".ToUpper() : Application.DoEvents()
+        spVarios.ActiveSheet.ColumnHeader.Cells(1, spVarios.ActiveSheet.Columns("nombre").Index).Value = "Nombre *".ToUpper() : Application.DoEvents()
         spVarios.ActiveSheet.Rows.Count += 1 : Application.DoEvents()
 
     End Sub
@@ -1751,79 +1863,5 @@ Public Class Principal
     End Enum
 
 #End Region
-
-    Private Sub rbtnProveedores_CheckedChanged(sender As Object, e As EventArgs) Handles rbtnProveedores.CheckedChanged
-
-        If (rbtnProveedores.Checked) Then
-            SeleccionoProveedores()
-        End If
-
-    End Sub
-
-    Private Sub spVarios_DialogKey(sender As Object, e As FarPoint.Win.Spread.DialogKeyEventArgs) Handles spVarios.DialogKey
-
-        If (e.KeyData = Keys.Enter) Then
-            ControlarSpreadEnter(spVarios)
-        End If
-
-    End Sub
-
-    Private Sub spVarios_KeyDown(sender As Object, e As KeyEventArgs) Handles spVarios.KeyDown
-
-        If (e.KeyData = Keys.Enter) Then
-            ControlarSpreadEnter(spVarios)
-        End If
-
-    End Sub
-
-    Private Sub rbtnMonedas_CheckedChanged(sender As Object, e As EventArgs) Handles rbtnMonedas.CheckedChanged
-
-        If (rbtnMonedas.Checked) Then
-            SeleccionoMonedas()
-        End If
-
-    End Sub
-
-    Private Sub rbtnTiposEntradas_CheckedChanged(sender As Object, e As EventArgs) Handles rbtnTiposEntradas.CheckedChanged
-
-        If (rbtnTiposEntradas.Checked) Then
-            SeleccionoTiposEntradas()
-        End If
-
-    End Sub
-
-    Private Sub rbtnTiposSalidas_CheckedChanged(sender As Object, e As EventArgs) Handles rbtnTiposSalidas.CheckedChanged
-
-        If (rbtnTiposSalidas.Checked) Then
-            SeleccionoTiposSalidas()
-        End If
-
-    End Sub
-
-    Private Sub Principal_Resize(sender As Object, e As EventArgs) Handles MyBase.Resize
-
-        If (Not Me.medidasUnaVez) Then
-            If (pnlMenu.HorizontalScroll.Visible) Then
-                pnlMenu.Height += 15
-                CargarMedidas()
-                Me.medidasUnaVez = True
-            End If
-        Else
-            If (Not pnlMenu.HorizontalScroll.Visible) Then
-                pnlMenu.Height -= 15
-                CargarMedidas()
-                Me.medidasUnaVez = False
-            End If
-        End If
-
-    End Sub
-
-    Private Sub rbtnUnidadesMedidas_CheckedChanged(sender As Object, e As EventArgs) Handles rbtnUnidadesMedidas.CheckedChanged
-
-        If (rbtnUnidadesMedidas.Checked) Then
-            SeleccionoUnidadesMedidas()
-        End If
-
-    End Sub
 
 End Class

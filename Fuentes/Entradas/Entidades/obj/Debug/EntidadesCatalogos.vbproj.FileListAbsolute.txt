@@ -1,0 +1,32 @@
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Catalogos\Entidades\bin\Debug\EntidadesCatalogos.dll
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Catalogos\Entidades\bin\Debug\EntidadesCatalogos.pdb
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Catalogos\Entidades\bin\Debug\EntidadesCatalogos.xml
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Catalogos\Entidades\obj\Debug\EntidadesCatalogos.Resources.resources
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Catalogos\Entidades\obj\Debug\EntidadesCatalogos.vbproj.GenerateResource.Cache
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Catalogos\Entidades\obj\Debug\EntidadesCatalogos.dll
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Catalogos\Entidades\obj\Debug\EntidadesCatalogos.xml
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Catalogos\Entidades\obj\Debug\EntidadesCatalogos.pdb
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes\Catalogos\Entidades\bin\Debug\EntidadesCatalogos.dll
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes\Catalogos\Entidades\bin\Debug\EntidadesCatalogos.pdb
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes\Catalogos\Entidades\bin\Debug\EntidadesCatalogos.xml
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes\Catalogos\Entidades\bin\Debug\LogicaCatalogos.dll
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes\Catalogos\Entidades\bin\Debug\LogicaCatalogos.pdb
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes\Catalogos\Entidades\bin\Debug\LogicaCatalogos.xml
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes\Catalogos\Entidades\obj\Debug\EntidadesCatalogos.vbprojResolveAssemblyReference.cache
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes\Catalogos\Entidades\obj\Debug\EntidadesCatalogos.Resources.resources
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes\Catalogos\Entidades\obj\Debug\EntidadesCatalogos.vbproj.GenerateResource.Cache
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes\Catalogos\Entidades\obj\Debug\EntidadesCatalogos.dll
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes\Catalogos\Entidades\obj\Debug\EntidadesCatalogos.xml
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes\Catalogos\Entidades\obj\Debug\EntidadesCatalogos.pdb
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Catalogos\Entidades\bin\Debug\EntidadesCatalogos.dll
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Catalogos\Entidades\bin\Debug\EntidadesCatalogos.pdb
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Catalogos\Entidades\bin\Debug\EntidadesCatalogos.xml
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Catalogos\Entidades\bin\Debug\LogicaCatalogos.dll
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Catalogos\Entidades\bin\Debug\LogicaCatalogos.pdb
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Catalogos\Entidades\bin\Debug\LogicaCatalogos.xml
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Catalogos\Entidades\obj\Debug\EntidadesCatalogos.vbprojResolveAssemblyReference.cache
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Catalogos\Entidades\obj\Debug\EntidadesCatalogos.Resources.resources
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Catalogos\Entidades\obj\Debug\EntidadesCatalogos.vbproj.GenerateResource.Cache
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Catalogos\Entidades\obj\Debug\EntidadesCatalogos.dll
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Catalogos\Entidades\obj\Debug\EntidadesCatalogos.xml
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Catalogos\Entidades\obj\Debug\EntidadesCatalogos.pdb

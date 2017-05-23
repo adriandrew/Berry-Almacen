@@ -6,10 +6,10 @@ using System.Runtime.InteropServices;
 // conjunto de atributos. Cambie estos atributos para modificar la información
 // asociada con un ensamblado.
 [assembly: AssemblyTitle("Principal")]
-[assembly: AssemblyDescription("Programa principal base para ERP.")]
+[assembly: AssemblyDescription("Programa Principal Base para ERP.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Berry")]
-[assembly: AssemblyProduct("Principal")]
+[assembly: AssemblyProduct("ERP Berry")]
 [assembly: AssemblyCopyright("Copyright © Berry 2017")]
 [assembly: AssemblyTrademark("Berry")]
 [assembly: AssemblyCulture("")]
