@@ -1,0 +1,24 @@
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Autorizaciones\Logica\bin\Release\LogicaAutorizaciones.dll
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Autorizaciones\Logica\bin\Release\LogicaAutorizaciones.pdb
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Autorizaciones\Logica\bin\Release\LogicaAutorizaciones.xml
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Autorizaciones\Logica\obj\Release\LogicaAutorizaciones.Resources.resources
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Autorizaciones\Logica\obj\Release\LogicaAutorizaciones.vbproj.GenerateResource.Cache
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Autorizaciones\Logica\obj\Release\LogicaAutorizaciones.dll
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Autorizaciones\Logica\obj\Release\LogicaAutorizaciones.xml
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Autorizaciones\Logica\obj\Release\LogicaAutorizaciones.pdb
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Autorizaciones\Logica\bin\Release\LogicaAutorizaciones.dll
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Autorizaciones\Logica\bin\Release\LogicaAutorizaciones.pdb
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Autorizaciones\Logica\bin\Release\LogicaAutorizaciones.xml
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Autorizaciones\Logica\obj\Release\LogicaAutorizaciones.Resources.resources
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Autorizaciones\Logica\obj\Release\LogicaAutorizaciones.vbproj.GenerateResource.Cache
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Autorizaciones\Logica\obj\Release\LogicaAutorizaciones.dll
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Autorizaciones\Logica\obj\Release\LogicaAutorizaciones.xml
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Autorizaciones\Logica\obj\Release\LogicaAutorizaciones.pdb
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Reporte de Actividades\Logica\bin\Release\LogicaReporteActividades.dll
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Reporte de Actividades\Logica\bin\Release\LogicaReporteActividades.pdb
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Reporte de Actividades\Logica\bin\Release\LogicaReporteActividades.xml
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Reporte de Actividades\Logica\obj\Release\LogicaReporteActividades.Resources.resources
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Reporte de Actividades\Logica\obj\Release\LogicaAutorizaciones.vbproj.GenerateResource.Cache
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Reporte de Actividades\Logica\obj\Release\LogicaReporteActividades.dll
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Reporte de Actividades\Logica\obj\Release\LogicaReporteActividades.xml
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Reporte de Actividades\Logica\obj\Release\LogicaReporteActividades.pdb

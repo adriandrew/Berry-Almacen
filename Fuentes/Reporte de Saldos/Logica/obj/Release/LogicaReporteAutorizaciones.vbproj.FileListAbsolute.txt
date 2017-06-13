@@ -1,0 +1,32 @@
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Reporte de Actividades\Logica\bin\Release\LogicaReporteActividades.dll
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Reporte de Actividades\Logica\bin\Release\LogicaReporteActividades.pdb
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Reporte de Actividades\Logica\bin\Release\LogicaReporteActividades.xml
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Reporte de Actividades\Logica\obj\Release\LogicaReporteActividades.Resources.resources
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Reporte de Actividades\Logica\obj\Release\LogicaReporteAutorizaciones.vbproj.GenerateResource.Cache
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Reporte de Actividades\Logica\obj\Release\LogicaReporteActividades.dll
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Reporte de Actividades\Logica\obj\Release\LogicaReporteActividades.xml
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Reporte de Actividades\Logica\obj\Release\LogicaReporteActividades.pdb
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes\Reporte de Actividades\Logica\bin\Release\LogicaReporteActividades.dll
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes\Reporte de Actividades\Logica\bin\Release\LogicaReporteActividades.pdb
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes\Reporte de Actividades\Logica\bin\Release\LogicaReporteActividades.xml
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes\Reporte de Actividades\Logica\obj\Release\LogicaReporteActividades.Resources.resources
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes\Reporte de Actividades\Logica\obj\Release\LogicaReporteAutorizaciones.vbproj.GenerateResource.Cache
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes\Reporte de Actividades\Logica\obj\Release\LogicaReporteActividades.dll
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes\Reporte de Actividades\Logica\obj\Release\LogicaReporteActividades.xml
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes\Reporte de Actividades\Logica\obj\Release\LogicaReporteActividades.pdb
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes Modificados\Reporte de Actividades\Logica\bin\Release\LogicaReporteActividades.dll
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes Modificados\Reporte de Actividades\Logica\bin\Release\LogicaReporteActividades.pdb
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes Modificados\Reporte de Actividades\Logica\bin\Release\LogicaReporteActividades.xml
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes Modificados\Reporte de Actividades\Logica\obj\Release\LogicaReporteActividades.Resources.resources
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes Modificados\Reporte de Actividades\Logica\obj\Release\LogicaReporteAutorizaciones.vbproj.GenerateResource.Cache
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes Modificados\Reporte de Actividades\Logica\obj\Release\LogicaReporteActividades.dll
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes Modificados\Reporte de Actividades\Logica\obj\Release\LogicaReporteActividades.xml
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes Modificados\Reporte de Actividades\Logica\obj\Release\LogicaReporteActividades.pdb
+C:\Users\Berry 1\Desktop\Proyectos Berry\Agenda-Bitacora\Fuentes Modificados\Reporte de Actividades\Logica\bin\Release\LogicaReporteActividades.dll
+C:\Users\Berry 1\Desktop\Proyectos Berry\Agenda-Bitacora\Fuentes Modificados\Reporte de Actividades\Logica\bin\Release\LogicaReporteActividades.pdb
+C:\Users\Berry 1\Desktop\Proyectos Berry\Agenda-Bitacora\Fuentes Modificados\Reporte de Actividades\Logica\bin\Release\LogicaReporteActividades.xml
+C:\Users\Berry 1\Desktop\Proyectos Berry\Agenda-Bitacora\Fuentes Modificados\Reporte de Actividades\Logica\obj\Release\LogicaReporteActividades.Resources.resources
+C:\Users\Berry 1\Desktop\Proyectos Berry\Agenda-Bitacora\Fuentes Modificados\Reporte de Actividades\Logica\obj\Release\LogicaReporteAutorizaciones.vbproj.GenerateResource.Cache
+C:\Users\Berry 1\Desktop\Proyectos Berry\Agenda-Bitacora\Fuentes Modificados\Reporte de Actividades\Logica\obj\Release\LogicaReporteActividades.dll
+C:\Users\Berry 1\Desktop\Proyectos Berry\Agenda-Bitacora\Fuentes Modificados\Reporte de Actividades\Logica\obj\Release\LogicaReporteActividades.xml
+C:\Users\Berry 1\Desktop\Proyectos Berry\Agenda-Bitacora\Fuentes Modificados\Reporte de Actividades\Logica\obj\Release\LogicaReporteActividades.pdb

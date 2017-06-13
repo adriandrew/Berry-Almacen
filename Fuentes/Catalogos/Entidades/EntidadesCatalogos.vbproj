@@ -87,6 +87,7 @@
     <Compile Include="Almacenes.vb" />
     <Compile Include="Articulos.vb" />
     <Compile Include="BaseDatos.vb" />
+    <Compile Include="Clientes.vb" />
     <Compile Include="Familias.vb" />
     <Compile Include="Monedas.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -106,6 +107,7 @@
     </Compile>
     <Compile Include="Proveedores.vb" />
     <Compile Include="SubFamilias.vb" />
+    <Compile Include="TiposCambios.vb" />
     <Compile Include="TiposEntradas.vb" />
     <Compile Include="TiposSalidas.vb" />
     <Compile Include="UnidadesMedidas.vb" />

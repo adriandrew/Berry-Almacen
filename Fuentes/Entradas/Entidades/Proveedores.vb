@@ -76,66 +76,56 @@ Public Class Proveedores
         End Set
     End Property
 
-    Public Sub Guardar()
-
-        Try
-            Dim comando As New SqlCommand()
-            comando.Connection = BaseDatos.conexionCatalogo
-            comando.CommandText = "INSERT INTO " & LogicaEntradas.Programas.prefijoBaseDatosAlmacen & "Proveedores (Id, Nombre, Rfc, Domicilio, Municipio, Estado, Telefono, Correo) VALUES (@id, @nombre, @rfc, @domicilio, @municipio, @estado,@telefono, @correo)"
-            comando.Parameters.AddWithValue("@id", Me.EId)
-            comando.Parameters.AddWithValue("@nombre", Me.ENombre)
-            comando.Parameters.AddWithValue("@rfc", Me.Erfc)
-            comando.Parameters.AddWithValue("@domicilio", Me.EDomicilio)
-            comando.Parameters.AddWithValue("@municipio", Me.EMunicipio)
-            comando.Parameters.AddWithValue("@estado", Me.EEstado)
-            comando.Parameters.AddWithValue("@telefono", Me.ETelefono)
-            comando.Parameters.AddWithValue("@correo", Me.ECorreo)
-            BaseDatos.conexionCatalogo.Open()
-            comando.ExecuteNonQuery()
-            BaseDatos.conexionCatalogo.Close()
-        Catch ex As Exception
-            Throw ex
-        Finally
-            BaseDatos.conexionCatalogo.Close()
-        End Try
-
-    End Sub
-
-    Public Sub Eliminar()
-
-        Try
-            Dim comando As New SqlCommand()
-            comando.Connection = BaseDatos.conexionCatalogo
-            Dim condicion As String = String.Empty
-            If (Me.EId > 0) Then
-                condicion &= " WHERE Id=@id"
-            End If
-            comando.CommandText = "DELETE FROM " & LogicaEntradas.Programas.prefijoBaseDatosAlmacen & "Proveedores " & condicion
-            comando.Parameters.AddWithValue("@id", Me.id)
-            BaseDatos.conexionCatalogo.Open()
-            comando.ExecuteNonQuery()
-            BaseDatos.conexionCatalogo.Close()
-        Catch ex As Exception
-            Throw ex
-        Finally
-            BaseDatos.conexionCatalogo.Close()
-        End Try
-
-    End Sub
-
     Public Function ObtenerListadoReporte() As DataTable
 
         Try
             Dim datos As New DataTable
             Dim comando As New SqlCommand()
             comando.Connection = BaseDatos.conexionCatalogo
-            comando.CommandText = "SELECT Id, Nombre, Rfc, Domicilio, Municipio, Estado, Telefono, Correo FROM " & LogicaEntradas.Programas.prefijoBaseDatosAlmacen & "Proveedores ORDER BY Id ASC"
+            comando.CommandText = "SELECT Id, Nombre FROM " & LogicaEntradas.Programas.prefijoBaseDatosAlmacen & "Proveedores ORDER BY Id ASC"
             BaseDatos.conexionCatalogo.Open()
             Dim lectorDatos As SqlDataReader
             lectorDatos = comando.ExecuteReader()
             datos.Load(lectorDatos)
             BaseDatos.conexionCatalogo.Close()
             Return datos
+        Catch ex As Exception
+            Throw ex
+        Finally
+            BaseDatos.conexionCatalogo.Close()
+        End Try
+
+    End Function
+
+    Public Function ObtenerListado() As List(Of Proveedores)
+
+        Try
+            Dim lista As New List(Of Proveedores)
+            Dim comando As New SqlCommand()
+            comando.Connection = BaseDatos.conexionCatalogo
+            Dim condicion As String = String.Empty 
+            If (Me.EId > 0) Then
+                condicion &= " AND Id=@id"
+            End If
+            comando.CommandText = "SELECT Id, Nombre, Rfc, Domicilio, Municipio, Estado, Telefono, Correo FROM " & LogicaEntradas.Programas.prefijoBaseDatosAlmacen & "Proveedores WHERE 0=0 " & condicion 
+            comando.Parameters.AddWithValue("@id", Me.EId)
+            BaseDatos.conexionCatalogo.Open()
+            Dim lectorDatos As SqlDataReader = comando.ExecuteReader()
+            Dim proveedores As Proveedores
+            While lectorDatos.Read()
+                proveedores = New Proveedores() 
+                proveedores.id = Convert.ToInt32(lectorDatos("Id").ToString())
+                proveedores.nombre = lectorDatos("Nombre").ToString()
+                proveedores.rfc = lectorDatos("Rfc").ToString()
+                proveedores.domicilio = lectorDatos("Domicilio").ToString()
+                proveedores.municipio = lectorDatos("Municipio").ToString()
+                proveedores.estado = lectorDatos("Estado").ToString()
+                proveedores.telefono = lectorDatos("Telefono").ToString()
+                proveedores.correo = lectorDatos("Correo").ToString()
+                lista.Add(proveedores)
+            End While
+            BaseDatos.conexionCatalogo.Close()
+            Return lista
         Catch ex As Exception
             Throw ex
         Finally

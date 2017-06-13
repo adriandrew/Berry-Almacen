@@ -52,73 +52,7 @@ Public Class Usuarios
             accesoTotal = value
         End Set
     End Property 
-
-    Public Sub Guardar()
-
-        Try
-            Dim comando As New SqlCommand()
-            comando.Connection = BaseDatos.conexionCatalogo
-            comando.CommandText = "INSERT INTO Usuarios VALUES (@id, @nombre, @contrasena, @nivel, @accesoTotal)"
-            comando.Parameters.AddWithValue("@id", Me.Id)
-            comando.Parameters.AddWithValue("@nombre", Me.Nombre)
-            comando.Parameters.AddWithValue("@contrasena", Me.Contrasena)
-            comando.Parameters.AddWithValue("@nivel", Me.Nivel)
-            comando.Parameters.AddWithValue("@accesoTotal", Me.AccesoTotal) 
-            BaseDatos.conexionCatalogo.Open()
-            comando.ExecuteNonQuery()
-            BaseDatos.conexionCatalogo.Close()
-        Catch ex As Exception
-            Throw ex
-        Finally
-            BaseDatos.conexionCatalogo.Close()
-        End Try
-
-    End Sub
-
-    Public Sub Editar()
-
-        Try
-            Dim comando As New SqlCommand()
-            comando.Connection = BaseDatos.conexionCatalogo
-            comando.CommandText = "UPDATE Usuarios SET Nombre=@nombre, Contrasena=@contrasena, Nivel=@nivel, AccesoTotal=@accesoTotal WHERE Id=@id" 
-            comando.Parameters.AddWithValue("@id", Me.Id)
-            comando.Parameters.AddWithValue("@nombre", Me.Nombre)
-            comando.Parameters.AddWithValue("@contrasena", Me.Contrasena)
-            comando.Parameters.AddWithValue("@nivel", Me.Nivel)
-            comando.Parameters.AddWithValue("@accesoTotal", Me.accesoTotal)
-            BaseDatos.conexionCatalogo.Open()
-            comando.ExecuteNonQuery()
-            BaseDatos.conexionCatalogo.Close()
-        Catch ex As Exception
-            Throw ex
-        Finally
-            BaseDatos.conexionCatalogo.Close()
-        End Try
-
-    End Sub
-
-    Public Sub Eliminar()
-
-        Try
-            Dim comando As New SqlCommand()
-            comando.Connection = BaseDatos.conexionCatalogo
-            Dim condicion As String = String.Empty
-            If (Me.EId > 0) Then
-                condicion &= " WHERE Id=@id"
-            End If
-            comando.CommandText = "DELETE FROM Usuarios " & condicion
-            comando.Parameters.AddWithValue("@id", Me.id)
-            BaseDatos.conexionCatalogo.Open()
-            comando.ExecuteNonQuery()
-            BaseDatos.conexionCatalogo.Close()
-        Catch ex As Exception
-            Throw ex
-        Finally
-            BaseDatos.conexionCatalogo.Close()
-        End Try
-
-    End Sub
-
+     
     Public Function ValidarPorId() As Boolean
 
         Try

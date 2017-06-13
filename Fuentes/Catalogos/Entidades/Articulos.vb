@@ -10,9 +10,8 @@ Public Class Articulos
     Private nombreComercial As String
     Private idUnidadMedida As Integer
     Private cantidadMinima As Integer
-    Private cantidadMaxima As Integer
-    Private precioDolares As Double
-    Private precioPesos As Double
+    Private cantidadMaxima As Integer 
+    Private precio As Double
     Private seccion As String
     Private estante As String
     Private nivel As String
@@ -89,20 +88,12 @@ Public Class Articulos
             cantidadMaxima = value
         End Set
     End Property
-    Public Property EPrecioDolares() As Double
+    Public Property EPrecio() As Double
         Get
-            Return precioDolares
+            Return precio
         End Get
         Set(value As Double)
-            precioDolares = value
-        End Set
-    End Property
-    Public Property EPrecioPesos() As Double
-        Get
-            Return precioPesos
-        End Get
-        Set(value As Double)
-            precioPesos = value
+            precio = value
         End Set
     End Property
     Public Property ESeccion() As String
@@ -135,7 +126,7 @@ Public Class Articulos
         Try
             Dim comando As New SqlCommand()
             comando.Connection = BaseDatos.conexionCatalogo
-            comando.CommandText = "INSERT INTO " & LogicaCatalogos.Programas.prefijoBaseDatosAlmacen & "Articulos (IdAlmacen, IdFamilia, IdSubFamilia, Id, Nombre, NombreComercial, IdUnidadMedida, CantidadMinima, CantidadMaxima, PrecioDolares, PrecioPesos, Seccion, Estante, Nivel) VALUES (@idAlmacen, @idFamilia, @idSubFamilia, @id, @nombre, @nombreComercial, @idUnidadMedida, @cantidadMinima, @cantidadMaxima, @precioDolares, @precioPesos, @seccion, @estante, @nivel)"
+            comando.CommandText = "INSERT INTO " & LogicaCatalogos.Programas.prefijoBaseDatosAlmacen & "Articulos (IdAlmacen, IdFamilia, IdSubFamilia, Id, Nombre, NombreComercial, IdUnidadMedida, CantidadMinima, CantidadMaxima, Precio, Seccion, Estante, Nivel) VALUES (@idAlmacen, @idFamilia, @idSubFamilia, @id, @nombre, @nombreComercial, @idUnidadMedida, @cantidadMinima, @cantidadMaxima, @precio, @seccion, @estante, @nivel)"
             comando.Parameters.AddWithValue("@idAlmacen", Me.EIdAlmacen)
             comando.Parameters.AddWithValue("@idFamilia", Me.EIdFamilia)
             comando.Parameters.AddWithValue("@idSubFamilia", Me.EIdSubFamilia)
@@ -144,9 +135,8 @@ Public Class Articulos
             comando.Parameters.AddWithValue("@nombreComercial", Me.ENombreComercial)
             comando.Parameters.AddWithValue("@idUnidadMedida", Me.idUnidadMedida)
             comando.Parameters.AddWithValue("@cantidadMinima", Me.ECantidadMinima)
-            comando.Parameters.AddWithValue("@cantidadMaxima", Me.ECantidadMaxima)
-            comando.Parameters.AddWithValue("@precioDolares", Me.EPrecioDolares)
-            comando.Parameters.AddWithValue("@precioPesos", Me.EPrecioPesos)
+            comando.Parameters.AddWithValue("@cantidadMaxima", Me.ECantidadMaxima) 
+            comando.Parameters.AddWithValue("@precio", Me.EPrecio)
             comando.Parameters.AddWithValue("@seccion", Me.ESeccion)
             comando.Parameters.AddWithValue("@estante", Me.EEstante)
             comando.Parameters.AddWithValue("@nivel", Me.ENivel)
@@ -214,7 +204,7 @@ Public Class Articulos
             If Me.EId > 0 Then
                 condicion &= " AND Id=@id"
             End If
-            comando.CommandText = "SELECT A.Id, A.Nombre, A.NombreComercial, A.IdUnidadMedida, UM.Nombre, A.CantidadMinima, A.CantidadMaxima, A.PrecioDolares, A.PrecioPesos, A.Seccion, A.Estante, A.Nivel FROM " & LogicaCatalogos.Programas.prefijoBaseDatosAlmacen & "Articulos AS A LEFT JOIN " & LogicaCatalogos.Programas.prefijoBaseDatosAlmacen & "UnidadesMedidas AS UM ON A.IdUnidadMedida=UM.Id WHERE 0=0 " & condicion & " ORDER BY A.IdAlmacen, A.IdFamilia, A.IdSubFamilia, A.Id ASC"
+            comando.CommandText = "SELECT A.Id, A.Nombre, A.NombreComercial, A.IdUnidadMedida, UM.Nombre, A.CantidadMinima, A.CantidadMaxima, A.Precio, A.Seccion, A.Estante, A.Nivel FROM " & LogicaCatalogos.Programas.prefijoBaseDatosAlmacen & "Articulos AS A LEFT JOIN " & LogicaCatalogos.Programas.prefijoBaseDatosAlmacen & "UnidadesMedidas AS UM ON A.IdUnidadMedida=UM.Id WHERE 0=0 " & condicion & " ORDER BY A.IdAlmacen, A.IdFamilia, A.IdSubFamilia, A.Id ASC"
             comando.Parameters.AddWithValue("@idAlmacen", Me.EIdAlmacen)
             comando.Parameters.AddWithValue("@idFamilia", Me.EIdFamilia)
             comando.Parameters.AddWithValue("@idSubFamilia", Me.EIdSubFamilia)

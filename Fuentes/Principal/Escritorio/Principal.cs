@@ -26,7 +26,8 @@ namespace Escritorio
         public Entidades.SubProgramas subProgramas = new Entidades.SubProgramas();
         public Entidades.BloqueoUsuarios bloqueoUsuarios = new Entidades.BloqueoUsuarios();
         public Entidades.Licencia licencia = new Entidades.Licencia();
-        public Entidades.Registros registros = new Entidades.Registros(); 
+        public Entidades.Registros registros = new Entidades.Registros();
+        public Entidades.Estilos estilos = new Entidades.Estilos(); 
         // Variables de menú.
         public Color colorCuadroOriginal = Color.Transparent;
         public int nivelMenu = 1; // 1 módulo, 2 programa y 3 subprograma.
@@ -44,6 +45,8 @@ namespace Escritorio
         public bool esInicioSesion = true;
         public ProcessStartInfo ejecutarPrograma = new ProcessStartInfo();
         public int diasDePrueba = 15;
+        // Estilos.
+        public List<Entidades.Estilos> listaEstilos = new List<Entidades.Estilos>();
         // Variable de desarrollo.
         public bool esDesarrollo = false;
 
@@ -78,7 +81,8 @@ namespace Escritorio
             //    ApplicationExit();
             //}
             //else
-            //{ 
+            //{
+            //CargarEstilos(); TODO. Pendiente.
             CargarEncabezados();
             CargarTitulosDirectorio();
             VerificarLicencia();
@@ -779,7 +783,7 @@ namespace Escritorio
                 Principal.esConexionesVariasCorrecta = false;
                 return;
             }
-            Principal.esConexionesVariasCorrecta = true;
+            Principal.esConexionesVariasCorrecta = true; 
             if (this.tieneParametros) // Se permite el acceso ya que con los parametros se sabe cuales son sus datos.
             {
                 PermitirAcceso(Logica.Usuarios.id);
@@ -991,6 +995,7 @@ namespace Escritorio
         {
 
             this.Cursor = Cursors.WaitCursor;
+            //CargarEstilos(); TODO. Pendiente.
             // Se limpia siempre. 
             pnlMenu.Controls.Clear(); Application.DoEvents();
             // Se generan las opciones de menú.
@@ -1049,7 +1054,20 @@ namespace Escritorio
                 cuadro.Top = posicionY;
                 cuadro.Left = posicionX;
                 cuadro.BorderStyle = BorderStyle.FixedSingle;
-                cuadro.BackColor = ObtenerColorAleatorio();
+                // Se cargan los estilos. TODO. Pendiente.
+                //string colorFondoUsuario = string.Empty;
+                //if (this.listaEstilos.Count == 1) 
+                //{
+                //    colorFondoUsuario = listaEstilos[0].ColorFondoMenu;
+                //}
+                //if (colorFondoUsuario.ToUpper().Equals("Random".ToUpper()) || string.IsNullOrEmpty(colorFondoUsuario))
+                //{
+                cuadro.BackColor = ObtenerColorAleatorio(); 
+                //}
+                //else
+                //{
+                    //cuadro.BackColor = Color.FromName(colorFondoUsuario);
+                //}
                 System.Threading.Thread.Sleep(70);
                 if (this.nivelMenu == (int)Nivel.Modulos)
                     cuadro.Name = "pnlPrograma_" + listaModulos[indice].Id;
@@ -1088,6 +1106,13 @@ namespace Escritorio
                 etiquetaNombre.BorderStyle = BorderStyle.None;
                 etiquetaNombre.Left = 0;
                 etiquetaNombre.Text = nombre;
+                // Se cargan los estilos. TODO. Pendiente.
+                //string colorLetraUsuario = "White";
+                //if (this.listaEstilos.Count == 1)
+                //{
+                //    colorLetraUsuario = listaEstilos[0].ColorLetraMenu;
+                //}
+                //etiquetaNombre.ForeColor = Color.FromName(colorLetraUsuario);
                 etiquetaNombre.ForeColor = Color.White;
                 etiquetaNombre.Font = new Font(Principal.tipoLetraSpread, 20, FontStyle.Regular);
                 etiquetaNombre.Click += new System.EventHandler(etiquetaNombre_Click); // Se genera el evento desde código. 
@@ -1120,8 +1145,21 @@ namespace Escritorio
             KnownColor[] nombres = (KnownColor[])Enum.GetValues(typeof(KnownColor));
             KnownColor nombreAleatorio = nombres[aleatorio.Next(nombres.Length)];
             opcionColor = Color.FromKnownColor(nombreAleatorio); 
-            Color colorOscuro = ControlPaint.Dark(opcionColor); // Se oscurece.
+            Color colorOscuro = ControlPaint.Dark(opcionColor); // Se oscurece el color elegido.
             return colorOscuro;
+
+        }
+
+        private void CargarEstilos()
+        {
+
+            estilos.IdUsuario = Logica.Usuarios.id;
+            this.listaEstilos = estilos.ObtenerListado();
+            if (this.listaEstilos.Count == 1)
+            {
+                pnlEncabezado.BackColor = Color.FromName(listaEstilos[0].ColorFondo);
+                pnlPie.BackColor = Color.FromName(listaEstilos[0].ColorFondo);
+            }
 
         }
 

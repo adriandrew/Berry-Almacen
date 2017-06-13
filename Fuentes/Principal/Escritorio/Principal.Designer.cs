@@ -129,7 +129,7 @@
             // btnEntrar
             // 
             this.btnEntrar.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnEntrar.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.btnEntrar.BackColor = System.Drawing.Color.Transparent;
             this.btnEntrar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnEntrar.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.btnEntrar.FlatAppearance.BorderSize = 3;

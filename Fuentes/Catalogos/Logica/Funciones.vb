@@ -1,11 +1,21 @@
 ﻿Public Module Funciones
 
-    Public Function ValidarNumero(ByVal valor As String) As Integer
+    Public Function ValidarNumeroACero(ByVal valor As String) As Integer
 
         If IsNumeric(valor) Then
             Return valor
-        Else            
+        Else
             Return 0
+        End If
+
+    End Function
+
+    Public Function ValidarNumeroAUno(ByVal valor As String) As Double
+
+        If (IsNumeric(valor)) Then
+            Return valor
+        Else
+            Return 1
         End If
 
     End Function
@@ -17,6 +27,12 @@
         Else
             Return valor
         End If
+
+    End Function
+
+    Public Function ValidarFechaAEstandar(ByVal valor As Date) As String
+
+        Return valor.ToString("yyyyMMdd")
 
     End Function
 

@@ -297,12 +297,12 @@ Public Class Entradas
             If (Me.EId > 0) Then
                 condicion &= " AND E.Id=@id"
             End If
-            comando.CommandText = "SELECT E.IdFamilia, F.Nombre, E.IdSubFamilia, SF.Nombre, E.IdArticulo, A.Nombre, E.IdProveedor, P.Nombre, E.Cantidad, E.PrecioUnitario, E.Total, E.TotalPesos, E.Observaciones, E.Factura, E.Chofer, E.Camion, E.NoEconomico " & _
+            comando.CommandText = "SELECT E.IdFamilia, F.Nombre, E.IdSubFamilia, SF.Nombre, E.IdArticulo, A.Nombre, UM.Nombre, E.Cantidad, E.PrecioUnitario, E.Total, E.TotalPesos, E.Observaciones, E.Factura, E.Chofer, E.Camion, E.NoEconomico " & _
             " FROM Entradas AS E " & _
             " LEFT JOIN " & LogicaEntradas.Programas.bdCatalogo & ".dbo." & LogicaEntradas.Programas.prefijoBaseDatosAlmacen & "Familias AS F ON E.IdFamilia = F.Id AND E.IdAlmacen = F.IdAlmacen" & _
             " LEFT JOIN " & LogicaEntradas.Programas.bdCatalogo & ".dbo." & LogicaEntradas.Programas.prefijoBaseDatosAlmacen & "SubFamilias AS SF ON E.IdSubFamilia = SF.Id AND E.IdFamilia = SF.IdFamilia AND E.IdAlmacen = SF.IdAlmacen" & _
             " LEFT JOIN " & LogicaEntradas.Programas.bdCatalogo & ".dbo." & LogicaEntradas.Programas.prefijoBaseDatosAlmacen & "Articulos AS A ON E.IdArticulo = A.Id AND E.IdSubFamilia = A.IdSubFamilia AND E.IdFamilia = A.IdFamilia AND E.IdAlmacen = A.IdAlmacen" & _
-            " LEFT JOIN " & LogicaEntradas.Programas.bdCatalogo & ".dbo." & LogicaEntradas.Programas.prefijoBaseDatosAlmacen & "Proveedores AS P ON E.IdProveedor = P.Id " & _
+            " LEFT JOIN " & LogicaEntradas.Programas.bdCatalogo & ".dbo." & LogicaEntradas.Programas.prefijoBaseDatosAlmacen & "UnidadesMedidas AS UM ON A.IdUnidadMedida = UM.Id" & _
             " WHERE 0=0 " & condicion & " ORDER BY E.Orden ASC"
             comando.Parameters.AddWithValue("@idAlmacen", Me.EIdAlmacen)
             comando.Parameters.AddWithValue("@id", Me.EId)

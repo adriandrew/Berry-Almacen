@@ -69,6 +69,7 @@
   <ItemGroup>
     <Compile Include="BaseDatos.cs" />
     <Compile Include="BloqueoUsuarios.cs" />
+    <Compile Include="Estilos.cs" />
     <Compile Include="Licencia.cs" />
     <Compile Include="Modulos.cs" />
     <Compile Include="Directorios.cs" />

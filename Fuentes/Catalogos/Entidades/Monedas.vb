@@ -84,4 +84,35 @@ Public Class Monedas
 
     End Function
 
+    Public Function ObtenerListado() As List(Of Monedas)
+
+        Try
+            Dim lista As New List(Of Monedas)()
+            Dim comando As New SqlCommand()
+            comando.Connection = BaseDatos.conexionCatalogo
+            Dim condicion As String = String.Empty
+            If (Me.EId > 0) Then
+                condicion &= " AND Id=@id"
+            End If
+            comando.CommandText = "SELECT Id, Nombre FROM " & LogicaCatalogos.Programas.prefijoBaseDatosAlmacen & "Monedas WHERE 0=0 " & condicion
+            comando.Parameters.AddWithValue("@id", Me.id)
+            BaseDatos.conexionCatalogo.Open()
+            Dim dataReader As SqlDataReader = comando.ExecuteReader()
+            Dim monedas As Monedas
+            While dataReader.Read()
+                monedas = New Monedas()
+                monedas.id = Convert.ToInt32(dataReader("Id").ToString())
+                monedas.nombre = dataReader("Nombre").ToString()
+                lista.Add(monedas)
+            End While
+            BaseDatos.conexionCatalogo.Close()
+            Return lista
+        Catch ex As Exception
+            Throw ex
+        Finally
+            BaseDatos.conexionCatalogo.Close()
+        End Try
+
+    End Function
+
 End Class

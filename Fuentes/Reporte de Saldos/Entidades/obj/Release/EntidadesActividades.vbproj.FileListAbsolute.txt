@@ -1,0 +1,20 @@
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Actividades\Entidades\bin\Release\EntidadesActividades.dll
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Actividades\Entidades\bin\Release\EntidadesActividades.pdb
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Actividades\Entidades\bin\Release\EntidadesActividades.xml
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Actividades\Entidades\obj\Release\EntidadesActividades.Resources.resources
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Actividades\Entidades\obj\Release\EntidadesActividades.vbproj.GenerateResource.Cache
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Actividades\Entidades\obj\Release\EntidadesActividades.dll
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Actividades\Entidades\obj\Release\EntidadesActividades.xml
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Actividades\Entidades\obj\Release\EntidadesActividades.pdb
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Reporte de Actividades\Entidades\bin\Release\EntidadesReporteActividades.dll
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Reporte de Actividades\Entidades\bin\Release\EntidadesReporteActividades.pdb
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Reporte de Actividades\Entidades\bin\Release\EntidadesReporteActividades.xml
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Reporte de Actividades\Entidades\bin\Release\LogicaReporteActividades.dll
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Reporte de Actividades\Entidades\bin\Release\LogicaReporteActividades.pdb
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Reporte de Actividades\Entidades\bin\Release\LogicaReporteActividades.xml
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Reporte de Actividades\Entidades\obj\Release\EntidadesActividades.vbprojResolveAssemblyReference.cache
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Reporte de Actividades\Entidades\obj\Release\EntidadesReporteActividades.Resources.resources
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Reporte de Actividades\Entidades\obj\Release\EntidadesActividades.vbproj.GenerateResource.Cache
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Reporte de Actividades\Entidades\obj\Release\EntidadesReporteActividades.dll
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Reporte de Actividades\Entidades\obj\Release\EntidadesReporteActividades.xml
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Reporte de Actividades\Entidades\obj\Release\EntidadesReporteActividades.pdb

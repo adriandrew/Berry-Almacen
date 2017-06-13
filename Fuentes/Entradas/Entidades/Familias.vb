@@ -30,53 +30,7 @@ Public Class Familias
             nombre = value
         End Set
     End Property
-
-    Public Sub Guardar()
-
-        Try
-            Dim comando As New SqlCommand()
-            comando.Connection = BaseDatos.conexionCatalogo
-            comando.CommandText = "INSERT INTO " & LogicaEntradas.Programas.prefijoBaseDatosAlmacen & "Familias (IdAlmacen, Id, Nombre) VALUES (@idAlmacen, @id, @nombre)"
-            comando.Parameters.AddWithValue("@idAlmacen", Me.EIdAlmacen)
-            comando.Parameters.AddWithValue("@id", Me.EId)
-            comando.Parameters.AddWithValue("@nombre", Me.ENombre)
-            BaseDatos.conexionCatalogo.Open()
-            comando.ExecuteNonQuery()
-            BaseDatos.conexionCatalogo.Close()
-        Catch ex As Exception
-            Throw ex
-        Finally
-            BaseDatos.conexionCatalogo.Close()
-        End Try
-
-    End Sub
-
-    Public Sub Eliminar()
-
-        Try
-            Dim comando As New SqlCommand()
-            comando.Connection = BaseDatos.conexionCatalogo
-            Dim condicion As String = String.Empty
-            If (Me.EIdAlmacen > 0) Then
-                condicion &= " AND IdAlmacen=@idAlmacen"
-            End If
-            If (Me.EId > 0) Then
-                condicion &= " AND Id=@id"
-            End If
-            comando.CommandText = "DELETE FROM " & LogicaEntradas.Programas.prefijoBaseDatosAlmacen & "Familias WHERE 0=0 " & condicion
-            comando.Parameters.AddWithValue("@idAlmacen", Me.EIdAlmacen)
-            comando.Parameters.AddWithValue("@id", Me.id)
-            BaseDatos.conexionCatalogo.Open()
-            comando.ExecuteNonQuery()
-            BaseDatos.conexionCatalogo.Close()
-        Catch ex As Exception
-            Throw ex
-        Finally
-            BaseDatos.conexionCatalogo.Close()
-        End Try
-
-    End Sub
-
+     
     Public Function ObtenerListadoReporte() As DataTable
 
         Try
@@ -99,6 +53,42 @@ Public Class Familias
             datos.Load(lectorDatos)
             BaseDatos.conexionCatalogo.Close()
             Return datos
+        Catch ex As Exception
+            Throw ex
+        Finally
+            BaseDatos.conexionCatalogo.Close()
+        End Try
+
+    End Function
+
+    Public Function ObtenerListado() As List(Of Familias)
+
+        Try
+            Dim lista As New List(Of Familias)
+            Dim comando As New SqlCommand()
+            comando.Connection = BaseDatos.conexionCatalogo
+            Dim condicion As String = String.Empty
+            If (Me.EIdAlmacen > 0) Then
+                condicion &= " AND IdAlmacen=@idAlmacen"
+            End If
+            If (Me.EId > 0) Then
+                condicion &= " AND Id=@id"
+            End If
+            comando.CommandText = "SELECT IdAlmacen, Id, Nombre FROM " & LogicaEntradas.Programas.prefijoBaseDatosAlmacen & "Familias WHERE 0=0 " & condicion
+            comando.Parameters.AddWithValue("@idAlmacen", Me.EIdAlmacen)
+            comando.Parameters.AddWithValue("@id", Me.EId)
+            BaseDatos.conexionCatalogo.Open()
+            Dim lectorDatos As SqlDataReader = comando.ExecuteReader()
+            Dim familias As Familias
+            While lectorDatos.Read()
+                familias = New Familias()
+                familias.idAlmacen = Convert.ToInt32(lectorDatos("IdAlmacen").ToString())
+                familias.id = Convert.ToInt32(lectorDatos("Id").ToString())
+                familias.nombre = lectorDatos("Nombre").ToString() 
+                lista.Add(familias)
+            End While
+            BaseDatos.conexionCatalogo.Close()
+            Return lista
         Catch ex As Exception
             Throw ex
         Finally

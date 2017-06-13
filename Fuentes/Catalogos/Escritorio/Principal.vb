@@ -11,7 +11,9 @@ Public Class Principal
     Public articulos As New EntidadesCatalogos.Articulos()
     Public unidadesMedidas As New EntidadesCatalogos.UnidadesMedidas()
     Public proveedores As New EntidadesCatalogos.Proveedores()
+    Public clientes As New EntidadesCatalogos.Clientes()
     Public monedas As New EntidadesCatalogos.Monedas()
+    Public tiposCambios As New EntidadesCatalogos.TiposCambios()
     Public tiposEntradas As New EntidadesCatalogos.TiposEntradas()
     Public tiposSalidas As New EntidadesCatalogos.TiposSalidas() 
     ' Variables de tipos de datos de spread.
@@ -118,7 +120,7 @@ Public Class Principal
                     'If (tieneDatos) Then
                     '    MessageBox.Show("No se puede eliminar este registro, ya que contiene actividades capturadas.", "No permitido.", MessageBoxButtons.OK, MessageBoxIcon.Warning)
                     'Else
-                    EliminarRegistro(spAlmacenes)
+                    EliminarRegistroDeSpread(spAlmacenes)
                     'End If
                 End If
             End If
@@ -150,8 +152,12 @@ Public Class Principal
             End If
         ElseIf (Me.opcionSeleccionada = OpcionMenu.Proveedores) Then
             GuardarEditarProveedores()
+        ElseIf (Me.opcionSeleccionada = OpcionMenu.Clientes) Then
+            GuardarEditarClientes()
         ElseIf (Me.opcionSeleccionada = OpcionMenu.Monedas) Then
             GuardarEditarMonedas()
+        ElseIf (Me.opcionSeleccionada = OpcionMenu.TiposCambios) Then
+            GuardarEditarTiposCambios()
         ElseIf (Me.opcionSeleccionada = OpcionMenu.TiposEntradas) Then
             GuardarEditarTiposEntradas()
         ElseIf (Me.opcionSeleccionada = OpcionMenu.TiposSalidas) Then
@@ -168,24 +174,30 @@ Public Class Principal
             EliminarAlmacenes(True)
         ElseIf (Me.opcionSeleccionada = OpcionMenu.Familias) Then
             If (Me.filaAlmacen >= 0) Then
-                Dim idAlmacen As Integer = LogicaCatalogos.Funciones.ValidarNumero(spAlmacenes.ActiveSheet.Cells(Me.filaAlmacen, spAlmacenes.ActiveSheet.Columns("id").Index).Value)
+                Dim idAlmacen As Integer = LogicaCatalogos.Funciones.ValidarNumeroACero(spAlmacenes.ActiveSheet.Cells(Me.filaAlmacen, spAlmacenes.ActiveSheet.Columns("id").Index).Value)
                 EliminarFamilias(True, idAlmacen)
             End If
         ElseIf (Me.opcionSeleccionada = OpcionMenu.SubFamilias) Then
             If (Me.filaAlmacen >= 0 And Me.filaFamilia >= 0) Then
-                Dim idAlmacen As Integer = LogicaCatalogos.Funciones.ValidarNumero(spAlmacenes.ActiveSheet.Cells(Me.filaAlmacen, spAlmacenes.ActiveSheet.Columns("id").Index).Value)
-                Dim idFamilia As Integer = LogicaCatalogos.Funciones.ValidarNumero(spFamilias.ActiveSheet.Cells(Me.filaFamilia, spFamilias.ActiveSheet.Columns("id").Index).Value)
+                Dim idAlmacen As Integer = LogicaCatalogos.Funciones.ValidarNumeroACero(spAlmacenes.ActiveSheet.Cells(Me.filaAlmacen, spAlmacenes.ActiveSheet.Columns("id").Index).Value)
+                Dim idFamilia As Integer = LogicaCatalogos.Funciones.ValidarNumeroACero(spFamilias.ActiveSheet.Cells(Me.filaFamilia, spFamilias.ActiveSheet.Columns("id").Index).Value)
                 EliminarSubFamilias(True, idAlmacen, idFamilia)
             End If
         ElseIf (Me.opcionSeleccionada = OpcionMenu.Articulos) Then
             If (Me.filaAlmacen >= 0 And Me.filaFamilia >= 0 And Me.filaSubFamilia >= 0) Then
-                Dim idAlmacen As Integer = LogicaCatalogos.Funciones.ValidarNumero(spAlmacenes.ActiveSheet.Cells(Me.filaAlmacen, spAlmacenes.ActiveSheet.Columns("id").Index).Value)
-                Dim idFamilia As Integer = LogicaCatalogos.Funciones.ValidarNumero(spFamilias.ActiveSheet.Cells(Me.filaFamilia, spFamilias.ActiveSheet.Columns("id").Index).Value)
-                Dim idSubFamilia As Integer = LogicaCatalogos.Funciones.ValidarNumero(spSubFamilias.ActiveSheet.Cells(Me.filaSubFamilia, spSubFamilias.ActiveSheet.Columns("id").Index).Value)
+                Dim idAlmacen As Integer = LogicaCatalogos.Funciones.ValidarNumeroACero(spAlmacenes.ActiveSheet.Cells(Me.filaAlmacen, spAlmacenes.ActiveSheet.Columns("id").Index).Value)
+                Dim idFamilia As Integer = LogicaCatalogos.Funciones.ValidarNumeroACero(spFamilias.ActiveSheet.Cells(Me.filaFamilia, spFamilias.ActiveSheet.Columns("id").Index).Value)
+                Dim idSubFamilia As Integer = LogicaCatalogos.Funciones.ValidarNumeroACero(spSubFamilias.ActiveSheet.Cells(Me.filaSubFamilia, spSubFamilias.ActiveSheet.Columns("id").Index).Value)
                 EliminarArticulos(True, idAlmacen, idFamilia, idSubFamilia)
             End If
         ElseIf (Me.opcionSeleccionada = OpcionMenu.Proveedores) Then
             EliminarProveedores(True)
+        ElseIf (Me.opcionSeleccionada = OpcionMenu.Clientes) Then
+            EliminarClientes(True)
+        ElseIf (Me.opcionSeleccionada = OpcionMenu.Monedas) Then
+            EliminarMonedas(True)
+        ElseIf (Me.opcionSeleccionada = OpcionMenu.TiposCambios) Then
+            EliminarTiposCambios(True, Today)
         ElseIf (Me.opcionSeleccionada = OpcionMenu.TiposEntradas) Then
             EliminarTiposEntradas(True)
         ElseIf (Me.opcionSeleccionada = OpcionMenu.TiposSalidas) Then
@@ -226,6 +238,9 @@ Public Class Principal
         If (Me.opcionSeleccionada = OpcionMenu.Articulos) Then
             spArticulos.ActiveSheet.Cells(spArticulos.ActiveSheet.ActiveRowIndex, spArticulos.ActiveSheet.Columns("idUnidadMedida").Index).Text = spCatalogos.ActiveSheet.Cells(fila, spCatalogos.ActiveSheet.Columns("id").Index).Text
             spArticulos.ActiveSheet.Cells(spArticulos.ActiveSheet.ActiveRowIndex, spArticulos.ActiveSheet.Columns("nombreUnidadMedida").Index).Text = spCatalogos.ActiveSheet.Cells(fila, spCatalogos.ActiveSheet.Columns("nombre").Index).Text
+        ElseIf (Me.opcionSeleccionada = OpcionMenu.TiposCambios) Then
+            spVarios.ActiveSheet.Cells(spVarios.ActiveSheet.ActiveRowIndex, spVarios.ActiveSheet.Columns("idMoneda").Index).Text = spCatalogos.ActiveSheet.Cells(fila, spCatalogos.ActiveSheet.Columns("id").Index).Text
+            spVarios.ActiveSheet.Cells(spVarios.ActiveSheet.ActiveRowIndex, spVarios.ActiveSheet.Columns("nombreMoneda").Index).Text = spCatalogos.ActiveSheet.Cells(fila, spCatalogos.ActiveSheet.Columns("nombre").Index).Text
         End If
 
     End Sub
@@ -302,7 +317,7 @@ Public Class Principal
             If (e.Row >= 0) Then
                 Me.filaAlmacen = e.Row
                 spFamilias.Show()
-                Dim idAlmacen As Integer = LogicaCatalogos.Funciones.ValidarNumero(spAlmacenes.ActiveSheet.Cells(Me.filaAlmacen, spAlmacenes.ActiveSheet.Columns("id").Index).Value)
+                Dim idAlmacen As Integer = LogicaCatalogos.Funciones.ValidarNumeroACero(spAlmacenes.ActiveSheet.Cells(Me.filaAlmacen, spAlmacenes.ActiveSheet.Columns("id").Index).Value)
                 CargarFamilias(idAlmacen)
             End If
         End If
@@ -316,7 +331,7 @@ Public Class Principal
         ElseIf e.KeyData = Keys.F6 Then ' Eliminar un registro.
             If (Me.opcionSeleccionada = OpcionMenu.Familias) Then
                 If (MessageBox.Show("Confirmas que deseas eliminar el registro seleccionado?", "Confirmación.", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes) Then
-                    EliminarRegistro(spFamilias)
+                    EliminarRegistroDeSpread(spFamilias)
                 End If
             End If
         End If
@@ -337,8 +352,8 @@ Public Class Principal
             If (e.Row >= 0) Then
                 Me.filaFamilia = e.Row
                 spSubFamilias.Show()
-                Dim idAlmacen As Integer = LogicaCatalogos.Funciones.ValidarNumero(spAlmacenes.ActiveSheet.Cells(Me.filaAlmacen, spAlmacenes.ActiveSheet.Columns("id").Index).Value)
-                Dim idFamilia As Integer = LogicaCatalogos.Funciones.ValidarNumero(spFamilias.ActiveSheet.Cells(Me.filaFamilia, spFamilias.ActiveSheet.Columns("id").Index).Value)
+                Dim idAlmacen As Integer = LogicaCatalogos.Funciones.ValidarNumeroACero(spAlmacenes.ActiveSheet.Cells(Me.filaAlmacen, spAlmacenes.ActiveSheet.Columns("id").Index).Value)
+                Dim idFamilia As Integer = LogicaCatalogos.Funciones.ValidarNumeroACero(spFamilias.ActiveSheet.Cells(Me.filaFamilia, spFamilias.ActiveSheet.Columns("id").Index).Value)
                 CargarSubFamilias(idAlmacen, idFamilia)
             End If
         End If
@@ -360,7 +375,7 @@ Public Class Principal
         ElseIf e.KeyData = Keys.F6 Then ' Eliminar un registro.
             If (Me.opcionSeleccionada = OpcionMenu.SubFamilias) Then
                 If (MessageBox.Show("Confirmas que deseas eliminar el registro seleccionado?", "Confirmación.", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes) Then
-                    EliminarRegistro(spSubFamilias)
+                    EliminarRegistroDeSpread(spSubFamilias)
                 End If
             End If
         End If
@@ -373,9 +388,9 @@ Public Class Principal
             If (e.Row >= 0) Then
                 Me.filaSubFamilia = e.Row
                 spArticulos.Show()
-                Dim idAlmacen As Integer = LogicaCatalogos.Funciones.ValidarNumero(spAlmacenes.ActiveSheet.Cells(Me.filaAlmacen, spAlmacenes.ActiveSheet.Columns("id").Index).Value)
-                Dim idFamilia As Integer = LogicaCatalogos.Funciones.ValidarNumero(spFamilias.ActiveSheet.Cells(Me.filaFamilia, spFamilias.ActiveSheet.Columns("id").Index).Value)
-                Dim idSubFamilia As Integer = LogicaCatalogos.Funciones.ValidarNumero(spSubFamilias.ActiveSheet.Cells(Me.filaSubFamilia, spSubFamilias.ActiveSheet.Columns("id").Index).Value)
+                Dim idAlmacen As Integer = LogicaCatalogos.Funciones.ValidarNumeroACero(spAlmacenes.ActiveSheet.Cells(Me.filaAlmacen, spAlmacenes.ActiveSheet.Columns("id").Index).Value)
+                Dim idFamilia As Integer = LogicaCatalogos.Funciones.ValidarNumeroACero(spFamilias.ActiveSheet.Cells(Me.filaFamilia, spFamilias.ActiveSheet.Columns("id").Index).Value)
+                Dim idSubFamilia As Integer = LogicaCatalogos.Funciones.ValidarNumeroACero(spSubFamilias.ActiveSheet.Cells(Me.filaSubFamilia, spSubFamilias.ActiveSheet.Columns("id").Index).Value)
                 CargarArticulos(idAlmacen, idFamilia, idSubFamilia)
             End If
         End If
@@ -397,7 +412,7 @@ Public Class Principal
         ElseIf (e.KeyData = Keys.F6) Then ' Eliminar un registro.
             If (Me.opcionSeleccionada = OpcionMenu.Articulos) Then
                 If (MessageBox.Show("Confirmas que deseas eliminar el registro seleccionado?", "Confirmación.", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes) Then
-                    EliminarRegistro(spArticulos)
+                    EliminarRegistroDeSpread(spArticulos)
                 End If
             End If
         ElseIf (e.KeyData = Keys.F5) Then ' Abrir catalogos.
@@ -405,7 +420,7 @@ Public Class Principal
                 If (spArticulos.ActiveSheet.ActiveColumnIndex = spArticulos.ActiveSheet.Columns("idUnidadMedida").Index) Or (spArticulos.ActiveSheet.ActiveColumnIndex = spArticulos.ActiveSheet.Columns("nombreUnidadMedida").Index) Then
                     spArticulos.Enabled = False
                     CargarCatalogoUnidadesMedidas()
-                    FormatearSpreadCatalogoUnidadesMedidas(False)
+                    FormatearSpreadCatalogo(False)
                     spCatalogos.Focus()
                 End If
             End If
@@ -439,6 +454,19 @@ Public Class Principal
 
         If (e.KeyData = Keys.Enter) Then
             ControlarSpreadEnter(spVarios)
+        ElseIf (e.KeyData = Keys.F6) Then ' Eliminar un registro. 
+            If (MessageBox.Show("Confirmas que deseas eliminar el registro seleccionado?", "Confirmación.", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes) Then
+                EliminarRegistroDeSpread(spVarios)
+            End If
+        ElseIf (e.KeyData = Keys.F5) Then ' Abrir catalogos.
+            If (Me.opcionSeleccionada = OpcionMenu.TiposCambios) Then
+                If (spVarios.ActiveSheet.ActiveColumnIndex = spVarios.ActiveSheet.Columns("idMoneda").Index) Or (spVarios.ActiveSheet.ActiveColumnIndex = spVarios.ActiveSheet.Columns("nombreMoneda").Index) Then
+                    spVarios.Enabled = False
+                    CargarCatalogoMonedas()
+                    FormatearSpreadCatalogo(False)
+                    spCatalogos.Focus()
+                End If
+            End If
         End If
 
     End Sub
@@ -493,11 +521,27 @@ Public Class Principal
 
     End Sub
 
+    Private Sub rbtnTiposCambios_CheckedChanged(sender As Object, e As EventArgs) Handles rbtnTiposCambios.CheckedChanged
+
+        If (rbtnTiposCambios.Checked) Then
+            SeleccionoTiposCambios()
+        End If
+
+    End Sub
+
+    Private Sub rbtnClientes_CheckedChanged(sender As Object, e As EventArgs) Handles rbtnClientes.CheckedChanged
+
+        If (rbtnClientes.Checked) Then
+            SeleccionoClientes()
+        End If
+
+    End Sub
+
 #End Region
 
 #Region "Métodos"
 
-#Region "Genericos"
+#Region "Básicos"
 
     Private Sub Salir()
 
@@ -747,49 +791,50 @@ Public Class Principal
         CargarTiposDeDatos()
         ' Se cargan las opciones generales de cada spread.
         OcultarSpreads()
-        spAlmacenes.Skin = FarPoint.Win.Spread.DefaultSpreadSkins.Seashell : Application.DoEvents()
-        spFamilias.Skin = FarPoint.Win.Spread.DefaultSpreadSkins.Seashell : Application.DoEvents()
-        spSubFamilias.Skin = FarPoint.Win.Spread.DefaultSpreadSkins.Seashell : Application.DoEvents()
-        spArticulos.Skin = FarPoint.Win.Spread.DefaultSpreadSkins.Seashell : Application.DoEvents()
-        spVarios.Skin = FarPoint.Win.Spread.DefaultSpreadSkins.Seashell : Application.DoEvents()
-        spCatalogos.Skin = FarPoint.Win.Spread.DefaultSpreadSkins.Midnight : Application.DoEvents()
-        spAlmacenes.ActiveSheet.GrayAreaBackColor = Principal.colorAreaGris : Application.DoEvents()
-        spFamilias.ActiveSheet.GrayAreaBackColor = Principal.colorAreaGris : Application.DoEvents()
-        spSubFamilias.ActiveSheet.GrayAreaBackColor = Principal.colorAreaGris : Application.DoEvents()
-        spArticulos.ActiveSheet.GrayAreaBackColor = Principal.colorAreaGris : Application.DoEvents()
-        spVarios.ActiveSheet.GrayAreaBackColor = Principal.colorAreaGris : Application.DoEvents()
-        spAlmacenes.Font = New Font(Principal.tipoLetraSpread, Principal.tamañoLetraSpread, FontStyle.Regular) : Application.DoEvents()
-        spFamilias.Font = New Font(Principal.tipoLetraSpread, Principal.tamañoLetraSpread, FontStyle.Regular) : Application.DoEvents()
-        spSubFamilias.Font = New Font(Principal.tipoLetraSpread, Principal.tamañoLetraSpread, FontStyle.Regular) : Application.DoEvents()
-        spArticulos.Font = New Font(Principal.tipoLetraSpread, Principal.tamañoLetraSpread, FontStyle.Regular) : Application.DoEvents()
-        spVarios.Font = New Font(Principal.tipoLetraSpread, Principal.tamañoLetraSpread, FontStyle.Regular) : Application.DoEvents()
-        spCatalogos.Font = New Font(Principal.tipoLetraSpread, Principal.tamañoLetraSpread, FontStyle.Regular) : Application.DoEvents()
-        spAlmacenes.ActiveSheet.ColumnHeader.Rows(0).Height = Principal.alturaFilasEncabezadosGrandesSpread : Application.DoEvents()
-        spFamilias.ActiveSheet.ColumnHeader.Rows(0).Height = Principal.alturaFilasEncabezadosGrandesSpread : Application.DoEvents()
-        spSubFamilias.ActiveSheet.ColumnHeader.Rows(0).Height = Principal.alturaFilasEncabezadosGrandesSpread : Application.DoEvents()
-        spArticulos.ActiveSheet.ColumnHeader.Rows(0).Height = Principal.alturaFilasEncabezadosGrandesSpread : Application.DoEvents()
-        spVarios.ActiveSheet.ColumnHeader.Rows(0).Height = Principal.alturaFilasEncabezadosGrandesSpread : Application.DoEvents()
-        spCatalogos.ActiveSheet.ColumnHeader.Rows(0).Height = Principal.alturaFilasEncabezadosGrandesSpread : Application.DoEvents()
-        spAlmacenes.ActiveSheet.Rows(-1).Height = Principal.alturaFilasSpread : Application.DoEvents()
-        spFamilias.ActiveSheet.Rows(-1).Height = Principal.alturaFilasSpread : Application.DoEvents()
-        spSubFamilias.ActiveSheet.Rows(-1).Height = Principal.alturaFilasSpread : Application.DoEvents()
-        spArticulos.ActiveSheet.Rows(-1).Height = Principal.alturaFilasSpread : Application.DoEvents()
-        spVarios.ActiveSheet.Rows(-1).Height = Principal.alturaFilasSpread : Application.DoEvents()
-        spCatalogos.ActiveSheet.Rows(-1).Height = Principal.alturaFilasSpread : Application.DoEvents()
-        spAlmacenes.HorizontalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.AsNeeded : Application.DoEvents()
-        spAlmacenes.VerticalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.AsNeeded : Application.DoEvents()
-        spFamilias.HorizontalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.AsNeeded : Application.DoEvents()
-        spFamilias.VerticalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.AsNeeded : Application.DoEvents()
-        spSubFamilias.HorizontalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.AsNeeded : Application.DoEvents()
-        spSubFamilias.VerticalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.AsNeeded : Application.DoEvents()
-        spArticulos.HorizontalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.AsNeeded : Application.DoEvents()
-        spArticulos.VerticalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.AsNeeded : Application.DoEvents()
-        spVarios.HorizontalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.AsNeeded : Application.DoEvents()
-        spVarios.VerticalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.AsNeeded : Application.DoEvents()
+        spAlmacenes.Skin = FarPoint.Win.Spread.DefaultSpreadSkins.Seashell
+        spFamilias.Skin = FarPoint.Win.Spread.DefaultSpreadSkins.Seashell
+        spSubFamilias.Skin = FarPoint.Win.Spread.DefaultSpreadSkins.Seashell
+        spArticulos.Skin = FarPoint.Win.Spread.DefaultSpreadSkins.Seashell
+        spVarios.Skin = FarPoint.Win.Spread.DefaultSpreadSkins.Seashell
+        spCatalogos.Skin = FarPoint.Win.Spread.DefaultSpreadSkins.Midnight
+        spAlmacenes.ActiveSheet.GrayAreaBackColor = Principal.colorAreaGris
+        spFamilias.ActiveSheet.GrayAreaBackColor = Principal.colorAreaGris
+        spSubFamilias.ActiveSheet.GrayAreaBackColor = Principal.colorAreaGris
+        spArticulos.ActiveSheet.GrayAreaBackColor = Principal.colorAreaGris
+        spVarios.ActiveSheet.GrayAreaBackColor = Principal.colorAreaGris
+        spAlmacenes.Font = New Font(Principal.tipoLetraSpread, Principal.tamañoLetraSpread, FontStyle.Regular)
+        spFamilias.Font = New Font(Principal.tipoLetraSpread, Principal.tamañoLetraSpread, FontStyle.Regular)
+        spSubFamilias.Font = New Font(Principal.tipoLetraSpread, Principal.tamañoLetraSpread, FontStyle.Regular)
+        spArticulos.Font = New Font(Principal.tipoLetraSpread, Principal.tamañoLetraSpread, FontStyle.Regular)
+        spVarios.Font = New Font(Principal.tipoLetraSpread, Principal.tamañoLetraSpread, FontStyle.Regular)
+        spCatalogos.Font = New Font(Principal.tipoLetraSpread, Principal.tamañoLetraSpread, FontStyle.Regular)
+        spAlmacenes.ActiveSheet.ColumnHeader.Rows(0).Height = Principal.alturaFilasEncabezadosGrandesSpread
+        spFamilias.ActiveSheet.ColumnHeader.Rows(0).Height = Principal.alturaFilasEncabezadosGrandesSpread
+        spSubFamilias.ActiveSheet.ColumnHeader.Rows(0).Height = Principal.alturaFilasEncabezadosGrandesSpread
+        spArticulos.ActiveSheet.ColumnHeader.Rows(0).Height = Principal.alturaFilasEncabezadosGrandesSpread
+        spVarios.ActiveSheet.ColumnHeader.Rows(0).Height = Principal.alturaFilasEncabezadosGrandesSpread
+        spCatalogos.ActiveSheet.ColumnHeader.Rows(0).Height = Principal.alturaFilasEncabezadosGrandesSpread
+        spAlmacenes.ActiveSheet.Rows(-1).Height = Principal.alturaFilasSpread
+        spFamilias.ActiveSheet.Rows(-1).Height = Principal.alturaFilasSpread
+        spSubFamilias.ActiveSheet.Rows(-1).Height = Principal.alturaFilasSpread
+        spArticulos.ActiveSheet.Rows(-1).Height = Principal.alturaFilasSpread
+        spVarios.ActiveSheet.Rows(-1).Height = Principal.alturaFilasSpread
+        spCatalogos.ActiveSheet.Rows(-1).Height = Principal.alturaFilasSpread
+        spAlmacenes.HorizontalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.AsNeeded
+        spAlmacenes.VerticalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.AsNeeded
+        spFamilias.HorizontalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.AsNeeded
+        spFamilias.VerticalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.AsNeeded
+        spSubFamilias.HorizontalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.AsNeeded
+        spSubFamilias.VerticalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.AsNeeded
+        spArticulos.HorizontalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.AsNeeded
+        spArticulos.VerticalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.AsNeeded
+        spVarios.HorizontalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.AsNeeded
+        spVarios.VerticalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.AsNeeded
+        Application.DoEvents()
 
     End Sub
 
-    Private Sub EliminarRegistro(ByVal spread As FarPoint.Win.Spread.FpSpread)
+    Private Sub EliminarRegistroDeSpread(ByVal spread As FarPoint.Win.Spread.FpSpread)
 
         spread.ActiveSheet.Rows.Remove(spread.ActiveSheet.ActiveRowIndex, 1)
 
@@ -815,10 +860,59 @@ Public Class Principal
                     End If
                 End If
             End If
+        ElseIf (Me.opcionSeleccionada = OpcionMenu.TiposCambios) Then
+            fila = spVarios.ActiveSheet.ActiveRowIndex
+            If (columnaActiva = spVarios.ActiveSheet.Columns("idMoneda").Index) Then
+                Dim idMonedaa As Integer = LogicaCatalogos.Funciones.ValidarNumeroACero(spVarios.ActiveSheet.Cells(fila, spVarios.ActiveSheet.Columns("idMoneda").Index).Text)
+                If (idMonedaa > 0) Then
+                    Dim lista As New List(Of EntidadesCatalogos.Monedas)
+                    monedas.EId = idMonedaa
+                    lista = monedas.ObtenerListado
+                    If (lista.Count > 0) Then
+                        spVarios.ActiveSheet.Cells(fila, spVarios.ActiveSheet.Columns("nombreMoneda").Index).Text = lista(0).ENombre
+                    End If
+                Else
+                    spVarios.ActiveSheet.SetActiveCell(fila - 1, spVarios.ActiveSheet.Columns.Count - 1)
+                End If
+            ElseIf (columnaActiva = spVarios.ActiveSheet.Columns("fecha").Index) Then
+                Dim fecha As String = spVarios.ActiveSheet.Cells(fila, spVarios.ActiveSheet.Columns("fecha").Index).Text
+                If (String.IsNullOrEmpty(fecha)) Then
+                    spVarios.ActiveSheet.Cells(fila, spVarios.ActiveSheet.Columns("fecha").Index).Value = Today
+                End If
+            ElseIf (columnaActiva = spVarios.ActiveSheet.Columns("valor").Index) Then
+                Dim idMoneda As Integer = LogicaCatalogos.Funciones.ValidarNumeroACero(spVarios.ActiveSheet.Cells(fila, spVarios.ActiveSheet.Columns("idMoneda").Index).Text)
+                Dim fecha As String = spVarios.ActiveSheet.Cells(fila, spVarios.ActiveSheet.Columns("fecha").Index).Text
+                If (String.IsNullOrEmpty(fecha)) Then
+                    spVarios.ActiveSheet.Cells(fila, spVarios.ActiveSheet.Columns("fecha").Index).Value = Today
+                End If
+                For indice = 0 To spVarios.ActiveSheet.Rows.Count - 1
+                    Dim fechaa As String = spVarios.ActiveSheet.Cells(indice, spVarios.ActiveSheet.Columns("fecha").Index).Text
+                    Dim idMonedaa As Integer = LogicaCatalogos.Funciones.ValidarNumeroACero(spVarios.ActiveSheet.Cells(indice, spVarios.ActiveSheet.Columns("idMoneda").Index).Text)
+                    If (Not String.IsNullOrEmpty(fecha)) Then
+                        If (fechaa = fecha And idMonedaa = idMoneda And indice <> fila) Then
+                            LimpiarFilaSpread(spVarios, fila)
+                            spVarios.ActiveSheet.SetActiveCell(fila - 1, spVarios.ActiveSheet.Columns.Count - 1)
+                        End If
+                    End If
+                Next
+                Dim valor As String = spVarios.ActiveSheet.Cells(fila, spVarios.ActiveSheet.Columns("valor").Index).Text
+                If (String.IsNullOrEmpty(valor)) Then
+                    spVarios.ActiveSheet.Cells(fila, spVarios.ActiveSheet.Columns("valor").Index).Text = String.Empty
+                    spVarios.ActiveSheet.SetActiveCell(fila, spVarios.ActiveSheet.Columns("valor").Index - 1)
+                End If
+            End If
         End If
 
     End Sub
-     
+
+    Private Sub LimpiarFilaSpread(ByVal spread As FarPoint.Win.Spread.FpSpread, ByVal fila As Integer)
+
+        spread.ActiveSheet.ClearRange(fila, 0, 1, spread.ActiveSheet.Columns.Count, True)
+        spread.ActiveSheet.SetActiveCell(fila, -1)
+        Application.DoEvents()
+
+    End Sub
+
     Private Sub LimpiarSpread(ByVal spread As FarPoint.Win.Spread.FpSpread)
 
         spread.ActiveSheet.ClearRange(0, 0, spread.ActiveSheet.Rows.Count, spread.ActiveSheet.Columns.Count, True) : Application.DoEvents()
@@ -828,42 +922,55 @@ Public Class Principal
     Private Sub CargarCatalogoUnidadesMedidas()
 
         unidadesMedidas.EId = 0
-        spCatalogos.ActiveSheet.DataSource = unidadesMedidas.ObtenerListado() : Application.DoEvents()
+        spCatalogos.ActiveSheet.DataSource = unidadesMedidas.ObtenerListado() ': Application.DoEvents()
         spCatalogos.Focus()
 
     End Sub
 
-    Private Sub FormatearSpreadCatalogoUnidadesMedidas(ByVal izquierda As Boolean)
+    Private Sub CargarCatalogoMonedas()
 
-        spCatalogos.ActiveSheet.ColumnHeader.Rows(0).Font = New Font(Principal.tipoLetraSpread, Principal.tamañoLetraSpread, FontStyle.Bold) : Application.DoEvents()
-        spCatalogos.Width = 300 : Application.DoEvents()
+        monedas.EId = 0
+        spCatalogos.ActiveSheet.DataSource = monedas.ObtenerListado()
+        spCatalogos.Focus()
+
+    End Sub
+
+    Private Sub FormatearSpreadCatalogo(ByVal izquierda As Boolean)
+
+        spCatalogos.ActiveSheet.ColumnHeader.Rows(0).Font = New Font(Principal.tipoLetraSpread, Principal.tamañoLetraSpread, FontStyle.Bold)
+        spCatalogos.Width = 300
         If (izquierda) Then
-            spCatalogos.Location = New Point(Me.izquierda, Me.arriba) : Application.DoEvents()
+            spCatalogos.Location = New Point(Me.izquierda, Me.arriba)
         Else
-            spCatalogos.Location = New Point(Me.anchoTotal - spCatalogos.Width, Me.arriba) : Application.DoEvents()
+            spCatalogos.Location = New Point(Me.anchoTotal - spCatalogos.Width, Me.arriba)
         End If
-        spCatalogos.Visible = True : Application.DoEvents()
-        spCatalogos.HorizontalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.Never : Application.DoEvents()
-        spCatalogos.VerticalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.AsNeeded : Application.DoEvents()
-        spCatalogos.ActiveSheet.OperationMode = FarPoint.Win.Spread.OperationMode.SingleSelect : Application.DoEvents()
-        spCatalogos.Height = Me.altoTotal : Application.DoEvents()
+        spCatalogos.Visible = True
+        spCatalogos.HorizontalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.Never
+        spCatalogos.VerticalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.AsNeeded
+        spCatalogos.ActiveSheet.OperationMode = FarPoint.Win.Spread.OperationMode.SingleSelect
+        spCatalogos.Height = Me.altoTotal
         Dim numeracion As Integer = 0
         spCatalogos.ActiveSheet.Columns(numeracion).Tag = "id" : numeracion += 1
         spCatalogos.ActiveSheet.Columns(numeracion).Tag = "nombre" : numeracion += 1
-        spCatalogos.ActiveSheet.Columns("id").Width = 50 : Application.DoEvents()
-        spCatalogos.ActiveSheet.Columns("nombre").Width = 210 : Application.DoEvents()
-        spCatalogos.ActiveSheet.ColumnHeader.Cells(0, spCatalogos.ActiveSheet.Columns("id").Index).Value = "No.".ToUpper : Application.DoEvents()
-        spCatalogos.ActiveSheet.ColumnHeader.Cells(0, spCatalogos.ActiveSheet.Columns("nombre").Index).Value = "Nombre".ToUpper : Application.DoEvents()
-        spCatalogos.ActiveSheet.ColumnHeader.Rows(0).Height = Principal.alturaFilasEncabezadosMedianosSpread : Application.DoEvents()
+        spCatalogos.ActiveSheet.Columns("id").Width = 50
+        spCatalogos.ActiveSheet.Columns("nombre").Width = 210
+        spCatalogos.ActiveSheet.ColumnHeader.Cells(0, spCatalogos.ActiveSheet.Columns("id").Index).Value = "No.".ToUpper
+        spCatalogos.ActiveSheet.ColumnHeader.Cells(0, spCatalogos.ActiveSheet.Columns("nombre").Index).Value = "Nombre".ToUpper
+        spCatalogos.ActiveSheet.ColumnHeader.Rows(0).Height = Principal.alturaFilasEncabezadosMedianosSpread
+        Application.DoEvents()
 
     End Sub
 
     Private Sub VolverFocoCatalogos()
 
-        spArticulos.Enabled = True
-        spArticulos.Focus()
         If (Me.opcionSeleccionada = OpcionMenu.Articulos) Then
+            spArticulos.Enabled = True
+            spArticulos.Focus()
             spArticulos.ActiveSheet.SetActiveCell(spArticulos.ActiveSheet.ActiveRowIndex, spArticulos.ActiveSheet.Columns("idUnidadMedida").Index + 2)
+        ElseIf (Me.opcionSeleccionada = OpcionMenu.TiposCambios) Then
+            spVarios.Enabled = True
+            spVarios.Focus()
+            spVarios.ActiveSheet.SetActiveCell(spVarios.ActiveSheet.ActiveRowIndex, spVarios.ActiveSheet.Columns("idMoneda").Index + 2)
         End If
         spCatalogos.Visible = False
 
@@ -911,14 +1018,14 @@ Public Class Principal
 
     Private Sub FormatearSpreadAlmacenes()
 
-        spAlmacenes.ActiveSheet.ColumnHeader.RowCount = 2 : Application.DoEvents()
-        spAlmacenes.ActiveSheet.ColumnHeader.Rows(0, spAlmacenes.ActiveSheet.ColumnHeader.Rows.Count - 1).Font = New Font(Principal.tipoLetraSpread, Principal.tamañoLetraSpread, FontStyle.Bold) : Application.DoEvents() : Application.DoEvents()
-        spAlmacenes.ActiveSheet.ColumnHeader.Rows(0).Height = Principal.alturaFilasEncabezadosChicosSpread : Application.DoEvents()
-        spAlmacenes.ActiveSheet.ColumnHeader.Rows(1).Height = Principal.alturaFilasEncabezadosMedianosSpread : Application.DoEvents()
+        spAlmacenes.ActiveSheet.ColumnHeader.RowCount = 2
+        spAlmacenes.ActiveSheet.ColumnHeader.Rows(0, spAlmacenes.ActiveSheet.ColumnHeader.Rows.Count - 1).Font = New Font(Principal.tipoLetraSpread, Principal.tamañoLetraSpread, FontStyle.Bold)
+        spAlmacenes.ActiveSheet.ColumnHeader.Rows(0).Height = Principal.alturaFilasEncabezadosChicosSpread
+        spAlmacenes.ActiveSheet.ColumnHeader.Rows(1).Height = Principal.alturaFilasEncabezadosMedianosSpread
         If (Me.opcionSeleccionada = OpcionMenu.Almacenes) Then
-            spAlmacenes.ActiveSheet.OperationMode = FarPoint.Win.Spread.OperationMode.Normal : Application.DoEvents()
+            spAlmacenes.ActiveSheet.OperationMode = FarPoint.Win.Spread.OperationMode.Normal
         Else
-            spAlmacenes.ActiveSheet.OperationMode = FarPoint.Win.Spread.OperationMode.SingleSelect : Application.DoEvents()
+            spAlmacenes.ActiveSheet.OperationMode = FarPoint.Win.Spread.OperationMode.SingleSelect
         End If
         If (Me.opcionSeleccionada = OpcionMenu.Almacenes) Then
             ControlarSpreadEnterASiguienteColumna(spAlmacenes)
@@ -927,28 +1034,31 @@ Public Class Principal
         spAlmacenes.ActiveSheet.Columns(numeracion).Tag = "id" : numeracion += 1
         spAlmacenes.ActiveSheet.Columns(numeracion).Tag = "nombre" : numeracion += 1
         spAlmacenes.ActiveSheet.Columns(numeracion).Tag = "abreviatura" : numeracion += 1
-        spAlmacenes.ActiveSheet.Columns("id").Width = 50 : Application.DoEvents()
-        spAlmacenes.ActiveSheet.Columns("nombre").Width = 400 : Application.DoEvents()
-        spAlmacenes.ActiveSheet.Columns("abreviatura").Width = 160 : Application.DoEvents()
-        spAlmacenes.ActiveSheet.Columns("id").CellType = tipoEntero : Application.DoEvents()
-        spAlmacenes.ActiveSheet.Columns("nombre").CellType = tipoTexto : Application.DoEvents()
-        spAlmacenes.ActiveSheet.Columns("abreviatura").CellType = tipoTexto : Application.DoEvents()
-        spAlmacenes.ActiveSheet.AddColumnHeaderSpanCell(0, 0, 1, spAlmacenes.ActiveSheet.Columns.Count) : Application.DoEvents()
+        spAlmacenes.ActiveSheet.Columns("id").Width = 50
+        spAlmacenes.ActiveSheet.Columns("nombre").Width = 400
+        spAlmacenes.ActiveSheet.Columns("abreviatura").Width = 160
+        spAlmacenes.ActiveSheet.Columns("id").CellType = tipoEntero
+        spAlmacenes.ActiveSheet.Columns("nombre").CellType = tipoTexto
+        spAlmacenes.ActiveSheet.Columns("abreviatura").CellType = tipoTexto
+        spAlmacenes.ActiveSheet.AddColumnHeaderSpanCell(0, 0, 1, spAlmacenes.ActiveSheet.Columns.Count)
         Dim obligatorio As String = String.Empty
         If (Me.opcionSeleccionada = OpcionMenu.Almacenes) Then
             obligatorio = " *"
         End If
-        spAlmacenes.ActiveSheet.ColumnHeader.Cells(0, 0).Value = "A  l  m  a  c  e  n  e  s".ToUpper() : Application.DoEvents()
-        spAlmacenes.ActiveSheet.ColumnHeader.Cells(1, spAlmacenes.ActiveSheet.Columns("id").Index).Value = "No.".ToUpper() & obligatorio : Application.DoEvents()
-        spAlmacenes.ActiveSheet.ColumnHeader.Cells(1, spAlmacenes.ActiveSheet.Columns("nombre").Index).Value = "Nombre".ToUpper() & obligatorio : Application.DoEvents()
-        spAlmacenes.ActiveSheet.ColumnHeader.Cells(1, spAlmacenes.ActiveSheet.Columns("abreviatura").Index).Value = "Abreviatura".ToUpper() : Application.DoEvents()
+        spAlmacenes.ActiveSheet.ColumnHeader.Cells(0, 0).Value = "A  l  m  a  c  e  n  e  s".ToUpper()
+        spAlmacenes.ActiveSheet.ColumnHeader.Cells(1, spAlmacenes.ActiveSheet.Columns("id").Index).Value = "No.".ToUpper() & obligatorio
+        spAlmacenes.ActiveSheet.ColumnHeader.Cells(1, spAlmacenes.ActiveSheet.Columns("nombre").Index).Value = "Nombre".ToUpper() & obligatorio
+        spAlmacenes.ActiveSheet.ColumnHeader.Cells(1, spAlmacenes.ActiveSheet.Columns("abreviatura").Index).Value = "Abreviatura".ToUpper()
         If (Me.opcionSeleccionada = OpcionMenu.Almacenes) Then
-            spAlmacenes.ActiveSheet.Rows.Count += 1 : Application.DoEvents()
+            spAlmacenes.ActiveSheet.Rows.Count += 1
         End If
         If (Me.opcionSeleccionada <> OpcionMenu.Almacenes And Me.opcionSeleccionada <> OpcionMenu.Familias) Then
             spAlmacenes.ActiveSheet.Columns("abreviatura").Visible = False
+        Else
+            spAlmacenes.ActiveSheet.Columns("abreviatura").Visible = True
         End If
-        spAlmacenes.Focus() : Application.DoEvents()
+        spAlmacenes.Focus()
+        Application.DoEvents()
 
     End Sub
 
@@ -956,7 +1066,7 @@ Public Class Principal
 
         EliminarAlmacenes(False)
         For fila As Integer = 0 To spAlmacenes.ActiveSheet.Rows.Count - 1
-            Dim id As Integer = LogicaCatalogos.Funciones.ValidarNumero(spAlmacenes.ActiveSheet.Cells(fila, spAlmacenes.ActiveSheet.Columns("id").Index).Text)
+            Dim id As Integer = LogicaCatalogos.Funciones.ValidarNumeroACero(spAlmacenes.ActiveSheet.Cells(fila, spAlmacenes.ActiveSheet.Columns("id").Index).Text)
             Dim nombre As String = spAlmacenes.ActiveSheet.Cells(fila, spAlmacenes.ActiveSheet.Columns("nombre").Index).Text
             Dim abreviatura As String = LogicaCatalogos.Funciones.ValidarLetra(spAlmacenes.ActiveSheet.Cells(fila, spAlmacenes.ActiveSheet.Columns("abreviatura").Index).Value)
             If (id > 0 AndAlso Not String.IsNullOrEmpty(nombre)) Then
@@ -983,8 +1093,9 @@ Public Class Principal
             almacenes.EId = 0
             almacenes.Eliminar()
         End If
-        If (conMensaje) Then
+        If (conMensaje And respuestaSi) Then
             CargarAlmacenes()
+            MessageBox.Show("Eliminado finalizado.", "Finalizado.", MessageBoxButtons.OK)
         End If
 
     End Sub
@@ -1032,14 +1143,14 @@ Public Class Principal
 
     Private Sub FormatearSpreadFamilias()
 
-        spFamilias.ActiveSheet.ColumnHeader.RowCount = 2 : Application.DoEvents()
-        spFamilias.ActiveSheet.ColumnHeader.Rows(0, spFamilias.ActiveSheet.ColumnHeader.Rows.Count - 1).Font = New Font(Principal.tipoLetraSpread, Principal.tamañoLetraSpread, FontStyle.Bold) : Application.DoEvents()
-        spFamilias.ActiveSheet.ColumnHeader.Rows(0).Height = Principal.alturaFilasEncabezadosChicosSpread : Application.DoEvents()
-        spFamilias.ActiveSheet.ColumnHeader.Rows(1).Height = Principal.alturaFilasEncabezadosMedianosSpread : Application.DoEvents()
+        spFamilias.ActiveSheet.ColumnHeader.RowCount = 2
+        spFamilias.ActiveSheet.ColumnHeader.Rows(0, spFamilias.ActiveSheet.ColumnHeader.Rows.Count - 1).Font = New Font(Principal.tipoLetraSpread, Principal.tamañoLetraSpread, FontStyle.Bold)
+        spFamilias.ActiveSheet.ColumnHeader.Rows(0).Height = Principal.alturaFilasEncabezadosChicosSpread
+        spFamilias.ActiveSheet.ColumnHeader.Rows(1).Height = Principal.alturaFilasEncabezadosMedianosSpread
         If (Me.opcionSeleccionada = OpcionMenu.Familias) Then
-            spFamilias.ActiveSheet.OperationMode = FarPoint.Win.Spread.OperationMode.Normal : Application.DoEvents()
+            spFamilias.ActiveSheet.OperationMode = FarPoint.Win.Spread.OperationMode.Normal
         Else
-            spFamilias.ActiveSheet.OperationMode = FarPoint.Win.Spread.OperationMode.SingleSelect : Application.DoEvents()
+            spFamilias.ActiveSheet.OperationMode = FarPoint.Win.Spread.OperationMode.SingleSelect
         End If
         If (Me.opcionSeleccionada = OpcionMenu.Familias) Then
             ControlarSpreadEnterASiguienteColumna(spFamilias)
@@ -1047,30 +1158,31 @@ Public Class Principal
         Dim numeracion As Integer = 0
         spFamilias.ActiveSheet.Columns(numeracion).Tag = "id" : numeracion += 1
         spFamilias.ActiveSheet.Columns(numeracion).Tag = "nombre" : numeracion += 1
-        spFamilias.ActiveSheet.Columns("id").Width = 50 : Application.DoEvents()
-        spFamilias.ActiveSheet.Columns("nombre").Width = 400 : Application.DoEvents()
-        spFamilias.ActiveSheet.Columns("id").CellType = tipoEntero : Application.DoEvents()
-        spFamilias.ActiveSheet.Columns("nombre").CellType = tipoTexto : Application.DoEvents()
-        spFamilias.ActiveSheet.AddColumnHeaderSpanCell(0, 0, 1, spFamilias.ActiveSheet.Columns.Count) : Application.DoEvents()
+        spFamilias.ActiveSheet.Columns("id").Width = 50
+        spFamilias.ActiveSheet.Columns("nombre").Width = 400
+        spFamilias.ActiveSheet.Columns("id").CellType = tipoEntero
+        spFamilias.ActiveSheet.Columns("nombre").CellType = tipoTexto
+        spFamilias.ActiveSheet.AddColumnHeaderSpanCell(0, 0, 1, spFamilias.ActiveSheet.Columns.Count)
         Dim obligatorio As String = String.Empty
         If (Me.opcionSeleccionada = OpcionMenu.Familias) Then
             obligatorio = " *"
         End If
-        spFamilias.ActiveSheet.ColumnHeader.Cells(0, 0).Value = "F  a  m  i  l  i  a  s".ToUpper() : Application.DoEvents()
-        spFamilias.ActiveSheet.ColumnHeader.Cells(1, spFamilias.ActiveSheet.Columns("id").Index).Value = "No.".ToUpper() & obligatorio : Application.DoEvents()
-        spFamilias.ActiveSheet.ColumnHeader.Cells(1, spFamilias.ActiveSheet.Columns("nombre").Index).Value = "Nombre".ToUpper() & obligatorio : Application.DoEvents()
+        spFamilias.ActiveSheet.ColumnHeader.Cells(0, 0).Value = "F  a  m  i  l  i  a  s".ToUpper()
+        spFamilias.ActiveSheet.ColumnHeader.Cells(1, spFamilias.ActiveSheet.Columns("id").Index).Value = "No.".ToUpper() & obligatorio
+        spFamilias.ActiveSheet.ColumnHeader.Cells(1, spFamilias.ActiveSheet.Columns("nombre").Index).Value = "Nombre".ToUpper() & obligatorio
         If (Me.opcionSeleccionada = OpcionMenu.Familias) Then
-            spFamilias.ActiveSheet.Rows.Count += 1 : Application.DoEvents()
+            spFamilias.ActiveSheet.Rows.Count += 1
         End If
+        Application.DoEvents()
 
     End Sub
 
     Private Sub GuardarEditarFamilias()
 
-        Dim idAlmacen As Integer = LogicaCatalogos.Funciones.ValidarNumero(spAlmacenes.ActiveSheet.Cells(spAlmacenes.ActiveSheet.ActiveRowIndex, spAlmacenes.ActiveSheet.Columns("id").Index).Value)
+        Dim idAlmacen As Integer = LogicaCatalogos.Funciones.ValidarNumeroACero(spAlmacenes.ActiveSheet.Cells(spAlmacenes.ActiveSheet.ActiveRowIndex, spAlmacenes.ActiveSheet.Columns("id").Index).Value)
         EliminarFamilias(False, idAlmacen)
         For fila As Integer = 0 To spFamilias.ActiveSheet.Rows.Count - 1
-            Dim id As Integer = LogicaCatalogos.Funciones.ValidarNumero(spFamilias.ActiveSheet.Cells(fila, spFamilias.ActiveSheet.Columns("id").Index).Text)
+            Dim id As Integer = LogicaCatalogos.Funciones.ValidarNumeroACero(spFamilias.ActiveSheet.Cells(fila, spFamilias.ActiveSheet.Columns("id").Index).Text)
             Dim nombre As String = spFamilias.ActiveSheet.Cells(fila, spFamilias.ActiveSheet.Columns("nombre").Index).Text
             If (idAlmacen > 0 AndAlso id > 0 AndAlso Not String.IsNullOrEmpty(nombre)) Then
                 familias.EIdAlmacen = idAlmacen
@@ -1097,7 +1209,8 @@ Public Class Principal
             familias.EId = 0
             familias.Eliminar()
         End If
-        If (conMensaje) Then
+        If (conMensaje And respuestaSi) Then
+            MessageBox.Show("Eliminado finalizado.", "Finalizado.", MessageBoxButtons.OK)
             CargarFamilias(idAlmacen)
         End If
 
@@ -1145,14 +1258,14 @@ Public Class Principal
 
     Private Sub FormatearSpreadSubFamilias()
 
-        spSubFamilias.ActiveSheet.ColumnHeader.RowCount = 2 : Application.DoEvents()
-        spSubFamilias.ActiveSheet.ColumnHeader.Rows(0, spSubFamilias.ActiveSheet.ColumnHeader.Rows.Count - 1).Font = New Font(Principal.tipoLetraSpread, Principal.tamañoLetraSpread, FontStyle.Bold) : Application.DoEvents()
-        spSubFamilias.ActiveSheet.ColumnHeader.Rows(0).Height = Principal.alturaFilasEncabezadosChicosSpread : Application.DoEvents()
-        spSubFamilias.ActiveSheet.ColumnHeader.Rows(1).Height = Principal.alturaFilasEncabezadosMedianosSpread : Application.DoEvents()
+        spSubFamilias.ActiveSheet.ColumnHeader.RowCount = 2
+        spSubFamilias.ActiveSheet.ColumnHeader.Rows(0, spSubFamilias.ActiveSheet.ColumnHeader.Rows.Count - 1).Font = New Font(Principal.tipoLetraSpread, Principal.tamañoLetraSpread, FontStyle.Bold)
+        spSubFamilias.ActiveSheet.ColumnHeader.Rows(0).Height = Principal.alturaFilasEncabezadosChicosSpread
+        spSubFamilias.ActiveSheet.ColumnHeader.Rows(1).Height = Principal.alturaFilasEncabezadosMedianosSpread
         If (Me.opcionSeleccionada = OpcionMenu.SubFamilias) Then
-            spSubFamilias.ActiveSheet.OperationMode = FarPoint.Win.Spread.OperationMode.Normal : Application.DoEvents()
+            spSubFamilias.ActiveSheet.OperationMode = FarPoint.Win.Spread.OperationMode.Normal
         Else
-            spSubFamilias.ActiveSheet.OperationMode = FarPoint.Win.Spread.OperationMode.SingleSelect : Application.DoEvents()
+            spSubFamilias.ActiveSheet.OperationMode = FarPoint.Win.Spread.OperationMode.SingleSelect
         End If
         If (Me.opcionSeleccionada = OpcionMenu.SubFamilias) Then
             ControlarSpreadEnterASiguienteColumna(spSubFamilias)
@@ -1160,31 +1273,32 @@ Public Class Principal
         Dim numeracion As Integer = 0
         spSubFamilias.ActiveSheet.Columns(numeracion).Tag = "id" : numeracion += 1
         spSubFamilias.ActiveSheet.Columns(numeracion).Tag = "nombre" : numeracion += 1
-        spSubFamilias.ActiveSheet.Columns("id").Width = 50 : Application.DoEvents()
-        spSubFamilias.ActiveSheet.Columns("nombre").Width = 400 : Application.DoEvents()
-        spSubFamilias.ActiveSheet.Columns("id").CellType = tipoEntero : Application.DoEvents()
-        spSubFamilias.ActiveSheet.Columns("nombre").CellType = tipoTexto : Application.DoEvents()
-        spSubFamilias.ActiveSheet.AddColumnHeaderSpanCell(0, 0, 1, spSubFamilias.ActiveSheet.Columns.Count) : Application.DoEvents()
+        spSubFamilias.ActiveSheet.Columns("id").Width = 50
+        spSubFamilias.ActiveSheet.Columns("nombre").Width = 400
+        spSubFamilias.ActiveSheet.Columns("id").CellType = tipoEntero
+        spSubFamilias.ActiveSheet.Columns("nombre").CellType = tipoTexto
+        spSubFamilias.ActiveSheet.AddColumnHeaderSpanCell(0, 0, 1, spSubFamilias.ActiveSheet.Columns.Count)
         Dim obligatorio As String = String.Empty
         If (Me.opcionSeleccionada = OpcionMenu.SubFamilias) Then
             obligatorio = " *"
         End If
-        spSubFamilias.ActiveSheet.ColumnHeader.Cells(0, 0).Value = "S  u  b  F  a  m  i  l  i  a  s".ToUpper() : Application.DoEvents()
-        spSubFamilias.ActiveSheet.ColumnHeader.Cells(1, spSubFamilias.ActiveSheet.Columns("id").Index).Value = "No.".ToUpper() & obligatorio : Application.DoEvents()
-        spSubFamilias.ActiveSheet.ColumnHeader.Cells(1, spSubFamilias.ActiveSheet.Columns("nombre").Index).Value = "Nombre".ToUpper() & obligatorio : Application.DoEvents()
+        spSubFamilias.ActiveSheet.ColumnHeader.Cells(0, 0).Value = "S  u  b  F  a  m  i  l  i  a  s".ToUpper()
+        spSubFamilias.ActiveSheet.ColumnHeader.Cells(1, spSubFamilias.ActiveSheet.Columns("id").Index).Value = "No.".ToUpper() & obligatorio
+        spSubFamilias.ActiveSheet.ColumnHeader.Cells(1, spSubFamilias.ActiveSheet.Columns("nombre").Index).Value = "Nombre".ToUpper() & obligatorio
         If (Me.opcionSeleccionada = OpcionMenu.SubFamilias) Then
-            spSubFamilias.ActiveSheet.Rows.Count += 1 : Application.DoEvents()
+            spSubFamilias.ActiveSheet.Rows.Count += 1
         End If
+        Application.DoEvents()
 
     End Sub
 
     Private Sub GuardarEditarSubFamilias()
 
-        Dim idAlmacen As Integer = LogicaCatalogos.Funciones.ValidarNumero(spAlmacenes.ActiveSheet.Cells(spAlmacenes.ActiveSheet.ActiveRowIndex, spAlmacenes.ActiveSheet.Columns("id").Index).Value)
-        Dim idFamilia As Integer = LogicaCatalogos.Funciones.ValidarNumero(spFamilias.ActiveSheet.Cells(spFamilias.ActiveSheet.ActiveRowIndex, spFamilias.ActiveSheet.Columns("id").Index).Value)
+        Dim idAlmacen As Integer = LogicaCatalogos.Funciones.ValidarNumeroACero(spAlmacenes.ActiveSheet.Cells(spAlmacenes.ActiveSheet.ActiveRowIndex, spAlmacenes.ActiveSheet.Columns("id").Index).Value)
+        Dim idFamilia As Integer = LogicaCatalogos.Funciones.ValidarNumeroACero(spFamilias.ActiveSheet.Cells(spFamilias.ActiveSheet.ActiveRowIndex, spFamilias.ActiveSheet.Columns("id").Index).Value)
         EliminarSubFamilias(False, idAlmacen, idFamilia)
         For fila As Integer = 0 To spSubFamilias.ActiveSheet.Rows.Count - 1
-            Dim id As Integer = LogicaCatalogos.Funciones.ValidarNumero(spSubFamilias.ActiveSheet.Cells(fila, spSubFamilias.ActiveSheet.Columns("id").Index).Text)
+            Dim id As Integer = LogicaCatalogos.Funciones.ValidarNumeroACero(spSubFamilias.ActiveSheet.Cells(fila, spSubFamilias.ActiveSheet.Columns("id").Index).Text)
             Dim nombre As String = spSubFamilias.ActiveSheet.Cells(fila, spSubFamilias.ActiveSheet.Columns("nombre").Index).Text
             If (idAlmacen > 0 AndAlso idFamilia > 0 AndAlso id > 0 AndAlso Not String.IsNullOrEmpty(nombre)) Then
                 subFamilias.EIdAlmacen = idAlmacen
@@ -1213,7 +1327,8 @@ Public Class Principal
             subFamilias.EId = 0
             subFamilias.Eliminar()
         End If
-        If (conMensaje) Then
+        If (conMensaje And respuestaSi) Then
+            MessageBox.Show("Eliminado finalizado.", "Finalizado.", MessageBoxButtons.OK)
             CargarSubFamilias(idAlmacen, idFamilia)
         End If
 
@@ -1258,14 +1373,14 @@ Public Class Principal
 
     Private Sub FormatearSpreadArticulos()
 
-        spArticulos.ActiveSheet.ColumnHeader.RowCount = 2 : Application.DoEvents()
-        spArticulos.ActiveSheet.ColumnHeader.Rows(0, spArticulos.ActiveSheet.ColumnHeader.Rows.Count - 1).Font = New Font(Principal.tipoLetraSpread, Principal.tamañoLetraSpread, FontStyle.Bold) : Application.DoEvents()
-        spArticulos.ActiveSheet.ColumnHeader.Rows(0).Height = Principal.alturaFilasEncabezadosChicosSpread : Application.DoEvents()
-        spArticulos.ActiveSheet.ColumnHeader.Rows(1).Height = Principal.alturaFilasEncabezadosGrandesSpread : Application.DoEvents()
+        spArticulos.ActiveSheet.ColumnHeader.RowCount = 2
+        spArticulos.ActiveSheet.ColumnHeader.Rows(0, spArticulos.ActiveSheet.ColumnHeader.Rows.Count - 1).Font = New Font(Principal.tipoLetraSpread, Principal.tamañoLetraSpread, FontStyle.Bold)
+        spArticulos.ActiveSheet.ColumnHeader.Rows(0).Height = Principal.alturaFilasEncabezadosChicosSpread
+        spArticulos.ActiveSheet.ColumnHeader.Rows(1).Height = Principal.alturaFilasEncabezadosGrandesSpread
         If (Me.opcionSeleccionada = OpcionMenu.Articulos) Then
-            spArticulos.ActiveSheet.OperationMode = FarPoint.Win.Spread.OperationMode.Normal : Application.DoEvents()
+            spArticulos.ActiveSheet.OperationMode = FarPoint.Win.Spread.OperationMode.Normal
         Else
-            spArticulos.ActiveSheet.OperationMode = FarPoint.Win.Spread.OperationMode.SingleSelect : Application.DoEvents()
+            spArticulos.ActiveSheet.OperationMode = FarPoint.Win.Spread.OperationMode.SingleSelect
         End If
         If (Me.opcionSeleccionada = OpcionMenu.Articulos) Then
             ControlarSpreadEnterASiguienteColumna(spArticulos)
@@ -1278,74 +1393,70 @@ Public Class Principal
         spArticulos.ActiveSheet.Columns(numeracion).Tag = "nombreUnidadMedida" : numeracion += 1
         spArticulos.ActiveSheet.Columns(numeracion).Tag = "cantidadMinima" : numeracion += 1
         spArticulos.ActiveSheet.Columns(numeracion).Tag = "cantidadMaxima" : numeracion += 1
-        spArticulos.ActiveSheet.Columns(numeracion).Tag = "precioDolares" : numeracion += 1
-        spArticulos.ActiveSheet.Columns(numeracion).Tag = "precioPesos" : numeracion += 1
+        spArticulos.ActiveSheet.Columns(numeracion).Tag = "precio" : numeracion += 1
         spArticulos.ActiveSheet.Columns(numeracion).Tag = "seccion" : numeracion += 1
         spArticulos.ActiveSheet.Columns(numeracion).Tag = "estante" : numeracion += 1
         spArticulos.ActiveSheet.Columns(numeracion).Tag = "nivel" : numeracion += 1
-        spArticulos.ActiveSheet.Columns("id").Width = 50 : Application.DoEvents()
-        spArticulos.ActiveSheet.Columns("nombre").Width = 400 : Application.DoEvents()
-        spArticulos.ActiveSheet.Columns("nombreComercial").Width = 250 : Application.DoEvents()
-        spArticulos.ActiveSheet.Columns("idUnidadMedida").Width = 50 : Application.DoEvents()
-        spArticulos.ActiveSheet.Columns("nombreUnidadMedida").Width = 200 : Application.DoEvents()
-        spArticulos.ActiveSheet.Columns("cantidadMinima").Width = 120 : Application.DoEvents()
-        spArticulos.ActiveSheet.Columns("cantidadMaxima").Width = 120 : Application.DoEvents()
-        spArticulos.ActiveSheet.Columns("precioDolares").Width = 120 : Application.DoEvents()
-        spArticulos.ActiveSheet.Columns("precioPesos").Width = 120 : Application.DoEvents()
-        spArticulos.ActiveSheet.Columns("seccion").Width = 120 : Application.DoEvents()
-        spArticulos.ActiveSheet.Columns("estante").Width = 120 : Application.DoEvents()
-        spArticulos.ActiveSheet.Columns("nivel").Width = 120 : Application.DoEvents()
-        spArticulos.ActiveSheet.Columns("id").CellType = tipoEntero : Application.DoEvents()
-        spArticulos.ActiveSheet.Columns("nombre").CellType = tipoTexto : Application.DoEvents()
-        spArticulos.ActiveSheet.Columns("nombreComercial").CellType = tipoTexto : Application.DoEvents()
-        spArticulos.ActiveSheet.Columns("idUnidadMedida").CellType = tipoEntero : Application.DoEvents()
-        spArticulos.ActiveSheet.Columns("nombreUnidadMedida").CellType = tipoTexto : Application.DoEvents()
-        spArticulos.ActiveSheet.Columns("cantidadMinima").CellType = tipoEntero : Application.DoEvents()
-        spArticulos.ActiveSheet.Columns("cantidadMaxima").CellType = tipoEntero : Application.DoEvents()
-        spArticulos.ActiveSheet.Columns("precioDolares").CellType = tipoDoble : Application.DoEvents()
-        spArticulos.ActiveSheet.Columns("precioPesos").CellType = tipoDoble : Application.DoEvents()
-        spArticulos.ActiveSheet.Columns("seccion").CellType = tipoTexto : Application.DoEvents()
-        spArticulos.ActiveSheet.Columns("estante").CellType = tipoTexto : Application.DoEvents()
-        spArticulos.ActiveSheet.Columns("nivel").CellType = tipoTexto : Application.DoEvents()
-        spArticulos.ActiveSheet.AddColumnHeaderSpanCell(0, 0, 1, spArticulos.ActiveSheet.Columns.Count) : Application.DoEvents()
-        spArticulos.ActiveSheet.ColumnHeader.Cells(0, 0).Value = "A  r  t  í  c  u  l  o  s".ToUpper() : Application.DoEvents()
-        spArticulos.ActiveSheet.ColumnHeader.Cells(1, spArticulos.ActiveSheet.Columns("id").Index).Value = "No. *".ToUpper() : Application.DoEvents()
-        spArticulos.ActiveSheet.ColumnHeader.Cells(1, spArticulos.ActiveSheet.Columns("nombre").Index).Value = "Nombre *".ToUpper() : Application.DoEvents()
-        spArticulos.ActiveSheet.ColumnHeader.Cells(1, spArticulos.ActiveSheet.Columns("nombreComercial").Index).Value = "Nombre Comercial".ToUpper() : Application.DoEvents()
-        spArticulos.ActiveSheet.ColumnHeader.Cells(1, spArticulos.ActiveSheet.Columns("idUnidadMedida").Index).Value = "No. *".ToUpper() : Application.DoEvents()
-        spArticulos.ActiveSheet.ColumnHeader.Cells(1, spArticulos.ActiveSheet.Columns("nombreUnidadMedida").Index).Value = "Nombre Unidad Medida *".ToUpper() : Application.DoEvents()
-        spArticulos.ActiveSheet.ColumnHeader.Cells(1, spArticulos.ActiveSheet.Columns("cantidadMinima").Index).Value = "Cantidad Mínima".ToUpper() : Application.DoEvents()
-        spArticulos.ActiveSheet.ColumnHeader.Cells(1, spArticulos.ActiveSheet.Columns("cantidadMaxima").Index).Value = "Cantidad Máxima".ToUpper() : Application.DoEvents()
-        spArticulos.ActiveSheet.ColumnHeader.Cells(1, spArticulos.ActiveSheet.Columns("precioDolares").Index).Value = "Precio Dolares *".ToUpper() : Application.DoEvents()
-        spArticulos.ActiveSheet.ColumnHeader.Cells(1, spArticulos.ActiveSheet.Columns("precioPesos").Index).Value = "Precio Pesos *".ToUpper() : Application.DoEvents()
-        spArticulos.ActiveSheet.ColumnHeader.Cells(1, spArticulos.ActiveSheet.Columns("seccion").Index).Value = "Sección".ToUpper() : Application.DoEvents()
-        spArticulos.ActiveSheet.ColumnHeader.Cells(1, spArticulos.ActiveSheet.Columns("estante").Index).Value = "Estante".ToUpper() : Application.DoEvents()
-        spArticulos.ActiveSheet.ColumnHeader.Cells(1, spArticulos.ActiveSheet.Columns("nivel").Index).Value = "Nivel".ToUpper() : Application.DoEvents()
+        spArticulos.ActiveSheet.Columns("id").Width = 50
+        spArticulos.ActiveSheet.Columns("nombre").Width = 400
+        spArticulos.ActiveSheet.Columns("nombreComercial").Width = 250
+        spArticulos.ActiveSheet.Columns("idUnidadMedida").Width = 50
+        spArticulos.ActiveSheet.Columns("nombreUnidadMedida").Width = 200
+        spArticulos.ActiveSheet.Columns("cantidadMinima").Width = 120
+        spArticulos.ActiveSheet.Columns("cantidadMaxima").Width = 120
+        spArticulos.ActiveSheet.Columns("precio").Width = 120
+        spArticulos.ActiveSheet.Columns("seccion").Width = 120
+        spArticulos.ActiveSheet.Columns("estante").Width = 120
+        spArticulos.ActiveSheet.Columns("nivel").Width = 120
+        spArticulos.ActiveSheet.Columns("id").CellType = tipoEntero
+        spArticulos.ActiveSheet.Columns("nombre").CellType = tipoTexto
+        spArticulos.ActiveSheet.Columns("nombreComercial").CellType = tipoTexto
+        spArticulos.ActiveSheet.Columns("idUnidadMedida").CellType = tipoEntero
+        spArticulos.ActiveSheet.Columns("nombreUnidadMedida").CellType = tipoTexto
+        spArticulos.ActiveSheet.Columns("cantidadMinima").CellType = tipoEntero
+        spArticulos.ActiveSheet.Columns("cantidadMaxima").CellType = tipoEntero
+        spArticulos.ActiveSheet.Columns("precio").CellType = tipoDoble
+        spArticulos.ActiveSheet.Columns("seccion").CellType = tipoTexto
+        spArticulos.ActiveSheet.Columns("estante").CellType = tipoTexto
+        spArticulos.ActiveSheet.Columns("nivel").CellType = tipoTexto
+        spArticulos.ActiveSheet.AddColumnHeaderSpanCell(0, 0, 1, spArticulos.ActiveSheet.Columns.Count)
+        spArticulos.ActiveSheet.ColumnHeader.Cells(0, 0).Value = "A  r  t  í  c  u  l  o  s".ToUpper()
+        spArticulos.ActiveSheet.ColumnHeader.Cells(1, spArticulos.ActiveSheet.Columns("id").Index).Value = "No. *".ToUpper()
+        spArticulos.ActiveSheet.ColumnHeader.Cells(1, spArticulos.ActiveSheet.Columns("nombre").Index).Value = "Nombre *".ToUpper()
+        spArticulos.ActiveSheet.ColumnHeader.Cells(1, spArticulos.ActiveSheet.Columns("nombreComercial").Index).Value = "Nombre Comercial".ToUpper()
+        spArticulos.ActiveSheet.ColumnHeader.Cells(1, spArticulos.ActiveSheet.Columns("idUnidadMedida").Index).Value = "No. *".ToUpper()
+        spArticulos.ActiveSheet.ColumnHeader.Cells(1, spArticulos.ActiveSheet.Columns("nombreUnidadMedida").Index).Value = "Nombre Unidad Medida *".ToUpper()
+        spArticulos.ActiveSheet.ColumnHeader.Cells(1, spArticulos.ActiveSheet.Columns("cantidadMinima").Index).Value = "Cantidad Mínima".ToUpper()
+        spArticulos.ActiveSheet.ColumnHeader.Cells(1, spArticulos.ActiveSheet.Columns("cantidadMaxima").Index).Value = "Cantidad Máxima".ToUpper()
+        spArticulos.ActiveSheet.ColumnHeader.Cells(1, spArticulos.ActiveSheet.Columns("precio").Index).Value = "Precio *".ToUpper()
+        spArticulos.ActiveSheet.ColumnHeader.Cells(1, spArticulos.ActiveSheet.Columns("seccion").Index).Value = "Sección".ToUpper()
+        spArticulos.ActiveSheet.ColumnHeader.Cells(1, spArticulos.ActiveSheet.Columns("estante").Index).Value = "Estante".ToUpper()
+        spArticulos.ActiveSheet.ColumnHeader.Cells(1, spArticulos.ActiveSheet.Columns("nivel").Index).Value = "Nivel".ToUpper()
         If (Me.opcionSeleccionada = OpcionMenu.Articulos) Then
-            spArticulos.ActiveSheet.Rows.Count += 1 : Application.DoEvents()
+            spArticulos.ActiveSheet.Rows.Count += 1
         End If
+        Application.DoEvents()
 
     End Sub
 
     Private Sub GuardarEditarArticulos()
 
-        Dim idAlmacen As Integer = LogicaCatalogos.Funciones.ValidarNumero(spAlmacenes.ActiveSheet.Cells(spAlmacenes.ActiveSheet.ActiveRowIndex, spAlmacenes.ActiveSheet.Columns("id").Index).Value)
-        Dim idFamilia As Integer = LogicaCatalogos.Funciones.ValidarNumero(spFamilias.ActiveSheet.Cells(spFamilias.ActiveSheet.ActiveRowIndex, spFamilias.ActiveSheet.Columns("id").Index).Value)
-        Dim idSubFamilia As Integer = LogicaCatalogos.Funciones.ValidarNumero(spSubFamilias.ActiveSheet.Cells(spSubFamilias.ActiveSheet.ActiveRowIndex, spSubFamilias.ActiveSheet.Columns("id").Index).Value)
+        Dim idAlmacen As Integer = LogicaCatalogos.Funciones.ValidarNumeroACero(spAlmacenes.ActiveSheet.Cells(spAlmacenes.ActiveSheet.ActiveRowIndex, spAlmacenes.ActiveSheet.Columns("id").Index).Value)
+        Dim idFamilia As Integer = LogicaCatalogos.Funciones.ValidarNumeroACero(spFamilias.ActiveSheet.Cells(spFamilias.ActiveSheet.ActiveRowIndex, spFamilias.ActiveSheet.Columns("id").Index).Value)
+        Dim idSubFamilia As Integer = LogicaCatalogos.Funciones.ValidarNumeroACero(spSubFamilias.ActiveSheet.Cells(spSubFamilias.ActiveSheet.ActiveRowIndex, spSubFamilias.ActiveSheet.Columns("id").Index).Value)
         EliminarArticulos(False, idAlmacen, idFamilia, idSubFamilia)
         For fila As Integer = 0 To spArticulos.ActiveSheet.Rows.Count - 1
-            Dim id As Integer = LogicaCatalogos.Funciones.ValidarNumero(spArticulos.ActiveSheet.Cells(fila, spArticulos.ActiveSheet.Columns("id").Index).Text)
+            Dim id As Integer = LogicaCatalogos.Funciones.ValidarNumeroACero(spArticulos.ActiveSheet.Cells(fila, spArticulos.ActiveSheet.Columns("id").Index).Text)
             Dim nombre As String = spArticulos.ActiveSheet.Cells(fila, spArticulos.ActiveSheet.Columns("nombre").Index).Text
             Dim nombreComercial As String = spArticulos.ActiveSheet.Cells(fila, spArticulos.ActiveSheet.Columns("nombreComercial").Index).Text
-            Dim idUnidadMedida As Integer = LogicaCatalogos.Funciones.ValidarNumero(spArticulos.ActiveSheet.Cells(fila, spArticulos.ActiveSheet.Columns("idUnidadMedida").Index).Text)
-            Dim cantidadMinima As Integer = LogicaCatalogos.Funciones.ValidarNumero(spArticulos.ActiveSheet.Cells(fila, spArticulos.ActiveSheet.Columns("cantidadMinima").Index).Text)
-            Dim cantidadMaxima As Integer = LogicaCatalogos.Funciones.ValidarNumero(spArticulos.ActiveSheet.Cells(fila, spArticulos.ActiveSheet.Columns("cantidadMaxima").Index).Text)
-            Dim precioDolares As Double = LogicaCatalogos.Funciones.ValidarNumero(spArticulos.ActiveSheet.Cells(fila, spArticulos.ActiveSheet.Columns("precioDolares").Index).Text)
-            Dim precioPesos As Double = LogicaCatalogos.Funciones.ValidarNumero(spArticulos.ActiveSheet.Cells(fila, spArticulos.ActiveSheet.Columns("precioPesos").Index).Text)
+            Dim idUnidadMedida As Integer = LogicaCatalogos.Funciones.ValidarNumeroACero(spArticulos.ActiveSheet.Cells(fila, spArticulos.ActiveSheet.Columns("idUnidadMedida").Index).Text)
+            Dim cantidadMinima As Integer = LogicaCatalogos.Funciones.ValidarNumeroACero(spArticulos.ActiveSheet.Cells(fila, spArticulos.ActiveSheet.Columns("cantidadMinima").Index).Text)
+            Dim cantidadMaxima As Integer = LogicaCatalogos.Funciones.ValidarNumeroACero(spArticulos.ActiveSheet.Cells(fila, spArticulos.ActiveSheet.Columns("cantidadMaxima").Index).Text)
+            Dim precio As Double = LogicaCatalogos.Funciones.ValidarNumeroACero(spArticulos.ActiveSheet.Cells(fila, spArticulos.ActiveSheet.Columns("precio").Index).Text)
             Dim seccion As String = spArticulos.ActiveSheet.Cells(fila, spArticulos.ActiveSheet.Columns("seccion").Index).Text
             Dim estante As String = spArticulos.ActiveSheet.Cells(fila, spArticulos.ActiveSheet.Columns("estante").Index).Text
             Dim nivel As String = spArticulos.ActiveSheet.Cells(fila, spArticulos.ActiveSheet.Columns("nivel").Index).Text
-            If (idAlmacen > 0 AndAlso idFamilia > 0 AndAlso idSubFamilia > 0 AndAlso id > 0 AndAlso Not String.IsNullOrEmpty(nombre) AndAlso idUnidadMedida > 0 AndAlso precioDolares >= 0 AndAlso precioPesos >= 0) Then
+            If (idAlmacen > 0 AndAlso idFamilia > 0 AndAlso idSubFamilia > 0 AndAlso id > 0 AndAlso Not String.IsNullOrEmpty(nombre) AndAlso idUnidadMedida > 0 AndAlso precio >= 0) Then
                 articulos.EIdAlmacen = idAlmacen
                 articulos.EIdFamilia = idFamilia
                 articulos.EIdSubFamilia = idSubFamilia
@@ -1355,8 +1466,7 @@ Public Class Principal
                 articulos.EIdUnidadMedida = idUnidadMedida
                 articulos.ECantidadMinima = cantidadMinima
                 articulos.ECantidadMaxima = cantidadMaxima
-                articulos.EPrecioDolares = precioDolares
-                articulos.EPrecioPesos = precioPesos
+                articulos.EPrecio = precio
                 articulos.ESeccion = seccion
                 articulos.EEstante = estante
                 articulos.ENivel = nivel
@@ -1383,7 +1493,8 @@ Public Class Principal
             articulos.EId = 0
             articulos.Eliminar()
         End If
-        If (conMensaje) Then
+        If (conMensaje And respuestaSi) Then
+            MessageBox.Show("Eliminado finalizado.", "Finalizado.", MessageBoxButtons.OK)
             CargarArticulos(idAlmacen, idFamilia, idSubFamilia)
         End If
 
@@ -1421,11 +1532,11 @@ Public Class Principal
 
     Private Sub FormatearSpreadProveedores()
 
-        spVarios.ActiveSheet.ColumnHeader.RowCount = 2 : Application.DoEvents()
-        spVarios.ActiveSheet.ColumnHeader.Rows(0, spVarios.ActiveSheet.ColumnHeader.Rows.Count - 1).Font = New Font(Principal.tipoLetraSpread, Principal.tamañoLetraSpread, FontStyle.Bold) : Application.DoEvents()
-        spVarios.ActiveSheet.ColumnHeader.Rows(0).Height = Principal.alturaFilasEncabezadosChicosSpread : Application.DoEvents()
-        spVarios.ActiveSheet.ColumnHeader.Rows(1).Height = Principal.alturaFilasEncabezadosGrandesSpread : Application.DoEvents()
-        spVarios.ActiveSheet.OperationMode = FarPoint.Win.Spread.OperationMode.Normal : Application.DoEvents()
+        spVarios.ActiveSheet.ColumnHeader.RowCount = 2
+        spVarios.ActiveSheet.ColumnHeader.Rows(0, spVarios.ActiveSheet.ColumnHeader.Rows.Count - 1).Font = New Font(Principal.tipoLetraSpread, Principal.tamañoLetraSpread, FontStyle.Bold)
+        spVarios.ActiveSheet.ColumnHeader.Rows(0).Height = Principal.alturaFilasEncabezadosChicosSpread
+        spVarios.ActiveSheet.ColumnHeader.Rows(1).Height = Principal.alturaFilasEncabezadosGrandesSpread
+        spVarios.ActiveSheet.OperationMode = FarPoint.Win.Spread.OperationMode.Normal
         ControlarSpreadEnterASiguienteColumna(spVarios)
         Dim numeracion As Integer = 0
         spVarios.ActiveSheet.Columns(numeracion).Tag = "id" : numeracion += 1
@@ -1436,33 +1547,34 @@ Public Class Principal
         spVarios.ActiveSheet.Columns(numeracion).Tag = "estado" : numeracion += 1
         spVarios.ActiveSheet.Columns(numeracion).Tag = "telefono" : numeracion += 1
         spVarios.ActiveSheet.Columns(numeracion).Tag = "correo" : numeracion += 1
-        spVarios.ActiveSheet.Columns("id").Width = 50 : Application.DoEvents()
-        spVarios.ActiveSheet.Columns("nombre").Width = 400 : Application.DoEvents()
-        spVarios.ActiveSheet.Columns("rfc").Width = 120 : Application.DoEvents()
-        spVarios.ActiveSheet.Columns("domicilio").Width = 300 : Application.DoEvents()
-        spVarios.ActiveSheet.Columns("municipio").Width = 200 : Application.DoEvents()
-        spVarios.ActiveSheet.Columns("estado").Width = 180 : Application.DoEvents()
-        spVarios.ActiveSheet.Columns("telefono").Width = 120 : Application.DoEvents()
-        spVarios.ActiveSheet.Columns("correo").Width = 150 : Application.DoEvents()
-        spVarios.ActiveSheet.Columns("id").CellType = tipoEntero : Application.DoEvents()
-        spVarios.ActiveSheet.Columns("nombre").CellType = tipoTexto : Application.DoEvents()
-        spVarios.ActiveSheet.Columns("rfc").CellType = tipoTexto : Application.DoEvents()
-        spVarios.ActiveSheet.Columns("domicilio").CellType = tipoTexto : Application.DoEvents()
-        spVarios.ActiveSheet.Columns("municipio").CellType = tipoTexto : Application.DoEvents()
-        spVarios.ActiveSheet.Columns("estado").CellType = tipoTexto : Application.DoEvents()
-        spVarios.ActiveSheet.Columns("telefono").CellType = tipoTexto : Application.DoEvents()
-        spVarios.ActiveSheet.Columns("correo").CellType = tipoTexto : Application.DoEvents()
-        spVarios.ActiveSheet.AddColumnHeaderSpanCell(0, 0, 1, spVarios.ActiveSheet.Columns.Count) : Application.DoEvents()
-        spVarios.ActiveSheet.ColumnHeader.Cells(0, 0).Value = "P  r  o  v  e  d  o  r  e  s".ToUpper() : Application.DoEvents()
-        spVarios.ActiveSheet.ColumnHeader.Cells(1, spVarios.ActiveSheet.Columns("id").Index).Value = "No. *".ToUpper() : Application.DoEvents()
-        spVarios.ActiveSheet.ColumnHeader.Cells(1, spVarios.ActiveSheet.Columns("nombre").Index).Value = "Nombre *".ToUpper() : Application.DoEvents()
-        spVarios.ActiveSheet.ColumnHeader.Cells(1, spVarios.ActiveSheet.Columns("rfc").Index).Value = "Rfc".ToUpper() : Application.DoEvents()
-        spVarios.ActiveSheet.ColumnHeader.Cells(1, spVarios.ActiveSheet.Columns("domicilio").Index).Value = "Domicilio".ToUpper() : Application.DoEvents()
-        spVarios.ActiveSheet.ColumnHeader.Cells(1, spVarios.ActiveSheet.Columns("municipio").Index).Value = "Municipio".ToUpper() : Application.DoEvents()
-        spVarios.ActiveSheet.ColumnHeader.Cells(1, spVarios.ActiveSheet.Columns("estado").Index).Value = "Estado".ToUpper() : Application.DoEvents()
-        spVarios.ActiveSheet.ColumnHeader.Cells(1, spVarios.ActiveSheet.Columns("telefono").Index).Value = "Teléfono".ToUpper() : Application.DoEvents()
-        spVarios.ActiveSheet.ColumnHeader.Cells(1, spVarios.ActiveSheet.Columns("correo").Index).Value = "Correo".ToUpper() : Application.DoEvents() 
-        spVarios.ActiveSheet.Rows.Count += 1 : Application.DoEvents()
+        spVarios.ActiveSheet.Columns("id").Width = 50
+        spVarios.ActiveSheet.Columns("nombre").Width = 400
+        spVarios.ActiveSheet.Columns("rfc").Width = 120
+        spVarios.ActiveSheet.Columns("domicilio").Width = 300
+        spVarios.ActiveSheet.Columns("municipio").Width = 200
+        spVarios.ActiveSheet.Columns("estado").Width = 180
+        spVarios.ActiveSheet.Columns("telefono").Width = 120
+        spVarios.ActiveSheet.Columns("correo").Width = 150
+        spVarios.ActiveSheet.Columns("id").CellType = tipoEntero
+        spVarios.ActiveSheet.Columns("nombre").CellType = tipoTexto
+        spVarios.ActiveSheet.Columns("rfc").CellType = tipoTexto
+        spVarios.ActiveSheet.Columns("domicilio").CellType = tipoTexto
+        spVarios.ActiveSheet.Columns("municipio").CellType = tipoTexto
+        spVarios.ActiveSheet.Columns("estado").CellType = tipoTexto
+        spVarios.ActiveSheet.Columns("telefono").CellType = tipoTexto
+        spVarios.ActiveSheet.Columns("correo").CellType = tipoTexto
+        spVarios.ActiveSheet.AddColumnHeaderSpanCell(0, 0, 1, spVarios.ActiveSheet.Columns.Count)
+        spVarios.ActiveSheet.ColumnHeader.Cells(0, 0).Value = "P  r  o  v  e  d  o  r  e  s".ToUpper()
+        spVarios.ActiveSheet.ColumnHeader.Cells(1, spVarios.ActiveSheet.Columns("id").Index).Value = "No. *".ToUpper()
+        spVarios.ActiveSheet.ColumnHeader.Cells(1, spVarios.ActiveSheet.Columns("nombre").Index).Value = "Nombre *".ToUpper()
+        spVarios.ActiveSheet.ColumnHeader.Cells(1, spVarios.ActiveSheet.Columns("rfc").Index).Value = "Rfc".ToUpper()
+        spVarios.ActiveSheet.ColumnHeader.Cells(1, spVarios.ActiveSheet.Columns("domicilio").Index).Value = "Domicilio".ToUpper()
+        spVarios.ActiveSheet.ColumnHeader.Cells(1, spVarios.ActiveSheet.Columns("municipio").Index).Value = "Municipio".ToUpper()
+        spVarios.ActiveSheet.ColumnHeader.Cells(1, spVarios.ActiveSheet.Columns("estado").Index).Value = "Estado".ToUpper()
+        spVarios.ActiveSheet.ColumnHeader.Cells(1, spVarios.ActiveSheet.Columns("telefono").Index).Value = "Teléfono".ToUpper()
+        spVarios.ActiveSheet.ColumnHeader.Cells(1, spVarios.ActiveSheet.Columns("correo").Index).Value = "Correo".ToUpper()
+        spVarios.ActiveSheet.Rows.Count += 1
+        Application.DoEvents()
 
     End Sub
 
@@ -1470,7 +1582,7 @@ Public Class Principal
 
         EliminarProveedores(False)
         For fila As Integer = 0 To spVarios.ActiveSheet.Rows.Count - 1
-            Dim id As Integer = LogicaCatalogos.Funciones.ValidarNumero(spVarios.ActiveSheet.Cells(fila, spVarios.ActiveSheet.Columns("id").Index).Text)
+            Dim id As Integer = LogicaCatalogos.Funciones.ValidarNumeroACero(spVarios.ActiveSheet.Cells(fila, spVarios.ActiveSheet.Columns("id").Index).Text)
             Dim nombre As String = spVarios.ActiveSheet.Cells(fila, spVarios.ActiveSheet.Columns("nombre").Index).Text
             Dim rfc As String = spVarios.ActiveSheet.Cells(fila, spVarios.ActiveSheet.Columns("rfc").Index).Text
             Dim domicilio As String = spVarios.ActiveSheet.Cells(fila, spVarios.ActiveSheet.Columns("domicilio").Index).Text
@@ -1507,7 +1619,8 @@ Public Class Principal
             proveedores.EId = 0
             proveedores.Eliminar()
         End If
-        If (conMensaje) Then
+        If (conMensaje And respuestaSi) Then
+            MessageBox.Show("Eliminado finalizado.", "Finalizado.", MessageBoxButtons.OK)
             CargarProveedores()
         End If
 
@@ -1539,24 +1652,25 @@ Public Class Principal
 
     Private Sub FormatearSpreadMonedas()
 
-        spVarios.ActiveSheet.ColumnHeader.RowCount = 2 : Application.DoEvents()
-        spVarios.ActiveSheet.ColumnHeader.Rows(0, spVarios.ActiveSheet.ColumnHeader.Rows.Count - 1).Font = New Font(Principal.tipoLetraSpread, Principal.tamañoLetraSpread, FontStyle.Bold) : Application.DoEvents()
-        spVarios.ActiveSheet.ColumnHeader.Rows(0).Height = Principal.alturaFilasEncabezadosChicosSpread : Application.DoEvents()
-        spVarios.ActiveSheet.ColumnHeader.Rows(1).Height = Principal.alturaFilasEncabezadosGrandesSpread : Application.DoEvents()
-        spVarios.ActiveSheet.OperationMode = FarPoint.Win.Spread.OperationMode.Normal : Application.DoEvents()
+        spVarios.ActiveSheet.ColumnHeader.RowCount = 2
+        spVarios.ActiveSheet.ColumnHeader.Rows(0, spVarios.ActiveSheet.ColumnHeader.Rows.Count - 1).Font = New Font(Principal.tipoLetraSpread, Principal.tamañoLetraSpread, FontStyle.Bold)
+        spVarios.ActiveSheet.ColumnHeader.Rows(0).Height = Principal.alturaFilasEncabezadosChicosSpread
+        spVarios.ActiveSheet.ColumnHeader.Rows(1).Height = Principal.alturaFilasEncabezadosGrandesSpread
+        spVarios.ActiveSheet.OperationMode = FarPoint.Win.Spread.OperationMode.Normal
         ControlarSpreadEnterASiguienteColumna(spVarios)
         Dim numeracion As Integer = 0
         spVarios.ActiveSheet.Columns(numeracion).Tag = "id" : numeracion += 1
         spVarios.ActiveSheet.Columns(numeracion).Tag = "nombre" : numeracion += 1
-        spVarios.ActiveSheet.Columns("id").Width = 50 : Application.DoEvents()
-        spVarios.ActiveSheet.Columns("nombre").Width = 400 : Application.DoEvents()
-        spVarios.ActiveSheet.Columns("id").CellType = tipoEntero : Application.DoEvents()
-        spVarios.ActiveSheet.Columns("nombre").CellType = tipoTexto : Application.DoEvents()
-        spVarios.ActiveSheet.AddColumnHeaderSpanCell(0, 0, 1, spVarios.ActiveSheet.Columns.Count) : Application.DoEvents()
-        spVarios.ActiveSheet.ColumnHeader.Cells(0, 0).Value = "M  o  n  e  d  a  s".ToUpper() : Application.DoEvents()
-        spVarios.ActiveSheet.ColumnHeader.Cells(1, spVarios.ActiveSheet.Columns("id").Index).Value = "No. *".ToUpper() : Application.DoEvents()
-        spVarios.ActiveSheet.ColumnHeader.Cells(1, spVarios.ActiveSheet.Columns("nombre").Index).Value = "Nombre *".ToUpper() : Application.DoEvents()
-        spVarios.ActiveSheet.Rows.Count += 1 : Application.DoEvents()
+        spVarios.ActiveSheet.Columns("id").Width = 50
+        spVarios.ActiveSheet.Columns("nombre").Width = 400
+        spVarios.ActiveSheet.Columns("id").CellType = tipoEntero
+        spVarios.ActiveSheet.Columns("nombre").CellType = tipoTexto
+        spVarios.ActiveSheet.AddColumnHeaderSpanCell(0, 0, 1, spVarios.ActiveSheet.Columns.Count)
+        spVarios.ActiveSheet.ColumnHeader.Cells(0, 0).Value = "M  o  n  e  d  a  s".ToUpper()
+        spVarios.ActiveSheet.ColumnHeader.Cells(1, spVarios.ActiveSheet.Columns("id").Index).Value = "No. *".ToUpper()
+        spVarios.ActiveSheet.ColumnHeader.Cells(1, spVarios.ActiveSheet.Columns("nombre").Index).Value = "Nombre *".ToUpper()
+        spVarios.ActiveSheet.Rows.Count += 1
+        Application.DoEvents()
 
     End Sub
 
@@ -1564,8 +1678,8 @@ Public Class Principal
 
         EliminarMonedas(False)
         For fila As Integer = 0 To spVarios.ActiveSheet.Rows.Count - 1
-            Dim id As Integer = LogicaCatalogos.Funciones.ValidarNumero(spVarios.ActiveSheet.Cells(fila, spVarios.ActiveSheet.Columns("id").Index).Text)
-            Dim nombre As String = spVarios.ActiveSheet.Cells(fila, spVarios.ActiveSheet.Columns("nombre").Index).Text 
+            Dim id As Integer = LogicaCatalogos.Funciones.ValidarNumeroACero(spVarios.ActiveSheet.Cells(fila, spVarios.ActiveSheet.Columns("id").Index).Text)
+            Dim nombre As String = spVarios.ActiveSheet.Cells(fila, spVarios.ActiveSheet.Columns("nombre").Index).Text
             If (id > 0 AndAlso Not String.IsNullOrEmpty(nombre)) Then
                 monedas.EId = id
                 monedas.ENombre = nombre
@@ -1589,8 +1703,9 @@ Public Class Principal
             monedas.EId = 0
             monedas.Eliminar()
         End If
-        If (conMensaje) Then
-            CargarProveedores()
+        If (conMensaje And respuestaSi) Then
+            MessageBox.Show("Eliminado finalizado.", "Finalizado.", MessageBoxButtons.OK)
+            CargarMonedas()
         End If
 
     End Sub
@@ -1621,24 +1736,25 @@ Public Class Principal
 
     Private Sub FormatearSpreadTiposEntradas()
 
-        spVarios.ActiveSheet.ColumnHeader.RowCount = 2 : Application.DoEvents()
-        spVarios.ActiveSheet.ColumnHeader.Rows(0, spVarios.ActiveSheet.ColumnHeader.Rows.Count - 1).Font = New Font(Principal.tipoLetraSpread, Principal.tamañoLetraSpread, FontStyle.Bold) : Application.DoEvents()
-        spVarios.ActiveSheet.ColumnHeader.Rows(0).Height = Principal.alturaFilasEncabezadosChicosSpread : Application.DoEvents()
-        spVarios.ActiveSheet.ColumnHeader.Rows(1).Height = Principal.alturaFilasEncabezadosGrandesSpread : Application.DoEvents()
-        spVarios.ActiveSheet.OperationMode = FarPoint.Win.Spread.OperationMode.Normal : Application.DoEvents()
+        spVarios.ActiveSheet.ColumnHeader.RowCount = 2
+        spVarios.ActiveSheet.ColumnHeader.Rows(0, spVarios.ActiveSheet.ColumnHeader.Rows.Count - 1).Font = New Font(Principal.tipoLetraSpread, Principal.tamañoLetraSpread, FontStyle.Bold)
+        spVarios.ActiveSheet.ColumnHeader.Rows(0).Height = Principal.alturaFilasEncabezadosChicosSpread
+        spVarios.ActiveSheet.ColumnHeader.Rows(1).Height = Principal.alturaFilasEncabezadosGrandesSpread
+        spVarios.ActiveSheet.OperationMode = FarPoint.Win.Spread.OperationMode.Normal
         ControlarSpreadEnterASiguienteColumna(spVarios)
         Dim numeracion As Integer = 0
         spVarios.ActiveSheet.Columns(numeracion).Tag = "id" : numeracion += 1
         spVarios.ActiveSheet.Columns(numeracion).Tag = "nombre" : numeracion += 1
-        spVarios.ActiveSheet.Columns("id").Width = 50 : Application.DoEvents()
-        spVarios.ActiveSheet.Columns("nombre").Width = 400 : Application.DoEvents()
-        spVarios.ActiveSheet.Columns("id").CellType = tipoEntero : Application.DoEvents()
-        spVarios.ActiveSheet.Columns("nombre").CellType = tipoTexto : Application.DoEvents()
-        spVarios.ActiveSheet.AddColumnHeaderSpanCell(0, 0, 1, spVarios.ActiveSheet.Columns.Count) : Application.DoEvents()
-        spVarios.ActiveSheet.ColumnHeader.Cells(0, 0).Value = "T  i  p  o  s      d  e      E  n  t  r  a  d  a  s".ToUpper() : Application.DoEvents()
-        spVarios.ActiveSheet.ColumnHeader.Cells(1, spVarios.ActiveSheet.Columns("id").Index).Value = "No. *".ToUpper() : Application.DoEvents()
-        spVarios.ActiveSheet.ColumnHeader.Cells(1, spVarios.ActiveSheet.Columns("nombre").Index).Value = "Nombre *".ToUpper() : Application.DoEvents()
-        spVarios.ActiveSheet.Rows.Count += 1 : Application.DoEvents()
+        spVarios.ActiveSheet.Columns("id").Width = 50
+        spVarios.ActiveSheet.Columns("nombre").Width = 400
+        spVarios.ActiveSheet.Columns("id").CellType = tipoEntero
+        spVarios.ActiveSheet.Columns("nombre").CellType = tipoTexto
+        spVarios.ActiveSheet.AddColumnHeaderSpanCell(0, 0, 1, spVarios.ActiveSheet.Columns.Count)
+        spVarios.ActiveSheet.ColumnHeader.Cells(0, 0).Value = "T  i  p  o  s      d  e      E  n  t  r  a  d  a  s".ToUpper()
+        spVarios.ActiveSheet.ColumnHeader.Cells(1, spVarios.ActiveSheet.Columns("id").Index).Value = "No. *".ToUpper()
+        spVarios.ActiveSheet.ColumnHeader.Cells(1, spVarios.ActiveSheet.Columns("nombre").Index).Value = "Nombre *".ToUpper()
+        spVarios.ActiveSheet.Rows.Count += 1
+        Application.DoEvents()
 
     End Sub
 
@@ -1646,7 +1762,7 @@ Public Class Principal
 
         EliminarTiposEntradas(False)
         For fila As Integer = 0 To spVarios.ActiveSheet.Rows.Count - 1
-            Dim id As Integer = LogicaCatalogos.Funciones.ValidarNumero(spVarios.ActiveSheet.Cells(fila, spVarios.ActiveSheet.Columns("id").Index).Text)
+            Dim id As Integer = LogicaCatalogos.Funciones.ValidarNumeroACero(spVarios.ActiveSheet.Cells(fila, spVarios.ActiveSheet.Columns("id").Index).Text)
             Dim nombre As String = spVarios.ActiveSheet.Cells(fila, spVarios.ActiveSheet.Columns("nombre").Index).Text
             If (id > 0 AndAlso Not String.IsNullOrEmpty(nombre)) Then
                 tiposEntradas.EId = id
@@ -1671,7 +1787,8 @@ Public Class Principal
             tiposEntradas.EId = 0
             tiposEntradas.Eliminar()
         End If
-        If (conMensaje) Then
+        If (conMensaje And respuestaSi) Then
+            MessageBox.Show("Eliminado finalizado.", "Finalizado.", MessageBoxButtons.OK)
             CargarTiposEntradas()
         End If
 
@@ -1703,24 +1820,25 @@ Public Class Principal
 
     Private Sub FormatearSpreadTiposSalidas()
 
-        spVarios.ActiveSheet.ColumnHeader.RowCount = 2 : Application.DoEvents()
-        spVarios.ActiveSheet.ColumnHeader.Rows(0, spVarios.ActiveSheet.ColumnHeader.Rows.Count - 1).Font = New Font(Principal.tipoLetraSpread, Principal.tamañoLetraSpread, FontStyle.Bold) : Application.DoEvents()
-        spVarios.ActiveSheet.ColumnHeader.Rows(0).Height = Principal.alturaFilasEncabezadosChicosSpread : Application.DoEvents()
-        spVarios.ActiveSheet.ColumnHeader.Rows(1).Height = Principal.alturaFilasEncabezadosGrandesSpread : Application.DoEvents()
-        spVarios.ActiveSheet.OperationMode = FarPoint.Win.Spread.OperationMode.Normal : Application.DoEvents()
+        spVarios.ActiveSheet.ColumnHeader.RowCount = 2
+        spVarios.ActiveSheet.ColumnHeader.Rows(0, spVarios.ActiveSheet.ColumnHeader.Rows.Count - 1).Font = New Font(Principal.tipoLetraSpread, Principal.tamañoLetraSpread, FontStyle.Bold)
+        spVarios.ActiveSheet.ColumnHeader.Rows(0).Height = Principal.alturaFilasEncabezadosChicosSpread
+        spVarios.ActiveSheet.ColumnHeader.Rows(1).Height = Principal.alturaFilasEncabezadosGrandesSpread
+        spVarios.ActiveSheet.OperationMode = FarPoint.Win.Spread.OperationMode.Normal
         ControlarSpreadEnterASiguienteColumna(spVarios)
         Dim numeracion As Integer = 0
         spVarios.ActiveSheet.Columns(numeracion).Tag = "id" : numeracion += 1
         spVarios.ActiveSheet.Columns(numeracion).Tag = "nombre" : numeracion += 1
-        spVarios.ActiveSheet.Columns("id").Width = 50 : Application.DoEvents()
-        spVarios.ActiveSheet.Columns("nombre").Width = 400 : Application.DoEvents()
-        spVarios.ActiveSheet.Columns("id").CellType = tipoEntero : Application.DoEvents()
-        spVarios.ActiveSheet.Columns("nombre").CellType = tipoTexto : Application.DoEvents()
-        spVarios.ActiveSheet.AddColumnHeaderSpanCell(0, 0, 1, spVarios.ActiveSheet.Columns.Count) : Application.DoEvents()
-        spVarios.ActiveSheet.ColumnHeader.Cells(0, 0).Value = "T  i  p  o  s      d  e      S  a  l  i  d  a  s".ToUpper() : Application.DoEvents()
-        spVarios.ActiveSheet.ColumnHeader.Cells(1, spVarios.ActiveSheet.Columns("id").Index).Value = "No. *".ToUpper() : Application.DoEvents()
-        spVarios.ActiveSheet.ColumnHeader.Cells(1, spVarios.ActiveSheet.Columns("nombre").Index).Value = "Nombre *".ToUpper() : Application.DoEvents()
-        spVarios.ActiveSheet.Rows.Count += 1 : Application.DoEvents()
+        spVarios.ActiveSheet.Columns("id").Width = 50
+        spVarios.ActiveSheet.Columns("nombre").Width = 400
+        spVarios.ActiveSheet.Columns("id").CellType = tipoEntero
+        spVarios.ActiveSheet.Columns("nombre").CellType = tipoTexto
+        spVarios.ActiveSheet.AddColumnHeaderSpanCell(0, 0, 1, spVarios.ActiveSheet.Columns.Count)
+        spVarios.ActiveSheet.ColumnHeader.Cells(0, 0).Value = "T  i  p  o  s      d  e      S  a  l  i  d  a  s".ToUpper()
+        spVarios.ActiveSheet.ColumnHeader.Cells(1, spVarios.ActiveSheet.Columns("id").Index).Value = "No. *".ToUpper()
+        spVarios.ActiveSheet.ColumnHeader.Cells(1, spVarios.ActiveSheet.Columns("nombre").Index).Value = "Nombre *".ToUpper()
+        spVarios.ActiveSheet.Rows.Count += 1
+        Application.DoEvents()
 
     End Sub
 
@@ -1728,7 +1846,7 @@ Public Class Principal
 
         EliminarTiposSalidas(False)
         For fila As Integer = 0 To spVarios.ActiveSheet.Rows.Count - 1
-            Dim id As Integer = LogicaCatalogos.Funciones.ValidarNumero(spVarios.ActiveSheet.Cells(fila, spVarios.ActiveSheet.Columns("id").Index).Text)
+            Dim id As Integer = LogicaCatalogos.Funciones.ValidarNumeroACero(spVarios.ActiveSheet.Cells(fila, spVarios.ActiveSheet.Columns("id").Index).Text)
             Dim nombre As String = spVarios.ActiveSheet.Cells(fila, spVarios.ActiveSheet.Columns("nombre").Index).Text
             If (id > 0 AndAlso Not String.IsNullOrEmpty(nombre)) Then
                 tiposSalidas.EId = id
@@ -1753,12 +1871,12 @@ Public Class Principal
             tiposSalidas.EId = 0
             tiposSalidas.Eliminar()
         End If
-        If (conMensaje) Then
+        If (conMensaje And respuestaSi) Then
+            MessageBox.Show("Eliminado finalizado.", "Finalizado.", MessageBoxButtons.OK)
             CargarTiposSalidas()
         End If
 
     End Sub
-
 
     Private Sub SeleccionoUnidadesMedidas()
 
@@ -1786,24 +1904,25 @@ Public Class Principal
 
     Private Sub FormatearSpreadUnidadesMedidas()
 
-        spVarios.ActiveSheet.ColumnHeader.RowCount = 2 : Application.DoEvents()
-        spVarios.ActiveSheet.ColumnHeader.Rows(0, spVarios.ActiveSheet.ColumnHeader.Rows.Count - 1).Font = New Font(Principal.tipoLetraSpread, Principal.tamañoLetraSpread, FontStyle.Bold) : Application.DoEvents()
-        spVarios.ActiveSheet.ColumnHeader.Rows(0).Height = Principal.alturaFilasEncabezadosChicosSpread : Application.DoEvents()
-        spVarios.ActiveSheet.ColumnHeader.Rows(1).Height = Principal.alturaFilasEncabezadosGrandesSpread : Application.DoEvents()
-        spVarios.ActiveSheet.OperationMode = FarPoint.Win.Spread.OperationMode.Normal : Application.DoEvents()
+        spVarios.ActiveSheet.ColumnHeader.RowCount = 2
+        spVarios.ActiveSheet.ColumnHeader.Rows(0, spVarios.ActiveSheet.ColumnHeader.Rows.Count - 1).Font = New Font(Principal.tipoLetraSpread, Principal.tamañoLetraSpread, FontStyle.Bold)
+        spVarios.ActiveSheet.ColumnHeader.Rows(0).Height = Principal.alturaFilasEncabezadosChicosSpread
+        spVarios.ActiveSheet.ColumnHeader.Rows(1).Height = Principal.alturaFilasEncabezadosGrandesSpread
+        spVarios.ActiveSheet.OperationMode = FarPoint.Win.Spread.OperationMode.Normal
         ControlarSpreadEnterASiguienteColumna(spVarios)
         Dim numeracion As Integer = 0
         spVarios.ActiveSheet.Columns(numeracion).Tag = "id" : numeracion += 1
         spVarios.ActiveSheet.Columns(numeracion).Tag = "nombre" : numeracion += 1
-        spVarios.ActiveSheet.Columns("id").Width = 50 : Application.DoEvents()
-        spVarios.ActiveSheet.Columns("nombre").Width = 400 : Application.DoEvents()
-        spVarios.ActiveSheet.Columns("id").CellType = tipoEntero : Application.DoEvents()
-        spVarios.ActiveSheet.Columns("nombre").CellType = tipoTexto : Application.DoEvents()
-        spVarios.ActiveSheet.AddColumnHeaderSpanCell(0, 0, 1, spVarios.ActiveSheet.Columns.Count) : Application.DoEvents()
-        spVarios.ActiveSheet.ColumnHeader.Cells(0, 0).Value = "U  n  i  d  a  d  e  s      d  e      M  e  d  i  d  a  s ".ToUpper() : Application.DoEvents()
-        spVarios.ActiveSheet.ColumnHeader.Cells(1, spVarios.ActiveSheet.Columns("id").Index).Value = "No. *".ToUpper() : Application.DoEvents()
-        spVarios.ActiveSheet.ColumnHeader.Cells(1, spVarios.ActiveSheet.Columns("nombre").Index).Value = "Nombre *".ToUpper() : Application.DoEvents()
-        spVarios.ActiveSheet.Rows.Count += 1 : Application.DoEvents()
+        spVarios.ActiveSheet.Columns("id").Width = 50
+        spVarios.ActiveSheet.Columns("nombre").Width = 400
+        spVarios.ActiveSheet.Columns("id").CellType = tipoEntero
+        spVarios.ActiveSheet.Columns("nombre").CellType = tipoTexto
+        spVarios.ActiveSheet.AddColumnHeaderSpanCell(0, 0, 1, spVarios.ActiveSheet.Columns.Count)
+        spVarios.ActiveSheet.ColumnHeader.Cells(0, 0).Value = "U  n  i  d  a  d  e  s      d  e      M  e  d  i  d  a  s ".ToUpper()
+        spVarios.ActiveSheet.ColumnHeader.Cells(1, spVarios.ActiveSheet.Columns("id").Index).Value = "No. *".ToUpper()
+        spVarios.ActiveSheet.ColumnHeader.Cells(1, spVarios.ActiveSheet.Columns("nombre").Index).Value = "Nombre *".ToUpper()
+        spVarios.ActiveSheet.Rows.Count += 1
+        Application.DoEvents()
 
     End Sub
 
@@ -1811,7 +1930,7 @@ Public Class Principal
 
         EliminarUnidadesMedidas(False)
         For fila As Integer = 0 To spVarios.ActiveSheet.Rows.Count - 1
-            Dim id As Integer = LogicaCatalogos.Funciones.ValidarNumero(spVarios.ActiveSheet.Cells(fila, spVarios.ActiveSheet.Columns("id").Index).Text)
+            Dim id As Integer = LogicaCatalogos.Funciones.ValidarNumeroACero(spVarios.ActiveSheet.Cells(fila, spVarios.ActiveSheet.Columns("id").Index).Text)
             Dim nombre As String = spVarios.ActiveSheet.Cells(fila, spVarios.ActiveSheet.Columns("nombre").Index).Text
             If (id > 0 AndAlso Not String.IsNullOrEmpty(nombre)) Then
                 unidadesMedidas.EId = id
@@ -1836,8 +1955,226 @@ Public Class Principal
             unidadesMedidas.EId = 0
             unidadesMedidas.Eliminar()
         End If
-        If (conMensaje) Then
+        If (conMensaje And respuestaSi) Then
+            MessageBox.Show("Eliminado finalizado.", "Finalizado.", MessageBoxButtons.OK)
             CargarUnidadesMedidas()
+        End If
+
+    End Sub
+
+    Private Sub SeleccionoTiposCambios()
+
+        Me.Cursor = Cursors.WaitCursor
+        Me.opcionSeleccionada = OpcionMenu.TiposCambios
+        OcultarSpreads()
+        LimpiarSpread(spVarios)
+        CargarTiposCambios()
+        Me.Cursor = Cursors.Default
+
+    End Sub
+
+    Private Sub CargarTiposCambios()
+
+        spVarios.Height = Me.altoTotal
+        spVarios.Width = Me.anchoTotal
+        spVarios.Top = Me.arriba
+        spVarios.Left = Me.izquierda
+        spVarios.Show()
+        tiposCambios.EIdMoneda = 0
+        'tiposCambios.EFecha = Convert.ToDateTime("01/01/1899")
+        spVarios.ActiveSheet.DataSource = tiposCambios.ObtenerListadoReporte()
+        FormatearSpreadTiposCambios()
+
+    End Sub
+
+    Private Sub FormatearSpreadTiposCambios()
+
+        spVarios.ActiveSheet.ColumnHeader.RowCount = 2
+        spVarios.ActiveSheet.ColumnHeader.Rows(0, spVarios.ActiveSheet.ColumnHeader.Rows.Count - 1).Font = New Font(Principal.tipoLetraSpread, Principal.tamañoLetraSpread, FontStyle.Bold)
+        spVarios.ActiveSheet.ColumnHeader.Rows(0).Height = Principal.alturaFilasEncabezadosChicosSpread
+        spVarios.ActiveSheet.ColumnHeader.Rows(1).Height = Principal.alturaFilasEncabezadosGrandesSpread
+        spVarios.ActiveSheet.OperationMode = FarPoint.Win.Spread.OperationMode.Normal
+        ControlarSpreadEnterASiguienteColumna(spVarios)
+        Dim numeracion As Integer = 0
+        spVarios.ActiveSheet.Columns(numeracion).Tag = "idMoneda" : numeracion += 1
+        spVarios.ActiveSheet.Columns(numeracion).Tag = "nombreMoneda" : numeracion += 1
+        spVarios.ActiveSheet.Columns(numeracion).Tag = "fecha" : numeracion += 1
+        spVarios.ActiveSheet.Columns(numeracion).Tag = "valor" : numeracion += 1
+        spVarios.ActiveSheet.Columns("idMoneda").Width = 50
+        spVarios.ActiveSheet.Columns("nombreMoneda").Width = 300
+        spVarios.ActiveSheet.Columns("fecha").Width = 100
+        spVarios.ActiveSheet.Columns("valor").Width = 100
+        spVarios.ActiveSheet.Columns("idMoneda").CellType = tipoEntero
+        spVarios.ActiveSheet.Columns("nombreMoneda").CellType = tipoTexto
+        spVarios.ActiveSheet.Columns("fecha").CellType = tipoFecha
+        spVarios.ActiveSheet.Columns("valor").CellType = tipoDoble
+        spVarios.ActiveSheet.AddColumnHeaderSpanCell(0, 0, 1, spVarios.ActiveSheet.Columns.Count)
+        spVarios.ActiveSheet.ColumnHeader.Cells(0, 0).Value = "T  i  p  o  s      d  e      C  a  m  b  i  o  s".ToUpper()
+        spVarios.ActiveSheet.ColumnHeader.Cells(1, spVarios.ActiveSheet.Columns("idMoneda").Index).Value = "No. *".ToUpper()
+        spVarios.ActiveSheet.ColumnHeader.Cells(1, spVarios.ActiveSheet.Columns("nombreMoneda").Index).Value = "Nombre Moneda *".ToUpper()
+        spVarios.ActiveSheet.ColumnHeader.Cells(1, spVarios.ActiveSheet.Columns("fecha").Index).Value = "Fecha *".ToUpper()
+        spVarios.ActiveSheet.ColumnHeader.Cells(1, spVarios.ActiveSheet.Columns("valor").Index).Value = "Valor *".ToUpper()
+        spVarios.ActiveSheet.Rows.Count += 1
+        Application.DoEvents()
+
+    End Sub
+
+    Private Sub GuardarEditarTiposCambios()
+
+        Dim fechaActual As Date = Today
+        EliminarTiposCambios(False, fechaActual)
+        For fila As Integer = 0 To spVarios.ActiveSheet.Rows.Count - 1
+            Dim idMoneda As Integer = LogicaCatalogos.Funciones.ValidarNumeroACero(spVarios.ActiveSheet.Cells(fila, spVarios.ActiveSheet.Columns("idMoneda").Index).Text)
+            Dim fecha As Date = spVarios.ActiveSheet.Cells(fila, spVarios.ActiveSheet.Columns("fecha").Index).Value
+            Dim valor As String = spVarios.ActiveSheet.Cells(fila, spVarios.ActiveSheet.Columns("valor").Index).Text
+            If (idMoneda > 0 AndAlso Not String.IsNullOrEmpty(fecha) AndAlso fecha = fechaActual AndAlso valor > 0) Then
+                tiposCambios.EIdMoneda = idMoneda
+                tiposCambios.EFecha = fecha
+                tiposCambios.EValor = valor
+                tiposCambios.Guardar()
+            End If
+        Next
+        MessageBox.Show("Guardado finalizado, solo de la fecha actual.", "Finalizado.", MessageBoxButtons.OK)
+        CargarTiposCambios()
+
+    End Sub
+
+    Private Sub EliminarTiposCambios(ByVal conMensaje As Boolean, ByVal fecha As Date)
+
+        Dim respuestaSi As Boolean = False
+        If (conMensaje) Then
+            If (MessageBox.Show("Confirmas que deseas eliminar todo lo de la fecha actual?", "Confirmación.", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes) Then
+                respuestaSi = True
+            End If
+        End If
+        If ((respuestaSi) Or (Not conMensaje)) Then
+            tiposCambios.EIdMoneda = 0
+            tiposCambios.EFecha = fecha
+            tiposCambios.Eliminar()
+        End If
+        If (conMensaje And respuestaSi) Then
+            MessageBox.Show("Eliminado finalizado, solo de la fecha actual.", "Finalizado.", MessageBoxButtons.OK)
+            CargarTiposCambios()
+        End If
+
+    End Sub
+     
+    Private Sub SeleccionoClientes()
+
+        Me.Cursor = Cursors.WaitCursor
+        Me.opcionSeleccionada = OpcionMenu.Clientes
+        OcultarSpreads()
+        LimpiarSpread(spVarios)
+        CargarClientes()
+        Me.Cursor = Cursors.Default
+
+    End Sub
+
+    Private Sub CargarClientes()
+
+        spVarios.Height = Me.altoTotal
+        spVarios.Width = Me.anchoTotal
+        spVarios.Top = Me.arriba
+        spVarios.Left = Me.izquierda
+        spVarios.Show()
+        clientes.EId = 0
+        spVarios.ActiveSheet.DataSource = clientes.ObtenerListadoReporte()
+        FormatearSpreadClientes()
+
+    End Sub
+
+    Private Sub FormatearSpreadClientes()
+
+        spVarios.ActiveSheet.ColumnHeader.RowCount = 2
+        spVarios.ActiveSheet.ColumnHeader.Rows(0, spVarios.ActiveSheet.ColumnHeader.Rows.Count - 1).Font = New Font(Principal.tipoLetraSpread, Principal.tamañoLetraSpread, FontStyle.Bold)
+        spVarios.ActiveSheet.ColumnHeader.Rows(0).Height = Principal.alturaFilasEncabezadosChicosSpread
+        spVarios.ActiveSheet.ColumnHeader.Rows(1).Height = Principal.alturaFilasEncabezadosGrandesSpread
+        spVarios.ActiveSheet.OperationMode = FarPoint.Win.Spread.OperationMode.Normal
+        ControlarSpreadEnterASiguienteColumna(spVarios)
+        Dim numeracion As Integer = 0
+        spVarios.ActiveSheet.Columns(numeracion).Tag = "id" : numeracion += 1
+        spVarios.ActiveSheet.Columns(numeracion).Tag = "nombre" : numeracion += 1
+        spVarios.ActiveSheet.Columns(numeracion).Tag = "rfc" : numeracion += 1
+        spVarios.ActiveSheet.Columns(numeracion).Tag = "domicilio" : numeracion += 1
+        spVarios.ActiveSheet.Columns(numeracion).Tag = "municipio" : numeracion += 1
+        spVarios.ActiveSheet.Columns(numeracion).Tag = "estado" : numeracion += 1
+        spVarios.ActiveSheet.Columns(numeracion).Tag = "telefono" : numeracion += 1
+        spVarios.ActiveSheet.Columns(numeracion).Tag = "correo" : numeracion += 1
+        spVarios.ActiveSheet.Columns("id").Width = 50
+        spVarios.ActiveSheet.Columns("nombre").Width = 400
+        spVarios.ActiveSheet.Columns("rfc").Width = 120
+        spVarios.ActiveSheet.Columns("domicilio").Width = 300
+        spVarios.ActiveSheet.Columns("municipio").Width = 200
+        spVarios.ActiveSheet.Columns("estado").Width = 180
+        spVarios.ActiveSheet.Columns("telefono").Width = 120
+        spVarios.ActiveSheet.Columns("correo").Width = 150
+        spVarios.ActiveSheet.Columns("id").CellType = tipoEntero
+        spVarios.ActiveSheet.Columns("nombre").CellType = tipoTexto
+        spVarios.ActiveSheet.Columns("rfc").CellType = tipoTexto
+        spVarios.ActiveSheet.Columns("domicilio").CellType = tipoTexto
+        spVarios.ActiveSheet.Columns("municipio").CellType = tipoTexto
+        spVarios.ActiveSheet.Columns("estado").CellType = tipoTexto
+        spVarios.ActiveSheet.Columns("telefono").CellType = tipoTexto
+        spVarios.ActiveSheet.Columns("correo").CellType = tipoTexto
+        spVarios.ActiveSheet.AddColumnHeaderSpanCell(0, 0, 1, spVarios.ActiveSheet.Columns.Count)
+        spVarios.ActiveSheet.ColumnHeader.Cells(0, 0).Value = "C  l  i  e  n  t  e  s".ToUpper()
+        spVarios.ActiveSheet.ColumnHeader.Cells(1, spVarios.ActiveSheet.Columns("id").Index).Value = "No. *".ToUpper()
+        spVarios.ActiveSheet.ColumnHeader.Cells(1, spVarios.ActiveSheet.Columns("nombre").Index).Value = "Nombre *".ToUpper()
+        spVarios.ActiveSheet.ColumnHeader.Cells(1, spVarios.ActiveSheet.Columns("rfc").Index).Value = "Rfc".ToUpper()
+        spVarios.ActiveSheet.ColumnHeader.Cells(1, spVarios.ActiveSheet.Columns("domicilio").Index).Value = "Domicilio".ToUpper()
+        spVarios.ActiveSheet.ColumnHeader.Cells(1, spVarios.ActiveSheet.Columns("municipio").Index).Value = "Municipio".ToUpper()
+        spVarios.ActiveSheet.ColumnHeader.Cells(1, spVarios.ActiveSheet.Columns("estado").Index).Value = "Estado".ToUpper()
+        spVarios.ActiveSheet.ColumnHeader.Cells(1, spVarios.ActiveSheet.Columns("telefono").Index).Value = "Teléfono".ToUpper()
+        spVarios.ActiveSheet.ColumnHeader.Cells(1, spVarios.ActiveSheet.Columns("correo").Index).Value = "Correo".ToUpper()
+        spVarios.ActiveSheet.Rows.Count += 1
+        Application.DoEvents()
+
+    End Sub
+
+    Private Sub GuardarEditarClientes()
+
+        EliminarClientes(False)
+        For fila As Integer = 0 To spVarios.ActiveSheet.Rows.Count - 1
+            Dim id As Integer = LogicaCatalogos.Funciones.ValidarNumeroACero(spVarios.ActiveSheet.Cells(fila, spVarios.ActiveSheet.Columns("id").Index).Text)
+            Dim nombre As String = spVarios.ActiveSheet.Cells(fila, spVarios.ActiveSheet.Columns("nombre").Index).Text
+            Dim rfc As String = spVarios.ActiveSheet.Cells(fila, spVarios.ActiveSheet.Columns("rfc").Index).Text
+            Dim domicilio As String = spVarios.ActiveSheet.Cells(fila, spVarios.ActiveSheet.Columns("domicilio").Index).Text
+            Dim municipio As String = spVarios.ActiveSheet.Cells(fila, spVarios.ActiveSheet.Columns("municipio").Index).Text
+            Dim estado As String = spVarios.ActiveSheet.Cells(fila, spVarios.ActiveSheet.Columns("estado").Index).Text
+            Dim telefono As String = spVarios.ActiveSheet.Cells(fila, spVarios.ActiveSheet.Columns("telefono").Index).Text
+            Dim correo As String = spVarios.ActiveSheet.Cells(fila, spVarios.ActiveSheet.Columns("correo").Index).Text
+            If (id > 0 AndAlso Not String.IsNullOrEmpty(nombre)) Then
+                clientes.EId = id
+                clientes.ENombre = nombre
+                clientes.Erfc = rfc
+                clientes.EDomicilio = domicilio
+                clientes.EMunicipio = municipio
+                clientes.EEstado = estado
+                clientes.ETelefono = telefono
+                clientes.ECorreo = correo
+                clientes.Guardar()
+            End If
+        Next
+        MessageBox.Show("Guardado finalizado.", "Finalizado.", MessageBoxButtons.OK)
+        CargarClientes()
+
+    End Sub
+
+    Private Sub EliminarClientes(ByVal conMensaje As Boolean)
+
+        Dim respuestaSi As Boolean = False
+        If (conMensaje) Then
+            If (MessageBox.Show("Confirmas que deseas eliminar todo?", "Confirmación.", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes) Then
+                respuestaSi = True
+            End If
+        End If
+        If ((respuestaSi) Or (Not conMensaje)) Then
+            clientes.EId = 0
+            clientes.Eliminar()
+        End If
+        If (conMensaje And respuestaSi) Then
+            MessageBox.Show("Eliminado finalizado.", "Finalizado.", MessageBoxButtons.OK)
+            CargarClientes()
         End If
 
     End Sub
@@ -1855,10 +2192,12 @@ Public Class Principal
         SubFamilias = 3
         Articulos = 4
         Proveedores = 5
-        Monedas = 6
-        TiposEntradas = 7
-        TiposSalidas = 8
-        UnidadesMedidas = 9
+        Clientes = 6
+        Monedas = 7
+        TiposCambios = 8
+        TiposEntradas = 9
+        TiposSalidas = 10
+        UnidadesMedidas = 11
 
     End Enum
 
