@@ -38,7 +38,7 @@ Public Class Almacenes
             Dim comando As New SqlCommand()
             comando.Connection = BaseDatos.conexionCatalogo
             comando.CommandText = "SELECT Id, Nombre FROM " & LogicaReporteSaldos.Programas.prefijoBaseDatosAlmacen & "Almacenes " & _
-            " UNION SELECT -1 AS Id, NULL AS Nombre FROM " & LogicaReporteSaldos.Programas.prefijoBaseDatosAlmacen & "Almacenes " & _
+            " UNION SELECT -1 AS Id, 'Todos' AS Nombre FROM " & LogicaReporteSaldos.Programas.prefijoBaseDatosAlmacen & "Almacenes " & _
             " ORDER BY Id ASC"
             BaseDatos.conexionCatalogo.Open()
             Dim lectorDatos As SqlDataReader

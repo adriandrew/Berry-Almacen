@@ -1,0 +1,8 @@
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Reporte de Actividades\Logica\bin\x86\Debug\LogicaReporteActividades.dll
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Reporte de Actividades\Logica\bin\x86\Debug\LogicaReporteActividades.pdb
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Reporte de Actividades\Logica\bin\x86\Debug\LogicaReporteActividades.xml
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Reporte de Actividades\Logica\obj\x86\Debug\LogicaReporteActividades.Resources.resources
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Reporte de Actividades\Logica\obj\x86\Debug\LogicaReporteAutorizaciones.vbproj.GenerateResource.Cache
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Reporte de Actividades\Logica\obj\x86\Debug\LogicaReporteActividades.dll
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Reporte de Actividades\Logica\obj\x86\Debug\LogicaReporteActividades.xml
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Reporte de Actividades\Logica\obj\x86\Debug\LogicaReporteActividades.pdb

@@ -1,0 +1,189 @@
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Catalogos\Escritorio\bin\x86\Release\CatalogosBerry.exe.config
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Catalogos\Escritorio\bin\x86\Release\CatalogosBerry.exe
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Catalogos\Escritorio\bin\x86\Release\CatalogosBerry.pdb
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Catalogos\Escritorio\bin\x86\Release\CatalogosBerry.xml
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Catalogos\Escritorio\bin\x86\Release\EntidadesCatalogos.dll
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Catalogos\Escritorio\bin\x86\Release\LogicaCatalogos.dll
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Catalogos\Escritorio\bin\x86\Release\EntidadesCatalogos.pdb
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Catalogos\Escritorio\bin\x86\Release\EntidadesCatalogos.xml
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Catalogos\Escritorio\bin\x86\Release\LogicaCatalogos.pdb
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Catalogos\Escritorio\bin\x86\Release\LogicaCatalogos.xml
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Catalogos\Escritorio\obj\x86\Release\Escritorio.vbprojResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Catalogos\Escritorio\obj\x86\Release\Catalogos.Resources.resources
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Catalogos\Escritorio\obj\x86\Release\Catalogos.Principal.resources
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Catalogos\Escritorio\obj\x86\Release\Escritorio.vbproj.GenerateResource.Cache
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Catalogos\Escritorio\obj\x86\Release\CatalogosBerry.exe.licenses
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Catalogos\Escritorio\obj\x86\Release\CatalogosBerry.exe
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Catalogos\Escritorio\obj\x86\Release\CatalogosBerry.xml
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Catalogos\Escritorio\obj\x86\Release\CatalogosBerry.pdb
+C:\Users\Andrew\Desktop\Actividades\Escritorio\bin\x86\Release\CatalogosBerry.exe.config
+C:\Users\Andrew\Desktop\Actividades\Escritorio\obj\x86\Release\CatalogosBerry.exe
+C:\Users\Andrew\Desktop\Actividades\Escritorio\obj\x86\Release\CatalogosBerry.xml
+C:\Users\Andrew\Desktop\Actividades\Escritorio\obj\x86\Release\CatalogosBerry.pdb
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Actividades\Escritorio\bin\x86\Release\EYE01.exe.config
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Actividades\Escritorio\bin\x86\Release\EYE01.exe
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Actividades\Escritorio\bin\x86\Release\EYE01.pdb
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Actividades\Escritorio\bin\x86\Release\EYE01.xml
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Actividades\Escritorio\bin\x86\Release\EntidadesActividades.dll
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Actividades\Escritorio\bin\x86\Release\LogicaActividades.dll
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Actividades\Escritorio\bin\x86\Release\EntidadesActividades.pdb
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Actividades\Escritorio\bin\x86\Release\EntidadesActividades.xml
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Actividades\Escritorio\bin\x86\Release\LogicaActividades.pdb
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Actividades\Escritorio\bin\x86\Release\LogicaActividades.xml
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Actividades\Escritorio\obj\x86\Release\Escritorio.vbprojResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Actividades\Escritorio\obj\x86\Release\Actividades.Resources.resources
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Actividades\Escritorio\obj\x86\Release\Actividades.Principal.resources
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Actividades\Escritorio\obj\x86\Release\Escritorio.vbproj.GenerateResource.Cache
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Actividades\Escritorio\obj\x86\Release\EYE01.exe.licenses
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Actividades\Escritorio\obj\x86\Release\EYE01.exe
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Actividades\Escritorio\obj\x86\Release\EYE01.xml
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Actividades\Escritorio\obj\x86\Release\EYE01.pdb
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Autorizaciones\Escritorio\bin\x86\Release\EYE06.exe.config
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Autorizaciones\Escritorio\bin\x86\Release\EYE06.exe
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Autorizaciones\Escritorio\bin\x86\Release\EYE06.pdb
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Autorizaciones\Escritorio\bin\x86\Release\EYE06.xml
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Autorizaciones\Escritorio\bin\x86\Release\EntidadesAutorizaciones.dll
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Autorizaciones\Escritorio\bin\x86\Release\LogicaAutorizaciones.dll
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Autorizaciones\Escritorio\bin\x86\Release\EntidadesAutorizaciones.pdb
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Autorizaciones\Escritorio\bin\x86\Release\EntidadesAutorizaciones.xml
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Autorizaciones\Escritorio\bin\x86\Release\LogicaAutorizaciones.pdb
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Autorizaciones\Escritorio\bin\x86\Release\LogicaAutorizaciones.xml
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Autorizaciones\Escritorio\obj\x86\Release\Escritorio.vbprojResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Autorizaciones\Escritorio\obj\x86\Release\Autorizaciones.Resources.resources
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Autorizaciones\Escritorio\obj\x86\Release\Autorizaciones.Principal.resources
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Autorizaciones\Escritorio\obj\x86\Release\Escritorio.vbproj.GenerateResource.Cache
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Autorizaciones\Escritorio\obj\x86\Release\EYE06.exe.licenses
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Autorizaciones\Escritorio\obj\x86\Release\EYE06.exe
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Autorizaciones\Escritorio\obj\x86\Release\EYE06.xml
+C:\Users\Administrator\Desktop\PROYECTOS PERSONALES\Proyecto Agenda-Bitacora\FUENTES MODIFICADOS\Autorizaciones\Escritorio\obj\x86\Release\EYE06.pdb
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Autorizaciones\Escritorio\bin\x86\Release\EYE03.exe.config
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Autorizaciones\Escritorio\bin\x86\Release\EYE03.exe
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Autorizaciones\Escritorio\bin\x86\Release\EYE03.pdb
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Autorizaciones\Escritorio\bin\x86\Release\EYE03.xml
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Autorizaciones\Escritorio\bin\x86\Release\EntidadesAutorizaciones.dll
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Autorizaciones\Escritorio\bin\x86\Release\LogicaAutorizaciones.dll
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Autorizaciones\Escritorio\bin\x86\Release\EntidadesAutorizaciones.pdb
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Autorizaciones\Escritorio\bin\x86\Release\EntidadesAutorizaciones.xml
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Autorizaciones\Escritorio\bin\x86\Release\LogicaAutorizaciones.pdb
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Autorizaciones\Escritorio\bin\x86\Release\LogicaAutorizaciones.xml
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Autorizaciones\Escritorio\obj\x86\Release\Escritorio.vbprojResolveAssemblyReference.cache
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Autorizaciones\Escritorio\obj\x86\Release\Autorizaciones.Resources.resources
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Autorizaciones\Escritorio\obj\x86\Release\Autorizaciones.Principal.resources
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Autorizaciones\Escritorio\obj\x86\Release\Escritorio.vbproj.GenerateResource.Cache
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Autorizaciones\Escritorio\obj\x86\Release\EYE03.exe.licenses
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Autorizaciones\Escritorio\obj\x86\Release\EYE03.exe
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Autorizaciones\Escritorio\obj\x86\Release\EYE03.xml
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Autorizaciones\Escritorio\obj\x86\Release\EYE03.pdb
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Reporte de Actividades\Escritorio\bin\x86\Release\EYE05.exe.config
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Reporte de Actividades\Escritorio\bin\x86\Release\EYE05.exe
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Reporte de Actividades\Escritorio\bin\x86\Release\EYE05.pdb
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Reporte de Actividades\Escritorio\bin\x86\Release\EYE05.xml
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Reporte de Actividades\Escritorio\bin\x86\Release\EntidadesReporteActividades.dll
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Reporte de Actividades\Escritorio\bin\x86\Release\LogicaReporteActividades.dll
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Reporte de Actividades\Escritorio\bin\x86\Release\EntidadesReporteActividades.pdb
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Reporte de Actividades\Escritorio\bin\x86\Release\EntidadesReporteActividades.xml
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Reporte de Actividades\Escritorio\bin\x86\Release\LogicaReporteActividades.pdb
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Reporte de Actividades\Escritorio\bin\x86\Release\LogicaReporteActividades.xml
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Reporte de Actividades\Escritorio\obj\x86\Release\Escritorio.vbprojResolveAssemblyReference.cache
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Reporte de Actividades\Escritorio\obj\x86\Release\ReporteActividades.Resources.resources
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Reporte de Actividades\Escritorio\obj\x86\Release\ReporteActividades.Principal.resources
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Reporte de Actividades\Escritorio\obj\x86\Release\Escritorio.vbproj.GenerateResource.Cache
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Reporte de Actividades\Escritorio\obj\x86\Release\EYE05.exe.licenses
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Reporte de Actividades\Escritorio\obj\x86\Release\EYE05.exe
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Reporte de Actividades\Escritorio\obj\x86\Release\EYE05.xml
+C:\Users\Andrew\Desktop\Proyectos Personales\Proyecto Agenda-Bitacora\Fuentes Modificados\Reporte de Actividades\Escritorio\obj\x86\Release\EYE05.pdb
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes\Reporte de Actividades\Escritorio\bin\x86\Release\EYE05.exe.config
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes\Reporte de Actividades\Escritorio\bin\x86\Release\EYE05.exe
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes\Reporte de Actividades\Escritorio\bin\x86\Release\EYE05.pdb
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes\Reporte de Actividades\Escritorio\bin\x86\Release\EYE05.xml
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes\Reporte de Actividades\Escritorio\bin\x86\Release\EntidadesReporteActividades.dll
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes\Reporte de Actividades\Escritorio\bin\x86\Release\LogicaReporteActividades.dll
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes\Reporte de Actividades\Escritorio\bin\x86\Release\EntidadesReporteActividades.pdb
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes\Reporte de Actividades\Escritorio\bin\x86\Release\EntidadesReporteActividades.xml
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes\Reporte de Actividades\Escritorio\bin\x86\Release\LogicaReporteActividades.pdb
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes\Reporte de Actividades\Escritorio\bin\x86\Release\LogicaReporteActividades.xml
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes\Reporte de Actividades\Escritorio\obj\x86\Release\Escritorio.vbprojResolveAssemblyReference.cache
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes\Reporte de Actividades\Escritorio\obj\x86\Release\ReporteActividades.Resources.resources
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes\Reporte de Actividades\Escritorio\obj\x86\Release\ReporteActividades.Principal.resources
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes\Reporte de Actividades\Escritorio\obj\x86\Release\Escritorio.vbproj.GenerateResource.Cache
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes\Reporte de Actividades\Escritorio\obj\x86\Release\EYE05.exe.licenses
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes\Reporte de Actividades\Escritorio\obj\x86\Release\EYE05.exe
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes\Reporte de Actividades\Escritorio\obj\x86\Release\EYE05.xml
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes\Reporte de Actividades\Escritorio\obj\x86\Release\EYE05.pdb
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes Modificados\Reporte de Actividades\Escritorio\bin\x86\Release\ACT05.exe.config
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes Modificados\Reporte de Actividades\Escritorio\bin\x86\Release\ACT05.exe
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes Modificados\Reporte de Actividades\Escritorio\bin\x86\Release\ACT05.pdb
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes Modificados\Reporte de Actividades\Escritorio\bin\x86\Release\ACT05.xml
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes Modificados\Reporte de Actividades\Escritorio\bin\x86\Release\EntidadesReporteActividades.dll
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes Modificados\Reporte de Actividades\Escritorio\bin\x86\Release\LogicaReporteActividades.dll
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes Modificados\Reporte de Actividades\Escritorio\bin\x86\Release\EntidadesReporteActividades.pdb
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes Modificados\Reporte de Actividades\Escritorio\bin\x86\Release\EntidadesReporteActividades.xml
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes Modificados\Reporte de Actividades\Escritorio\bin\x86\Release\LogicaReporteActividades.pdb
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes Modificados\Reporte de Actividades\Escritorio\bin\x86\Release\LogicaReporteActividades.xml
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes Modificados\Reporte de Actividades\Escritorio\obj\x86\Release\Escritorio.vbprojResolveAssemblyReference.cache
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes Modificados\Reporte de Actividades\Escritorio\obj\x86\Release\ReporteActividades.Resources.resources
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes Modificados\Reporte de Actividades\Escritorio\obj\x86\Release\ReporteActividades.Principal.resources
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes Modificados\Reporte de Actividades\Escritorio\obj\x86\Release\Escritorio.vbproj.GenerateResource.Cache
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes Modificados\Reporte de Actividades\Escritorio\obj\x86\Release\ACT05.exe.licenses
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes Modificados\Reporte de Actividades\Escritorio\obj\x86\Release\ACT05.exe
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes Modificados\Reporte de Actividades\Escritorio\obj\x86\Release\ACT05.xml
+C:\Users\Berry 1\Desktop\Proyectos Berry\Fuentes Modificados\Reporte de Actividades\Escritorio\obj\x86\Release\ACT05.pdb
+C:\Users\Berry 1\Desktop\Proyectos Berry\Agenda-Bitacora\Fuentes Modificados\Reporte de Actividades\Escritorio\bin\x86\Release\ACT05.exe.config
+C:\Users\Berry 1\Desktop\Proyectos Berry\Agenda-Bitacora\Fuentes Modificados\Reporte de Actividades\Escritorio\bin\x86\Release\ACT05.exe
+C:\Users\Berry 1\Desktop\Proyectos Berry\Agenda-Bitacora\Fuentes Modificados\Reporte de Actividades\Escritorio\bin\x86\Release\ACT05.pdb
+C:\Users\Berry 1\Desktop\Proyectos Berry\Agenda-Bitacora\Fuentes Modificados\Reporte de Actividades\Escritorio\bin\x86\Release\ACT05.xml
+C:\Users\Berry 1\Desktop\Proyectos Berry\Agenda-Bitacora\Fuentes Modificados\Reporte de Actividades\Escritorio\bin\x86\Release\EntidadesReporteActividades.dll
+C:\Users\Berry 1\Desktop\Proyectos Berry\Agenda-Bitacora\Fuentes Modificados\Reporte de Actividades\Escritorio\bin\x86\Release\LogicaReporteActividades.dll
+C:\Users\Berry 1\Desktop\Proyectos Berry\Agenda-Bitacora\Fuentes Modificados\Reporte de Actividades\Escritorio\bin\x86\Release\EntidadesReporteActividades.pdb
+C:\Users\Berry 1\Desktop\Proyectos Berry\Agenda-Bitacora\Fuentes Modificados\Reporte de Actividades\Escritorio\bin\x86\Release\EntidadesReporteActividades.xml
+C:\Users\Berry 1\Desktop\Proyectos Berry\Agenda-Bitacora\Fuentes Modificados\Reporte de Actividades\Escritorio\bin\x86\Release\LogicaReporteActividades.pdb
+C:\Users\Berry 1\Desktop\Proyectos Berry\Agenda-Bitacora\Fuentes Modificados\Reporte de Actividades\Escritorio\bin\x86\Release\LogicaReporteActividades.xml
+C:\Users\Berry 1\Desktop\Proyectos Berry\Agenda-Bitacora\Fuentes Modificados\Reporte de Actividades\Escritorio\obj\x86\Release\Escritorio.vbprojResolveAssemblyReference.cache
+C:\Users\Berry 1\Desktop\Proyectos Berry\Agenda-Bitacora\Fuentes Modificados\Reporte de Actividades\Escritorio\obj\x86\Release\ReporteActividades.Resources.resources
+C:\Users\Berry 1\Desktop\Proyectos Berry\Agenda-Bitacora\Fuentes Modificados\Reporte de Actividades\Escritorio\obj\x86\Release\ReporteActividades.Principal.resources
+C:\Users\Berry 1\Desktop\Proyectos Berry\Agenda-Bitacora\Fuentes Modificados\Reporte de Actividades\Escritorio\obj\x86\Release\Escritorio.vbproj.GenerateResource.Cache
+C:\Users\Berry 1\Desktop\Proyectos Berry\Agenda-Bitacora\Fuentes Modificados\Reporte de Actividades\Escritorio\obj\x86\Release\ACT05.exe.licenses
+C:\Users\Berry 1\Desktop\Proyectos Berry\Agenda-Bitacora\Fuentes Modificados\Reporte de Actividades\Escritorio\obj\x86\Release\ACT05.exe
+C:\Users\Berry 1\Desktop\Proyectos Berry\Agenda-Bitacora\Fuentes Modificados\Reporte de Actividades\Escritorio\obj\x86\Release\ACT05.xml
+C:\Users\Berry 1\Desktop\Proyectos Berry\Agenda-Bitacora\Fuentes Modificados\Reporte de Actividades\Escritorio\obj\x86\Release\ACT05.pdb
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Reporte de Actividades\Escritorio\bin\x86\Release\ACT05.exe.config
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Reporte de Actividades\Escritorio\obj\x86\Release\ACT05.exe
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Reporte de Actividades\Escritorio\obj\x86\Release\ACT05.xml
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Reporte de Actividades\Escritorio\obj\x86\Release\ACT05.pdb
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Reporte de Actividades\Escritorio\bin\x86\Release\ALM04.exe.config
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Reporte de Saldos\Escritorio\bin\x86\Release\ALM04.exe.config
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Reporte de Saldos\Escritorio\bin\x86\Release\ALM04.exe
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Reporte de Saldos\Escritorio\bin\x86\Release\ALM04.pdb
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Reporte de Saldos\Escritorio\bin\x86\Release\ALM04.xml
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Reporte de Saldos\Escritorio\bin\x86\Release\EntidadesReporteSaldos.dll
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Reporte de Saldos\Escritorio\bin\x86\Release\LogicaReporteSaldos.dll
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Reporte de Saldos\Escritorio\bin\x86\Release\EntidadesReporteSaldos.pdb
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Reporte de Saldos\Escritorio\bin\x86\Release\EntidadesReporteSaldos.xml
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Reporte de Saldos\Escritorio\bin\x86\Release\LogicaReporteSaldos.pdb
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Reporte de Saldos\Escritorio\bin\x86\Release\LogicaReporteSaldos.xml
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Reporte de Saldos\Escritorio\obj\x86\Release\Escritorio.vbprojResolveAssemblyReference.cache
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Reporte de Saldos\Escritorio\obj\x86\Release\ReporteSaldos.Resources.resources
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Reporte de Saldos\Escritorio\obj\x86\Release\ReporteSaldos.Principal.resources
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Reporte de Saldos\Escritorio\obj\x86\Release\Escritorio.vbproj.GenerateResource.Cache
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Reporte de Saldos\Escritorio\obj\x86\Release\ALM04.exe.licenses
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Reporte de Saldos\Escritorio\obj\x86\Release\ALM04.exe
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Reporte de Saldos\Escritorio\obj\x86\Release\ALM04.xml
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Reporte de Saldos\Escritorio\obj\x86\Release\ALM04.pdb
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Reporte de Movimientos\Escritorio\bin\x86\Release\ALM05.exe.config
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Reporte de Movimientos\Escritorio\bin\x86\Release\ALM05.exe
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Reporte de Movimientos\Escritorio\bin\x86\Release\ALM05.pdb
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Reporte de Movimientos\Escritorio\bin\x86\Release\ALM05.xml
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Reporte de Movimientos\Escritorio\bin\x86\Release\EntidadesReporteMovimientos.dll
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Reporte de Movimientos\Escritorio\bin\x86\Release\LogicaReporteMovimientos.dll
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Reporte de Movimientos\Escritorio\bin\x86\Release\EntidadesReporteMovimientos.pdb
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Reporte de Movimientos\Escritorio\bin\x86\Release\EntidadesReporteMovimientos.xml
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Reporte de Movimientos\Escritorio\bin\x86\Release\LogicaReporteMovimientos.pdb
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Reporte de Movimientos\Escritorio\bin\x86\Release\LogicaReporteMovimientos.xml
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Reporte de Movimientos\Escritorio\obj\x86\Release\Escritorio.vbprojResolveAssemblyReference.cache
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Reporte de Movimientos\Escritorio\obj\x86\Release\ReporteMovimientos.Resources.resources
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Reporte de Movimientos\Escritorio\obj\x86\Release\ReporteMovimientos.Principal.resources
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Reporte de Movimientos\Escritorio\obj\x86\Release\Escritorio.vbproj.GenerateResource.Cache
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Reporte de Movimientos\Escritorio\obj\x86\Release\ALM05.exe.licenses
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Reporte de Movimientos\Escritorio\obj\x86\Release\ALM05.exe
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Reporte de Movimientos\Escritorio\obj\x86\Release\ALM05.xml
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Reporte de Movimientos\Escritorio\obj\x86\Release\ALM05.pdb

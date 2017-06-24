@@ -56,7 +56,7 @@ Public Class SubFamilias
             If Me.EId > 0 Then
                 condicion &= " AND Id=@id"
             End If
-            comando.CommandText = "SELECT -1 AS Id, NULL AS Nombre FROM " & LogicaReporteSaldos.Programas.prefijoBaseDatosAlmacen & "SubFamilias " & _
+            comando.CommandText = "SELECT -1 AS Id, 'Todos' AS Nombre FROM " & LogicaReporteSaldos.Programas.prefijoBaseDatosAlmacen & "SubFamilias " & _
             " UNION SELECT Id, Nombre FROM " & LogicaReporteSaldos.Programas.prefijoBaseDatosAlmacen & "SubFamilias " & _
             " WHERE 0=0 " & condicion
             comando.Parameters.AddWithValue("@idAlmacen", Me.EIdAlmacen)

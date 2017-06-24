@@ -1,0 +1,8 @@
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Reporte de Movimientos\Logica\bin\Release\LogicaReporteMovimientos.dll
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Reporte de Movimientos\Logica\bin\Release\LogicaReporteMovimientos.pdb
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Reporte de Movimientos\Logica\bin\Release\LogicaReporteMovimientos.xml
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Reporte de Movimientos\Logica\obj\Release\LogicaReporteMovimientos.Resources.resources
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Reporte de Movimientos\Logica\obj\Release\LogicaReporteMovimientos.vbproj.GenerateResource.Cache
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Reporte de Movimientos\Logica\obj\Release\LogicaReporteMovimientos.dll
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Reporte de Movimientos\Logica\obj\Release\LogicaReporteMovimientos.xml
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Reporte de Movimientos\Logica\obj\Release\LogicaReporteMovimientos.pdb

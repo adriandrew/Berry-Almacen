@@ -286,13 +286,52 @@ Public Class Salidas
             If (Me.EIdAlmacen > 0) Then
                 condicion &= " WHERE IdAlmacen=@idAlmacen"
             End If
-            comando.CommandText = "SELECT MAX(CAST (Id AS Int)) AS IdMaximo FROM Salidas" + condicion
+            comando.CommandText = "SELECT MAX(CAST (Id AS Int)) AS IdMaximo FROM Salidas " & condicion
             comando.Parameters.AddWithValue("@idAlmacen", Me.EIdAlmacen)
             BaseDatos.conexionAlmacen.Open()
             Dim lectorDatos As SqlDataReader = comando.ExecuteReader()
             Dim valor As Integer = 0
             While lectorDatos.Read()
                 valor = LogicaSalidas.Funciones.ValidarNumeroACero(lectorDatos("IdMaximo").ToString()) + 1
+            End While
+            BaseDatos.conexionAlmacen.Close()
+            Return valor
+        Catch ex As Exception
+            Throw ex
+        Finally
+            BaseDatos.conexionAlmacen.Close()
+        End Try
+
+    End Function
+
+    Public Function ObtenerPrecioPromedio() As Double
+
+        Try
+            Dim comando As New SqlCommand()
+            comando.Connection = BaseDatos.conexionAlmacen
+            Dim condicion As String = String.Empty
+            If (Me.EIdAlmacen > 0) Then
+                condicion &= " AND IdAlmacen=@idAlmacen"
+            End If
+            If (Me.EIdFamilia > 0) Then
+                condicion &= " AND IdFamilia=@idFamilia"
+            End If
+            If (Me.EIdSubFamilia > 0) Then
+                condicion &= " AND IdSubFamilia=@idSubFamilia"
+            End If
+            If (Me.EIdArticulo > 0) Then
+                condicion &= " AND IdArticulo=@idArticulo"
+            End If
+            comando.CommandText = "SELECT AVG(PrecioUnitario) AS PrecioPromedio FROM Entradas WHERE 0=0 " & condicion
+            comando.Parameters.AddWithValue("@idAlmacen", Me.EIdAlmacen)
+            comando.Parameters.AddWithValue("@idFamilia", Me.EIdFamilia)
+            comando.Parameters.AddWithValue("@idSubFamilia", Me.EIdSubFamilia)
+            comando.Parameters.AddWithValue("@idArticulo", Me.EIdArticulo)
+            BaseDatos.conexionAlmacen.Open()
+            Dim lectorDatos As SqlDataReader = comando.ExecuteReader()
+            Dim valor As Double = 0
+            While lectorDatos.Read()
+                valor = LogicaSalidas.Funciones.ValidarNumeroACero(lectorDatos("PrecioPromedio").ToString())
             End While
             BaseDatos.conexionAlmacen.Close()
             Return valor

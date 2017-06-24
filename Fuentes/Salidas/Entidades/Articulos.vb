@@ -211,5 +211,43 @@ Public Class Articulos
         End Try
 
     End Function
+     
+    Public Function ObtenerPrecioPromedio() As DataTable
+
+        Try
+            Dim datos As New DataTable
+            Dim comando As New SqlCommand()
+            comando.Connection = BaseDatos.conexionCatalogo
+            Dim condicion As String = String.Empty
+            If Me.EIdAlmacen > 0 Then
+                condicion &= " AND IdAlmacen=@idAlmacen"
+            End If
+            If Me.EIdFamilia > 0 Then
+                condicion &= " AND IdFamilia=@idFamilia"
+            End If
+            If (Me.EIdSubFamilia > 0) Then
+                condicion &= " AND IdSubFamilia=@idSubFamilia"
+            End If
+            If Me.EId > 0 Then
+                condicion &= " AND Id=@id"
+            End If
+            comando.CommandText = "SELECT A.Id, A.Nombre, UM.Nombre FROM " & LogicaSalidas.Programas.prefijoBaseDatosAlmacen & "Articulos AS A LEFT JOIN " & LogicaSalidas.Programas.prefijoBaseDatosAlmacen & "UnidadesMedidas AS UM ON A.IdUnidadMedida=UM.Id WHERE 0=0 " & condicion & " ORDER BY A.IdAlmacen, A.IdFamilia, A.IdSubFamilia, A.Id ASC"
+            comando.Parameters.AddWithValue("@idAlmacen", Me.EIdAlmacen)
+            comando.Parameters.AddWithValue("@idFamilia", Me.EIdFamilia)
+            comando.Parameters.AddWithValue("@idSubFamilia", Me.EIdSubFamilia)
+            comando.Parameters.AddWithValue("@id", Me.EId)
+            BaseDatos.conexionCatalogo.Open()
+            Dim lectorDatos As SqlDataReader
+            lectorDatos = comando.ExecuteReader()
+            datos.Load(lectorDatos)
+            BaseDatos.conexionCatalogo.Close()
+            Return datos
+        Catch ex As Exception
+            Throw ex
+        Finally
+            BaseDatos.conexionCatalogo.Close()
+        End Try
+
+    End Function
 
 End Class

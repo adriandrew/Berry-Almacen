@@ -11,6 +11,7 @@ Public Class Principal
     Public familias As New EntidadesReporteSaldos.Familias()
     Public subFamilias As New EntidadesReporteSaldos.SubFamilias()
     Public articulos As New EntidadesReporteSaldos.Articulos()
+    Public empresas As New EntidadesReporteSaldos.Empresas()
     ' Variables de tipos de datos de spread.
     Public tipoTexto As New FarPoint.Win.Spread.CellType.TextCellType()
     Public tipoEntero As New FarPoint.Win.Spread.CellType.NumberCellType()
@@ -32,8 +33,9 @@ Public Class Principal
     Public rutaTemporal As String = CurDir() & "\ArchivosTemporales"
     Public estaCerrando As Boolean = False
     Public prefijoBaseDatosAlmacen As String = "ALM" & "_"
+    Public colorFiltros As Color
     ' Variable de desarrollo.
-    Public esDesarrollo As Boolean = True
+    Public esDesarrollo As Boolean = False
 
 #Region "Eventos"
 
@@ -71,10 +73,11 @@ Public Class Principal
         Me.Enabled = False
         CargarEncabezados()
         CargarTitulosDirectorio()
+        CargarValorColor()
         CargarComboAlmacenes()
-        FormatearSpread()
         Me.estaMostrado = True
         Me.Enabled = True
+        AsignarFoco(dtpFecha)
         Me.Cursor = Cursors.Default
 
     End Sub
@@ -101,8 +104,17 @@ Public Class Principal
 
         If (Me.estaMostrado) Then
             If (cbAlmacen.Items.Count > 1) Then
-                Me.opcionSeleccionada = OpcionNivel.Almacen
-                CargarComboFamilias()
+                If (cbAlmacen.SelectedValue > 0) Then 
+                    Me.opcionSeleccionada = OpcionNivel.Almacen
+                    CargarComboFamilias()
+                Else 
+                    cbFamilia.DataSource = Nothing
+                    cbFamilia.Enabled = False
+                    cbSubFamilia.DataSource = Nothing
+                    cbSubFamilia.Enabled = False
+                    cbArticulo.DataSource = Nothing
+                    cbArticulo.Enabled = False
+                End If
             End If
         End If
 
@@ -112,10 +124,39 @@ Public Class Principal
 
         If (Me.estaMostrado) Then
             If (cbFamilia.Items.Count > 1) Then
-                Me.opcionSeleccionada = OpcionNivel.Familia
-                CargarComboSubFamilias()
+                If (cbFamilia.SelectedValue > 0) Then
+                    Me.opcionSeleccionada = OpcionNivel.Familia
+                    CargarComboSubFamilias()
+                Else
+                    cbSubFamilia.DataSource = Nothing
+                    cbSubFamilia.Enabled = False
+                    cbArticulo.DataSource = Nothing
+                    cbArticulo.Enabled = False
+                End If
             End If
         End If
+
+    End Sub
+
+    Private Sub cbSubFamilia_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbSubFamilia.SelectedIndexChanged
+
+        If (Me.estaMostrado) Then
+            If (cbSubFamilia.Items.Count > 1) Then
+                If (cbSubFamilia.SelectedValue > 0) Then
+                    Me.opcionSeleccionada = OpcionNivel.SubFamilia
+                    CargarComboArticulos()
+                Else 
+                    cbArticulo.DataSource = Nothing
+                    cbArticulo.Enabled = False
+                End If
+            End If
+        End If
+
+    End Sub
+
+    Private Sub cbArticulo_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbArticulo.SelectedIndexChanged
+
+        Me.opcionSeleccionada = OpcionNivel.Articulo
 
     End Sub
 
@@ -137,14 +178,14 @@ Public Class Principal
 
     End Sub
 
-    Private Sub pnlFiltros_MouseEnter(sender As Object, e As EventArgs) Handles pnlFiltros.MouseEnter, gbFechas.MouseEnter, gbOtros.MouseEnter, chkFechaCreacion.MouseEnter, cbAlmacen.MouseEnter, cbFamilia.MouseEnter, cbSubFamilia.MouseEnter, cbArticulo.MouseEnter
+    Private Sub pnlFiltros_MouseHover(sender As Object, e As EventArgs) Handles pnlFiltros.MouseHover, gbFechas.MouseHover, gbNiveles.MouseHover, chkFecha.MouseHover, cbAlmacen.MouseHover, cbFamilia.MouseHover, cbSubFamilia.MouseHover, cbArticulo.MouseHover
 
         AlinearFiltrosNormal()
         AsignarTooltips("Filtros para Generar el Reporte.")
 
     End Sub
 
-    Private Sub spActividades_MouseEnter(sender As Object, e As EventArgs) Handles spReporte.MouseEnter
+    Private Sub spActividades_MouseHover(sender As Object, e As EventArgs) Handles spReporte.MouseHover
 
         AlinearFiltrosIzquierda()
         AsignarTooltips("Reporte Generado.")
@@ -209,12 +250,102 @@ Public Class Principal
 
     End Sub
 
-    Private Sub chkFechaCreacion_CheckedChanged(sender As Object, e As EventArgs) Handles chkFechaCreacion.CheckedChanged
+    Private Sub chkFecha_CheckedChanged(sender As Object, e As EventArgs) Handles chkFecha.CheckedChanged
 
-        If (chkFechaCreacion.Checked) Then
-            chkFechaCreacion.Text = "SI"
+        If (chkFecha.Checked) Then
+            chkFecha.Text = "SI"
         Else
-            chkFechaCreacion.Text = "NO"
+            chkFecha.Text = "NO"
+        End If
+
+    End Sub
+
+    Private Sub dtpFecha_KeyDown(sender As Object, e As KeyEventArgs) Handles dtpFecha.KeyDown
+
+        If (e.KeyCode = Keys.Enter) Then
+            AsignarFoco(dtpFechaFinal)
+        End If
+
+    End Sub
+
+    Private Sub dtpFechaFinal_KeyDown(sender As Object, e As KeyEventArgs) Handles dtpFechaFinal.KeyDown
+
+        If (e.KeyCode = Keys.Enter) Then
+            AsignarFoco(cbAlmacen)
+        ElseIf (e.KeyCode = Keys.Escape) Then
+            AsignarFoco(dtpFecha)
+        End If
+
+    End Sub
+
+    Private Sub cbAlmacen_KeyDown(sender As Object, e As KeyEventArgs) Handles cbAlmacen.KeyDown
+
+        If (e.KeyCode = Keys.Enter) Then
+            If (cbAlmacen.SelectedValue <= 0) Then
+                AsignarFoco(btnGenerar)
+            Else
+                AsignarFoco(cbFamilia) 
+            End If
+        ElseIf (e.KeyCode = Keys.Escape) Then
+            AsignarFoco(dtpFechaFinal)
+        End If
+
+    End Sub
+
+    Private Sub cbFamilia_KeyDown(sender As Object, e As KeyEventArgs) Handles cbFamilia.KeyDown
+
+        If (e.KeyCode = Keys.Enter) Then
+            If (cbFamilia.SelectedValue <= 0) Then
+                AsignarFoco(btnGenerar)
+            Else
+                AsignarFoco(cbSubFamilia)
+            End If
+        ElseIf (e.KeyCode = Keys.Escape) Then
+            AsignarFoco(cbAlmacen)
+        End If
+
+    End Sub
+
+    Private Sub cbSubFamilia_KeyDown(sender As Object, e As KeyEventArgs) Handles cbSubFamilia.KeyDown
+
+        If (e.KeyCode = Keys.Enter) Then
+            If (cbSubFamilia.SelectedValue <= 0) Then
+                AsignarFoco(btnGenerar)
+            Else
+                AsignarFoco(cbArticulo)
+            End If
+        ElseIf (e.KeyCode = Keys.Escape) Then
+            AsignarFoco(cbFamilia)
+        End If
+
+    End Sub
+
+    Private Sub cbArticulo_KeyDown(sender As Object, e As KeyEventArgs) Handles cbArticulo.KeyDown
+
+        If (e.KeyCode = Keys.Enter) Then
+            If (cbArticulo.SelectedValue <= 0) Then
+                AsignarFoco(btnGenerar)
+            Else
+                AsignarFoco(btnGenerar)
+            End If
+        ElseIf (e.KeyCode = Keys.Escape) Then
+            AsignarFoco(cbSubFamilia)
+        End If
+
+    End Sub
+
+    Private Sub btnGenerar_KeyDown(sender As Object, e As KeyEventArgs) Handles btnGenerar.KeyDown
+
+        If (e.KeyCode = Keys.Escape) Then
+            If (cbArticulo.Enabled) Then
+                AsignarFoco(cbArticulo)
+            ElseIf (cbSubFamilia.Enabled) Then
+                AsignarFoco(cbSubFamilia)
+            ElseIf (cbFamilia.Enabled) Then
+                AsignarFoco(cbFamilia)
+            ElseIf (cbAlmacen.Enabled) Then
+                AsignarFoco(cbAlmacen)
+            End If 
         End If
 
     End Sub
@@ -224,6 +355,12 @@ Public Class Principal
 #Region "Métodos"
 
 #Region "Genericos"
+
+    Private Sub AsignarFoco(ByVal c As Control)
+
+        c.Focus()
+
+    End Sub
 
     Private Sub MostrarAyuda()
 
@@ -331,7 +468,6 @@ Public Class Principal
             LogicaReporteSaldos.Directorios.instanciaSql = "BERRY1-DELL\SQLEXPRESS2008"
             LogicaReporteSaldos.Directorios.usuarioSql = "AdminBerry"
             LogicaReporteSaldos.Directorios.contrasenaSql = "@berry2017"
-            LogicaReporteSaldos.Usuarios.id = 1
         Else
             LogicaReporteSaldos.Directorios.ObtenerParametros()
             LogicaReporteSaldos.Usuarios.ObtenerParametros()
@@ -382,6 +518,12 @@ Public Class Principal
         lblEncabezadoPrograma.Text = "Programa: " + Me.Text
         lblEncabezadoEmpresa.Text = "Directorio: " + LogicaReporteSaldos.Directorios.nombre
         lblEncabezadoUsuario.Text = "Usuario: " + LogicaReporteSaldos.Usuarios.nombre
+
+    End Sub
+
+    Private Sub CargarValorColor()
+
+        Me.colorFiltros = pnlFiltros.BackColor
 
     End Sub
 
@@ -436,6 +578,14 @@ Public Class Principal
     Private Sub Imprimir(ByVal esPdf As Boolean)
 
         Me.Cursor = Cursors.WaitCursor
+        ' Se carga la información de la empresa.
+        Dim lista As New List(Of EntidadesReporteSaldos.Empresas)
+        empresas.EId = 0 ' Se busca la primer empresa.
+        lista = empresas.Obtener(True)
+        If (lista.Count = 0) Then
+            MsgBox("No existen datos de la empresa para encabezados de impresión. Se cancelará la impresión.", MsgBoxStyle.Information, "Faltan datos.")
+            Exit Sub
+        End If
         Dim nombrePdf As String = "\Temporal.pdf"
         Dim fuente7 As Integer = 7 : Dim fuente8 As Integer = 8
         Dim encabezadoPuntoPago As String = String.Empty
@@ -444,13 +594,13 @@ Public Class Principal
         impresor.AllowSomePages = True
         impresor.AllowCurrentPage = True
         informacionImpresion.Orientation = PrintOrientation.Landscape
-        informacionImpresion.Margin.Top = 40
+        informacionImpresion.Margin.Top = 20
         informacionImpresion.Margin.Left = 20
         informacionImpresion.Margin.Right = 20
         informacionImpresion.Margin.Bottom = 20
         informacionImpresion.ShowBorder = False
         informacionImpresion.ShowGrid = False
-        informacionImpresion.ZoomFactor = 0.5
+        informacionImpresion.ZoomFactor = 0.6
         informacionImpresion.Printer = impresor.PrinterSettings.PrinterName
         informacionImpresion.Centering = FarPoint.Win.Spread.Centering.Horizontal
         informacionImpresion.ShowRowHeader = FarPoint.Win.Spread.PrintHeader.Hide
@@ -458,12 +608,12 @@ Public Class Principal
         Dim encabezado1 As String = String.Empty
         Dim encabezado2 As String = String.Empty
         Dim encabezado3 As String = String.Empty
-        encabezado1 = "/l/fz""" & fuente7 & """" & "RFC: " & "Rfc" & "/c/fz""" & fuente7 & """" & "Nombre empresa"
-        encabezado1 &= "/r/fz""" & fuente7 & """" & "PÁGINA /p DE /pc"
+        encabezado1 = "/l/fz""" & fuente7 & """" & "Rfc " & lista(0).ERfc & "/c/fz""" & fuente7 & """" & lista(0).ENombre
+        encabezado1 &= "/r/fz""" & fuente7 & """" & "Página /p de /pc"
         encabezado1 = encabezado1.ToUpper
-        encabezado2 = "/l/fz""" & fuente7 & """" & "Domicilio" & "/c/fb1/fz""" & fuente8 & """" & "Descripcion" & "/r/fz""" & fuente7 & """" & "FECHA: " & Today.ToShortDateString
+        encabezado2 = "/l/fz""" & fuente7 & """" & lista(0).EDomicilio & "/c/fb1/fz""" & fuente8 & """" & lista(0).EDescripcion & "/r/fz""" & fuente7 & """" & "Fecha: " & Today.ToShortDateString
         encabezado2 = encabezado2.ToUpper
-        encabezado3 = "/l/fz""" & fuente7 & """" & "Localidad" & "/c/fb1/fz""" & fuente8 & """" & "Reporte de Actividades" & "/r/fz""" & fuente7 & """" & "HORA: " & Now.ToShortTimeString
+        encabezado3 = "/l/fz""" & fuente7 & """" & lista(0).ELocalidad & "/c/fb1/fz""" & fuente8 & """" & "Reporte de Saldos" & "/r/fz""" & fuente7 & """" & "Hora: " & Now.ToShortTimeString
         encabezado3 = encabezado3.ToUpper
         If esPdf Then
             Dim bandera As Boolean = True
@@ -566,6 +716,14 @@ Public Class Principal
 
     Private Sub FormatearExcel()
 
+        ' Se carga la información de la empresa.
+        Dim lista As New List(Of EntidadesReporteSaldos.Empresas)
+        empresas.EId = 0 ' Se busca la primer empresa.
+        lista = empresas.Obtener(True)
+        If (lista.Count = 0) Then
+            MsgBox("No existen datos de la empresa para encabezados de impresión. Se cancelará la impresión.", MsgBoxStyle.Information, "Faltan datos.")
+            Exit Sub
+        End If
         Dim fuente6 As Integer = 6
         Dim fuente7 As Integer = 7
         Dim fuente8 As Integer = 8
@@ -577,14 +735,14 @@ Public Class Principal
         Dim encabezado3I As String = String.Empty
         Dim encabezado3C As String = String.Empty
         Dim encabezado3D As String = String.Empty
-        encabezado1I = "RFC: " & "Rfc" : encabezado1I = encabezado1I.ToUpper
-        encabezado1C = "Nombre Empresa" : encabezado1C = encabezado1C.ToUpper
-        encabezado2I = "Domicilio" : encabezado2I = encabezado2I.ToUpper
-        encabezado2C = "Descripcion Empresa" : encabezado2C = encabezado2C.ToUpper
-        encabezado2D = "FECHA: " & Today.ToShortDateString : encabezado2D = encabezado2D.ToUpper
-        encabezado3I = "Localidad" : encabezado3I = encabezado3I.ToUpper
+        encabezado1I = "RFC " & lista(0).ERfc : encabezado1I = encabezado1I.ToUpper
+        encabezado1C = lista(0).ENombre : encabezado1C = encabezado1C.ToUpper
+        encabezado2I = lista(0).EDomicilio : encabezado2I = encabezado2I.ToUpper
+        encabezado2C = lista(0).EDescripcion : encabezado2C = encabezado2C.ToUpper
+        encabezado2D = "Fecha: " & Today.ToShortDateString : encabezado2D = encabezado2D.ToUpper
+        encabezado3I = lista(0).ELocalidad : encabezado3I = encabezado3I.ToUpper
         encabezado3C = "Reporte de Actividades" : encabezado3C = encabezado3C.ToUpper
-        encabezado3D = "HORA: " & Now.ToShortTimeString : encabezado3D = encabezado3D.ToUpper
+        encabezado3D = "Hora: " & Now.ToShortTimeString : encabezado3D = encabezado3D.ToUpper
         For indice = 0 To spParaClonar.Sheets.Count - 1
             spParaClonar.Sheets(indice).Columns.Count = spReporte.Sheets(indice).Columns.Count + 10
             spParaClonar.Sheets(indice).Protect = False
@@ -656,9 +814,10 @@ Public Class Principal
         temporizador.Interval = 1
         temporizador.Enabled = True
         temporizador.Start()
-        If (pnlFiltros.Location.X > -350) Then
-            pnlFiltros.Location = New Point(pnlFiltros.Location.X - 20, pnlFiltros.Location.Y)
-            spReporte.Location = New Point(spReporte.Location.X - 20, spReporte.Location.Y)
+        Dim ancho As Integer = -(pnlFiltros.Width - (pnlFiltros.Width / 3))
+        If (pnlFiltros.Location.X > ancho) Then
+            pnlFiltros.Location = New Point(pnlFiltros.Location.X - 80, pnlFiltros.Location.Y)
+            spReporte.Location = New Point(spReporte.Location.X - 80, spReporte.Location.Y)
             Application.DoEvents()
         Else
             temporizador.Enabled = False
@@ -672,7 +831,7 @@ Public Class Principal
 
         pnlFiltros.BackColor = Color.Gray
         btnGenerar.Enabled = False
-        spReporte.Width = pnlCuerpo.Width - 50
+        spReporte.Width = pnlCuerpo.Width - 80
         Application.DoEvents()
 
     End Sub
@@ -680,11 +839,11 @@ Public Class Principal
     Private Sub AlinearFiltrosNormal()
 
         pnlFiltros.Left = 0
-        pnlFiltros.BackColor = Color.FromArgb(64, 64, 64)
+        pnlFiltros.BackColor = Me.colorFiltros
         btnGenerar.Enabled = True
         System.Threading.Thread.Sleep(250)
-        spReporte.Width = pnlCuerpo.Width - 50
-        spReporte.Location = New Point(pnlFiltros.Location.X + pnlFiltros.Width + 10)
+        spReporte.Width = pnlCuerpo.Width - pnlFiltros.Width - 5
+        spReporte.Location = New Point(pnlFiltros.Location.X + pnlFiltros.Width + 5, pnlFiltros.Location.Y)
         Application.DoEvents()
 
     End Sub
@@ -692,29 +851,59 @@ Public Class Principal
     Private Sub GenerarReporte()
 
         Me.Cursor = Cursors.WaitCursor
-        Dim lista As New DataTable
+        FormatearSpread()
+        Dim datos As New DataTable
         If (Me.estaMostrado) Then
             saldos.EIdAlmacen = cbAlmacen.SelectedValue
             saldos.EIdFamilia = cbFamilia.SelectedValue
             saldos.EIdSubFamilia = cbSubFamilia.SelectedValue
             saldos.EIdArticulo = cbArticulo.SelectedValue
         End If
-        Dim fechaCreacion As Date = dtpFecha.Value.ToShortDateString : Dim fechaCreacion2 As Date = dtpFechaFinal.Value.ToShortDateString
-        Dim aplicaFechaCreacion As Boolean = False
-        If (chkFechaCreacion.Checked) Then
-            aplicaFechaCreacion = True
-            saldos.EFecha = fechaCreacion : saldos.EFecha2 = fechaCreacion2
-        ElseIf (chkFechaCreacion.Checked) Then
-            aplicaFechaCreacion = False
+        Dim fecha As Date = dtpFecha.Value.ToShortDateString : Dim fecha2 As Date = dtpFechaFinal.Value.ToShortDateString
+        Dim aplicaFecha As Boolean = False
+        If (chkFecha.Checked) Then
+            aplicaFecha = True
+            saldos.EFecha = fecha : saldos.EFecha2 = fecha2
+        Else
+            aplicaFecha = False
         End If
-        lista = saldos.ObtenerListadoReporte(aplicaFechaCreacion)
-        spReporte.ActiveSheet.DataSource = lista
-        FormatearSpreadReporteActividades(spReporte.ActiveSheet.Columns.Count)
+        datos = saldos.ObtenerListadoReporte(aplicaFecha)
+        spReporte.ActiveSheet.DataSource = datos
+        FormatearSpreadReporte(spReporte.ActiveSheet.Columns.Count)
+        CalcularTotales(0, "Total", 8, spReporte.ActiveSheet.Columns("saldoAnterior").Index, spReporte.ActiveSheet.Columns.Count, 0, spReporte.ActiveSheet.Rows.Count)
         AlinearFiltrosIzquierda()
         btnImprimir.Enabled = True
         btnExportarExcel.Enabled = True
         btnExportarPdf.Enabled = True
+        AsignarFoco(dtpFecha)
         Me.Cursor = Cursors.Default
+
+    End Sub
+
+    Private Sub CalcularTotales(ByVal columnaConceptoTotal As Integer, ByVal valorColumnaConceptoTotal As String, ByVal cantidadColumnasSpan As Integer, ByVal columnaInicial As Integer, ByVal columnaFinal As Integer, ByVal filaInicial As Integer, ByVal filaFinal As Integer)
+
+        If (filaFinal > 0) Then
+            Dim numeroColumnas As Integer = spReporte.ActiveSheet.Columns.Count
+            spReporte.ActiveSheet.AddUnboundRows(filaFinal, 1)
+            spReporte.ActiveSheet.AddSpanCell(filaFinal, columnaConceptoTotal, 1, cantidadColumnasSpan)
+            spReporte.ActiveSheet.Cells(filaFinal, columnaConceptoTotal).HorizontalAlignment = FarPoint.Win.Spread.CellHorizontalAlignment.Right
+            spReporte.ActiveSheet.Cells(filaFinal, columnaConceptoTotal).CellType = tipoTexto
+            spReporte.ActiveSheet.Cells(filaFinal, columnaConceptoTotal).Text = valorColumnaConceptoTotal.ToUpper
+            spReporte.ActiveSheet.Cells(filaFinal, 0, filaFinal, numeroColumnas - 1).BackColor = Color.Gainsboro
+            For columna = columnaInicial To columnaFinal - 1
+                Dim contador As Double = 0
+                For fila = filaInicial To filaFinal - 1
+                    If Not String.IsNullOrEmpty(spReporte.ActiveSheet.Cells(fila, 0).Text) Then
+                        Dim valor As String = spReporte.ActiveSheet.Cells(fila, columna).Text
+                        If IsNumeric(valor) Then
+                            contador += spReporte.ActiveSheet.Cells(fila, columna).Text
+                        End If
+                    End If
+                Next
+                spReporte.ActiveSheet.Cells(filaFinal, columna).Text = contador
+                spReporte.ActiveSheet.Cells(filaFinal, columna).CellType = tipoDoble
+            Next
+        End If
 
     End Sub
 
@@ -727,12 +916,12 @@ Public Class Principal
         spReporte.Font = New Font(Principal.tipoLetraSpread, Principal.tamañoLetraSpread, FontStyle.Regular)
         spReporte.HorizontalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.AsNeeded
         spReporte.VerticalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.AsNeeded
-        spReporte.ActiveSheet.Rows(-1).Height = Principal.alturaFilasEncabezadosMedianosSpread
+        spReporte.ActiveSheet.Rows(-1).Height = Principal.alturaFilasSpread
         Application.DoEvents()
 
     End Sub
 
-    Private Sub FormatearSpreadReporteActividades(ByVal cantidadColumnas As Integer)
+    Private Sub FormatearSpreadReporte(ByVal cantidadColumnas As Integer)
 
         spReporte.Visible = True
         spReporte.ActiveSheet.GrayAreaBackColor = Principal.colorAreaGris
@@ -750,23 +939,38 @@ Public Class Principal
         spReporte.ActiveSheet.Columns(numeracion).Tag = "nombreSubFamilia" : numeracion += 1
         spReporte.ActiveSheet.Columns(numeracion).Tag = "idArticulo" : numeracion += 1
         spReporte.ActiveSheet.Columns(numeracion).Tag = "nombreArticulo" : numeracion += 1
-        spReporte.ActiveSheet.Columns(numeracion).Tag = "cantidadAnterior" : numeracion += 1
-        spReporte.ActiveSheet.Columns(numeracion).Tag = "cantidadEntradasRango" : numeracion += 1
-        spReporte.ActiveSheet.Columns(numeracion).Tag = "cantidadSalidasRango" : numeracion += 1
-        spReporte.ActiveSheet.Columns(numeracion).Tag = "cantidadActual" : numeracion += 1 
+        spReporte.ActiveSheet.Columns(numeracion).Tag = "saldoAnterior" : numeracion += 1
+        spReporte.ActiveSheet.Columns(numeracion).Tag = "costoAnterior" : numeracion += 1
+        spReporte.ActiveSheet.Columns(numeracion).Tag = "saldoEntradasRango" : numeracion += 1
+        spReporte.ActiveSheet.Columns(numeracion).Tag = "costoEntradasRango" : numeracion += 1
+        spReporte.ActiveSheet.Columns(numeracion).Tag = "saldoSalidasRango" : numeracion += 1
+        spReporte.ActiveSheet.Columns(numeracion).Tag = "costoSalidasRango" : numeracion += 1
+        spReporte.ActiveSheet.Columns(numeracion).Tag = "saldoActual" : numeracion += 1
+        spReporte.ActiveSheet.Columns(numeracion).Tag = "costoActual" : numeracion += 1
         spReporte.ActiveSheet.Columns("idAlmacen").Width = 50
-        spReporte.ActiveSheet.Columns("nombreAlmacen").Width = 150
+        spReporte.ActiveSheet.Columns("nombreAlmacen").Width = 170
         spReporte.ActiveSheet.Columns("idFamilia").Width = 50
-        spReporte.ActiveSheet.Columns("nombreFamilia").Width = 150
+        spReporte.ActiveSheet.Columns("nombreFamilia").Width = 170
         spReporte.ActiveSheet.Columns("idSubFamilia").Width = 50
-        spReporte.ActiveSheet.Columns("nombreSubFamilia").Width = 150
+        spReporte.ActiveSheet.Columns("nombreSubFamilia").Width = 170
         spReporte.ActiveSheet.Columns("idArticulo").Width = 50
-        spReporte.ActiveSheet.Columns("nombreArticulo").Width = 150
-        spReporte.ActiveSheet.Columns("cantidadAnterior").Width = 120
-        spReporte.ActiveSheet.Columns("cantidadEntradasRango").Width = 120
-        spReporte.ActiveSheet.Columns("cantidadSalidasRango").Width = 120
-        spReporte.ActiveSheet.Columns("cantidadActual").Width = 120
-        'spReporte.ActiveSheet.Columns("esUrgente").CellType = tipoBooleano 
+        spReporte.ActiveSheet.Columns("nombreArticulo").Width = 170
+        spReporte.ActiveSheet.Columns("saldoAnterior").Width = 100
+        spReporte.ActiveSheet.Columns("costoAnterior").Width = 100
+        spReporte.ActiveSheet.Columns("saldoEntradasRango").Width = 100
+        spReporte.ActiveSheet.Columns("costoEntradasRango").Width = 100
+        spReporte.ActiveSheet.Columns("saldoSalidasRango").Width = 100
+        spReporte.ActiveSheet.Columns("costoSalidasRango").Width = 100
+        spReporte.ActiveSheet.Columns("saldoActual").Width = 100
+        spReporte.ActiveSheet.Columns("costoActual").Width = 100
+        spReporte.ActiveSheet.Columns("saldoAnterior").CellType = tipoEntero
+        spReporte.ActiveSheet.Columns("costoAnterior").CellType = tipoDoble
+        spReporte.ActiveSheet.Columns("saldoEntradasRango").CellType = tipoEntero
+        spReporte.ActiveSheet.Columns("costoEntradasRango").CellType = tipoDoble
+        spReporte.ActiveSheet.Columns("saldoSalidasRango").CellType = tipoEntero
+        spReporte.ActiveSheet.Columns("costoSalidasRango").CellType = tipoDoble
+        spReporte.ActiveSheet.Columns("saldoActual").CellType = tipoEntero
+        spReporte.ActiveSheet.Columns("costoActual").CellType = tipoDoble
         spReporte.ActiveSheet.AddColumnHeaderSpanCell(0, spReporte.ActiveSheet.Columns("idAlmacen").Index, 1, 2)
         spReporte.ActiveSheet.ColumnHeader.Cells(0, spReporte.ActiveSheet.Columns("idAlmacen").Index).Value = "Almacen".ToUpper
         spReporte.ActiveSheet.ColumnHeader.Cells(1, spReporte.ActiveSheet.Columns("idAlmacen").Index).Value = "No.".ToUpper
@@ -782,18 +986,27 @@ Public Class Principal
         spReporte.ActiveSheet.AddColumnHeaderSpanCell(0, spReporte.ActiveSheet.Columns("idArticulo").Index, 1, 2)
         spReporte.ActiveSheet.ColumnHeader.Cells(0, spReporte.ActiveSheet.Columns("idArticulo").Index).Value = "Artículo".ToUpper
         spReporte.ActiveSheet.ColumnHeader.Cells(1, spReporte.ActiveSheet.Columns("idArticulo").Index).Value = "No.".ToUpper
-        spReporte.ActiveSheet.ColumnHeader.Cells(1, spReporte.ActiveSheet.Columns("nombreArticulo").Index).Value = "Nombre".ToUpper         
-        spReporte.ActiveSheet.AddColumnHeaderSpanCell(0, spReporte.ActiveSheet.Columns("cantidadAnterior").Index, 2, 1)
-        spReporte.ActiveSheet.ColumnHeader.Cells(0, spReporte.ActiveSheet.Columns("cantidadAnterior").Index).Value = "Cantidad Anterior".ToUpper
-        spReporte.ActiveSheet.AddColumnHeaderSpanCell(0, spReporte.ActiveSheet.Columns("cantidadEntradasRango").Index, 1, 2)
-        spReporte.ActiveSheet.ColumnHeader.Cells(0, spReporte.ActiveSheet.Columns("cantidadEntradasRango").Index).Value = "Movimientos".ToUpper
-        spReporte.ActiveSheet.ColumnHeader.Cells(1, spReporte.ActiveSheet.Columns("cantidadEntradasRango").Index).Value = "Entradas".ToUpper
-        spReporte.ActiveSheet.AddColumnHeaderSpanCell(0, spReporte.ActiveSheet.Columns("cantidadSalidasRango").Index, 1, 2)
-        spReporte.ActiveSheet.ColumnHeader.Cells(1, spReporte.ActiveSheet.Columns("cantidadSalidasRango").Index).Value = "Salidas".ToUpper
-        spReporte.ActiveSheet.AddColumnHeaderSpanCell(0, spReporte.ActiveSheet.Columns("cantidadActual").Index, 2, 1)
-        spReporte.ActiveSheet.ColumnHeader.Cells(0, spReporte.ActiveSheet.Columns("cantidadActual").Index).Value = "Cantidad Actual".ToUpper
-        'spReporte.ActiveSheet.Columns(spReporte.ActiveSheet.Columns("esAutorizado").Index, spReporte.ActiveSheet.Columns("estaResuelto").Index).Visible = False
+        spReporte.ActiveSheet.ColumnHeader.Cells(1, spReporte.ActiveSheet.Columns("nombreArticulo").Index).Value = "Nombre".ToUpper
+        spReporte.ActiveSheet.AddColumnHeaderSpanCell(0, spReporte.ActiveSheet.Columns("saldoAnterior").Index, 1, 2)
+        spReporte.ActiveSheet.ColumnHeader.Cells(0, spReporte.ActiveSheet.Columns("saldoAnterior").Index).Value = "Saldo Anterior".ToUpper
+        spReporte.ActiveSheet.ColumnHeader.Cells(1, spReporte.ActiveSheet.Columns("saldoAnterior").Index).Value = "Cantidad".ToUpper
+        spReporte.ActiveSheet.ColumnHeader.Cells(1, spReporte.ActiveSheet.Columns("costoAnterior").Index).Value = "Costo".ToUpper
+        spReporte.ActiveSheet.AddColumnHeaderSpanCell(0, spReporte.ActiveSheet.Columns("saldoEntradasRango").Index, 1, 2)
+        spReporte.ActiveSheet.ColumnHeader.Cells(0, spReporte.ActiveSheet.Columns("saldoEntradasRango").Index).Value = "Entradas".ToUpper
+        spReporte.ActiveSheet.ColumnHeader.Cells(1, spReporte.ActiveSheet.Columns("saldoEntradasRango").Index).Value = "Cantidad".ToUpper
+        spReporte.ActiveSheet.ColumnHeader.Cells(1, spReporte.ActiveSheet.Columns("costoEntradasRango").Index).Value = "Costo".ToUpper
+        spReporte.ActiveSheet.AddColumnHeaderSpanCell(0, spReporte.ActiveSheet.Columns("saldoSalidasRango").Index, 1, 2)
+        spReporte.ActiveSheet.ColumnHeader.Cells(0, spReporte.ActiveSheet.Columns("saldoSalidasRango").Index).Value = "Salidas".ToUpper
+        spReporte.ActiveSheet.ColumnHeader.Cells(1, spReporte.ActiveSheet.Columns("saldoSalidasRango").Index).Value = "Cantidad".ToUpper
+        spReporte.ActiveSheet.ColumnHeader.Cells(1, spReporte.ActiveSheet.Columns("costoSalidasRango").Index).Value = "Costo".ToUpper
+        spReporte.ActiveSheet.AddColumnHeaderSpanCell(0, spReporte.ActiveSheet.Columns("saldoActual").Index, 1, 2)
+        spReporte.ActiveSheet.ColumnHeader.Cells(0, spReporte.ActiveSheet.Columns("saldoActual").Index).Value = "Saldo Actual".ToUpper
+        spReporte.ActiveSheet.ColumnHeader.Cells(1, spReporte.ActiveSheet.Columns("saldoActual").Index).Value = "Cantidad".ToUpper
+        spReporte.ActiveSheet.ColumnHeader.Cells(1, spReporte.ActiveSheet.Columns("costoActual").Index).Value = "Costo".ToUpper
         spReporte.ActiveSheet.OperationMode = FarPoint.Win.Spread.OperationMode.SingleSelect
+        If (Not chkFecha.Checked) Then
+            spReporte.ActiveSheet.Columns(spReporte.ActiveSheet.Columns("saldoAnterior").Index, spReporte.ActiveSheet.Columns("saldoActual").Index - 1).Visible = False
+        End If
         Application.DoEvents()
 
     End Sub
@@ -804,19 +1017,30 @@ Public Class Principal
         cbAlmacen.ValueMember = "Id"
         cbAlmacen.DisplayMember = "Nombre"
         cbAlmacen.DataSource = almacenes.ObtenerListadoReporte()
+        cbAlmacen.Enabled = True
+        cbFamilia.DataSource = Nothing
+        cbFamilia.Enabled = False
+        cbSubFamilia.DataSource = Nothing
+        cbSubFamilia.Enabled = False
+        cbArticulo.DataSource = Nothing
+        cbArticulo.Enabled = False
 
     End Sub
 
     Private Sub CargarComboFamilias()
 
         Dim idAlmacen As Integer = cbAlmacen.SelectedValue()
-        If (idAlmacen > 0) Then 
+        If (idAlmacen > 0) Then
             familias.EIdAlmacen = idAlmacen
             familias.EId = 0
             cbFamilia.ValueMember = "Id"
             cbFamilia.DisplayMember = "Nombre"
             cbFamilia.DataSource = familias.ObtenerListadoReporte()
             cbFamilia.Enabled = True
+            cbSubFamilia.DataSource = Nothing
+            cbSubFamilia.Enabled = False
+            cbArticulo.DataSource = Nothing
+            cbArticulo.Enabled = False
         End If
 
     End Sub
@@ -833,6 +1057,8 @@ Public Class Principal
             cbSubFamilia.DisplayMember = "Nombre"
             cbSubFamilia.DataSource = subFamilias.ObtenerListadoReporte()
             cbSubFamilia.Enabled = True
+            cbArticulo.DataSource = Nothing
+            cbArticulo.Enabled = False
         End If
 
     End Sub
@@ -871,23 +1097,5 @@ Public Class Principal
     End Enum
 
 #End Region
-
-    Private Sub cbSubFamilia_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbSubFamilia.SelectedIndexChanged
-
-        If (Me.estaMostrado) Then
-            If (cbSubFamilia.Items.Count > 1) Then
-                Me.opcionSeleccionada = OpcionNivel.SubFamilia
-                CargarComboArticulos()
-                cbArticulo.Enabled = True
-            End If
-        End If
-
-    End Sub
-      
-    Private Sub cbArticulo_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbArticulo.SelectedIndexChanged
-
-        Me.opcionSeleccionada = OpcionNivel.Articulo
-
-    End Sub
 
 End Class

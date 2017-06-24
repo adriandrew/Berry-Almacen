@@ -605,6 +605,18 @@ Public Class Principal
 
 #Region "Todos los demás"
 
+    Private Function CalcularPrecioPromedio(ByVal idAlmacen As Integer, ByVal idFamilia As Integer, ByVal idSubFamilia As Integer, ByVal idArticulo As Integer) As Double
+
+        Dim promedio As Double = 0
+        salidas.EIdAlmacen = idAlmacen
+        salidas.EIdFamilia = idFamilia
+        salidas.EIdSubFamilia = idSubFamilia
+        salidas.EId = idArticulo
+        promedio = salidas.ObtenerPrecioPromedio()
+        Return Math.Round(promedio, 2)
+
+    End Function
+
     Private Sub LimpiarPantalla()
 
         For Each c As Control In pnlCapturaSuperior.Controls
@@ -857,16 +869,14 @@ Public Class Principal
                             Exit Sub
                         End If
                     End If
-                    If (String.IsNullOrEmpty(valorPrecio)) Then ' Se cargan precios y totales del catalogo.
-                        Dim lista As New List(Of EntidadesSalidas.Articulos)
-                        lista = articulos.ObtenerListado()
-                        If (lista.Count = 1) Then
-                            Dim precio As Double = lista(0).EPrecio
-                            spSalidas.ActiveSheet.Cells(fila, spSalidas.ActiveSheet.Columns("precioUnitario").Index).Value = precio
-                            spSalidas.ActiveSheet.Cells(fila, spSalidas.ActiveSheet.Columns("total").Index).Value = cantidad * precio
-                            Dim tipoCambio As Double = LogicaSalidas.Funciones.ValidarNumeroACero(txtTipoCambio.Text)
-                            spSalidas.ActiveSheet.Cells(fila, spSalidas.ActiveSheet.Columns("totalPesos").Index).Value = cantidad * precio * tipoCambio
-                        End If
+                    If (String.IsNullOrEmpty(valorPrecio)) Then ' Se cargan el precio promedio y totales. 
+                        Dim precio As Double = 0
+                        Dim id As Integer = LogicaSalidas.Funciones.ValidarNumeroACero(txtId.Text)
+                        precio = CalcularPrecioPromedio(idAlmacen, idFamilia, idSubFamilia, idArticulo)
+                        spSalidas.ActiveSheet.Cells(fila, spSalidas.ActiveSheet.Columns("precioUnitario").Index).Value = precio
+                        spSalidas.ActiveSheet.Cells(fila, spSalidas.ActiveSheet.Columns("total").Index).Value = cantidad * precio
+                        Dim tipoCambio As Double = LogicaSalidas.Funciones.ValidarNumeroACero(txtTipoCambio.Text)
+                        spSalidas.ActiveSheet.Cells(fila, spSalidas.ActiveSheet.Columns("totalPesos").Index).Value = cantidad * precio * tipoCambio
                     End If
                 Else
                     spSalidas.ActiveSheet.Cells(fila, spSalidas.ActiveSheet.Columns("cantidad").Index).Value = 0
