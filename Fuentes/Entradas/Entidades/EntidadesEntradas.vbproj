@@ -109,7 +109,6 @@
     <Compile Include="SubFamilias.vb" />
     <Compile Include="TiposCambios.vb" />
     <Compile Include="TiposEntradas.vb" />
-    <Compile Include="TiposSalidas.vb" />
     <Compile Include="UnidadesMedidas.vb" />
     <Compile Include="Usuarios.vb" />
   </ItemGroup>

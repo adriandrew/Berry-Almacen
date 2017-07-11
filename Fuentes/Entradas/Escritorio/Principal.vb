@@ -14,8 +14,7 @@ Public Class Principal
     Public proveedores As New EntidadesEntradas.Proveedores()
     Public monedas As New EntidadesEntradas.Monedas()
     Public tiposCambios As New EntidadesEntradas.TiposCambios()
-    Public tiposEntradas As New EntidadesEntradas.TiposEntradas()
-    Public tiposSalidas As New EntidadesEntradas.TiposSalidas()
+    Public tiposEntradas As New EntidadesEntradas.TiposEntradas() 
     ' Variables de tipos de datos de spread.
     Public tipoTexto As New FarPoint.Win.Spread.CellType.TextCellType()
     Public tipoTextoContrasena As New FarPoint.Win.Spread.CellType.TextCellType()
@@ -224,7 +223,6 @@ Public Class Principal
             If (IsNumeric(txtId.Text)) Then
                 e.SuppressKeyPress = True
                 CargarEntradas()
-                AsignarFoco(txtIdExterno)
             Else
                 txtId.Clear()
                 LimpiarPantalla()
@@ -354,6 +352,24 @@ Public Class Principal
 
     End Sub
 
+    Private Sub btnIdAnterior_Click(sender As Object, e As EventArgs) Handles btnIdAnterior.Click
+
+        If (LogicaEntradas.Funciones.ValidarNumeroACero(txtId.Text) > 1) Then
+            txtId.Text -= 1
+            CargarEntradas()
+        End If
+
+    End Sub
+
+    Private Sub btnIdSiguiente_Click(sender As Object, e As EventArgs) Handles btnIdSiguiente.Click
+
+        If (LogicaEntradas.Funciones.ValidarNumeroACero(txtId.Text) >= 1) Then
+            txtId.Text += 1
+            CargarEntradas()
+        End If
+
+    End Sub
+
 #End Region
 
 #Region "Métodos"
@@ -391,7 +407,7 @@ Public Class Principal
             txtAyuda.Width = pnlAyuda.Width - 10 : Application.DoEvents()
             txtAyuda.Height = pnlAyuda.Height - 10 : Application.DoEvents()
             txtAyuda.Location = New Point(5, 5) : Application.DoEvents()
-            txtAyuda.Text = "Sección de Ayuda: " & vbNewLine & vbNewLine & "* Teclas básicas: " & vbNewLine & "F5 sirve para mostrar catálogos. " & vbNewLine & "F6 sirve para eliminar un registro únicamente. " & vbNewLine & "Escape sirve para ocultar catálogos que se encuentren desplegados. " & vbNewLine & vbNewLine & "* Catálogos desplegados: " & vbNewLine & "Cuando se muestra algún catálogo, al seleccionar alguna opción de este, se va mostrando en tiempo real en la captura de donde se originó. Cuando se le da doble clic en alguna opción o a la tecla escape se oculta dicho catálogo. " & vbNewLine & vbNewLine & "* Areas: " & vbNewLine & "En esta pestaña se capturarán todas las areas necesarias. " & vbNewLine & "Existen los botones de guardar/editar y eliminar todo dependiendo lo que se necesite hacer. " & vbNewLine & vbNewLine & "* Usuarios: " & vbNewLine & "En esta parte se capturarán todos los usuarios. " & vbNewLine & "Descripción de los datos que pide: " & vbNewLine & "- Contraseña: esta permite letras y/o números sin ningun problema, no existen restricciones de ningún tipo." & vbNewLine & "- Nivel: 0 es para acceso a todos los programas, excepto los de gerencia. 1 es para los módulos, en este caso como es uno solo, no aplica. 2 es para los programas, si se le da doble clic aparecerán los programas para seleccionar cuales se permitirán y cuales no. 3 es para subprogramas, no aplica en este caso. " & vbNewLine & "- Acceso Total: es solamente para usuarios de gerencia. " & vbNewLine & "Existen los botones de guardar/editar y eliminar todo dependiendo lo que se necesite hacer. " & vbNewLine & vbNewLine & "* Correos: " & vbNewLine & "En este apartado se capturarán todos los usuarios con sus respectivos correos para enviarles sus notificaciones de actividades pendientes que se encuentran retrasadas en tiempos. " & vbNewLine & "Existen los botones de guardar/editar y eliminar todo dependiendo lo que se necesite hacer. " : Application.DoEvents()
+            txtAyuda.Text = "Sección de Ayuda: " & vbNewLine & vbNewLine & "* Teclas básicas: " & vbNewLine & "F5 sirve para mostrar catálogos. " & vbNewLine & "F6 sirve para eliminar un registro únicamente. " & vbNewLine & "Escape sirve para ocultar catálogos que se encuentren desplegados. " & vbNewLine & vbNewLine & "* Catálogos desplegados: " & vbNewLine & "Cuando se muestra algún catálogo, al seleccionar alguna opción de este, se va mostrando en tiempo real en la captura de donde se originó. Cuando se le da doble clic en alguna opción o a la tecla escape se oculta dicho catálogo. " & vbNewLine & vbNewLine & "* Datos obligatorios: " & vbNewLine & "Todos los que tengan el simbolo * son estrictamente obligatorios." & vbNewLine & vbNewLine & "* Captura:" & vbNewLine & "* Parte superior: " & vbNewLine & "En esta parte se capturarán todos los datos que son generales, tal cual como el número de la entrada, el almacén al que corresponde, etc." & vbNewLine & "* Parte inferior: " & vbNewLine & "En esta parte se capturarán todos los datos que pueden combinarse, por ejemplo los distintos artículos de ese número de entrada." & vbNewLine & vbNewLine & "* Existen los botones de guardar/editar y eliminar todo dependiendo lo que se necesite hacer. " : Application.DoEvents()
             pnlAyuda.Controls.Add(txtAyuda) : Application.DoEvents()
         Else
             pnlCuerpo.Visible = True : Application.DoEvents()
@@ -1064,28 +1080,31 @@ Public Class Principal
         Me.Cursor = Cursors.WaitCursor
         entradas.EIdAlmacen = LogicaEntradas.Funciones.ValidarNumeroACero(cbAlmacenes.SelectedValue)
         entradas.EId = LogicaEntradas.Funciones.ValidarNumeroACero(txtId.Text)
-        Dim lista As New List(Of EntidadesEntradas.Entradas)
-        lista = entradas.ObtenerListado
-        If (lista.Count > 0) Then
-            cbMonedas.SelectedValue = lista(0).EIdMoneda
-            txtTipoCambio.Text = lista(0).ETipoCambio
-            txtIdExterno.Text = lista(0).EIdExterno
-            dtpFecha.Value = lista(0).EFecha
-            cbTiposEntradas.SelectedValue = lista(0).EIdTipoEntrada
-            Dim idProveedor As Integer = lista(0).EIdProveedor
-            txtIdProveedor.Text = idProveedor
-            Dim lista2 As New List(Of EntidadesEntradas.Proveedores)
-            proveedores.EId = idProveedor
-            lista2 = proveedores.ObtenerListado()
-            If (lista2.Count = 1) Then
-                txtNombreProveedor.Text = lista2(0).ENombre
+        If (entradas.EId > 0) Then
+            Dim lista As New List(Of EntidadesEntradas.Entradas)
+            lista = entradas.ObtenerListado
+            If (lista.Count > 0) Then
+                cbMonedas.SelectedValue = lista(0).EIdMoneda
+                txtTipoCambio.Text = lista(0).ETipoCambio
+                txtIdExterno.Text = lista(0).EIdExterno
+                dtpFecha.Value = lista(0).EFecha
+                cbTiposEntradas.SelectedValue = lista(0).EIdTipoEntrada
+                Dim idProveedor As Integer = lista(0).EIdProveedor
+                txtIdProveedor.Text = idProveedor
+                Dim lista2 As New List(Of EntidadesEntradas.Proveedores)
+                proveedores.EId = idProveedor
+                lista2 = proveedores.ObtenerListado()
+                If (lista2.Count = 1) Then
+                    txtNombreProveedor.Text = lista2(0).ENombre
+                End If
+                spEntradas.ActiveSheet.DataSource = entradas.ObtenerListadoReporte()
+                cantidadFilas = spEntradas.ActiveSheet.Rows.Count + 1
+                FormatearSpreadEntradas()
+            Else
+                LimpiarPantalla()
             End If
-            spEntradas.ActiveSheet.DataSource = entradas.ObtenerListadoReporte()
-            cantidadFilas = spEntradas.ActiveSheet.Rows.Count + 1
-            FormatearSpreadEntradas()
-        Else
-            LimpiarPantalla()
         End If
+        AsignarFoco(txtIdExterno)
         Me.Cursor = Cursors.Default
 
     End Sub

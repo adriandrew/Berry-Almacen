@@ -105,7 +105,7 @@ Public Class Principal
         If (Me.estaMostrado) Then
             If (cbAlmacen.Items.Count > 1) Then
                 If (cbAlmacen.SelectedValue > 0) Then
-                    Me.opcionSeleccionadaNivel = OpcionNivel.Almacen
+                    Me.opcionSeleccionadaNivel = OpcionNivel.almacen
                     CargarComboFamilias()
                 Else
                     cbFamilia.DataSource = Nothing
@@ -125,7 +125,7 @@ Public Class Principal
         If (Me.estaMostrado) Then
             If (cbFamilia.Items.Count > 1) Then
                 If (cbFamilia.SelectedValue > 0) Then
-                    Me.opcionSeleccionadaNivel = OpcionNivel.Familia
+                    Me.opcionSeleccionadaNivel = OpcionNivel.familia
                     CargarComboSubFamilias()
                 Else
                     cbSubFamilia.DataSource = Nothing
@@ -143,7 +143,7 @@ Public Class Principal
         If (Me.estaMostrado) Then
             If (cbSubFamilia.Items.Count > 1) Then
                 If (cbSubFamilia.SelectedValue > 0) Then
-                    Me.opcionSeleccionadaNivel = OpcionNivel.SubFamilia
+                    Me.opcionSeleccionadaNivel = OpcionNivel.subFamilia
                     CargarComboArticulos()
                 Else
                     cbArticulo.DataSource = Nothing
@@ -156,7 +156,7 @@ Public Class Principal
 
     Private Sub cbArticulo_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbArticulo.SelectedIndexChanged
 
-        Me.opcionSeleccionadaNivel = OpcionNivel.Articulo
+        Me.opcionSeleccionadaNivel = OpcionNivel.articulo
 
     End Sub
 
@@ -168,7 +168,7 @@ Public Class Principal
 
     Private Sub btnGenerar_Click(sender As Object, e As EventArgs) Handles btnGenerar.Click
 
-        If (Me.opcionSeleccionadaMovimiento = OpcionMovimiento.Entrada Or Me.opcionSeleccionadaMovimiento = OpcionMovimiento.Salida) Then
+        If (Me.opcionSeleccionadaMovimiento = OpcionMovimiento.entrada Or Me.opcionSeleccionadaMovimiento = OpcionMovimiento.salida) Then
             GenerarReporte()
         End If
 
@@ -352,11 +352,27 @@ Public Class Principal
 
     End Sub
 
+    Private Sub rbtnEntradas_CheckedChanged(sender As Object, e As EventArgs) Handles rbtnEntradas.CheckedChanged
+
+        If (rbtnEntradas.Checked) Then
+            Me.opcionSeleccionadaMovimiento = OpcionMovimiento.entrada
+        End If
+
+    End Sub
+
+    Private Sub rbtnSalidas_CheckedChanged(sender As Object, e As EventArgs) Handles rbtnSalidas.CheckedChanged
+
+        If (rbtnSalidas.Checked) Then
+            Me.opcionSeleccionadaMovimiento = OpcionMovimiento.salida
+        End If
+
+    End Sub
+
 #End Region
 
 #Region "Métodos"
 
-#Region "Genericos"
+#Region "Básicos"
 
     Private Sub AsignarFoco(ByVal c As Control)
 
@@ -870,8 +886,8 @@ Public Class Principal
             aplicaFecha = False
         End If
         datos = movimientos.ObtenerListadoReporte(Me.opcionSeleccionadaMovimiento, aplicaFecha)
-        spReporte.ActiveSheet.DataSource = datos 
-        FormatearSpreadReporte(spReporte.ActiveSheet.Columns.Count) 
+        spReporte.ActiveSheet.DataSource = datos
+        FormatearSpreadReporte(spReporte.ActiveSheet.Columns.Count)
         Dim idAnterior As Integer = -1 : Dim idAlmacenAnterior As Integer = -1
         Dim fila As Integer = 0 : Dim filaAnterior As Integer = 0
         While fila <= spReporte.ActiveSheet.Rows.Count - 1
@@ -924,8 +940,8 @@ Public Class Principal
                                     contador += spReporte.ActiveSheet.Cells(fila, columna).Text
                                 End If
                             Else
-                                    contador += spReporte.ActiveSheet.Cells(fila, columna).Text 
-                            End If 
+                                contador += spReporte.ActiveSheet.Cells(fila, columna).Text
+                            End If
                         End If
                     End If
                 Next
@@ -998,7 +1014,7 @@ Public Class Principal
         spReporte.ActiveSheet.AddColumnHeaderSpanCell(0, spReporte.ActiveSheet.Columns("id").Index, 2, 1)
         spReporte.ActiveSheet.ColumnHeader.Cells(0, spReporte.ActiveSheet.Columns("id").Index).Value = "No.".ToUpper
         spReporte.ActiveSheet.AddColumnHeaderSpanCell(0, spReporte.ActiveSheet.Columns("fecha").Index, 2, 1)
-        spReporte.ActiveSheet.ColumnHeader.Cells(0, spReporte.ActiveSheet.Columns("fecha").Index).Value = "Fecha".ToUpper  
+        spReporte.ActiveSheet.ColumnHeader.Cells(0, spReporte.ActiveSheet.Columns("fecha").Index).Value = "Fecha".ToUpper
         spReporte.ActiveSheet.AddColumnHeaderSpanCell(0, spReporte.ActiveSheet.Columns("idAlmacen").Index, 1, 3)
         spReporte.ActiveSheet.ColumnHeader.Cells(0, spReporte.ActiveSheet.Columns("idAlmacen").Index).Value = "Almacen".ToUpper
         spReporte.ActiveSheet.ColumnHeader.Cells(1, spReporte.ActiveSheet.Columns("idAlmacen").Index).Value = "No.".ToUpper
@@ -1108,36 +1124,20 @@ Public Class Principal
 
     Enum OpcionMovimiento
 
-        Entrada = 0
-        Salida = 1
+        entrada = 0
+        salida = 1
 
     End Enum
 
     Enum OpcionNivel
 
-        Almacen = 0
-        Familia = 1
-        SubFamilia = 2
-        Articulo = 3
+        almacen = 0
+        familia = 1
+        subFamilia = 2
+        articulo = 3
 
     End Enum
 
 #End Region
-
-    Private Sub rbtnEntradas_CheckedChanged(sender As Object, e As EventArgs) Handles rbtnEntradas.CheckedChanged
-
-        If (rbtnEntradas.Checked) Then
-            Me.opcionSeleccionadaMovimiento = OpcionMovimiento.Entrada
-        End If
-
-    End Sub
-
-    Private Sub rbtnSalidas_CheckedChanged(sender As Object, e As EventArgs) Handles rbtnSalidas.CheckedChanged
-
-        If (rbtnSalidas.Checked) Then
-            Me.opcionSeleccionadaMovimiento = OpcionMovimiento.Salida
-        End If
-
-    End Sub
 
 End Class

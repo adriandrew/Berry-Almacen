@@ -105,9 +105,9 @@ Public Class Principal
         If (Me.estaMostrado) Then
             If (cbAlmacen.Items.Count > 1) Then
                 If (cbAlmacen.SelectedValue > 0) Then 
-                    Me.opcionSeleccionada = OpcionNivel.Almacen
+                    Me.opcionSeleccionada = OpcionNivel.almacen
                     CargarComboFamilias()
-                Else 
+                Else
                     cbFamilia.DataSource = Nothing
                     cbFamilia.Enabled = False
                     cbSubFamilia.DataSource = Nothing
@@ -125,7 +125,7 @@ Public Class Principal
         If (Me.estaMostrado) Then
             If (cbFamilia.Items.Count > 1) Then
                 If (cbFamilia.SelectedValue > 0) Then
-                    Me.opcionSeleccionada = OpcionNivel.Familia
+                    Me.opcionSeleccionada = OpcionNivel.familia
                     CargarComboSubFamilias()
                 Else
                     cbSubFamilia.DataSource = Nothing
@@ -143,9 +143,9 @@ Public Class Principal
         If (Me.estaMostrado) Then
             If (cbSubFamilia.Items.Count > 1) Then
                 If (cbSubFamilia.SelectedValue > 0) Then
-                    Me.opcionSeleccionada = OpcionNivel.SubFamilia
+                    Me.opcionSeleccionada = OpcionNivel.subFamilia
                     CargarComboArticulos()
-                Else 
+                Else
                     cbArticulo.DataSource = Nothing
                     cbArticulo.Enabled = False
                 End If
@@ -156,7 +156,7 @@ Public Class Principal
 
     Private Sub cbArticulo_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbArticulo.SelectedIndexChanged
 
-        Me.opcionSeleccionada = OpcionNivel.Articulo
+        Me.opcionSeleccionada = OpcionNivel.articulo
 
     End Sub
 
@@ -284,7 +284,7 @@ Public Class Principal
             If (cbAlmacen.SelectedValue <= 0) Then
                 AsignarFoco(btnGenerar)
             Else
-                AsignarFoco(cbFamilia) 
+                AsignarFoco(cbFamilia)
             End If
         ElseIf (e.KeyCode = Keys.Escape) Then
             AsignarFoco(dtpFechaFinal)
@@ -345,7 +345,7 @@ Public Class Principal
                 AsignarFoco(cbFamilia)
             ElseIf (cbAlmacen.Enabled) Then
                 AsignarFoco(cbAlmacen)
-            End If 
+            End If
         End If
 
     End Sub
@@ -354,7 +354,7 @@ Public Class Principal
 
 #Region "Métodos"
 
-#Region "Genericos"
+#Region "Básicos"
 
     Private Sub AsignarFoco(ByVal c As Control)
 
@@ -387,7 +387,7 @@ Public Class Principal
             txtAyuda.Width = pnlAyuda.Width - 10 : Application.DoEvents()
             txtAyuda.Height = pnlAyuda.Height - 10 : Application.DoEvents()
             txtAyuda.Location = New Point(5, 5) : Application.DoEvents()
-            txtAyuda.Text = "Sección de Ayuda: " & vbNewLine & vbNewLine & "* Reporte: " & vbNewLine & "En esta pantalla se desplegará el reporte de acuerdo a los filtros que se hayan seleccionado. " & vbNewLine & "En la parte izquierda se puede agregar cualquiera de los filtros. Existen unos botones que se encuentran en las fechas que contienen la palabra si o no, si la palabra mostrada es si, el rango de fecha correspondiente se incluirá como filtro para el reporte, esto aplica para todas las opciones de fechas. Posteriormente se procede a generar el reporte con los criterios seleccionados. Cuando se termine de generar dicho reporte, se habilitarán las opciones de imprimir, exportar a excel o exportar a pdf, en estas dos últimas el usuario puede guardarlos directamente desde el archivo que se muestra en pantalla si así lo desea, mas no desde el sistema directamente. " : Application.DoEvents()
+            txtAyuda.Text = "Sección de Ayuda: " & vbNewLine & vbNewLine & "* Reporte: " & vbNewLine & "En esta pantalla se desplegará el reporte de acuerdo a los filtros que se hayan seleccionado. " & vbNewLine & "En la parte izquierda se puede agregar cualquiera de los filtros. Existen unos botones que se encuentran en las fechas que contienen la palabra si o no, si la palabra mostrada es si, el rango de fecha correspondiente se incluirá como filtro para el reporte, esto aplica para todas las opciones de fechas. Posteriormente se procede a generar el reporte con los criterios seleccionados. Cuando se termine de generar dicho reporte, se habilitarán las opciones de imprimir, exportar a excel o exportar a pdf, en estas dos últimas el usuario puede guardarlos directamente desde el archivo que se muestra en pantalla si así lo desea, mas no desde el sistema directamente." : Application.DoEvents()
             pnlAyuda.Controls.Add(txtAyuda) : Application.DoEvents()
         Else
             pnlCuerpo.Visible = True : Application.DoEvents()
@@ -1089,10 +1089,10 @@ Public Class Principal
 
     Enum OpcionNivel
 
-        Almacen = 0
-        Familia = 1
-        SubFamilia = 2
-        Articulo = 3
+        almacen = 0
+        familia = 1
+        subFamilia = 2
+        articulo = 3
 
     End Enum
 

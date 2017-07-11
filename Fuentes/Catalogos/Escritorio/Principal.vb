@@ -110,7 +110,7 @@ Public Class Principal
     Private Sub spAlmacen_KeyDown(sender As Object, e As KeyEventArgs) Handles spAlmacenes.KeyDown
 
         If (e.KeyData = Keys.F6) Then ' Eliminar un registro.
-            If (Me.opcionSeleccionada = OpcionMenu.Almacenes) Then
+            If (Me.opcionSeleccionada = OpcionMenu.almacenes) Then
                 If (MessageBox.Show("Confirmas que deseas eliminar el registro seleccionado?", "Confirmación.", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes) Then
                     'Dim fila As Integer = spAlmacen.ActiveSheet.ActiveRowIndex
                     'Dim id As Integer = 0
@@ -125,9 +125,9 @@ Public Class Principal
                 End If
             End If
         ElseIf (e.KeyData = Keys.Enter) Then ' Validar registros.
-            If (Me.opcionSeleccionada = OpcionMenu.Almacenes) Then
+            If (Me.opcionSeleccionada = OpcionMenu.almacenes) Then
                 ControlarSpreadEnter(spAlmacenes)
-            ElseIf (Me.opcionSeleccionada = OpcionMenu.Familias) Then
+            ElseIf (Me.opcionSeleccionada = OpcionMenu.familias) Then
                 ControlarSpreadEnter(spFamilias)
             End If
         End If
@@ -136,33 +136,33 @@ Public Class Principal
 
     Private Sub btnGuardar_Click(sender As Object, e As EventArgs) Handles btnGuardar.Click
 
-        If (Me.opcionSeleccionada = OpcionMenu.Almacenes) Then
+        If (Me.opcionSeleccionada = OpcionMenu.almacenes) Then
             GuardarEditarAlmacenes()
-        ElseIf (Me.opcionSeleccionada = OpcionMenu.Familias) Then
+        ElseIf (Me.opcionSeleccionada = OpcionMenu.familias) Then
             If (Me.filaAlmacen >= 0) Then
                 GuardarEditarFamilias()
             End If
-        ElseIf (Me.opcionSeleccionada = OpcionMenu.SubFamilias) Then
+        ElseIf (Me.opcionSeleccionada = OpcionMenu.subFamilias) Then
             If (Me.filaAlmacen >= 0 And Me.filaFamilia >= 0) Then
                 GuardarEditarSubFamilias()
             End If
-        ElseIf (Me.opcionSeleccionada = OpcionMenu.Articulos) Then
+        ElseIf (Me.opcionSeleccionada = OpcionMenu.articulos) Then
             If (Me.filaAlmacen >= 0 And Me.filaFamilia >= 0 And Me.filaSubFamilia >= 0) Then
                 GuardarEditarArticulos()
             End If
-        ElseIf (Me.opcionSeleccionada = OpcionMenu.Proveedores) Then
+        ElseIf (Me.opcionSeleccionada = OpcionMenu.proveedores) Then
             GuardarEditarProveedores()
-        ElseIf (Me.opcionSeleccionada = OpcionMenu.Clientes) Then
+        ElseIf (Me.opcionSeleccionada = OpcionMenu.clientes) Then
             GuardarEditarClientes()
-        ElseIf (Me.opcionSeleccionada = OpcionMenu.Monedas) Then
+        ElseIf (Me.opcionSeleccionada = OpcionMenu.monedas) Then
             GuardarEditarMonedas()
-        ElseIf (Me.opcionSeleccionada = OpcionMenu.TiposCambios) Then
+        ElseIf (Me.opcionSeleccionada = OpcionMenu.tiposCambios) Then
             GuardarEditarTiposCambios()
-        ElseIf (Me.opcionSeleccionada = OpcionMenu.TiposEntradas) Then
+        ElseIf (Me.opcionSeleccionada = OpcionMenu.tiposEntradas) Then
             GuardarEditarTiposEntradas()
-        ElseIf (Me.opcionSeleccionada = OpcionMenu.TiposSalidas) Then
+        ElseIf (Me.opcionSeleccionada = OpcionMenu.tiposSalidas) Then
             GuardarEditarTiposSalidas()
-        ElseIf (Me.opcionSeleccionada = OpcionMenu.UnidadesMedidas) Then
+        ElseIf (Me.opcionSeleccionada = OpcionMenu.unidadesMedidas) Then
             GuardarEditarUnidadesMedidas()
         End If
 
@@ -170,39 +170,39 @@ Public Class Principal
 
     Private Sub btnEliminar_Click(sender As Object, e As EventArgs) Handles btnEliminar.Click
 
-        If (Me.opcionSeleccionada = OpcionMenu.Almacenes) Then
+        If (Me.opcionSeleccionada = OpcionMenu.almacenes) Then
             EliminarAlmacenes(True)
-        ElseIf (Me.opcionSeleccionada = OpcionMenu.Familias) Then
+        ElseIf (Me.opcionSeleccionada = OpcionMenu.familias) Then
             If (Me.filaAlmacen >= 0) Then
                 Dim idAlmacen As Integer = LogicaCatalogos.Funciones.ValidarNumeroACero(spAlmacenes.ActiveSheet.Cells(Me.filaAlmacen, spAlmacenes.ActiveSheet.Columns("id").Index).Value)
                 EliminarFamilias(True, idAlmacen)
             End If
-        ElseIf (Me.opcionSeleccionada = OpcionMenu.SubFamilias) Then
+        ElseIf (Me.opcionSeleccionada = OpcionMenu.subFamilias) Then
             If (Me.filaAlmacen >= 0 And Me.filaFamilia >= 0) Then
                 Dim idAlmacen As Integer = LogicaCatalogos.Funciones.ValidarNumeroACero(spAlmacenes.ActiveSheet.Cells(Me.filaAlmacen, spAlmacenes.ActiveSheet.Columns("id").Index).Value)
                 Dim idFamilia As Integer = LogicaCatalogos.Funciones.ValidarNumeroACero(spFamilias.ActiveSheet.Cells(Me.filaFamilia, spFamilias.ActiveSheet.Columns("id").Index).Value)
                 EliminarSubFamilias(True, idAlmacen, idFamilia)
             End If
-        ElseIf (Me.opcionSeleccionada = OpcionMenu.Articulos) Then
+        ElseIf (Me.opcionSeleccionada = OpcionMenu.articulos) Then
             If (Me.filaAlmacen >= 0 And Me.filaFamilia >= 0 And Me.filaSubFamilia >= 0) Then
                 Dim idAlmacen As Integer = LogicaCatalogos.Funciones.ValidarNumeroACero(spAlmacenes.ActiveSheet.Cells(Me.filaAlmacen, spAlmacenes.ActiveSheet.Columns("id").Index).Value)
                 Dim idFamilia As Integer = LogicaCatalogos.Funciones.ValidarNumeroACero(spFamilias.ActiveSheet.Cells(Me.filaFamilia, spFamilias.ActiveSheet.Columns("id").Index).Value)
                 Dim idSubFamilia As Integer = LogicaCatalogos.Funciones.ValidarNumeroACero(spSubFamilias.ActiveSheet.Cells(Me.filaSubFamilia, spSubFamilias.ActiveSheet.Columns("id").Index).Value)
                 EliminarArticulos(True, idAlmacen, idFamilia, idSubFamilia)
             End If
-        ElseIf (Me.opcionSeleccionada = OpcionMenu.Proveedores) Then
+        ElseIf (Me.opcionSeleccionada = OpcionMenu.proveedores) Then
             EliminarProveedores(True)
-        ElseIf (Me.opcionSeleccionada = OpcionMenu.Clientes) Then
+        ElseIf (Me.opcionSeleccionada = OpcionMenu.clientes) Then
             EliminarClientes(True)
-        ElseIf (Me.opcionSeleccionada = OpcionMenu.Monedas) Then
+        ElseIf (Me.opcionSeleccionada = OpcionMenu.monedas) Then
             EliminarMonedas(True)
-        ElseIf (Me.opcionSeleccionada = OpcionMenu.TiposCambios) Then
+        ElseIf (Me.opcionSeleccionada = OpcionMenu.tiposCambios) Then
             EliminarTiposCambios(True, Today)
-        ElseIf (Me.opcionSeleccionada = OpcionMenu.TiposEntradas) Then
+        ElseIf (Me.opcionSeleccionada = OpcionMenu.tiposEntradas) Then
             EliminarTiposEntradas(True)
-        ElseIf (Me.opcionSeleccionada = OpcionMenu.TiposSalidas) Then
+        ElseIf (Me.opcionSeleccionada = OpcionMenu.tiposSalidas) Then
             EliminarTiposSalidas(True)
-        ElseIf (Me.opcionSeleccionada = OpcionMenu.UnidadesMedidas) Then
+        ElseIf (Me.opcionSeleccionada = OpcionMenu.unidadesMedidas) Then
             EliminarUnidadesMedidas(True)
         End If
 
@@ -235,10 +235,10 @@ Public Class Principal
     Private Sub spCatalogos_CellClick(sender As Object, e As FarPoint.Win.Spread.CellClickEventArgs) Handles spCatalogos.CellClick
 
         Dim fila As Integer = e.Row
-        If (Me.opcionSeleccionada = OpcionMenu.Articulos) Then
+        If (Me.opcionSeleccionada = OpcionMenu.articulos) Then
             spArticulos.ActiveSheet.Cells(spArticulos.ActiveSheet.ActiveRowIndex, spArticulos.ActiveSheet.Columns("idUnidadMedida").Index).Text = spCatalogos.ActiveSheet.Cells(fila, spCatalogos.ActiveSheet.Columns("id").Index).Text
             spArticulos.ActiveSheet.Cells(spArticulos.ActiveSheet.ActiveRowIndex, spArticulos.ActiveSheet.Columns("nombreUnidadMedida").Index).Text = spCatalogos.ActiveSheet.Cells(fila, spCatalogos.ActiveSheet.Columns("nombre").Index).Text
-        ElseIf (Me.opcionSeleccionada = OpcionMenu.TiposCambios) Then
+        ElseIf (Me.opcionSeleccionada = OpcionMenu.tiposCambios) Then
             spVarios.ActiveSheet.Cells(spVarios.ActiveSheet.ActiveRowIndex, spVarios.ActiveSheet.Columns("idMoneda").Index).Text = spCatalogos.ActiveSheet.Cells(fila, spCatalogos.ActiveSheet.Columns("id").Index).Text
             spVarios.ActiveSheet.Cells(spVarios.ActiveSheet.ActiveRowIndex, spVarios.ActiveSheet.Columns("nombreMoneda").Index).Text = spCatalogos.ActiveSheet.Cells(fila, spCatalogos.ActiveSheet.Columns("nombre").Index).Text
         End If
@@ -313,7 +313,7 @@ Public Class Principal
 
     Private Sub spAlmacen_CellClick(sender As Object, e As FarPoint.Win.Spread.CellClickEventArgs) Handles spAlmacenes.CellClick
 
-        If (Me.opcionSeleccionada = OpcionMenu.Familias Or Me.opcionSeleccionada = OpcionMenu.SubFamilias Or Me.opcionSeleccionada = OpcionMenu.Articulos) Then
+        If (Me.opcionSeleccionada = OpcionMenu.familias Or Me.opcionSeleccionada = OpcionMenu.subFamilias Or Me.opcionSeleccionada = OpcionMenu.articulos) Then
             If (e.Row >= 0) Then
                 Me.filaAlmacen = e.Row
                 spFamilias.Show()
@@ -329,7 +329,7 @@ Public Class Principal
         If (e.KeyData = Keys.Enter) Then
             ControlarSpreadEnter(spFamilias)
         ElseIf e.KeyData = Keys.F6 Then ' Eliminar un registro.
-            If (Me.opcionSeleccionada = OpcionMenu.Familias) Then
+            If (Me.opcionSeleccionada = OpcionMenu.familias) Then
                 If (MessageBox.Show("Confirmas que deseas eliminar el registro seleccionado?", "Confirmación.", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes) Then
                     EliminarRegistroDeSpread(spFamilias)
                 End If
@@ -348,7 +348,7 @@ Public Class Principal
 
     Private Sub spFamilia_CellClick(sender As Object, e As FarPoint.Win.Spread.CellClickEventArgs) Handles spFamilias.CellClick
 
-        If (Me.opcionSeleccionada = OpcionMenu.SubFamilias Or Me.opcionSeleccionada = OpcionMenu.Articulos) Then
+        If (Me.opcionSeleccionada = OpcionMenu.subFamilias Or Me.opcionSeleccionada = OpcionMenu.articulos) Then
             If (e.Row >= 0) Then
                 Me.filaFamilia = e.Row
                 spSubFamilias.Show()
@@ -373,7 +373,7 @@ Public Class Principal
         If (e.KeyData = Keys.Enter) Then
             ControlarSpreadEnter(spSubFamilias)
         ElseIf e.KeyData = Keys.F6 Then ' Eliminar un registro.
-            If (Me.opcionSeleccionada = OpcionMenu.SubFamilias) Then
+            If (Me.opcionSeleccionada = OpcionMenu.subFamilias) Then
                 If (MessageBox.Show("Confirmas que deseas eliminar el registro seleccionado?", "Confirmación.", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes) Then
                     EliminarRegistroDeSpread(spSubFamilias)
                 End If
@@ -384,7 +384,7 @@ Public Class Principal
 
     Private Sub spSubFamilias_CellClick(sender As Object, e As FarPoint.Win.Spread.CellClickEventArgs) Handles spSubFamilias.CellClick
 
-        If (Me.opcionSeleccionada = OpcionMenu.Articulos) Then
+        If (Me.opcionSeleccionada = OpcionMenu.articulos) Then
             If (e.Row >= 0) Then
                 Me.filaSubFamilia = e.Row
                 spArticulos.Show()
@@ -410,13 +410,13 @@ Public Class Principal
         If (e.KeyData = Keys.Enter) Then
             ControlarSpreadEnter(spArticulos)
         ElseIf (e.KeyData = Keys.F6) Then ' Eliminar un registro.
-            If (Me.opcionSeleccionada = OpcionMenu.Articulos) Then
+            If (Me.opcionSeleccionada = OpcionMenu.articulos) Then
                 If (MessageBox.Show("Confirmas que deseas eliminar el registro seleccionado?", "Confirmación.", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes) Then
                     EliminarRegistroDeSpread(spArticulos)
                 End If
             End If
         ElseIf (e.KeyData = Keys.F5) Then ' Abrir catalogos.
-            If (Me.opcionSeleccionada = OpcionMenu.Articulos) Then
+            If (Me.opcionSeleccionada = OpcionMenu.articulos) Then
                 If (spArticulos.ActiveSheet.ActiveColumnIndex = spArticulos.ActiveSheet.Columns("idUnidadMedida").Index) Or (spArticulos.ActiveSheet.ActiveColumnIndex = spArticulos.ActiveSheet.Columns("nombreUnidadMedida").Index) Then
                     spArticulos.Enabled = False
                     CargarCatalogoUnidadesMedidas()
@@ -459,7 +459,7 @@ Public Class Principal
                 EliminarRegistroDeSpread(spVarios)
             End If
         ElseIf (e.KeyData = Keys.F5) Then ' Abrir catalogos.
-            If (Me.opcionSeleccionada = OpcionMenu.TiposCambios) Then
+            If (Me.opcionSeleccionada = OpcionMenu.tiposCambios) Then
                 If (spVarios.ActiveSheet.ActiveColumnIndex = spVarios.ActiveSheet.Columns("idMoneda").Index) Or (spVarios.ActiveSheet.ActiveColumnIndex = spVarios.ActiveSheet.Columns("nombreMoneda").Index) Then
                     spVarios.Enabled = False
                     CargarCatalogoMonedas()
@@ -574,7 +574,7 @@ Public Class Principal
             txtAyuda.Width = pnlAyuda.Width - 10 : Application.DoEvents()
             txtAyuda.Height = pnlAyuda.Height - 10 : Application.DoEvents()
             txtAyuda.Location = New Point(5, 5) : Application.DoEvents()
-            txtAyuda.Text = "Sección de Ayuda: " & vbNewLine & vbNewLine & "* Teclas básicas: " & vbNewLine & "F5 sirve para mostrar catálogos. " & vbNewLine & "F6 sirve para eliminar un registro únicamente. " & vbNewLine & "Escape sirve para ocultar catálogos que se encuentren desplegados. " & vbNewLine & vbNewLine & "* Catálogos desplegados: " & vbNewLine & "Cuando se muestra algún catálogo, al seleccionar alguna opción de este, se va mostrando en tiempo real en la captura de donde se originó. Cuando se le da doble clic en alguna opción o a la tecla escape se oculta dicho catálogo. " & vbNewLine & vbNewLine & "* Areas: " & vbNewLine & "En esta pestaña se capturarán todas las areas necesarias. " & vbNewLine & "Existen los botones de guardar/editar y eliminar todo dependiendo lo que se necesite hacer. " & vbNewLine & vbNewLine & "* Usuarios: " & vbNewLine & "En esta parte se capturarán todos los usuarios. " & vbNewLine & "Descripción de los datos que pide: " & vbNewLine & "- Contraseña: esta permite letras y/o números sin ningun problema, no existen restricciones de ningún tipo." & vbNewLine & "- Nivel: 0 es para acceso a todos los programas, excepto los de gerencia. 1 es para los módulos, en este caso como es uno solo, no aplica. 2 es para los programas, si se le da doble clic aparecerán los programas para seleccionar cuales se permitirán y cuales no. 3 es para subprogramas, no aplica en este caso. " & vbNewLine & "- Acceso Total: es solamente para usuarios de gerencia. " & vbNewLine & "Existen los botones de guardar/editar y eliminar todo dependiendo lo que se necesite hacer. " & vbNewLine & vbNewLine & "* Correos: " & vbNewLine & "En este apartado se capturarán todos los usuarios con sus respectivos correos para enviarles sus notificaciones de actividades pendientes que se encuentran retrasadas en tiempos. " & vbNewLine & "Existen los botones de guardar/editar y eliminar todo dependiendo lo que se necesite hacer. " : Application.DoEvents()
+            txtAyuda.Text = "Sección de Ayuda: " & vbNewLine & vbNewLine & "* Teclas básicas: " & vbNewLine & "F5 sirve para mostrar catálogos. " & vbNewLine & "F6 sirve para eliminar un registro únicamente. " & vbNewLine & "Escape sirve para ocultar catálogos que se encuentren desplegados. " & vbNewLine & vbNewLine & "* Catálogos desplegados: " & vbNewLine & "Cuando se muestra algún catálogo, al seleccionar alguna opción de este, se va mostrando en tiempo real en la captura de donde se originó. Cuando se le da doble clic en alguna opción o a la tecla escape se oculta dicho catálogo. " & vbNewLine & vbNewLine & "* Datos obligatorios:" & vbNewLine & "Todos los que tengan el simbolo * son estrictamente obligatorios." & vbNewLine & vbNewLine & "* Captura:" & vbNewLine & "* Almacenes: " & vbNewLine & "En esta pestaña se capturarán los distintos almacenes que se manejan. " & vbNewLine & "* Familias: " & vbNewLine & "En esta parte se agrupan por un primer nivel dependiendo el almacén, ejemplo: insecticidas, agroquimicos, etc. " & vbNewLine & "* SubFamilias: " & vbNewLine & "En este apartado se capturarán todos los segundos niveles de acuerdo al almacén y familia correspondiente seleccionadas. " & vbNewLine & "* Artículos: " & vbNewLine & "En este lugar se agrupan los terceros niveles de acuerdo al almacén, familia y subfamilia correspondiente seleccionadas. " & vbNewLine & "* Existen distintas opciones que se tienen que configurar como proveedores, monedas, tipos de cambio, etc. en las cuales especifíca claramente todo lo que se necesita." & vbNewLine & vbNewLine & "* Para todas las opciones existen los botones de guardar/editar y eliminar todo dependiendo lo que se necesite hacer. " : Application.DoEvents()
             pnlAyuda.Controls.Add(txtAyuda) : Application.DoEvents()
         Else
             pnlCuerpo.Visible = True : Application.DoEvents()
@@ -847,7 +847,7 @@ Public Class Principal
             spread.ActiveSheet.Rows.Count += 1
         End If
         Dim fila As Integer = 0
-        If (Me.opcionSeleccionada = OpcionMenu.Articulos) Then
+        If (Me.opcionSeleccionada = OpcionMenu.articulos) Then
             If (columnaActiva = spArticulos.ActiveSheet.Columns("idUnidadMedida").Index) Then
                 fila = spArticulos.ActiveSheet.ActiveRowIndex
                 Dim idUnidadMedida As Integer = spArticulos.ActiveSheet.Cells(fila, spArticulos.ActiveSheet.Columns("idUnidadMedida").Index).Value
@@ -860,7 +860,7 @@ Public Class Principal
                     End If
                 End If
             End If
-        ElseIf (Me.opcionSeleccionada = OpcionMenu.TiposCambios) Then
+        ElseIf (Me.opcionSeleccionada = OpcionMenu.tiposCambios) Then
             fila = spVarios.ActiveSheet.ActiveRowIndex
             If (columnaActiva = spVarios.ActiveSheet.Columns("idMoneda").Index) Then
                 Dim idMonedaa As Integer = LogicaCatalogos.Funciones.ValidarNumeroACero(spVarios.ActiveSheet.Cells(fila, spVarios.ActiveSheet.Columns("idMoneda").Index).Text)
@@ -963,11 +963,11 @@ Public Class Principal
 
     Private Sub VolverFocoCatalogos()
 
-        If (Me.opcionSeleccionada = OpcionMenu.Articulos) Then
+        If (Me.opcionSeleccionada = OpcionMenu.articulos) Then
             spArticulos.Enabled = True
             spArticulos.Focus()
             spArticulos.ActiveSheet.SetActiveCell(spArticulos.ActiveSheet.ActiveRowIndex, spArticulos.ActiveSheet.Columns("idUnidadMedida").Index + 2)
-        ElseIf (Me.opcionSeleccionada = OpcionMenu.TiposCambios) Then
+        ElseIf (Me.opcionSeleccionada = OpcionMenu.tiposCambios) Then
             spVarios.Enabled = True
             spVarios.Focus()
             spVarios.ActiveSheet.SetActiveCell(spVarios.ActiveSheet.ActiveRowIndex, spVarios.ActiveSheet.Columns("idMoneda").Index + 2)
@@ -979,7 +979,7 @@ Public Class Principal
     Private Sub SeleccionoAlmacenes()
 
         Me.Cursor = Cursors.WaitCursor
-        Me.opcionSeleccionada = OpcionMenu.Almacenes
+        Me.opcionSeleccionada = OpcionMenu.almacenes
         ReiniciarValoresIndices()
         OcultarSpreads()
         CargarAlmacenes()
@@ -989,22 +989,22 @@ Public Class Principal
 
     Private Sub CargarAlmacenes()
 
-        If (Me.opcionSeleccionada = OpcionMenu.Almacenes) Then
+        If (Me.opcionSeleccionada = OpcionMenu.almacenes) Then
             spAlmacenes.Height = Me.altoTotal
             spAlmacenes.Width = Me.anchoTotal
             spAlmacenes.Top = Me.arriba
             spAlmacenes.Left = Me.izquierda
-        ElseIf (Me.opcionSeleccionada = OpcionMenu.Familias) Then
+        ElseIf (Me.opcionSeleccionada = OpcionMenu.familias) Then
             spAlmacenes.Height = Me.altoTotal
             spAlmacenes.Width = Me.anchoMitad
             spAlmacenes.Top = Me.arriba
             spAlmacenes.Left = Me.izquierda
-        ElseIf (Me.opcionSeleccionada = OpcionMenu.SubFamilias) Then
+        ElseIf (Me.opcionSeleccionada = OpcionMenu.subFamilias) Then
             spAlmacenes.Height = Me.altoTotal
             spAlmacenes.Width = Me.anchoTercio
             spAlmacenes.Top = Me.arriba
             spAlmacenes.Left = Me.izquierda
-        ElseIf (Me.opcionSeleccionada = OpcionMenu.Articulos) Then
+        ElseIf (Me.opcionSeleccionada = OpcionMenu.articulos) Then
             spAlmacenes.Height = Me.altoCuarto
             spAlmacenes.Width = Me.anchoTercio
             spAlmacenes.Top = Me.arriba
@@ -1022,12 +1022,12 @@ Public Class Principal
         spAlmacenes.ActiveSheet.ColumnHeader.Rows(0, spAlmacenes.ActiveSheet.ColumnHeader.Rows.Count - 1).Font = New Font(Principal.tipoLetraSpread, Principal.tamañoLetraSpread, FontStyle.Bold)
         spAlmacenes.ActiveSheet.ColumnHeader.Rows(0).Height = Principal.alturaFilasEncabezadosChicosSpread
         spAlmacenes.ActiveSheet.ColumnHeader.Rows(1).Height = Principal.alturaFilasEncabezadosMedianosSpread
-        If (Me.opcionSeleccionada = OpcionMenu.Almacenes) Then
+        If (Me.opcionSeleccionada = OpcionMenu.almacenes) Then
             spAlmacenes.ActiveSheet.OperationMode = FarPoint.Win.Spread.OperationMode.Normal
         Else
             spAlmacenes.ActiveSheet.OperationMode = FarPoint.Win.Spread.OperationMode.SingleSelect
         End If
-        If (Me.opcionSeleccionada = OpcionMenu.Almacenes) Then
+        If (Me.opcionSeleccionada = OpcionMenu.almacenes) Then
             ControlarSpreadEnterASiguienteColumna(spAlmacenes)
         End If
         Dim numeracion As Integer = 0
@@ -1042,17 +1042,17 @@ Public Class Principal
         spAlmacenes.ActiveSheet.Columns("abreviatura").CellType = tipoTexto
         spAlmacenes.ActiveSheet.AddColumnHeaderSpanCell(0, 0, 1, spAlmacenes.ActiveSheet.Columns.Count)
         Dim obligatorio As String = String.Empty
-        If (Me.opcionSeleccionada = OpcionMenu.Almacenes) Then
+        If (Me.opcionSeleccionada = OpcionMenu.almacenes) Then
             obligatorio = " *"
         End If
         spAlmacenes.ActiveSheet.ColumnHeader.Cells(0, 0).Value = "A  l  m  a  c  e  n  e  s".ToUpper()
         spAlmacenes.ActiveSheet.ColumnHeader.Cells(1, spAlmacenes.ActiveSheet.Columns("id").Index).Value = "No.".ToUpper() & obligatorio
         spAlmacenes.ActiveSheet.ColumnHeader.Cells(1, spAlmacenes.ActiveSheet.Columns("nombre").Index).Value = "Nombre".ToUpper() & obligatorio
         spAlmacenes.ActiveSheet.ColumnHeader.Cells(1, spAlmacenes.ActiveSheet.Columns("abreviatura").Index).Value = "Abreviatura".ToUpper()
-        If (Me.opcionSeleccionada = OpcionMenu.Almacenes) Then
+        If (Me.opcionSeleccionada = OpcionMenu.almacenes) Then
             spAlmacenes.ActiveSheet.Rows.Count += 1
         End If
-        If (Me.opcionSeleccionada <> OpcionMenu.Almacenes And Me.opcionSeleccionada <> OpcionMenu.Familias) Then
+        If (Me.opcionSeleccionada <> OpcionMenu.almacenes And Me.opcionSeleccionada <> OpcionMenu.familias) Then
             spAlmacenes.ActiveSheet.Columns("abreviatura").Visible = False
         Else
             spAlmacenes.ActiveSheet.Columns("abreviatura").Visible = True
@@ -1103,7 +1103,7 @@ Public Class Principal
     Private Sub SeleccionoFamilias()
 
         Me.Cursor = Cursors.WaitCursor
-        Me.opcionSeleccionada = OpcionMenu.Familias
+        Me.opcionSeleccionada = OpcionMenu.familias
         ReiniciarValoresIndices()
         OcultarSpreads()
         CargarFamilias(-1)
@@ -1117,17 +1117,17 @@ Public Class Principal
             CargarAlmacenes()
         End If
         If (idAlmacen > 0) Then
-            If (Me.opcionSeleccionada = OpcionMenu.Familias) Then
+            If (Me.opcionSeleccionada = OpcionMenu.familias) Then
                 spFamilias.Height = Me.altoTotal
                 spFamilias.Width = Me.anchoMitad
                 spFamilias.Top = Me.arriba
                 spFamilias.Left = Me.anchoMitad
-            ElseIf (Me.opcionSeleccionada = OpcionMenu.SubFamilias) Then
+            ElseIf (Me.opcionSeleccionada = OpcionMenu.subFamilias) Then
                 spFamilias.Height = Me.altoTotal
                 spFamilias.Width = Me.anchoTercio
                 spFamilias.Top = Me.arriba
                 spFamilias.Left = Me.anchoTercio
-            ElseIf (Me.opcionSeleccionada = OpcionMenu.Articulos) Then
+            ElseIf (Me.opcionSeleccionada = OpcionMenu.articulos) Then
                 spFamilias.Height = Me.altoCuarto
                 spFamilias.Width = Me.anchoTercio
                 spFamilias.Top = Me.arriba
@@ -1147,12 +1147,12 @@ Public Class Principal
         spFamilias.ActiveSheet.ColumnHeader.Rows(0, spFamilias.ActiveSheet.ColumnHeader.Rows.Count - 1).Font = New Font(Principal.tipoLetraSpread, Principal.tamañoLetraSpread, FontStyle.Bold)
         spFamilias.ActiveSheet.ColumnHeader.Rows(0).Height = Principal.alturaFilasEncabezadosChicosSpread
         spFamilias.ActiveSheet.ColumnHeader.Rows(1).Height = Principal.alturaFilasEncabezadosMedianosSpread
-        If (Me.opcionSeleccionada = OpcionMenu.Familias) Then
+        If (Me.opcionSeleccionada = OpcionMenu.familias) Then
             spFamilias.ActiveSheet.OperationMode = FarPoint.Win.Spread.OperationMode.Normal
         Else
             spFamilias.ActiveSheet.OperationMode = FarPoint.Win.Spread.OperationMode.SingleSelect
         End If
-        If (Me.opcionSeleccionada = OpcionMenu.Familias) Then
+        If (Me.opcionSeleccionada = OpcionMenu.familias) Then
             ControlarSpreadEnterASiguienteColumna(spFamilias)
         End If
         Dim numeracion As Integer = 0
@@ -1164,13 +1164,13 @@ Public Class Principal
         spFamilias.ActiveSheet.Columns("nombre").CellType = tipoTexto
         spFamilias.ActiveSheet.AddColumnHeaderSpanCell(0, 0, 1, spFamilias.ActiveSheet.Columns.Count)
         Dim obligatorio As String = String.Empty
-        If (Me.opcionSeleccionada = OpcionMenu.Familias) Then
+        If (Me.opcionSeleccionada = OpcionMenu.familias) Then
             obligatorio = " *"
         End If
         spFamilias.ActiveSheet.ColumnHeader.Cells(0, 0).Value = "F  a  m  i  l  i  a  s".ToUpper()
         spFamilias.ActiveSheet.ColumnHeader.Cells(1, spFamilias.ActiveSheet.Columns("id").Index).Value = "No.".ToUpper() & obligatorio
         spFamilias.ActiveSheet.ColumnHeader.Cells(1, spFamilias.ActiveSheet.Columns("nombre").Index).Value = "Nombre".ToUpper() & obligatorio
-        If (Me.opcionSeleccionada = OpcionMenu.Familias) Then
+        If (Me.opcionSeleccionada = OpcionMenu.familias) Then
             spFamilias.ActiveSheet.Rows.Count += 1
         End If
         Application.DoEvents()
@@ -1219,7 +1219,7 @@ Public Class Principal
     Private Sub SeleccionoSubFamilias()
 
         Me.Cursor = Cursors.WaitCursor
-        Me.opcionSeleccionada = OpcionMenu.SubFamilias
+        Me.opcionSeleccionada = OpcionMenu.subFamilias
         ReiniciarValoresIndices()
         OcultarSpreads()
         CargarSubFamilias(Me.filaAlmacen, Me.filaFamilia)
@@ -1236,12 +1236,12 @@ Public Class Principal
             CargarFamilias(idAlmacen)
         End If
         If (idAlmacen >= 0 And idFamilia >= 0) Then
-            If (Me.opcionSeleccionada = OpcionMenu.SubFamilias) Then
+            If (Me.opcionSeleccionada = OpcionMenu.subFamilias) Then
                 spSubFamilias.Height = Me.altoTotal
                 spSubFamilias.Width = Me.anchoTercio
                 spSubFamilias.Top = Me.arriba
                 spSubFamilias.Left = Me.anchoTercio * 2
-            ElseIf (Me.opcionSeleccionada = OpcionMenu.Articulos) Then
+            ElseIf (Me.opcionSeleccionada = OpcionMenu.articulos) Then
                 spSubFamilias.Height = Me.altoCuarto
                 spSubFamilias.Width = Me.anchoTercio
                 spSubFamilias.Top = Me.arriba
@@ -1262,12 +1262,12 @@ Public Class Principal
         spSubFamilias.ActiveSheet.ColumnHeader.Rows(0, spSubFamilias.ActiveSheet.ColumnHeader.Rows.Count - 1).Font = New Font(Principal.tipoLetraSpread, Principal.tamañoLetraSpread, FontStyle.Bold)
         spSubFamilias.ActiveSheet.ColumnHeader.Rows(0).Height = Principal.alturaFilasEncabezadosChicosSpread
         spSubFamilias.ActiveSheet.ColumnHeader.Rows(1).Height = Principal.alturaFilasEncabezadosMedianosSpread
-        If (Me.opcionSeleccionada = OpcionMenu.SubFamilias) Then
+        If (Me.opcionSeleccionada = OpcionMenu.subFamilias) Then
             spSubFamilias.ActiveSheet.OperationMode = FarPoint.Win.Spread.OperationMode.Normal
         Else
             spSubFamilias.ActiveSheet.OperationMode = FarPoint.Win.Spread.OperationMode.SingleSelect
         End If
-        If (Me.opcionSeleccionada = OpcionMenu.SubFamilias) Then
+        If (Me.opcionSeleccionada = OpcionMenu.subFamilias) Then
             ControlarSpreadEnterASiguienteColumna(spSubFamilias)
         End If
         Dim numeracion As Integer = 0
@@ -1279,13 +1279,13 @@ Public Class Principal
         spSubFamilias.ActiveSheet.Columns("nombre").CellType = tipoTexto
         spSubFamilias.ActiveSheet.AddColumnHeaderSpanCell(0, 0, 1, spSubFamilias.ActiveSheet.Columns.Count)
         Dim obligatorio As String = String.Empty
-        If (Me.opcionSeleccionada = OpcionMenu.SubFamilias) Then
+        If (Me.opcionSeleccionada = OpcionMenu.subFamilias) Then
             obligatorio = " *"
         End If
         spSubFamilias.ActiveSheet.ColumnHeader.Cells(0, 0).Value = "S  u  b  F  a  m  i  l  i  a  s".ToUpper()
         spSubFamilias.ActiveSheet.ColumnHeader.Cells(1, spSubFamilias.ActiveSheet.Columns("id").Index).Value = "No.".ToUpper() & obligatorio
         spSubFamilias.ActiveSheet.ColumnHeader.Cells(1, spSubFamilias.ActiveSheet.Columns("nombre").Index).Value = "Nombre".ToUpper() & obligatorio
-        If (Me.opcionSeleccionada = OpcionMenu.SubFamilias) Then
+        If (Me.opcionSeleccionada = OpcionMenu.subFamilias) Then
             spSubFamilias.ActiveSheet.Rows.Count += 1
         End If
         Application.DoEvents()
@@ -1337,7 +1337,7 @@ Public Class Principal
     Private Sub SeleccionoArticulos()
 
         Me.Cursor = Cursors.WaitCursor
-        Me.opcionSeleccionada = OpcionMenu.Articulos
+        Me.opcionSeleccionada = OpcionMenu.articulos
         ReiniciarValoresIndices()
         OcultarSpreads()
         CargarArticulos(Me.filaAlmacen, Me.filaFamilia, Me.filaSubFamilia)
@@ -1377,12 +1377,12 @@ Public Class Principal
         spArticulos.ActiveSheet.ColumnHeader.Rows(0, spArticulos.ActiveSheet.ColumnHeader.Rows.Count - 1).Font = New Font(Principal.tipoLetraSpread, Principal.tamañoLetraSpread, FontStyle.Bold)
         spArticulos.ActiveSheet.ColumnHeader.Rows(0).Height = Principal.alturaFilasEncabezadosChicosSpread
         spArticulos.ActiveSheet.ColumnHeader.Rows(1).Height = Principal.alturaFilasEncabezadosGrandesSpread
-        If (Me.opcionSeleccionada = OpcionMenu.Articulos) Then
+        If (Me.opcionSeleccionada = OpcionMenu.articulos) Then
             spArticulos.ActiveSheet.OperationMode = FarPoint.Win.Spread.OperationMode.Normal
         Else
             spArticulos.ActiveSheet.OperationMode = FarPoint.Win.Spread.OperationMode.SingleSelect
         End If
-        If (Me.opcionSeleccionada = OpcionMenu.Articulos) Then
+        If (Me.opcionSeleccionada = OpcionMenu.articulos) Then
             ControlarSpreadEnterASiguienteColumna(spArticulos)
         End If
         Dim numeracion As Integer = 0
@@ -1432,7 +1432,7 @@ Public Class Principal
         spArticulos.ActiveSheet.ColumnHeader.Cells(1, spArticulos.ActiveSheet.Columns("seccion").Index).Value = "Sección".ToUpper()
         spArticulos.ActiveSheet.ColumnHeader.Cells(1, spArticulos.ActiveSheet.Columns("estante").Index).Value = "Estante".ToUpper()
         spArticulos.ActiveSheet.ColumnHeader.Cells(1, spArticulos.ActiveSheet.Columns("nivel").Index).Value = "Nivel".ToUpper()
-        If (Me.opcionSeleccionada = OpcionMenu.Articulos) Then
+        If (Me.opcionSeleccionada = OpcionMenu.articulos) Then
             spArticulos.ActiveSheet.Rows.Count += 1
         End If
         Application.DoEvents()
@@ -1509,7 +1509,7 @@ Public Class Principal
     Private Sub SeleccionoProveedores()
 
         Me.Cursor = Cursors.WaitCursor
-        Me.opcionSeleccionada = OpcionMenu.Proveedores
+        Me.opcionSeleccionada = OpcionMenu.proveedores
         OcultarSpreads()
         LimpiarSpread(spVarios)
         CargarProveedores()
@@ -1629,7 +1629,7 @@ Public Class Principal
     Private Sub SeleccionoMonedas()
 
         Me.Cursor = Cursors.WaitCursor
-        Me.opcionSeleccionada = OpcionMenu.Monedas
+        Me.opcionSeleccionada = OpcionMenu.monedas
         OcultarSpreads()
         LimpiarSpread(spVarios)
         CargarMonedas()
@@ -1713,7 +1713,7 @@ Public Class Principal
     Private Sub SeleccionoTiposEntradas()
 
         Me.Cursor = Cursors.WaitCursor
-        Me.opcionSeleccionada = OpcionMenu.TiposEntradas
+        Me.opcionSeleccionada = OpcionMenu.tiposEntradas
         OcultarSpreads()
         LimpiarSpread(spVarios)
         CargarTiposEntradas()
@@ -1797,7 +1797,7 @@ Public Class Principal
     Private Sub SeleccionoTiposSalidas()
 
         Me.Cursor = Cursors.WaitCursor
-        Me.opcionSeleccionada = OpcionMenu.TiposSalidas
+        Me.opcionSeleccionada = OpcionMenu.tiposSalidas
         OcultarSpreads()
         LimpiarSpread(spVarios)
         CargarTiposSalidas()
@@ -1881,7 +1881,7 @@ Public Class Principal
     Private Sub SeleccionoUnidadesMedidas()
 
         Me.Cursor = Cursors.WaitCursor
-        Me.opcionSeleccionada = OpcionMenu.UnidadesMedidas
+        Me.opcionSeleccionada = OpcionMenu.unidadesMedidas
         OcultarSpreads()
         LimpiarSpread(spVarios)
         CargarUnidadesMedidas()
@@ -1965,7 +1965,7 @@ Public Class Principal
     Private Sub SeleccionoTiposCambios()
 
         Me.Cursor = Cursors.WaitCursor
-        Me.opcionSeleccionada = OpcionMenu.TiposCambios
+        Me.opcionSeleccionada = OpcionMenu.tiposCambios
         OcultarSpreads()
         LimpiarSpread(spVarios)
         CargarTiposCambios()
@@ -2058,11 +2058,11 @@ Public Class Principal
         End If
 
     End Sub
-     
+
     Private Sub SeleccionoClientes()
 
         Me.Cursor = Cursors.WaitCursor
-        Me.opcionSeleccionada = OpcionMenu.Clientes
+        Me.opcionSeleccionada = OpcionMenu.clientes
         OcultarSpreads()
         LimpiarSpread(spVarios)
         CargarClientes()
@@ -2187,17 +2187,17 @@ Public Class Principal
 
     Public Enum OpcionMenu
 
-        Almacenes = 1
-        Familias = 2
-        SubFamilias = 3
-        Articulos = 4
-        Proveedores = 5
-        Clientes = 6
-        Monedas = 7
-        TiposCambios = 8
-        TiposEntradas = 9
-        TiposSalidas = 10
-        UnidadesMedidas = 11
+        almacenes = 1
+        familias = 2
+        subFamilias = 3
+        articulos = 4
+        proveedores = 5
+        clientes = 6
+        monedas = 7
+        tiposCambios = 8
+        tiposEntradas = 9
+        tiposSalidas = 10
+        unidadesMedidas = 11
 
     End Enum
 

@@ -110,3 +110,7 @@ C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Entrada
 C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Entradas\Escritorio\obj\x86\Release\ALM02.exe
 C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Entradas\Escritorio\obj\x86\Release\ALM02.xml
 C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Entradas\Escritorio\obj\x86\Release\ALM02.pdb
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Entradas\Escritorio\bin\x86\Release\ALM02.exe.config
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Entradas\Escritorio\obj\x86\Release\ALM02.exe
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Entradas\Escritorio\obj\x86\Release\ALM02.xml
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Entradas\Escritorio\obj\x86\Release\ALM02.pdb

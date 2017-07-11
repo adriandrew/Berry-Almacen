@@ -128,3 +128,7 @@ C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Salidas
 C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Salidas\Escritorio\obj\x86\Release\ALM03.exe
 C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Salidas\Escritorio\obj\x86\Release\ALM03.xml
 C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Salidas\Escritorio\obj\x86\Release\ALM03.pdb
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Salidas\Escritorio\bin\x86\Release\ALM03.exe.config
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Salidas\Escritorio\obj\x86\Release\ALM03.exe
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Salidas\Escritorio\obj\x86\Release\ALM03.xml
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Salidas\Escritorio\obj\x86\Release\ALM03.pdb
