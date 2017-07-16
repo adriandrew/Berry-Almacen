@@ -658,7 +658,7 @@ Partial Class Principal
         Me.Controls.Add(Me.pnlContenido)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "Principal"
-        Me.Text = "Reporte de Saldos"
+        Me.Text = "Almacén - Reporte de Saldos"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.pnlContenido.ResumeLayout(False)
         Me.pnlCuerpo.ResumeLayout(False)

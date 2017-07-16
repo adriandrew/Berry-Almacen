@@ -32,7 +32,7 @@ Public Class UnidadesMedidas
             If (Me.EId > 0) Then
                 condicion &= " WHERE Id=@id"
             End If
-            comando.CommandText = "SELECT Id, Nombre FROM " & LogicaEntradas.Programas.prefijoBaseDatosAlmacen & "UnidadesMedidas " & condicion & " ORDER BY Id ASC"
+            comando.CommandText = "SELECT Id, Nombre FROM " & ALMLogicaEntradas.Programas.prefijoBaseDatosAlmacen & "UnidadesMedidas " & condicion & " ORDER BY Id ASC"
             comando.Parameters.AddWithValue("@id", Me.id)
             BaseDatos.conexionCatalogo.Open()
             Dim lectorDatos As SqlDataReader

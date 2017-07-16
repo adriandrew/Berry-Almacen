@@ -82,7 +82,7 @@ Public Class Proveedores
             Dim datos As New DataTable
             Dim comando As New SqlCommand()
             comando.Connection = BaseDatos.conexionCatalogo
-            comando.CommandText = "SELECT Id, Nombre FROM " & LogicaEntradas.Programas.prefijoBaseDatosAlmacen & "Proveedores ORDER BY Id ASC"
+            comando.CommandText = "SELECT Id, Nombre FROM " & ALMLogicaEntradas.Programas.prefijoBaseDatosAlmacen & "Proveedores ORDER BY Id ASC"
             BaseDatos.conexionCatalogo.Open()
             Dim lectorDatos As SqlDataReader
             lectorDatos = comando.ExecuteReader()
@@ -103,17 +103,17 @@ Public Class Proveedores
             Dim lista As New List(Of Proveedores)
             Dim comando As New SqlCommand()
             comando.Connection = BaseDatos.conexionCatalogo
-            Dim condicion As String = String.Empty 
+            Dim condicion As String = String.Empty
             If (Me.EId > 0) Then
                 condicion &= " AND Id=@id"
             End If
-            comando.CommandText = "SELECT Id, Nombre, Rfc, Domicilio, Municipio, Estado, Telefono, Correo FROM " & LogicaEntradas.Programas.prefijoBaseDatosAlmacen & "Proveedores WHERE 0=0 " & condicion 
+            comando.CommandText = "SELECT Id, Nombre, Rfc, Domicilio, Municipio, Estado, Telefono, Correo FROM " & ALMLogicaEntradas.Programas.prefijoBaseDatosAlmacen & "Proveedores WHERE 0=0 " & condicion
             comando.Parameters.AddWithValue("@id", Me.EId)
             BaseDatos.conexionCatalogo.Open()
             Dim lectorDatos As SqlDataReader = comando.ExecuteReader()
             Dim proveedores As Proveedores
             While lectorDatos.Read()
-                proveedores = New Proveedores() 
+                proveedores = New Proveedores()
                 proveedores.id = Convert.ToInt32(lectorDatos("Id").ToString())
                 proveedores.nombre = lectorDatos("Nombre").ToString()
                 proveedores.rfc = lectorDatos("Rfc").ToString()

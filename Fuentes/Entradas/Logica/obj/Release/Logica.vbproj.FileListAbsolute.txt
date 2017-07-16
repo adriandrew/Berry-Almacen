@@ -1,0 +1,8 @@
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Entradas\Logica\bin\Release\ALMLogicaEntradas.dll
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Entradas\Logica\bin\Release\ALMLogicaEntradas.pdb
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Entradas\Logica\bin\Release\ALMLogicaEntradas.xml
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Entradas\Logica\obj\Release\ALMLogicaEntradas.Resources.resources
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Entradas\Logica\obj\Release\Logica.vbproj.GenerateResource.Cache
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Entradas\Logica\obj\Release\ALMLogicaEntradas.dll
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Entradas\Logica\obj\Release\ALMLogicaEntradas.xml
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Entradas\Logica\obj\Release\ALMLogicaEntradas.pdb

@@ -36,21 +36,21 @@ Public Module BaseDatos
 
     Public Sub AbrirConexionConfiguracion()
 
-        BaseDatos.ECadenaConexionConfiguracion = String.Format("Data Source={0};Initial Catalog={1};User Id={2};Password={3}", LogicaReporteMovimientos.Directorios.instanciaSql, BaseDatos.ECadenaConexionConfiguracion, LogicaReporteMovimientos.Directorios.usuarioSql, LogicaReporteMovimientos.Directorios.contrasenaSql)
+        BaseDatos.ECadenaConexionConfiguracion = String.Format("Data Source={0};Initial Catalog={1};User Id={2};Password={3}", ALMLogicaReporteMovimientos.Directorios.instanciaSql, BaseDatos.ECadenaConexionConfiguracion, ALMLogicaReporteMovimientos.Directorios.usuarioSql, ALMLogicaReporteMovimientos.Directorios.contrasenaSql)
         conexionConfiguracion.ConnectionString = BaseDatos.ECadenaConexionConfiguracion
 
     End Sub
 
     Public Sub AbrirConexionCatalogo()
 
-        BaseDatos.ECadenaConexionCatalogo = String.Format("Data Source={0};Initial Catalog={1};User Id={2};Password={3}", LogicaReporteMovimientos.Directorios.instanciaSql, BaseDatos.ECadenaConexionCatalogo, LogicaReporteMovimientos.Directorios.usuarioSql, LogicaReporteMovimientos.Directorios.contrasenaSql)
+        BaseDatos.ECadenaConexionCatalogo = String.Format("Data Source={0};Initial Catalog={1};User Id={2};Password={3}", ALMLogicaReporteMovimientos.Directorios.instanciaSql, BaseDatos.ECadenaConexionCatalogo, ALMLogicaReporteMovimientos.Directorios.usuarioSql, ALMLogicaReporteMovimientos.Directorios.contrasenaSql)
         conexionCatalogo.ConnectionString = BaseDatos.ECadenaConexionCatalogo
 
     End Sub
 
     Public Sub AbrirConexionAlmacen()
 
-        BaseDatos.ECadenaConexionAlmacen = String.Format("Data Source={0};Initial Catalog={1};User Id={2};Password={3}", LogicaReporteMovimientos.Directorios.instanciaSql, BaseDatos.ECadenaConexionAlmacen, LogicaReporteMovimientos.Directorios.usuarioSql, LogicaReporteMovimientos.Directorios.contrasenaSql)
+        BaseDatos.ECadenaConexionAlmacen = String.Format("Data Source={0};Initial Catalog={1};User Id={2};Password={3}", ALMLogicaReporteMovimientos.Directorios.instanciaSql, BaseDatos.ECadenaConexionAlmacen, ALMLogicaReporteMovimientos.Directorios.usuarioSql, ALMLogicaReporteMovimientos.Directorios.contrasenaSql)
         conexionAlmacen.ConnectionString = BaseDatos.ECadenaConexionAlmacen
 
     End Sub

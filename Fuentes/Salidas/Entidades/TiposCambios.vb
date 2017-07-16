@@ -41,9 +41,9 @@ Public Class TiposCambios
             If (Me.EIdMoneda > 0) Then
                 condicion &= " AND IdMoneda=@idMoneda AND Fecha=@fecha"
             End If 
-            comando.CommandText = "SELECT IdMoneda, Fecha, Valor FROM " & LogicaSalidas.Programas.prefijoBaseDatosAlmacen & "TiposCambios WHERE 0=0 " & condicion & " ORDER BY Fecha, IdMoneda DESC"
+            comando.CommandText = "SELECT IdMoneda, Fecha, Valor FROM " & ALMLogicaSalidas.Programas.prefijoBaseDatosAlmacen & "TiposCambios WHERE 0=0 " & condicion & " ORDER BY Fecha, IdMoneda DESC"
             comando.Parameters.AddWithValue("@idMoneda", Me.idMoneda)
-            comando.Parameters.AddWithValue("@fecha", LogicaSalidas.Funciones.ValidarFechaAEstandar(Me.fecha))
+            comando.Parameters.AddWithValue("@fecha", ALMLogicaSalidas.Funciones.ValidarFechaAEstandar(Me.fecha))
             BaseDatos.conexionCatalogo.Open()
             Dim lectorDatos As SqlDataReader = comando.ExecuteReader()
             Dim tiposCambios As TiposCambios
@@ -70,7 +70,7 @@ Public Class TiposCambios
             Dim datos As New DataTable
             Dim comando As New SqlCommand()
             comando.Connection = BaseDatos.conexionCatalogo
-            comando.CommandText = "SELECT IdMoneda, Fecha, Valor FROM " & LogicaSalidas.Programas.prefijoBaseDatosAlmacen & "TiposCambios ORDER BY Fecha, IdMoneda DESC"
+            comando.CommandText = "SELECT IdMoneda, Fecha, Valor FROM " & ALMLogicaSalidas.Programas.prefijoBaseDatosAlmacen & "TiposCambios ORDER BY Fecha, IdMoneda DESC"
             BaseDatos.conexionCatalogo.Open()
             Dim lectorDatos As SqlDataReader
             lectorDatos = comando.ExecuteReader()

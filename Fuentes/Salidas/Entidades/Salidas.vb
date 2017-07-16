@@ -292,7 +292,7 @@ Public Class Salidas
             Dim lectorDatos As SqlDataReader = comando.ExecuteReader()
             Dim valor As Integer = 0
             While lectorDatos.Read()
-                valor = LogicaSalidas.Funciones.ValidarNumeroACero(lectorDatos("IdMaximo").ToString()) + 1
+                valor = ALMLogicaSalidas.Funciones.ValidarNumeroACero(lectorDatos("IdMaximo").ToString()) + 1
             End While
             BaseDatos.conexionAlmacen.Close()
             Return valor
@@ -331,7 +331,7 @@ Public Class Salidas
             Dim lectorDatos As SqlDataReader = comando.ExecuteReader()
             Dim valor As Double = 0
             While lectorDatos.Read()
-                valor = LogicaSalidas.Funciones.ValidarNumeroACero(lectorDatos("PrecioPromedio").ToString())
+                valor = ALMLogicaSalidas.Funciones.ValidarNumeroACero(lectorDatos("PrecioPromedio").ToString())
             End While
             BaseDatos.conexionAlmacen.Close()
             Return valor
@@ -358,10 +358,10 @@ Public Class Salidas
             End If
             comando.CommandText = "SELECT 'TRUE', S.IdFamilia, F.Nombre, S.IdSubFamilia, SF.Nombre, S.IdArticulo, A.Nombre, UM.Nombre, S.Cantidad, S.PrecioUnitario, S.Total, S.TotalPesos, S.Observaciones, S.Factura, S.Chofer, S.Camion, S.NoEconomico " & _
             " FROM Salidas AS S " & _
-            " LEFT JOIN " & LogicaSalidas.Programas.bdCatalogo & ".dbo." & LogicaSalidas.Programas.prefijoBaseDatosAlmacen & "Familias AS F ON S.IdFamilia = F.Id AND S.IdAlmacen = F.IdAlmacen" & _
-            " LEFT JOIN " & LogicaSalidas.Programas.bdCatalogo & ".dbo." & LogicaSalidas.Programas.prefijoBaseDatosAlmacen & "SubFamilias AS SF ON S.IdSubFamilia = SF.Id AND S.IdFamilia = SF.IdFamilia AND S.IdAlmacen = SF.IdAlmacen" & _
-            " LEFT JOIN " & LogicaSalidas.Programas.bdCatalogo & ".dbo." & LogicaSalidas.Programas.prefijoBaseDatosAlmacen & "Articulos AS A ON S.IdArticulo = A.Id AND S.IdSubFamilia = A.IdSubFamilia AND S.IdFamilia = A.IdFamilia AND S.IdAlmacen = A.IdAlmacen" & _
-            " LEFT JOIN " & LogicaSalidas.Programas.bdCatalogo & ".dbo." & LogicaSalidas.Programas.prefijoBaseDatosAlmacen & "UnidadesMedidas AS UM ON A.IdUnidadMedida = UM.Id" & _
+            " LEFT JOIN " & ALMLogicaSalidas.Programas.bdCatalogo & ".dbo." & ALMLogicaSalidas.Programas.prefijoBaseDatosAlmacen & "Familias AS F ON S.IdFamilia = F.Id AND S.IdAlmacen = F.IdAlmacen" & _
+            " LEFT JOIN " & ALMLogicaSalidas.Programas.bdCatalogo & ".dbo." & ALMLogicaSalidas.Programas.prefijoBaseDatosAlmacen & "SubFamilias AS SF ON S.IdSubFamilia = SF.Id AND S.IdFamilia = SF.IdFamilia AND S.IdAlmacen = SF.IdAlmacen" & _
+            " LEFT JOIN " & ALMLogicaSalidas.Programas.bdCatalogo & ".dbo." & ALMLogicaSalidas.Programas.prefijoBaseDatosAlmacen & "Articulos AS A ON S.IdArticulo = A.Id AND S.IdSubFamilia = A.IdSubFamilia AND S.IdFamilia = A.IdFamilia AND S.IdAlmacen = A.IdAlmacen" & _
+            " LEFT JOIN " & ALMLogicaSalidas.Programas.bdCatalogo & ".dbo." & ALMLogicaSalidas.Programas.prefijoBaseDatosAlmacen & "UnidadesMedidas AS UM ON A.IdUnidadMedida = UM.Id" & _
             " WHERE 0=0 " & condicion & " ORDER BY S.Orden ASC"
             comando.Parameters.AddWithValue("@idAlmacen", Me.EIdAlmacen)
             comando.Parameters.AddWithValue("@id", Me.EId)
@@ -388,7 +388,7 @@ Public Class Salidas
             Dim condicion As String = String.Empty
             If (Me.EIdAlmacen > 0) Then
                 condicion &= " AND IdAlmacen=@idAlmacen"
-            End If 
+            End If
             If (Me.EId > 0) Then
                 condicion &= " AND Id=@id"
             End If
@@ -453,7 +453,7 @@ Public Class Salidas
             End If
             If (Me.EIdArticulo > 0) Then
                 condicion &= " AND Saldos.IdArticulo=@idArticulo"
-            End If 
+            End If
             comando.CommandText = "SELECT * FROM " & _
             "( " & _
                 " SELECT E.IdAlmacen, E.IdFamilia, E.IdSubFamilia, E.IdArticulo, SUM(ISNULL(E.Cantidad, 0)) - SUM(ISNULL(S.Cantidad, 0)) AS Cantidad " & _
@@ -491,7 +491,7 @@ Public Class Salidas
 
     Public Function ValidarFechasPosteriores() As DataTable
 
-        Try 
+        Try
             Dim datos As New DataTable
             Dim comando As New SqlCommand()
             comando.Connection = BaseDatos.conexionAlmacen
@@ -514,7 +514,7 @@ Public Class Salidas
             comando.Parameters.AddWithValue("@idFamilia", Me.EIdFamilia)
             comando.Parameters.AddWithValue("@idSubFamilia", Me.EIdSubFamilia)
             comando.Parameters.AddWithValue("@idArticulo", Me.EIdArticulo)
-            comando.Parameters.AddWithValue("@fecha", LogicaSalidas.Funciones.ValidarFechaAEstandar(Me.EFecha))
+            comando.Parameters.AddWithValue("@fecha", ALMLogicaSalidas.Funciones.ValidarFechaAEstandar(Me.EFecha))
             BaseDatos.conexionAlmacen.Open()
             Dim lectorDatos As SqlDataReader
             lectorDatos = comando.ExecuteReader()

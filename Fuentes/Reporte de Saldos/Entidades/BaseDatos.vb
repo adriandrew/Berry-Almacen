@@ -36,21 +36,21 @@ Public Module BaseDatos
 
     Public Sub AbrirConexionConfiguracion()
 
-        BaseDatos.ECadenaConexionConfiguracion = String.Format("Data Source={0};Initial Catalog={1};User Id={2};Password={3}", LogicaReporteSaldos.Directorios.instanciaSql, BaseDatos.ECadenaConexionConfiguracion, LogicaReporteSaldos.Directorios.usuarioSql, LogicaReporteSaldos.Directorios.contrasenaSql)
+        BaseDatos.ECadenaConexionConfiguracion = String.Format("Data Source={0};Initial Catalog={1};User Id={2};Password={3}", ALMLogicaReporteSaldos.Directorios.instanciaSql, BaseDatos.ECadenaConexionConfiguracion, ALMLogicaReporteSaldos.Directorios.usuarioSql, ALMLogicaReporteSaldos.Directorios.contrasenaSql)
         conexionConfiguracion.ConnectionString = BaseDatos.ECadenaConexionConfiguracion
 
     End Sub
 
     Public Sub AbrirConexionCatalogo()
 
-        BaseDatos.ECadenaConexionCatalogo = String.Format("Data Source={0};Initial Catalog={1};User Id={2};Password={3}", LogicaReporteSaldos.Directorios.instanciaSql, BaseDatos.ECadenaConexionCatalogo, LogicaReporteSaldos.Directorios.usuarioSql, LogicaReporteSaldos.Directorios.contrasenaSql)
+        BaseDatos.ECadenaConexionCatalogo = String.Format("Data Source={0};Initial Catalog={1};User Id={2};Password={3}", ALMLogicaReporteSaldos.Directorios.instanciaSql, BaseDatos.ECadenaConexionCatalogo, ALMLogicaReporteSaldos.Directorios.usuarioSql, ALMLogicaReporteSaldos.Directorios.contrasenaSql)
         conexionCatalogo.ConnectionString = BaseDatos.ECadenaConexionCatalogo
 
     End Sub
 
     Public Sub AbrirConexionAlmacen()
 
-        BaseDatos.ECadenaConexionAlmacen = String.Format("Data Source={0};Initial Catalog={1};User Id={2};Password={3}", LogicaReporteSaldos.Directorios.instanciaSql, BaseDatos.ECadenaConexionAlmacen, LogicaReporteSaldos.Directorios.usuarioSql, LogicaReporteSaldos.Directorios.contrasenaSql)
+        BaseDatos.ECadenaConexionAlmacen = String.Format("Data Source={0};Initial Catalog={1};User Id={2};Password={3}", ALMLogicaReporteSaldos.Directorios.instanciaSql, BaseDatos.ECadenaConexionAlmacen, ALMLogicaReporteSaldos.Directorios.usuarioSql, ALMLogicaReporteSaldos.Directorios.contrasenaSql)
         conexionAlmacen.ConnectionString = BaseDatos.ECadenaConexionAlmacen
 
     End Sub

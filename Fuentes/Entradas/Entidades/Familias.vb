@@ -44,7 +44,7 @@ Public Class Familias
             If Me.EId > 0 Then
                 condicion &= " AND Id=@id"
             End If
-            comando.CommandText = "SELECT Id, Nombre FROM " & LogicaEntradas.Programas.prefijoBaseDatosAlmacen & "Familias WHERE 0=0 " & condicion & " ORDER BY IdAlmacen, Id ASC"
+            comando.CommandText = "SELECT Id, Nombre FROM " & ALMLogicaEntradas.Programas.prefijoBaseDatosAlmacen & "Familias WHERE 0=0 " & condicion & " ORDER BY IdAlmacen, Id ASC"
             comando.Parameters.AddWithValue("@idAlmacen", Me.EIdAlmacen)
             comando.Parameters.AddWithValue("@id", Me.EId)
             BaseDatos.conexionCatalogo.Open()
@@ -74,7 +74,7 @@ Public Class Familias
             If (Me.EId > 0) Then
                 condicion &= " AND Id=@id"
             End If
-            comando.CommandText = "SELECT IdAlmacen, Id, Nombre FROM " & LogicaEntradas.Programas.prefijoBaseDatosAlmacen & "Familias WHERE 0=0 " & condicion
+            comando.CommandText = "SELECT IdAlmacen, Id, Nombre FROM " & ALMLogicaEntradas.Programas.prefijoBaseDatosAlmacen & "Familias WHERE 0=0 " & condicion
             comando.Parameters.AddWithValue("@idAlmacen", Me.EIdAlmacen)
             comando.Parameters.AddWithValue("@id", Me.EId)
             BaseDatos.conexionCatalogo.Open()
@@ -84,7 +84,7 @@ Public Class Familias
                 familias = New Familias()
                 familias.idAlmacen = Convert.ToInt32(lectorDatos("IdAlmacen").ToString())
                 familias.id = Convert.ToInt32(lectorDatos("Id").ToString())
-                familias.nombre = lectorDatos("Nombre").ToString() 
+                familias.nombre = lectorDatos("Nombre").ToString()
                 lista.Add(familias)
             End While
             BaseDatos.conexionCatalogo.Close()

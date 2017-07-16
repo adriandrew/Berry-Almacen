@@ -1,0 +1,8 @@
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Reporte de Movimientos\Logica\bin\Release\ALMLogicaReporteMovimientos.dll
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Reporte de Movimientos\Logica\bin\Release\ALMLogicaReporteMovimientos.pdb
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Reporte de Movimientos\Logica\bin\Release\ALMLogicaReporteMovimientos.xml
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Reporte de Movimientos\Logica\obj\Release\ALMLogicaReporteMovimientos.Resources.resources
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Reporte de Movimientos\Logica\obj\Release\Logica.vbproj.GenerateResource.Cache
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Reporte de Movimientos\Logica\obj\Release\ALMLogicaReporteMovimientos.dll
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Reporte de Movimientos\Logica\obj\Release\ALMLogicaReporteMovimientos.xml
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Reporte de Movimientos\Logica\obj\Release\ALMLogicaReporteMovimientos.pdb

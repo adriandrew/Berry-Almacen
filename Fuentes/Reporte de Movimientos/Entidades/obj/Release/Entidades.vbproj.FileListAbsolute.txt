@@ -1,0 +1,12 @@
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Reporte de Movimientos\Entidades\bin\Release\ALMEntidadesReporteMovimientos.dll
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Reporte de Movimientos\Entidades\bin\Release\ALMEntidadesReporteMovimientos.pdb
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Reporte de Movimientos\Entidades\bin\Release\ALMEntidadesReporteMovimientos.xml
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Reporte de Movimientos\Entidades\bin\Release\ALMLogicaReporteMovimientos.dll
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Reporte de Movimientos\Entidades\bin\Release\ALMLogicaReporteMovimientos.pdb
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Reporte de Movimientos\Entidades\bin\Release\ALMLogicaReporteMovimientos.xml
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Reporte de Movimientos\Entidades\obj\Release\Entidades.vbprojResolveAssemblyReference.cache
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Reporte de Movimientos\Entidades\obj\Release\ALMEntidadesReporteMovimientos.Resources.resources
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Reporte de Movimientos\Entidades\obj\Release\Entidades.vbproj.GenerateResource.Cache
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Reporte de Movimientos\Entidades\obj\Release\ALMEntidadesReporteMovimientos.dll
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Reporte de Movimientos\Entidades\obj\Release\ALMEntidadesReporteMovimientos.xml
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Reporte de Movimientos\Entidades\obj\Release\ALMEntidadesReporteMovimientos.pdb

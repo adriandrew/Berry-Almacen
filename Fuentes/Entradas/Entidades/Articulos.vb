@@ -140,7 +140,7 @@ Public Class Articulos
             If Me.EId > 0 Then
                 condicion &= " AND Id=@id"
             End If
-            comando.CommandText = "SELECT A.Id, A.Nombre, UM.Nombre FROM " & LogicaEntradas.Programas.prefijoBaseDatosAlmacen & "Articulos AS A LEFT JOIN " & LogicaEntradas.Programas.prefijoBaseDatosAlmacen & "UnidadesMedidas AS UM ON A.IdUnidadMedida=UM.Id WHERE 0=0 " & condicion & " ORDER BY A.IdAlmacen, A.IdFamilia, A.IdSubFamilia, A.Id ASC"
+            comando.CommandText = "SELECT A.Id, A.Nombre, UM.Nombre FROM " & ALMLogicaEntradas.Programas.prefijoBaseDatosAlmacen & "Articulos AS A LEFT JOIN " & ALMLogicaEntradas.Programas.prefijoBaseDatosAlmacen & "UnidadesMedidas AS UM ON A.IdUnidadMedida=UM.Id WHERE 0=0 " & condicion & " ORDER BY A.IdAlmacen, A.IdFamilia, A.IdSubFamilia, A.Id ASC"
             comando.Parameters.AddWithValue("@idAlmacen", Me.EIdAlmacen)
             comando.Parameters.AddWithValue("@idFamilia", Me.EIdFamilia)
             comando.Parameters.AddWithValue("@idSubFamilia", Me.EIdSubFamilia)
@@ -178,7 +178,7 @@ Public Class Articulos
             If Me.EId > 0 Then
                 condicion &= " AND Id=@id"
             End If
-            comando.CommandText = "SELECT IdAlmacen, IdFamilia, IdSubFamilia, Id, Nombre, NombreComercial, IdUnidadMedida, CantidadMinima, CantidadMaxima, Precio, Seccion, Estante, Nivel FROM " & LogicaEntradas.Programas.prefijoBaseDatosAlmacen & "Articulos WHERE 0=0 " & condicion
+            comando.CommandText = "SELECT IdAlmacen, IdFamilia, IdSubFamilia, Id, Nombre, NombreComercial, IdUnidadMedida, CantidadMinima, CantidadMaxima, Precio, Seccion, Estante, Nivel FROM " & ALMLogicaEntradas.Programas.prefijoBaseDatosAlmacen & "Articulos WHERE 0=0 " & condicion
             comando.Parameters.AddWithValue("@idAlmacen", Me.EIdAlmacen)
             comando.Parameters.AddWithValue("@idFamilia", Me.EIdFamilia)
             comando.Parameters.AddWithValue("@idSubFamilia", Me.EIdSubFamilia)

@@ -5,13 +5,13 @@ Imports System.Reflection
 Public Class Principal
 
     ' Variables de objetos de entidades.
-    Public movimientos As New EntidadesReporteMovimientos.Movimientos
-    Public usuarios As New EntidadesReporteMovimientos.Usuarios
-    Public almacenes As New EntidadesReporteMovimientos.Almacenes()
-    Public familias As New EntidadesReporteMovimientos.Familias()
-    Public subFamilias As New EntidadesReporteMovimientos.SubFamilias()
-    Public articulos As New EntidadesReporteMovimientos.Articulos()
-    Public empresas As New EntidadesReporteMovimientos.Empresas()
+    Public movimientos As New ALMEntidadesReporteMovimientos.Movimientos
+    Public usuarios As New ALMEntidadesReporteMovimientos.Usuarios
+    Public almacenes As New ALMEntidadesReporteMovimientos.Almacenes()
+    Public familias As New ALMEntidadesReporteMovimientos.Familias()
+    Public subFamilias As New ALMEntidadesReporteMovimientos.SubFamilias()
+    Public articulos As New ALMEntidadesReporteMovimientos.Articulos()
+    Public empresas As New ALMEntidadesReporteMovimientos.Empresas()
     ' Variables de tipos de datos de spread.
     Public tipoTexto As New FarPoint.Win.Spread.CellType.TextCellType()
     Public tipoEntero As New FarPoint.Win.Spread.CellType.NumberCellType()
@@ -482,23 +482,23 @@ Public Class Principal
     Private Sub ConfigurarConexiones()
 
         If (Me.esDesarrollo) Then
-            LogicaReporteMovimientos.Directorios.id = 1
-            LogicaReporteMovimientos.Directorios.instanciaSql = "BERRY1-DELL\SQLEXPRESS2008"
-            LogicaReporteMovimientos.Directorios.usuarioSql = "AdminBerry"
-            LogicaReporteMovimientos.Directorios.contrasenaSql = "@berry2017"
+            ALMLogicaReporteMovimientos.Directorios.id = 1
+            ALMLogicaReporteMovimientos.Directorios.instanciaSql = "BERRY1-DELL\SQLEXPRESS2008"
+            ALMLogicaReporteMovimientos.Directorios.usuarioSql = "AdminBerry"
+            ALMLogicaReporteMovimientos.Directorios.contrasenaSql = "@berry2017"
         Else
-            LogicaReporteMovimientos.Directorios.ObtenerParametros()
-            LogicaReporteMovimientos.Usuarios.ObtenerParametros()
+            ALMLogicaReporteMovimientos.Directorios.ObtenerParametros()
+            ALMLogicaReporteMovimientos.Usuarios.ObtenerParametros()
         End If
-        LogicaReporteMovimientos.Programas.bdCatalogo = "Catalogo" & LogicaReporteMovimientos.Directorios.id
-        LogicaReporteMovimientos.Programas.bdConfiguracion = "Configuracion" & LogicaReporteMovimientos.Directorios.id
-        LogicaReporteMovimientos.Programas.bdAlmacen = "Almacen" & LogicaReporteMovimientos.Directorios.id
-        EntidadesReporteMovimientos.BaseDatos.ECadenaConexionCatalogo = LogicaReporteMovimientos.Programas.bdCatalogo
-        EntidadesReporteMovimientos.BaseDatos.ECadenaConexionConfiguracion = LogicaReporteMovimientos.Programas.bdConfiguracion
-        EntidadesReporteMovimientos.BaseDatos.ECadenaConexionAlmacen = LogicaReporteMovimientos.Programas.bdAlmacen
-        EntidadesReporteMovimientos.BaseDatos.AbrirConexionCatalogo()
-        EntidadesReporteMovimientos.BaseDatos.AbrirConexionConfiguracion()
-        EntidadesReporteMovimientos.BaseDatos.AbrirConexionAlmacen()
+        ALMLogicaReporteMovimientos.Programas.bdCatalogo = "Catalogo" & ALMLogicaReporteMovimientos.Directorios.id
+        ALMLogicaReporteMovimientos.Programas.bdConfiguracion = "Configuracion" & ALMLogicaReporteMovimientos.Directorios.id
+        ALMLogicaReporteMovimientos.Programas.bdAlmacen = "Almacen" & ALMLogicaReporteMovimientos.Directorios.id
+        ALMEntidadesReporteMovimientos.BaseDatos.ECadenaConexionCatalogo = ALMLogicaReporteMovimientos.Programas.bdCatalogo
+        ALMEntidadesReporteMovimientos.BaseDatos.ECadenaConexionConfiguracion = ALMLogicaReporteMovimientos.Programas.bdConfiguracion
+        ALMEntidadesReporteMovimientos.BaseDatos.ECadenaConexionAlmacen = ALMLogicaReporteMovimientos.Programas.bdAlmacen
+        ALMEntidadesReporteMovimientos.BaseDatos.AbrirConexionCatalogo()
+        ALMEntidadesReporteMovimientos.BaseDatos.AbrirConexionConfiguracion()
+        ALMEntidadesReporteMovimientos.BaseDatos.AbrirConexionAlmacen()
         ConsultarInformacionUsuario()
         CargarPrefijoBaseDatosAlmacen()
 
@@ -506,36 +506,36 @@ Public Class Principal
 
     Private Sub ConsultarInformacionUsuario()
 
-        Dim lista As New List(Of EntidadesReporteMovimientos.Usuarios)
-        usuarios.EId = LogicaReporteMovimientos.Usuarios.id
+        Dim lista As New List(Of ALMEntidadesReporteMovimientos.Usuarios)
+        usuarios.EId = ALMLogicaReporteMovimientos.Usuarios.id
         lista = usuarios.ObtenerListado()
         If (lista.Count > 0) Then
-            LogicaReporteMovimientos.Usuarios.id = lista(0).EId
-            LogicaReporteMovimientos.Usuarios.nombre = lista(0).ENombre
-            LogicaReporteMovimientos.Usuarios.contrasena = lista(0).EContrasena
-            LogicaReporteMovimientos.Usuarios.nivel = lista(0).ENivel
-            LogicaReporteMovimientos.Usuarios.accesoTotal = lista(0).EAccesoTotal
+            ALMLogicaReporteMovimientos.Usuarios.id = lista(0).EId
+            ALMLogicaReporteMovimientos.Usuarios.nombre = lista(0).ENombre
+            ALMLogicaReporteMovimientos.Usuarios.contrasena = lista(0).EContrasena
+            ALMLogicaReporteMovimientos.Usuarios.nivel = lista(0).ENivel
+            ALMLogicaReporteMovimientos.Usuarios.accesoTotal = lista(0).EAccesoTotal
         End If
 
     End Sub
 
     Private Sub CargarPrefijoBaseDatosAlmacen()
 
-        LogicaReporteMovimientos.Programas.prefijoBaseDatosAlmacen = Me.prefijoBaseDatosAlmacen
+        ALMLogicaReporteMovimientos.Programas.prefijoBaseDatosAlmacen = Me.prefijoBaseDatosAlmacen
 
     End Sub
 
     Private Sub CargarTitulosDirectorio()
 
-        Me.Text = "Programa:  " + Me.nombreEstePrograma + "              Directorio:  " + LogicaReporteMovimientos.Directorios.nombre + "              Usuario:  " + LogicaReporteMovimientos.Usuarios.nombre
+        Me.Text = "Programa:  " + Me.nombreEstePrograma + "              Directorio:  " + ALMLogicaReporteMovimientos.Directorios.nombre + "              Usuario:  " + ALMLogicaReporteMovimientos.Usuarios.nombre
 
     End Sub
 
     Private Sub CargarEncabezados()
 
         lblEncabezadoPrograma.Text = "Programa: " + Me.Text
-        lblEncabezadoEmpresa.Text = "Directorio: " + LogicaReporteMovimientos.Directorios.nombre
-        lblEncabezadoUsuario.Text = "Usuario: " + LogicaReporteMovimientos.Usuarios.nombre
+        lblEncabezadoEmpresa.Text = "Directorio: " + ALMLogicaReporteMovimientos.Directorios.nombre
+        lblEncabezadoUsuario.Text = "Usuario: " + ALMLogicaReporteMovimientos.Usuarios.nombre
 
     End Sub
 
@@ -559,7 +559,7 @@ Public Class Principal
         ejecutarProgramaPrincipal.UseShellExecute = True
         ejecutarProgramaPrincipal.FileName = nombre & Convert.ToString(".exe")
         ejecutarProgramaPrincipal.WorkingDirectory = Application.StartupPath
-        ejecutarProgramaPrincipal.Arguments = LogicaReporteMovimientos.Directorios.id.ToString().Trim().Replace(" ", "|") & " " & LogicaReporteMovimientos.Directorios.nombre.ToString().Trim().Replace(" ", "|") & " " & LogicaReporteMovimientos.Directorios.descripcion.ToString().Trim().Replace(" ", "|") & " " & LogicaReporteMovimientos.Directorios.rutaLogo.ToString().Trim().Replace(" ", "|") & " " & LogicaReporteMovimientos.Directorios.esPredeterminado.ToString().Trim().Replace(" ", "|") & " " & LogicaReporteMovimientos.Directorios.instanciaSql.ToString().Trim().Replace(" ", "|") & " " & LogicaReporteMovimientos.Directorios.usuarioSql.ToString().Trim().Replace(" ", "|") & " " & LogicaReporteMovimientos.Directorios.contrasenaSql.ToString().Trim().Replace(" ", "|") & " " & "Aquí terminan los de directorios, indice 9 ;)".Replace(" ", "|") & " " & LogicaReporteMovimientos.Usuarios.id.ToString().Trim().Replace(" ", "|") & " " & "Aquí terminan los de usuario, indice 11 ;)".Replace(" ", "|")
+        ejecutarProgramaPrincipal.Arguments = ALMLogicaReporteMovimientos.Directorios.id.ToString().Trim().Replace(" ", "|") & " " & ALMLogicaReporteMovimientos.Directorios.nombre.ToString().Trim().Replace(" ", "|") & " " & ALMLogicaReporteMovimientos.Directorios.descripcion.ToString().Trim().Replace(" ", "|") & " " & ALMLogicaReporteMovimientos.Directorios.rutaLogo.ToString().Trim().Replace(" ", "|") & " " & ALMLogicaReporteMovimientos.Directorios.esPredeterminado.ToString().Trim().Replace(" ", "|") & " " & ALMLogicaReporteMovimientos.Directorios.instanciaSql.ToString().Trim().Replace(" ", "|") & " " & ALMLogicaReporteMovimientos.Directorios.usuarioSql.ToString().Trim().Replace(" ", "|") & " " & ALMLogicaReporteMovimientos.Directorios.contrasenaSql.ToString().Trim().Replace(" ", "|") & " " & "Aquí terminan los de directorios, indice 9 ;)".Replace(" ", "|") & " " & ALMLogicaReporteMovimientos.Usuarios.id.ToString().Trim().Replace(" ", "|") & " " & "Aquí terminan los de usuario, indice 11 ;)".Replace(" ", "|")
         Try
             Dim proceso = Process.Start(ejecutarProgramaPrincipal)
             proceso.WaitForInputIdle()
@@ -597,7 +597,7 @@ Public Class Principal
 
         Me.Cursor = Cursors.WaitCursor
         ' Se carga la información de la empresa.
-        Dim lista As New List(Of EntidadesReporteMovimientos.Empresas)
+        Dim lista As New List(Of ALMEntidadesReporteMovimientos.Empresas)
         empresas.EId = 0 ' Se busca la primer empresa.
         lista = empresas.Obtener(True)
         If (lista.Count = 0) Then
@@ -631,7 +631,7 @@ Public Class Principal
         encabezado1 = encabezado1.ToUpper
         encabezado2 = "/l/fz""" & fuente7 & """" & lista(0).EDomicilio & "/c/fb1/fz""" & fuente8 & """" & lista(0).EDescripcion & "/r/fz""" & fuente7 & """" & "Fecha: " & Today.ToShortDateString
         encabezado2 = encabezado2.ToUpper
-        encabezado3 = "/l/fz""" & fuente7 & """" & lista(0).ELocalidad & "/c/fb1/fz""" & fuente8 & """" & Me.nombreEstePrograma & "/r/fz""" & fuente7 & """" & "Hora: " & Now.ToShortTimeString
+        encabezado3 = "/l/fz""" & fuente7 & """" & lista(0).ELocalidad & "/c/fb1/fz""" & fuente8 & """" & spReporte.ActiveSheet.SheetName & "/r/fz""" & fuente7 & """" & "Hora: " & Now.ToShortTimeString
         encabezado3 = encabezado3.ToUpper
         If esPdf Then
             Dim bandera As Boolean = True
@@ -735,7 +735,7 @@ Public Class Principal
     Private Sub FormatearExcel()
 
         ' Se carga la información de la empresa.
-        Dim lista As New List(Of EntidadesReporteMovimientos.Empresas)
+        Dim lista As New List(Of ALMEntidadesReporteMovimientos.Empresas)
         empresas.EId = 0 ' Se busca la primer empresa.
         lista = empresas.Obtener(True)
         If (lista.Count = 0) Then
@@ -759,7 +759,7 @@ Public Class Principal
         encabezado2C = lista(0).EDescripcion : encabezado2C = encabezado2C.ToUpper
         encabezado2D = "Fecha: " & Today.ToShortDateString : encabezado2D = encabezado2D.ToUpper
         encabezado3I = lista(0).ELocalidad : encabezado3I = encabezado3I.ToUpper
-        encabezado3C = Me.nombreEstePrograma : encabezado3C = encabezado3C.ToUpper
+        encabezado3C = spReporte.ActiveSheet.SheetName : encabezado3C = encabezado3C.ToUpper
         encabezado3D = "Hora: " & Now.ToShortTimeString : encabezado3D = encabezado3D.ToUpper
         For indice = 0 To spParaClonar.Sheets.Count - 1
             spParaClonar.Sheets(indice).Columns.Count = spReporte.Sheets(indice).Columns.Count + 10
@@ -971,6 +971,7 @@ Public Class Principal
     Private Sub FormatearSpreadReporte(ByVal cantidadColumnas As Integer)
 
         spReporte.Visible = True
+        spReporte.ActiveSheet.SheetName = "Reporte de Movimientos"
         spReporte.ActiveSheet.GrayAreaBackColor = Principal.colorAreaGris
         spReporte.ActiveSheet.ColumnHeader.RowCount = 2
         spReporte.ActiveSheet.ColumnHeader.Rows(0).Height = Principal.alturaFilasEncabezadosChicosSpread

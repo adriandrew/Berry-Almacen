@@ -45,7 +45,7 @@ Public Class SubFamilias
         Try
             Dim comando As New SqlCommand()
             comando.Connection = BaseDatos.conexionCatalogo
-            comando.CommandText = "INSERT INTO " & LogicaCatalogos.Programas.prefijoBaseDatosAlmacen & "SubFamilias (IdAlmacen, IdFamilia, Id, Nombre) VALUES (@idAlmacen, @idFamilia, @id, @nombre)"
+            comando.CommandText = "INSERT INTO " & ALMLogicaCatalogos.Programas.prefijoBaseDatosAlmacen & "SubFamilias (IdAlmacen, IdFamilia, Id, Nombre) VALUES (@idAlmacen, @idFamilia, @id, @nombre)"
             comando.Parameters.AddWithValue("@idAlmacen", Me.EIdAlmacen)
             comando.Parameters.AddWithValue("@idFamilia", Me.EIdFamilia)
             comando.Parameters.AddWithValue("@id", Me.EId)
@@ -76,7 +76,7 @@ Public Class SubFamilias
             If (Me.EId > 0) Then
                 condicion &= " AND Id=@id"
             End If
-            comando.CommandText = "DELETE FROM " & LogicaCatalogos.Programas.prefijoBaseDatosAlmacen & "SubFamilias WHERE 0=0 " & condicion
+            comando.CommandText = "DELETE FROM " & ALMLogicaCatalogos.Programas.prefijoBaseDatosAlmacen & "SubFamilias WHERE 0=0 " & condicion
             comando.Parameters.AddWithValue("@idAlmacen", Me.EIdAlmacen)
             comando.Parameters.AddWithValue("@idFamilia", Me.EIdFamilia)
             comando.Parameters.AddWithValue("@id", Me.id)
@@ -107,7 +107,7 @@ Public Class SubFamilias
             If Me.EId > 0 Then
                 condicion &= " AND Id=@id"
             End If
-            comando.CommandText = "SELECT Id, Nombre FROM " & LogicaCatalogos.Programas.prefijoBaseDatosAlmacen & "SubFamilias WHERE 0=0 " & condicion & " ORDER BY IdAlmacen, IdFamilia, Id ASC"
+            comando.CommandText = "SELECT Id, Nombre FROM " & ALMLogicaCatalogos.Programas.prefijoBaseDatosAlmacen & "SubFamilias WHERE 0=0 " & condicion & " ORDER BY IdAlmacen, IdFamilia, Id ASC"
             comando.Parameters.AddWithValue("@idAlmacen", Me.EIdAlmacen)
             comando.Parameters.AddWithValue("@idFamilia", Me.EIdFamilia)
             comando.Parameters.AddWithValue("@id", Me.EId)

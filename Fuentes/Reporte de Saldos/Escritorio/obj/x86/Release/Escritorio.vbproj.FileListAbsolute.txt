@@ -170,6 +170,20 @@ C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Reporte
 C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Reporte de Saldos\Escritorio\obj\x86\Release\ALM04.xml
 C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Reporte de Saldos\Escritorio\obj\x86\Release\ALM04.pdb
 C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Reporte de Saldos\Escritorio\bin\x86\Release\ALM04.exe.config
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Reporte de Saldos\Escritorio\bin\x86\Release\ALM04.exe
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Reporte de Saldos\Escritorio\bin\x86\Release\ALM04.pdb
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Reporte de Saldos\Escritorio\bin\x86\Release\ALM04.xml
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Reporte de Saldos\Escritorio\bin\x86\Release\ALMEntidadesReporteSaldos.dll
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Reporte de Saldos\Escritorio\bin\x86\Release\ALMLogicaReporteSaldos.dll
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Reporte de Saldos\Escritorio\bin\x86\Release\ALMEntidadesReporteSaldos.pdb
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Reporte de Saldos\Escritorio\bin\x86\Release\ALMEntidadesReporteSaldos.xml
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Reporte de Saldos\Escritorio\bin\x86\Release\ALMLogicaReporteSaldos.pdb
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Reporte de Saldos\Escritorio\bin\x86\Release\ALMLogicaReporteSaldos.xml
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Reporte de Saldos\Escritorio\obj\x86\Release\Escritorio.vbprojResolveAssemblyReference.cache
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Reporte de Saldos\Escritorio\obj\x86\Release\ReporteSaldos.Resources.resources
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Reporte de Saldos\Escritorio\obj\x86\Release\ReporteSaldos.Principal.resources
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Reporte de Saldos\Escritorio\obj\x86\Release\Escritorio.vbproj.GenerateResource.Cache
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Reporte de Saldos\Escritorio\obj\x86\Release\ALM04.exe.licenses
 C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Reporte de Saldos\Escritorio\obj\x86\Release\ALM04.exe
 C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Reporte de Saldos\Escritorio\obj\x86\Release\ALM04.xml
 C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Reporte de Saldos\Escritorio\obj\x86\Release\ALM04.pdb

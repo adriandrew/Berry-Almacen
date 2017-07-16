@@ -37,8 +37,8 @@ Public Class Almacenes
             Dim datos As New DataTable
             Dim comando As New SqlCommand()
             comando.Connection = BaseDatos.conexionCatalogo
-            comando.CommandText = "SELECT Id, Nombre FROM " & LogicaEntradas.Programas.prefijoBaseDatosAlmacen & "Almacenes " & _
-            " UNION SELECT -1 AS Id, NULL AS Nombre FROM " & LogicaEntradas.Programas.prefijoBaseDatosAlmacen & "Almacenes " & _
+            comando.CommandText = "SELECT Id, Nombre FROM " & ALMLogicaEntradas.Programas.prefijoBaseDatosAlmacen & "Almacenes " & _
+            " UNION SELECT -1 AS Id, NULL AS Nombre FROM " & ALMLogicaEntradas.Programas.prefijoBaseDatosAlmacen & "Almacenes " & _
             " ORDER BY Id ASC"
             BaseDatos.conexionCatalogo.Open()
             Dim lectorDatos As SqlDataReader
@@ -64,7 +64,7 @@ Public Class Almacenes
             If (Me.EId > 0) Then
                 condicion &= " WHERE Id=@id"
             End If
-            comando.CommandText = "SELECT * FROM " & LogicaEntradas.Programas.prefijoBaseDatosAlmacen & "Almacenes " & condicion
+            comando.CommandText = "SELECT * FROM " & ALMLogicaEntradas.Programas.prefijoBaseDatosAlmacen & "Almacenes " & condicion
             comando.Parameters.AddWithValue("@id", Me.id)
             BaseDatos.conexionCatalogo.Open()
             Dim lectorDatos As SqlDataReader = comando.ExecuteReader()

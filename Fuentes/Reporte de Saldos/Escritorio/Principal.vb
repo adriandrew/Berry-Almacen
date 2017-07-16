@@ -5,13 +5,13 @@ Imports System.Reflection
 Public Class Principal
 
     ' Variables de objetos de entidades.
-    Public saldos As New EntidadesReporteSaldos.Saldos
-    Public usuarios As New EntidadesReporteSaldos.Usuarios
-    Public almacenes As New EntidadesReporteSaldos.Almacenes()
-    Public familias As New EntidadesReporteSaldos.Familias()
-    Public subFamilias As New EntidadesReporteSaldos.SubFamilias()
-    Public articulos As New EntidadesReporteSaldos.Articulos()
-    Public empresas As New EntidadesReporteSaldos.Empresas()
+    Public saldos As New ALMEntidadesReporteSaldos.Saldos
+    Public usuarios As New ALMEntidadesReporteSaldos.Usuarios
+    Public almacenes As New ALMEntidadesReporteSaldos.Almacenes()
+    Public familias As New ALMEntidadesReporteSaldos.Familias()
+    Public subFamilias As New ALMEntidadesReporteSaldos.SubFamilias()
+    Public articulos As New ALMEntidadesReporteSaldos.Articulos()
+    Public empresas As New ALMEntidadesReporteSaldos.Empresas()
     ' Variables de tipos de datos de spread.
     Public tipoTexto As New FarPoint.Win.Spread.CellType.TextCellType()
     Public tipoEntero As New FarPoint.Win.Spread.CellType.NumberCellType()
@@ -104,7 +104,7 @@ Public Class Principal
 
         If (Me.estaMostrado) Then
             If (cbAlmacen.Items.Count > 1) Then
-                If (cbAlmacen.SelectedValue > 0) Then 
+                If (cbAlmacen.SelectedValue > 0) Then
                     Me.opcionSeleccionada = OpcionNivel.almacen
                     CargarComboFamilias()
                 Else
@@ -464,23 +464,23 @@ Public Class Principal
     Private Sub ConfigurarConexiones()
 
         If (Me.esDesarrollo) Then
-            LogicaReporteSaldos.Directorios.id = 1
-            LogicaReporteSaldos.Directorios.instanciaSql = "BERRY1-DELL\SQLEXPRESS2008"
-            LogicaReporteSaldos.Directorios.usuarioSql = "AdminBerry"
-            LogicaReporteSaldos.Directorios.contrasenaSql = "@berry2017"
+            ALMLogicaReporteSaldos.Directorios.id = 1
+            ALMLogicaReporteSaldos.Directorios.instanciaSql = "BERRY1-DELL\SQLEXPRESS2008"
+            ALMLogicaReporteSaldos.Directorios.usuarioSql = "AdminBerry"
+            ALMLogicaReporteSaldos.Directorios.contrasenaSql = "@berry2017"
         Else
-            LogicaReporteSaldos.Directorios.ObtenerParametros()
-            LogicaReporteSaldos.Usuarios.ObtenerParametros()
+            ALMLogicaReporteSaldos.Directorios.ObtenerParametros()
+            ALMLogicaReporteSaldos.Usuarios.ObtenerParametros()
         End If
-        LogicaReporteSaldos.Programas.bdCatalogo = "Catalogo" & LogicaReporteSaldos.Directorios.id
-        LogicaReporteSaldos.Programas.bdConfiguracion = "Configuracion" & LogicaReporteSaldos.Directorios.id
-        LogicaReporteSaldos.Programas.bdAlmacen = "Almacen" & LogicaReporteSaldos.Directorios.id
-        EntidadesReporteSaldos.BaseDatos.ECadenaConexionCatalogo = LogicaReporteSaldos.Programas.bdCatalogo
-        EntidadesReporteSaldos.BaseDatos.ECadenaConexionConfiguracion = LogicaReporteSaldos.Programas.bdConfiguracion
-        EntidadesReporteSaldos.BaseDatos.ECadenaConexionAlmacen = LogicaReporteSaldos.Programas.bdAlmacen
-        EntidadesReporteSaldos.BaseDatos.AbrirConexionCatalogo()
-        EntidadesReporteSaldos.BaseDatos.AbrirConexionConfiguracion()
-        EntidadesReporteSaldos.BaseDatos.AbrirConexionAlmacen()
+        ALMLogicaReporteSaldos.Programas.bdCatalogo = "Catalogo" & ALMLogicaReporteSaldos.Directorios.id
+        ALMLogicaReporteSaldos.Programas.bdConfiguracion = "Configuracion" & ALMLogicaReporteSaldos.Directorios.id
+        ALMLogicaReporteSaldos.Programas.bdAlmacen = "Almacen" & ALMLogicaReporteSaldos.Directorios.id
+        ALMEntidadesReporteSaldos.BaseDatos.ECadenaConexionCatalogo = ALMLogicaReporteSaldos.Programas.bdCatalogo
+        ALMEntidadesReporteSaldos.BaseDatos.ECadenaConexionConfiguracion = ALMLogicaReporteSaldos.Programas.bdConfiguracion
+        ALMEntidadesReporteSaldos.BaseDatos.ECadenaConexionAlmacen = ALMLogicaReporteSaldos.Programas.bdAlmacen
+        ALMEntidadesReporteSaldos.BaseDatos.AbrirConexionCatalogo()
+        ALMEntidadesReporteSaldos.BaseDatos.AbrirConexionConfiguracion()
+        ALMEntidadesReporteSaldos.BaseDatos.AbrirConexionAlmacen()
         ConsultarInformacionUsuario()
         CargarPrefijoBaseDatosAlmacen()
 
@@ -488,36 +488,36 @@ Public Class Principal
 
     Private Sub ConsultarInformacionUsuario()
 
-        Dim lista As New List(Of EntidadesReporteSaldos.Usuarios)
-        usuarios.EId = LogicaReporteSaldos.Usuarios.id
+        Dim lista As New List(Of ALMEntidadesReporteSaldos.Usuarios)
+        usuarios.EId = ALMLogicaReporteSaldos.Usuarios.id
         lista = usuarios.ObtenerListado()
         If (lista.Count > 0) Then
-            LogicaReporteSaldos.Usuarios.id = lista(0).EId
-            LogicaReporteSaldos.Usuarios.nombre = lista(0).ENombre
-            LogicaReporteSaldos.Usuarios.contrasena = lista(0).EContrasena
-            LogicaReporteSaldos.Usuarios.nivel = lista(0).ENivel
-            LogicaReporteSaldos.Usuarios.accesoTotal = lista(0).EAccesoTotal
+            ALMLogicaReporteSaldos.Usuarios.id = lista(0).EId
+            ALMLogicaReporteSaldos.Usuarios.nombre = lista(0).ENombre
+            ALMLogicaReporteSaldos.Usuarios.contrasena = lista(0).EContrasena
+            ALMLogicaReporteSaldos.Usuarios.nivel = lista(0).ENivel
+            ALMLogicaReporteSaldos.Usuarios.accesoTotal = lista(0).EAccesoTotal
         End If
 
     End Sub
 
     Private Sub CargarPrefijoBaseDatosAlmacen()
 
-        LogicaReporteSaldos.Programas.prefijoBaseDatosAlmacen = Me.prefijoBaseDatosAlmacen
+        ALMLogicaReporteSaldos.Programas.prefijoBaseDatosAlmacen = Me.prefijoBaseDatosAlmacen
 
     End Sub
 
     Private Sub CargarTitulosDirectorio()
 
-        Me.Text = "Programa:  " + Me.nombreEstePrograma + "              Directorio:  " + LogicaReporteSaldos.Directorios.nombre + "              Usuario:  " + LogicaReporteSaldos.Usuarios.nombre
+        Me.Text = "Programa:  " + Me.nombreEstePrograma + "              Directorio:  " + ALMLogicaReporteSaldos.Directorios.nombre + "              Usuario:  " + ALMLogicaReporteSaldos.Usuarios.nombre
 
     End Sub
 
     Private Sub CargarEncabezados()
 
         lblEncabezadoPrograma.Text = "Programa: " + Me.Text
-        lblEncabezadoEmpresa.Text = "Directorio: " + LogicaReporteSaldos.Directorios.nombre
-        lblEncabezadoUsuario.Text = "Usuario: " + LogicaReporteSaldos.Usuarios.nombre
+        lblEncabezadoEmpresa.Text = "Directorio: " + ALMLogicaReporteSaldos.Directorios.nombre
+        lblEncabezadoUsuario.Text = "Usuario: " + ALMLogicaReporteSaldos.Usuarios.nombre
 
     End Sub
 
@@ -541,7 +541,7 @@ Public Class Principal
         ejecutarProgramaPrincipal.UseShellExecute = True
         ejecutarProgramaPrincipal.FileName = nombre & Convert.ToString(".exe")
         ejecutarProgramaPrincipal.WorkingDirectory = Application.StartupPath
-        ejecutarProgramaPrincipal.Arguments = LogicaReporteSaldos.Directorios.id.ToString().Trim().Replace(" ", "|") & " " & LogicaReporteSaldos.Directorios.nombre.ToString().Trim().Replace(" ", "|") & " " & LogicaReporteSaldos.Directorios.descripcion.ToString().Trim().Replace(" ", "|") & " " & LogicaReporteSaldos.Directorios.rutaLogo.ToString().Trim().Replace(" ", "|") & " " & LogicaReporteSaldos.Directorios.esPredeterminado.ToString().Trim().Replace(" ", "|") & " " & LogicaReporteSaldos.Directorios.instanciaSql.ToString().Trim().Replace(" ", "|") & " " & LogicaReporteSaldos.Directorios.usuarioSql.ToString().Trim().Replace(" ", "|") & " " & LogicaReporteSaldos.Directorios.contrasenaSql.ToString().Trim().Replace(" ", "|") & " " & "Aquí terminan los de directorios, indice 9 ;)".Replace(" ", "|") & " " & LogicaReporteSaldos.Usuarios.id.ToString().Trim().Replace(" ", "|") & " " & "Aquí terminan los de usuario, indice 11 ;)".Replace(" ", "|")
+        ejecutarProgramaPrincipal.Arguments = ALMLogicaReporteSaldos.Directorios.id.ToString().Trim().Replace(" ", "|") & " " & ALMLogicaReporteSaldos.Directorios.nombre.ToString().Trim().Replace(" ", "|") & " " & ALMLogicaReporteSaldos.Directorios.descripcion.ToString().Trim().Replace(" ", "|") & " " & ALMLogicaReporteSaldos.Directorios.rutaLogo.ToString().Trim().Replace(" ", "|") & " " & ALMLogicaReporteSaldos.Directorios.esPredeterminado.ToString().Trim().Replace(" ", "|") & " " & ALMLogicaReporteSaldos.Directorios.instanciaSql.ToString().Trim().Replace(" ", "|") & " " & ALMLogicaReporteSaldos.Directorios.usuarioSql.ToString().Trim().Replace(" ", "|") & " " & ALMLogicaReporteSaldos.Directorios.contrasenaSql.ToString().Trim().Replace(" ", "|") & " " & "Aquí terminan los de directorios, indice 9 ;)".Replace(" ", "|") & " " & ALMLogicaReporteSaldos.Usuarios.id.ToString().Trim().Replace(" ", "|") & " " & "Aquí terminan los de usuario, indice 11 ;)".Replace(" ", "|")
         Try
             Dim proceso = Process.Start(ejecutarProgramaPrincipal)
             proceso.WaitForInputIdle()
@@ -579,7 +579,7 @@ Public Class Principal
 
         Me.Cursor = Cursors.WaitCursor
         ' Se carga la información de la empresa.
-        Dim lista As New List(Of EntidadesReporteSaldos.Empresas)
+        Dim lista As New List(Of ALMEntidadesReporteSaldos.Empresas)
         empresas.EId = 0 ' Se busca la primer empresa.
         lista = empresas.Obtener(True)
         If (lista.Count = 0) Then
@@ -613,7 +613,7 @@ Public Class Principal
         encabezado1 = encabezado1.ToUpper
         encabezado2 = "/l/fz""" & fuente7 & """" & lista(0).EDomicilio & "/c/fb1/fz""" & fuente8 & """" & lista(0).EDescripcion & "/r/fz""" & fuente7 & """" & "Fecha: " & Today.ToShortDateString
         encabezado2 = encabezado2.ToUpper
-        encabezado3 = "/l/fz""" & fuente7 & """" & lista(0).ELocalidad & "/c/fb1/fz""" & fuente8 & """" & "Reporte de Saldos" & "/r/fz""" & fuente7 & """" & "Hora: " & Now.ToShortTimeString
+        encabezado3 = "/l/fz""" & fuente7 & """" & lista(0).ELocalidad & "/c/fb1/fz""" & fuente8 & """" & spReporte.ActiveSheet.SheetName & "/r/fz""" & fuente7 & """" & "Hora: " & Now.ToShortTimeString
         encabezado3 = encabezado3.ToUpper
         If esPdf Then
             Dim bandera As Boolean = True
@@ -717,7 +717,7 @@ Public Class Principal
     Private Sub FormatearExcel()
 
         ' Se carga la información de la empresa.
-        Dim lista As New List(Of EntidadesReporteSaldos.Empresas)
+        Dim lista As New List(Of ALMEntidadesReporteSaldos.Empresas)
         empresas.EId = 0 ' Se busca la primer empresa.
         lista = empresas.Obtener(True)
         If (lista.Count = 0) Then
@@ -741,7 +741,7 @@ Public Class Principal
         encabezado2C = lista(0).EDescripcion : encabezado2C = encabezado2C.ToUpper
         encabezado2D = "Fecha: " & Today.ToShortDateString : encabezado2D = encabezado2D.ToUpper
         encabezado3I = lista(0).ELocalidad : encabezado3I = encabezado3I.ToUpper
-        encabezado3C = "Reporte de Actividades" : encabezado3C = encabezado3C.ToUpper
+        encabezado3C = spReporte.ActiveSheet.SheetName : encabezado3C = encabezado3C.ToUpper
         encabezado3D = "Hora: " & Now.ToShortTimeString : encabezado3D = encabezado3D.ToUpper
         For indice = 0 To spParaClonar.Sheets.Count - 1
             spParaClonar.Sheets(indice).Columns.Count = spReporte.Sheets(indice).Columns.Count + 10
@@ -924,6 +924,7 @@ Public Class Principal
     Private Sub FormatearSpreadReporte(ByVal cantidadColumnas As Integer)
 
         spReporte.Visible = True
+        spReporte.ActiveSheet.SheetName = "Reporte de Saldos"
         spReporte.ActiveSheet.GrayAreaBackColor = Principal.colorAreaGris
         spReporte.ActiveSheet.ColumnHeader.RowCount = 2
         spReporte.ActiveSheet.ColumnHeader.Rows(0).Height = Principal.alturaFilasEncabezadosChicosSpread

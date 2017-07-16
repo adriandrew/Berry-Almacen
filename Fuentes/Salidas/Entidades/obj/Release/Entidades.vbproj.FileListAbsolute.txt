@@ -1,0 +1,12 @@
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Salidas\Entidades\bin\Release\ALMEntidadesSalidas.dll
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Salidas\Entidades\bin\Release\ALMEntidadesSalidas.pdb
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Salidas\Entidades\bin\Release\ALMEntidadesSalidas.xml
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Salidas\Entidades\bin\Release\ALMLogicaSalidas.dll
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Salidas\Entidades\bin\Release\ALMLogicaSalidas.pdb
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Salidas\Entidades\bin\Release\ALMLogicaSalidas.xml
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Salidas\Entidades\obj\Release\Entidades.vbprojResolveAssemblyReference.cache
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Salidas\Entidades\obj\Release\ALMEntidadesSalidas.Resources.resources
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Salidas\Entidades\obj\Release\Entidades.vbproj.GenerateResource.Cache
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Salidas\Entidades\obj\Release\ALMEntidadesSalidas.dll
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Salidas\Entidades\obj\Release\ALMEntidadesSalidas.xml
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Salidas\Entidades\obj\Release\ALMEntidadesSalidas.pdb

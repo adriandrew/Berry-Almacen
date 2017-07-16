@@ -56,8 +56,8 @@ Public Class SubFamilias
             If Me.EId > 0 Then
                 condicion &= " AND Id=@id"
             End If
-            comando.CommandText = "SELECT -1 AS Id, 'Todos' AS Nombre FROM " & LogicaReporteMovimientos.Programas.prefijoBaseDatosAlmacen & "SubFamilias " & _
-            " UNION SELECT Id, Nombre FROM " & LogicaReporteMovimientos.Programas.prefijoBaseDatosAlmacen & "SubFamilias " & _
+            comando.CommandText = "SELECT -1 AS Id, 'Todos' AS Nombre FROM " & ALMLogicaReporteMovimientos.Programas.prefijoBaseDatosAlmacen & "SubFamilias " & _
+            " UNION SELECT Id, Nombre FROM " & ALMLogicaReporteMovimientos.Programas.prefijoBaseDatosAlmacen & "SubFamilias " & _
             " WHERE 0=0 " & condicion
             comando.Parameters.AddWithValue("@idAlmacen", Me.EIdAlmacen)
             comando.Parameters.AddWithValue("@idFamilia", Me.EIdFamilia)
@@ -92,7 +92,7 @@ Public Class SubFamilias
             If (Me.EId > 0) Then
                 condicion &= " AND Id=@id"
             End If
-            comando.CommandText = "SELECT IdAlmacen, IdFamilia, Id, Nombre FROM " & LogicaReporteMovimientos.Programas.prefijoBaseDatosAlmacen & "SubFamilias WHERE 0=0 " & condicion
+            comando.CommandText = "SELECT IdAlmacen, IdFamilia, Id, Nombre FROM " & ALMLogicaReporteMovimientos.Programas.prefijoBaseDatosAlmacen & "SubFamilias WHERE 0=0 " & condicion
             comando.Parameters.AddWithValue("@idAlmacen", Me.EIdAlmacen)
             comando.Parameters.AddWithValue("@idFamilia", Me.EIdFamilia)
             comando.Parameters.AddWithValue("@id", Me.EId)

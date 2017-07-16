@@ -36,21 +36,21 @@ Public Module BaseDatos
 
     Public Sub AbrirConexionConfiguracion()
 
-        BaseDatos.ECadenaConexionConfiguracion = String.Format("Data Source={0};Initial Catalog={1};User Id={2};Password={3}", LogicaEntradas.Directorios.instanciaSql, BaseDatos.ECadenaConexionConfiguracion, LogicaEntradas.Directorios.usuarioSql, LogicaEntradas.Directorios.contrasenaSql)
+        BaseDatos.ECadenaConexionConfiguracion = String.Format("Data Source={0};Initial Catalog={1};User Id={2};Password={3}", ALMLogicaEntradas.Directorios.instanciaSql, BaseDatos.ECadenaConexionConfiguracion, ALMLogicaEntradas.Directorios.usuarioSql, ALMLogicaEntradas.Directorios.contrasenaSql)
         conexionConfiguracion.ConnectionString = BaseDatos.ECadenaConexionConfiguracion
 
     End Sub
 
     Public Sub AbrirConexionCatalogo()
 
-        BaseDatos.ECadenaConexionCatalogo = String.Format("Data Source={0};Initial Catalog={1};User Id={2};Password={3}", LogicaEntradas.Directorios.instanciaSql, BaseDatos.ECadenaConexionCatalogo, LogicaEntradas.Directorios.usuarioSql, LogicaEntradas.Directorios.contrasenaSql)
+        BaseDatos.ECadenaConexionCatalogo = String.Format("Data Source={0};Initial Catalog={1};User Id={2};Password={3}", ALMLogicaEntradas.Directorios.instanciaSql, BaseDatos.ECadenaConexionCatalogo, ALMLogicaEntradas.Directorios.usuarioSql, ALMLogicaEntradas.Directorios.contrasenaSql)
         conexionCatalogo.ConnectionString = BaseDatos.ECadenaConexionCatalogo
 
     End Sub
 
     Public Sub AbrirConexionAlmacen()
 
-        BaseDatos.ECadenaConexionAlmacen = String.Format("Data Source={0};Initial Catalog={1};User Id={2};Password={3}", LogicaEntradas.Directorios.instanciaSql, BaseDatos.ECadenaConexionAlmacen, LogicaEntradas.Directorios.usuarioSql, LogicaEntradas.Directorios.contrasenaSql)
+        BaseDatos.ECadenaConexionAlmacen = String.Format("Data Source={0};Initial Catalog={1};User Id={2};Password={3}", ALMLogicaEntradas.Directorios.instanciaSql, BaseDatos.ECadenaConexionAlmacen, ALMLogicaEntradas.Directorios.usuarioSql, ALMLogicaEntradas.Directorios.contrasenaSql)
         conexionAlmacen.ConnectionString = BaseDatos.ECadenaConexionAlmacen
 
     End Sub

@@ -111,15 +111,15 @@ Public Class Saldos
                 " GROUP BY PreSaldos.IdAlmacen, PreSaldos.IdFamilia, PreSaldos.IdSubFamilia, PreSaldos.IdArticulo " & _
             " ) AS SaldosFinales " & _
             " LEFT JOIN " & _
-                "( SELECT A.Id AS IdAlmacen, A.Nombre AS NombreAlmacen, F.Id AS IdFamilia, F.Nombre AS NombreFamilia, SF.Id AS IdSubFamilia, SF.Nombre AS NombreSubFamilia, AR.Id AS IdArticulo, AR.Nombre AS NombreArticulo FROM " & LogicaReporteSaldos.Programas.bdCatalogo & ".dbo.ALM_Almacenes AS A LEFT JOIN " & LogicaReporteSaldos.Programas.bdCatalogo & ".dbo.ALM_Familias AS F ON A.Id = F.IdAlmacen LEFT JOIN " & LogicaReporteSaldos.Programas.bdCatalogo & ".dbo.ALM_SubFamilias AS SF ON A.Id = SF.IdAlmacen AND F.Id = SF.IdFamilia LEFT JOIN " & LogicaReporteSaldos.Programas.bdCatalogo & ".dbo.ALM_Articulos AS AR ON A.Id = AR.IdAlmacen AND F.Id = AR.IdFamilia AND SF.Id = AR.IdSubFamilia " & _
+                "( SELECT A.Id AS IdAlmacen, A.Nombre AS NombreAlmacen, F.Id AS IdFamilia, F.Nombre AS NombreFamilia, SF.Id AS IdSubFamilia, SF.Nombre AS NombreSubFamilia, AR.Id AS IdArticulo, AR.Nombre AS NombreArticulo FROM " & ALMLogicaReporteSaldos.Programas.bdCatalogo & ".dbo.ALM_Almacenes AS A LEFT JOIN " & ALMLogicaReporteSaldos.Programas.bdCatalogo & ".dbo.ALM_Familias AS F ON A.Id = F.IdAlmacen LEFT JOIN " & ALMLogicaReporteSaldos.Programas.bdCatalogo & ".dbo.ALM_SubFamilias AS SF ON A.Id = SF.IdAlmacen AND F.Id = SF.IdFamilia LEFT JOIN " & ALMLogicaReporteSaldos.Programas.bdCatalogo & ".dbo.ALM_Articulos AS AR ON A.Id = AR.IdAlmacen AND F.Id = AR.IdFamilia AND SF.Id = AR.IdSubFamilia " & _
                 " ) AS Catalogo " & _
             " ON SaldosFinales.IdAlmacen = Catalogo.IdAlmacen AND SaldosFinales.IdFamilia = Catalogo.IdFamilia AND SaldosFinales.IdSubFamilia = Catalogo.IdSubFamilia AND SaldosFinales.IdArticulo = Catalogo.IdArticulo"
             comando.Parameters.AddWithValue("@idAlmacen", Me.EIdAlmacen)
             comando.Parameters.AddWithValue("@idFamilia", Me.EIdFamilia)
             comando.Parameters.AddWithValue("@idSubFamilia", Me.EIdSubFamilia)
-            comando.Parameters.AddWithValue("@idArticulo", Me.EIdArticulo) 
-            comando.Parameters.AddWithValue("@fecha", LogicaReporteSaldos.Funciones.ValidarFechaAEstandar(Me.EFecha))
-            comando.Parameters.AddWithValue("@fecha2", LogicaReporteSaldos.Funciones.ValidarFechaAEstandar(Me.EFecha2))
+            comando.Parameters.AddWithValue("@idArticulo", Me.EIdArticulo)
+            comando.Parameters.AddWithValue("@fecha", ALMLogicaReporteSaldos.Funciones.ValidarFechaAEstandar(Me.EFecha))
+            comando.Parameters.AddWithValue("@fecha2", ALMLogicaReporteSaldos.Funciones.ValidarFechaAEstandar(Me.EFecha2))
             BaseDatos.conexionAlmacen.Open()
             Dim dataReader As SqlDataReader
             dataReader = comando.ExecuteReader()

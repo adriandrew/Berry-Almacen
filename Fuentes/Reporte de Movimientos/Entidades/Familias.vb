@@ -44,8 +44,8 @@ Public Class Familias
             If (Me.EId > 0) Then
                 condicion &= " AND Id=@id"
             End If
-            comando.CommandText = "SELECT -1 AS Id, 'Todos' AS Nombre FROM " & LogicaReporteMovimientos.Programas.prefijoBaseDatosAlmacen & "Familias " & _
-            " UNION SELECT Id, Nombre FROM " & LogicaReporteMovimientos.Programas.prefijoBaseDatosAlmacen & "Familias WHERE 0=0 " & condicion
+            comando.CommandText = "SELECT -1 AS Id, 'Todos' AS Nombre FROM " & ALMLogicaReporteMovimientos.Programas.prefijoBaseDatosAlmacen & "Familias " & _
+            " UNION SELECT Id, Nombre FROM " & ALMLogicaReporteMovimientos.Programas.prefijoBaseDatosAlmacen & "Familias WHERE 0=0 " & condicion
             comando.Parameters.AddWithValue("@idAlmacen", Me.EIdAlmacen)
             comando.Parameters.AddWithValue("@id", Me.EId)
             BaseDatos.conexionCatalogo.Open()
@@ -75,7 +75,7 @@ Public Class Familias
             If (Me.EId > 0) Then
                 condicion &= " AND Id=@id"
             End If
-            comando.CommandText = "SELECT IdAlmacen, Id, Nombre FROM " & LogicaReporteMovimientos.Programas.prefijoBaseDatosAlmacen & "Familias WHERE 0=0 " & condicion
+            comando.CommandText = "SELECT IdAlmacen, Id, Nombre FROM " & ALMLogicaReporteMovimientos.Programas.prefijoBaseDatosAlmacen & "Familias WHERE 0=0 " & condicion
             comando.Parameters.AddWithValue("@idAlmacen", Me.EIdAlmacen)
             comando.Parameters.AddWithValue("@id", Me.EId)
             BaseDatos.conexionCatalogo.Open()

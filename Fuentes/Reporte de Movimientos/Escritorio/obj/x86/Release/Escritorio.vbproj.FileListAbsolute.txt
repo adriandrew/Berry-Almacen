@@ -187,3 +187,21 @@ C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Reporte
 C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Reporte de Movimientos\Escritorio\obj\x86\Release\ALM05.exe
 C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Reporte de Movimientos\Escritorio\obj\x86\Release\ALM05.xml
 C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Reporte de Movimientos\Escritorio\obj\x86\Release\ALM05.pdb
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Reporte de Movimientos\Escritorio\bin\x86\Release\ALM05.exe.config
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Reporte de Movimientos\Escritorio\bin\x86\Release\ALM05.exe
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Reporte de Movimientos\Escritorio\bin\x86\Release\ALM05.pdb
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Reporte de Movimientos\Escritorio\bin\x86\Release\ALM05.xml
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Reporte de Movimientos\Escritorio\bin\x86\Release\ALMEntidadesReporteMovimientos.dll
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Reporte de Movimientos\Escritorio\bin\x86\Release\ALMLogicaReporteMovimientos.dll
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Reporte de Movimientos\Escritorio\bin\x86\Release\ALMEntidadesReporteMovimientos.pdb
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Reporte de Movimientos\Escritorio\bin\x86\Release\ALMEntidadesReporteMovimientos.xml
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Reporte de Movimientos\Escritorio\bin\x86\Release\ALMLogicaReporteMovimientos.pdb
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Reporte de Movimientos\Escritorio\bin\x86\Release\ALMLogicaReporteMovimientos.xml
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Reporte de Movimientos\Escritorio\obj\x86\Release\Escritorio.vbprojResolveAssemblyReference.cache
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Reporte de Movimientos\Escritorio\obj\x86\Release\ReporteMovimientos.Resources.resources
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Reporte de Movimientos\Escritorio\obj\x86\Release\ReporteMovimientos.Principal.resources
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Reporte de Movimientos\Escritorio\obj\x86\Release\Escritorio.vbproj.GenerateResource.Cache
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Reporte de Movimientos\Escritorio\obj\x86\Release\ALM05.exe.licenses
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Reporte de Movimientos\Escritorio\obj\x86\Release\ALM05.exe
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Reporte de Movimientos\Escritorio\obj\x86\Release\ALM05.xml
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Reporte de Movimientos\Escritorio\obj\x86\Release\ALM05.pdb

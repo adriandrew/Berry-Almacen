@@ -1,0 +1,8 @@
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Reporte de Saldos\Logica\bin\Release\ALMLogicaReporteSaldos.dll
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Reporte de Saldos\Logica\bin\Release\ALMLogicaReporteSaldos.pdb
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Reporte de Saldos\Logica\bin\Release\ALMLogicaReporteSaldos.xml
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Reporte de Saldos\Logica\obj\Release\ALMLogicaReporteSaldos.Resources.resources
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Reporte de Saldos\Logica\obj\Release\Logica.vbproj.GenerateResource.Cache
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Reporte de Saldos\Logica\obj\Release\ALMLogicaReporteSaldos.dll
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Reporte de Saldos\Logica\obj\Release\ALMLogicaReporteSaldos.xml
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Reporte de Saldos\Logica\obj\Release\ALMLogicaReporteSaldos.pdb

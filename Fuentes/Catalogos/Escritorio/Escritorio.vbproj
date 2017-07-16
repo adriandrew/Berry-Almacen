@@ -154,13 +154,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Entidades\EntidadesCatalogos.vbproj">
+    <ProjectReference Include="..\Entidades\Entidades.vbproj">
       <Project>{04eeeb38-5acc-4348-bd74-030754de766e}</Project>
-      <Name>EntidadesCatalogos</Name>
+      <Name>Entidades</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Logica\LogicaCatalogos.vbproj">
+    <ProjectReference Include="..\Logica\Logica.vbproj">
       <Project>{956a1873-a506-4a55-a2c9-bc76e38bcc3e}</Project>
-      <Name>LogicaCatalogos</Name>
+      <Name>Logica</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

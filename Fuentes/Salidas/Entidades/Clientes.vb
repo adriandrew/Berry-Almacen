@@ -82,7 +82,7 @@ Public Class Clientes
             Dim datos As New DataTable
             Dim comando As New SqlCommand()
             comando.Connection = BaseDatos.conexionCatalogo
-            comando.CommandText = "SELECT Id, Nombre FROM " & LogicaSalidas.Programas.prefijoBaseDatosAlmacen & "Clientes ORDER BY Id ASC"
+            comando.CommandText = "SELECT Id, Nombre FROM " & ALMLogicaSalidas.Programas.prefijoBaseDatosAlmacen & "Clientes ORDER BY Id ASC"
             BaseDatos.conexionCatalogo.Open()
             Dim lectorDatos As SqlDataReader
             lectorDatos = comando.ExecuteReader()
@@ -107,7 +107,7 @@ Public Class Clientes
             If (Me.EId > 0) Then
                 condicion &= " AND Id=@id"
             End If
-            comando.CommandText = "SELECT Id, Nombre, Rfc, Domicilio, Municipio, Estado, Telefono, Correo FROM " & LogicaSalidas.Programas.prefijoBaseDatosAlmacen & "Clientes WHERE 0=0 " & condicion
+            comando.CommandText = "SELECT Id, Nombre, Rfc, Domicilio, Municipio, Estado, Telefono, Correo FROM " & ALMLogicaSalidas.Programas.prefijoBaseDatosAlmacen & "Clientes WHERE 0=0 " & condicion
             comando.Parameters.AddWithValue("@id", Me.EId)
             BaseDatos.conexionCatalogo.Open()
             Dim lectorDatos As SqlDataReader = comando.ExecuteReader()

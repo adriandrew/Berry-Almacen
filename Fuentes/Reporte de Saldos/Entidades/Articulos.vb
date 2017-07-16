@@ -140,8 +140,8 @@ Public Class Articulos
             If (Me.EId > 0) Then
                 condicion &= " AND Id=@id"
             End If
-            comando.CommandText = "SELECT -1 AS Id, 'Todos' AS Nombre FROM " & LogicaReporteSaldos.Programas.prefijoBaseDatosAlmacen & "Articulos " & _
-            " UNION SELECT Id, Nombre FROM " & LogicaReporteSaldos.Programas.prefijoBaseDatosAlmacen & "Articulos " & _
+            comando.CommandText = "SELECT -1 AS Id, 'Todos' AS Nombre FROM " & ALMLogicaReporteSaldos.Programas.prefijoBaseDatosAlmacen & "Articulos " & _
+            " UNION SELECT Id, Nombre FROM " & ALMLogicaReporteSaldos.Programas.prefijoBaseDatosAlmacen & "Articulos " & _
             " WHERE 0=0 " & condicion
             comando.Parameters.AddWithValue("@idAlmacen", Me.EIdAlmacen)
             comando.Parameters.AddWithValue("@idFamilia", Me.EIdFamilia)
@@ -180,7 +180,7 @@ Public Class Articulos
             If Me.EId > 0 Then
                 condicion &= " AND Id=@id"
             End If
-            comando.CommandText = "SELECT IdAlmacen, IdFamilia, IdSubFamilia, Id, Nombre, NombreComercial, IdUnidadMedida, CantidadMinima, CantidadMaxima, Precio, Seccion, Estante, Nivel FROM " & LogicaReporteSaldos.Programas.prefijoBaseDatosAlmacen & "Articulos WHERE 0=0 " & condicion
+            comando.CommandText = "SELECT IdAlmacen, IdFamilia, IdSubFamilia, Id, Nombre, NombreComercial, IdUnidadMedida, CantidadMinima, CantidadMaxima, Precio, Seccion, Estante, Nivel FROM " & ALMLogicaReporteSaldos.Programas.prefijoBaseDatosAlmacen & "Articulos WHERE 0=0 " & condicion
             comando.Parameters.AddWithValue("@idAlmacen", Me.EIdAlmacen)
             comando.Parameters.AddWithValue("@idFamilia", Me.EIdFamilia)
             comando.Parameters.AddWithValue("@idSubFamilia", Me.EIdSubFamilia)

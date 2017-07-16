@@ -81,7 +81,7 @@ Public Class Proveedores
         Try
             Dim comando As New SqlCommand()
             comando.Connection = BaseDatos.conexionCatalogo
-            comando.CommandText = "INSERT INTO " & LogicaCatalogos.Programas.prefijoBaseDatosAlmacen & "Proveedores (Id, Nombre, Rfc, Domicilio, Municipio, Estado, Telefono, Correo) VALUES (@id, @nombre, @rfc, @domicilio, @municipio, @estado,@telefono, @correo)"
+            comando.CommandText = "INSERT INTO " & ALMLogicaCatalogos.Programas.prefijoBaseDatosAlmacen & "Proveedores (Id, Nombre, Rfc, Domicilio, Municipio, Estado, Telefono, Correo) VALUES (@id, @nombre, @rfc, @domicilio, @municipio, @estado,@telefono, @correo)"
             comando.Parameters.AddWithValue("@id", Me.EId)
             comando.Parameters.AddWithValue("@nombre", Me.ENombre)
             comando.Parameters.AddWithValue("@rfc", Me.Erfc)
@@ -110,7 +110,7 @@ Public Class Proveedores
             If (Me.EId > 0) Then
                 condicion &= " WHERE Id=@id"
             End If
-            comando.CommandText = "DELETE FROM " & LogicaCatalogos.Programas.prefijoBaseDatosAlmacen & "Proveedores " & condicion
+            comando.CommandText = "DELETE FROM " & ALMLogicaCatalogos.Programas.prefijoBaseDatosAlmacen & "Proveedores " & condicion
             comando.Parameters.AddWithValue("@id", Me.id)
             BaseDatos.conexionCatalogo.Open()
             comando.ExecuteNonQuery()
@@ -129,7 +129,7 @@ Public Class Proveedores
             Dim datos As New DataTable
             Dim comando As New SqlCommand()
             comando.Connection = BaseDatos.conexionCatalogo
-            comando.CommandText = "SELECT Id, Nombre, Rfc, Domicilio, Municipio, Estado, Telefono, Correo FROM " & LogicaCatalogos.Programas.prefijoBaseDatosAlmacen & "Proveedores ORDER BY Id ASC"
+            comando.CommandText = "SELECT Id, Nombre, Rfc, Domicilio, Municipio, Estado, Telefono, Correo FROM " & ALMLogicaCatalogos.Programas.prefijoBaseDatosAlmacen & "Proveedores ORDER BY Id ASC"
             BaseDatos.conexionCatalogo.Open()
             Dim dataReader As SqlDataReader
             dataReader = comando.ExecuteReader()

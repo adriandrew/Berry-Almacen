@@ -4,17 +4,17 @@ Imports System.ComponentModel
 Public Class Principal
 
     ' Variables de objetos de entidades.
-    Public usuarios As New EntidadesSalidas.Usuarios() 
-    Public salidas As New EntidadesSalidas.Salidas()
-    Public almacenes As New EntidadesSalidas.Almacenes()
-    Public familias As New EntidadesSalidas.Familias()
-    Public subFamilias As New EntidadesSalidas.SubFamilias()
-    Public articulos As New EntidadesSalidas.Articulos()
-    Public unidadesMedidas As New EntidadesSalidas.UnidadesMedidas()
-    Public clientes As New EntidadesSalidas.Clientes()
-    Public monedas As New EntidadesSalidas.Monedas()
-    Public tiposCambios As New EntidadesSalidas.TiposCambios()
-    Public tiposSalidas As New EntidadesSalidas.TiposSalidas()
+    Public usuarios As New ALMEntidadesSalidas.Usuarios()
+    Public salidas As New ALMEntidadesSalidas.Salidas()
+    Public almacenes As New ALMEntidadesSalidas.Almacenes()
+    Public familias As New ALMEntidadesSalidas.Familias()
+    Public subFamilias As New ALMEntidadesSalidas.SubFamilias()
+    Public articulos As New ALMEntidadesSalidas.Articulos()
+    Public unidadesMedidas As New ALMEntidadesSalidas.UnidadesMedidas()
+    Public clientes As New ALMEntidadesSalidas.Clientes()
+    Public monedas As New ALMEntidadesSalidas.Monedas()
+    Public tiposCambios As New ALMEntidadesSalidas.TiposCambios()
+    Public tiposSalidas As New ALMEntidadesSalidas.TiposSalidas()
     ' Variables de tipos de datos de spread.
     Public tipoTexto As New FarPoint.Win.Spread.CellType.TextCellType()
     Public tipoTextoContrasena As New FarPoint.Win.Spread.CellType.TextCellType()
@@ -313,9 +313,9 @@ Public Class Principal
 
         If (e.KeyData = Keys.Enter) Then
             e.SuppressKeyPress = True
-            Dim idCliente As Integer = LogicaSalidas.Funciones.ValidarNumeroACero(txtIdCliente.Text)
+            Dim idCliente As Integer = ALMLogicaSalidas.Funciones.ValidarNumeroACero(txtIdCliente.Text)
             clientes.EId = idCliente
-            Dim lista As List(Of EntidadesSalidas.Clientes)
+            Dim lista As List(Of ALMEntidadesSalidas.Clientes)
             lista = clientes.ObtenerListado()
             Dim nombre As String = String.Empty
             If (lista.Count > 0) Then
@@ -356,7 +356,7 @@ Public Class Principal
 
     Private Sub btnIdAnterior_Click(sender As Object, e As EventArgs) Handles btnIdAnterior.Click
 
-        If (LogicaSalidas.Funciones.ValidarNumeroACero(txtId.Text) > 1) Then
+        If (ALMLogicaSalidas.Funciones.ValidarNumeroACero(txtId.Text) > 1) Then
             txtId.Text -= 1
             CargarSalidas()
         End If
@@ -365,7 +365,7 @@ Public Class Principal
 
     Private Sub btnIdSiguiente_Click(sender As Object, e As EventArgs) Handles btnIdSiguiente.Click
 
-        If (LogicaSalidas.Funciones.ValidarNumeroACero(txtId.Text) >= 1) Then
+        If (ALMLogicaSalidas.Funciones.ValidarNumeroACero(txtId.Text) >= 1) Then
             txtId.Text += 1
             CargarSalidas()
         End If
@@ -408,7 +408,7 @@ Public Class Principal
             txtAyuda.Multiline = True : Application.DoEvents()
             txtAyuda.Width = pnlAyuda.Width - 10 : Application.DoEvents()
             txtAyuda.Height = pnlAyuda.Height - 10 : Application.DoEvents()
-            txtAyuda.Location = New Point(5, 5) : Application.DoEvents() 
+            txtAyuda.Location = New Point(5, 5) : Application.DoEvents()
             txtAyuda.Text = "Sección de Ayuda: " & vbNewLine & vbNewLine & "* Teclas básicas: " & vbNewLine & "F5 sirve para mostrar catálogos. " & vbNewLine & "F6 sirve para eliminar un registro únicamente. " & vbNewLine & "Escape sirve para ocultar catálogos que se encuentren desplegados. " & vbNewLine & vbNewLine & "* Catálogos desplegados: " & vbNewLine & "Cuando se muestra algún catálogo, al seleccionar alguna opción de este, se va mostrando en tiempo real en la captura de donde se originó. Cuando se le da doble clic en alguna opción o a la tecla escape se oculta dicho catálogo. " & vbNewLine & vbNewLine & "* Datos obligatorios: " & vbNewLine & "Todos los que tengan el simbolo * son estrictamente obligatorios." & vbNewLine & vbNewLine & "* Captura:" & vbNewLine & "* Parte superior: " & vbNewLine & "En esta parte se capturarán todos los datos que son generales, tal cual como el número de la salida, el almacén al que corresponde, etc." & vbNewLine & "* Parte inferior: " & vbNewLine & "En esta parte se capturarán todos los datos que pueden combinarse, por ejemplo los distintos artículos de ese número de salida." & vbNewLine & vbNewLine & "* Existen los botones de guardar/editar y eliminar todo dependiendo lo que se necesite hacer. " : Application.DoEvents()
             pnlAyuda.Controls.Add(txtAyuda) : Application.DoEvents()
         Else
@@ -434,7 +434,7 @@ Public Class Principal
 
     Private Function ValidarAccesoTotal() As Boolean
 
-        If ((Not LogicaSalidas.Usuarios.accesoTotal) Or (LogicaSalidas.Usuarios.accesoTotal = 0) Or (LogicaSalidas.Usuarios.accesoTotal = False)) Then
+        If ((Not ALMLogicaSalidas.Usuarios.accesoTotal) Or (ALMLogicaSalidas.Usuarios.accesoTotal = 0) Or (ALMLogicaSalidas.Usuarios.accesoTotal = False)) Then
             MsgBox("No tienes permisos suficientes para acceder a este programa.", MsgBoxStyle.Information, "Permisos insuficientes.")
             Return False
         Else
@@ -482,24 +482,24 @@ Public Class Principal
     Private Sub ConfigurarConexiones()
 
         If (Me.esDesarrollo) Then
-            LogicaSalidas.Directorios.id = 1
-            LogicaSalidas.Directorios.instanciaSql = "BERRY1-DELL\SQLEXPRESS2008"
-            LogicaSalidas.Directorios.usuarioSql = "AdminBerry"
-            LogicaSalidas.Directorios.contrasenaSql = "@berry2017"
-            LogicaSalidas.Usuarios.id = 1
+            ALMLogicaSalidas.Directorios.id = 1
+            ALMLogicaSalidas.Directorios.instanciaSql = "BERRY1-DELL\SQLEXPRESS2008"
+            ALMLogicaSalidas.Directorios.usuarioSql = "AdminBerry"
+            ALMLogicaSalidas.Directorios.contrasenaSql = "@berry2017"
+            ALMLogicaSalidas.Usuarios.id = 1
         Else
-            LogicaSalidas.Directorios.ObtenerParametros()
-            LogicaSalidas.Usuarios.ObtenerParametros()
+            ALMLogicaSalidas.Directorios.ObtenerParametros()
+            ALMLogicaSalidas.Usuarios.ObtenerParametros()
         End If
-        LogicaSalidas.Programas.bdCatalogo = "Catalogo" & LogicaSalidas.Directorios.id
-        LogicaSalidas.Programas.bdConfiguracion = "Configuracion" & LogicaSalidas.Directorios.id
-        LogicaSalidas.Programas.bdAlmacen = "Almacen" & LogicaSalidas.Directorios.id
-        EntidadesSalidas.BaseDatos.ECadenaConexionCatalogo = LogicaSalidas.Programas.bdCatalogo
-        EntidadesSalidas.BaseDatos.ECadenaConexionConfiguracion = LogicaSalidas.Programas.bdConfiguracion
-        EntidadesSalidas.BaseDatos.ECadenaConexionAlmacen = LogicaSalidas.Programas.bdAlmacen
-        EntidadesSalidas.BaseDatos.AbrirConexionCatalogo()
-        EntidadesSalidas.BaseDatos.AbrirConexionConfiguracion()
-        EntidadesSalidas.BaseDatos.AbrirConexionAlmacen()
+        ALMLogicaSalidas.Programas.bdCatalogo = "Catalogo" & ALMLogicaSalidas.Directorios.id
+        ALMLogicaSalidas.Programas.bdConfiguracion = "Configuracion" & ALMLogicaSalidas.Directorios.id
+        ALMLogicaSalidas.Programas.bdAlmacen = "Almacen" & ALMLogicaSalidas.Directorios.id
+        ALMEntidadesSalidas.BaseDatos.ECadenaConexionCatalogo = ALMLogicaSalidas.Programas.bdCatalogo
+        ALMEntidadesSalidas.BaseDatos.ECadenaConexionConfiguracion = ALMLogicaSalidas.Programas.bdConfiguracion
+        ALMEntidadesSalidas.BaseDatos.ECadenaConexionAlmacen = ALMLogicaSalidas.Programas.bdAlmacen
+        ALMEntidadesSalidas.BaseDatos.AbrirConexionCatalogo()
+        ALMEntidadesSalidas.BaseDatos.AbrirConexionConfiguracion()
+        ALMEntidadesSalidas.BaseDatos.AbrirConexionAlmacen()
         ConsultarInformacionUsuario()
         CargarPrefijoBaseDatosAlmacen()
 
@@ -507,36 +507,36 @@ Public Class Principal
 
     Private Sub CargarPrefijoBaseDatosAlmacen()
 
-        LogicaSalidas.Programas.prefijoBaseDatosAlmacen = Me.prefijoBaseDatosAlmacen
+        ALMLogicaSalidas.Programas.prefijoBaseDatosAlmacen = Me.prefijoBaseDatosAlmacen
 
     End Sub
 
     Private Sub ConsultarInformacionUsuario()
 
-        Dim lista As New List(Of EntidadesSalidas.Usuarios)
-        usuarios.EId = LogicaSalidas.Usuarios.id
+        Dim lista As New List(Of ALMEntidadesSalidas.Usuarios)
+        usuarios.EId = ALMLogicaSalidas.Usuarios.id
         lista = usuarios.ObtenerListado()
         If (lista.Count > 0) Then
-            LogicaSalidas.Usuarios.id = lista(0).EId
-            LogicaSalidas.Usuarios.nombre = lista(0).ENombre
-            LogicaSalidas.Usuarios.contrasena = lista(0).EContrasena
-            LogicaSalidas.Usuarios.nivel = lista(0).ENivel
-            LogicaSalidas.Usuarios.accesoTotal = lista(0).EAccesoTotal
+            ALMLogicaSalidas.Usuarios.id = lista(0).EId
+            ALMLogicaSalidas.Usuarios.nombre = lista(0).ENombre
+            ALMLogicaSalidas.Usuarios.contrasena = lista(0).EContrasena
+            ALMLogicaSalidas.Usuarios.nivel = lista(0).ENivel
+            ALMLogicaSalidas.Usuarios.accesoTotal = lista(0).EAccesoTotal
         End If
 
     End Sub
 
     Private Sub CargarTitulosDirectorio()
 
-        Me.Text = "Programa:  " + Me.nombreEstePrograma + "              Directorio:  " + LogicaSalidas.Directorios.nombre + "              Usuario:  " + LogicaSalidas.Usuarios.nombre
+        Me.Text = "Programa:  " + Me.nombreEstePrograma + "              Directorio:  " + ALMLogicaSalidas.Directorios.nombre + "              Usuario:  " + ALMLogicaSalidas.Usuarios.nombre
 
     End Sub
 
     Private Sub CargarEncabezados()
 
         lblEncabezadoPrograma.Text = "Programa: " + Me.Text
-        lblEncabezadoEmpresa.Text = "Directorio: " + LogicaSalidas.Directorios.nombre
-        lblEncabezadoUsuario.Text = "Usuario: " + LogicaSalidas.Usuarios.nombre
+        lblEncabezadoEmpresa.Text = "Directorio: " + ALMLogicaSalidas.Directorios.nombre
+        lblEncabezadoUsuario.Text = "Usuario: " + ALMLogicaSalidas.Usuarios.nombre
 
     End Sub
 
@@ -548,7 +548,7 @@ Public Class Principal
         ejecutarProgramaPrincipal.UseShellExecute = True
         ejecutarProgramaPrincipal.FileName = nombre & Convert.ToString(".exe")
         ejecutarProgramaPrincipal.WorkingDirectory = Application.StartupPath
-        ejecutarProgramaPrincipal.Arguments = LogicaSalidas.Directorios.id.ToString().Trim().Replace(" ", "|") & " " & LogicaSalidas.Directorios.nombre.ToString().Trim().Replace(" ", "|") & " " & LogicaSalidas.Directorios.descripcion.ToString().Trim().Replace(" ", "|") & " " & LogicaSalidas.Directorios.rutaLogo.ToString().Trim().Replace(" ", "|") & " " & LogicaSalidas.Directorios.esPredeterminado.ToString().Trim().Replace(" ", "|") & " " & LogicaSalidas.Directorios.instanciaSql.ToString().Trim().Replace(" ", "|") & " " & LogicaSalidas.Directorios.usuarioSql.ToString().Trim().Replace(" ", "|") & " " & LogicaSalidas.Directorios.contrasenaSql.ToString().Trim().Replace(" ", "|") & " " & "Aquí terminan los de directorios, indice 9 ;)".Replace(" ", "|") & " " & LogicaSalidas.Usuarios.id.ToString().Trim().Replace(" ", "|") & " " & "Aquí terminan los de usuario, indice 11 ;)".Replace(" ", "|")
+        ejecutarProgramaPrincipal.Arguments = ALMLogicaSalidas.Directorios.id.ToString().Trim().Replace(" ", "|") & " " & ALMLogicaSalidas.Directorios.nombre.ToString().Trim().Replace(" ", "|") & " " & ALMLogicaSalidas.Directorios.descripcion.ToString().Trim().Replace(" ", "|") & " " & ALMLogicaSalidas.Directorios.rutaLogo.ToString().Trim().Replace(" ", "|") & " " & ALMLogicaSalidas.Directorios.esPredeterminado.ToString().Trim().Replace(" ", "|") & " " & ALMLogicaSalidas.Directorios.instanciaSql.ToString().Trim().Replace(" ", "|") & " " & ALMLogicaSalidas.Directorios.usuarioSql.ToString().Trim().Replace(" ", "|") & " " & ALMLogicaSalidas.Directorios.contrasenaSql.ToString().Trim().Replace(" ", "|") & " " & "Aquí terminan los de directorios, indice 9 ;)".Replace(" ", "|") & " " & ALMLogicaSalidas.Usuarios.id.ToString().Trim().Replace(" ", "|") & " " & "Aquí terminan los de usuario, indice 11 ;)".Replace(" ", "|")
         Try
             Dim proceso = Process.Start(ejecutarProgramaPrincipal)
             proceso.WaitForInputIdle()
@@ -690,7 +690,7 @@ Public Class Principal
             tiposCambios.EIdMoneda = idMoneda
             Dim valor As Double = 1
             If (idMoneda > 0) Then
-                Dim lista As New List(Of EntidadesSalidas.TiposCambios)
+                Dim lista As New List(Of ALMEntidadesSalidas.TiposCambios)
                 lista = tiposCambios.ObtenerListado()
                 If (lista.Count = 1) Then
                     valor = lista(0).EValor
@@ -761,12 +761,12 @@ Public Class Principal
             Dim fila As Integer = 0
             If (columnaActiva = spSalidas.ActiveSheet.Columns("idFamilia").Index) Then
                 fila = spSalidas.ActiveSheet.ActiveRowIndex
-                Dim idAlmacen As Integer = LogicaSalidas.Funciones.ValidarNumeroACero(LogicaSalidas.Funciones.ValidarNumeroACero(cbAlmacenes.SelectedValue))
-                Dim idFamilia As Integer = LogicaSalidas.Funciones.ValidarNumeroACero(spSalidas.ActiveSheet.Cells(fila, spSalidas.ActiveSheet.Columns("idFamilia").Index).Value)
+                Dim idAlmacen As Integer = ALMLogicaSalidas.Funciones.ValidarNumeroACero(ALMLogicaSalidas.Funciones.ValidarNumeroACero(cbAlmacenes.SelectedValue))
+                Dim idFamilia As Integer = ALMLogicaSalidas.Funciones.ValidarNumeroACero(spSalidas.ActiveSheet.Cells(fila, spSalidas.ActiveSheet.Columns("idFamilia").Index).Value)
                 familias.EIdAlmacen = idAlmacen
                 familias.EId = idFamilia
                 If (idAlmacen > 0 And idFamilia > 0) Then
-                    Dim lista As New List(Of EntidadesSalidas.Familias)
+                    Dim lista As New List(Of ALMEntidadesSalidas.Familias)
                     lista = familias.ObtenerListado()
                     If (lista.Count = 1) Then
                         spSalidas.ActiveSheet.Cells(fila, spSalidas.ActiveSheet.Columns("nombreFamilia").Index).Value = lista(0).ENombre
@@ -782,14 +782,14 @@ Public Class Principal
                 End If
             ElseIf (columnaActiva = spSalidas.ActiveSheet.Columns("idSubFamilia").Index) Then
                 fila = spSalidas.ActiveSheet.ActiveRowIndex
-                Dim idAlmacen As Integer = LogicaSalidas.Funciones.ValidarNumeroACero(cbAlmacenes.SelectedValue)
-                Dim idFamilia As Integer = LogicaSalidas.Funciones.ValidarNumeroACero(spSalidas.ActiveSheet.Cells(fila, spSalidas.ActiveSheet.Columns("idFamilia").Index).Value)
-                Dim idSubFamilia As Integer = LogicaSalidas.Funciones.ValidarNumeroACero(spSalidas.ActiveSheet.Cells(fila, spSalidas.ActiveSheet.Columns("idSubFamilia").Index).Value)
+                Dim idAlmacen As Integer = ALMLogicaSalidas.Funciones.ValidarNumeroACero(cbAlmacenes.SelectedValue)
+                Dim idFamilia As Integer = ALMLogicaSalidas.Funciones.ValidarNumeroACero(spSalidas.ActiveSheet.Cells(fila, spSalidas.ActiveSheet.Columns("idFamilia").Index).Value)
+                Dim idSubFamilia As Integer = ALMLogicaSalidas.Funciones.ValidarNumeroACero(spSalidas.ActiveSheet.Cells(fila, spSalidas.ActiveSheet.Columns("idSubFamilia").Index).Value)
                 subFamilias.EIdAlmacen = idAlmacen
                 subFamilias.EIdFamilia = idFamilia
                 subFamilias.EId = idSubFamilia
                 If (idAlmacen > 0 And idFamilia > 0 And idSubFamilia > 0) Then
-                    Dim lista As New List(Of EntidadesSalidas.SubFamilias)
+                    Dim lista As New List(Of ALMEntidadesSalidas.SubFamilias)
                     lista = subFamilias.ObtenerListado()
                     If (lista.Count = 1) Then
                         spSalidas.ActiveSheet.Cells(fila, spSalidas.ActiveSheet.Columns("nombreSubFamilia").Index).Value = lista(0).ENombre
@@ -804,19 +804,19 @@ Public Class Principal
                 End If
             ElseIf (columnaActiva = spSalidas.ActiveSheet.Columns("idArticulo").Index) Then
                 fila = spSalidas.ActiveSheet.ActiveRowIndex
-                Dim idAlmacen As Integer = LogicaSalidas.Funciones.ValidarNumeroACero(cbAlmacenes.SelectedValue)
-                Dim idFamilia As Integer = LogicaSalidas.Funciones.ValidarNumeroACero(spSalidas.ActiveSheet.Cells(fila, spSalidas.ActiveSheet.Columns("idFamilia").Index).Value)
-                Dim idSubFamilia As Integer = LogicaSalidas.Funciones.ValidarNumeroACero(spSalidas.ActiveSheet.Cells(fila, spSalidas.ActiveSheet.Columns("idSubFamilia").Index).Value)
-                Dim idArticulo As Integer = LogicaSalidas.Funciones.ValidarNumeroACero(spSalidas.ActiveSheet.Cells(fila, spSalidas.ActiveSheet.Columns("idArticulo").Index).Value)
+                Dim idAlmacen As Integer = ALMLogicaSalidas.Funciones.ValidarNumeroACero(cbAlmacenes.SelectedValue)
+                Dim idFamilia As Integer = ALMLogicaSalidas.Funciones.ValidarNumeroACero(spSalidas.ActiveSheet.Cells(fila, spSalidas.ActiveSheet.Columns("idFamilia").Index).Value)
+                Dim idSubFamilia As Integer = ALMLogicaSalidas.Funciones.ValidarNumeroACero(spSalidas.ActiveSheet.Cells(fila, spSalidas.ActiveSheet.Columns("idSubFamilia").Index).Value)
+                Dim idArticulo As Integer = ALMLogicaSalidas.Funciones.ValidarNumeroACero(spSalidas.ActiveSheet.Cells(fila, spSalidas.ActiveSheet.Columns("idArticulo").Index).Value)
                 articulos.EIdAlmacen = idAlmacen
                 articulos.EIdFamilia = idFamilia
                 articulos.EIdSubFamilia = idSubFamilia
                 articulos.EId = idArticulo
                 If (idAlmacen > 0 And idFamilia > 0 And idSubFamilia > 0 And idArticulo > 0) Then
                     For indice = 0 To spSalidas.ActiveSheet.Rows.Count - 1 ' Se valida que no se repitan los articulos.
-                        Dim idArticuloLocal As Integer = LogicaSalidas.Funciones.ValidarNumeroACero(spSalidas.ActiveSheet.Cells(indice, spSalidas.ActiveSheet.Columns("idArticulo").Index).Text)
-                        Dim idSubFamiliaLocal As Integer = LogicaSalidas.Funciones.ValidarNumeroACero(spSalidas.ActiveSheet.Cells(indice, spSalidas.ActiveSheet.Columns("idSubFamilia").Index).Text)
-                        Dim idFamiliaLocal As Integer = LogicaSalidas.Funciones.ValidarNumeroACero(spSalidas.ActiveSheet.Cells(indice, spSalidas.ActiveSheet.Columns("idFamilia").Index).Text)
+                        Dim idArticuloLocal As Integer = ALMLogicaSalidas.Funciones.ValidarNumeroACero(spSalidas.ActiveSheet.Cells(indice, spSalidas.ActiveSheet.Columns("idArticulo").Index).Text)
+                        Dim idSubFamiliaLocal As Integer = ALMLogicaSalidas.Funciones.ValidarNumeroACero(spSalidas.ActiveSheet.Cells(indice, spSalidas.ActiveSheet.Columns("idSubFamilia").Index).Text)
+                        Dim idFamiliaLocal As Integer = ALMLogicaSalidas.Funciones.ValidarNumeroACero(spSalidas.ActiveSheet.Cells(indice, spSalidas.ActiveSheet.Columns("idFamilia").Index).Text)
                         If (idArticuloLocal > 0 And idFamiliaLocal > 0 And idSubFamiliaLocal > 0) Then
                             If (idArticuloLocal = idArticulo And idSubFamiliaLocal = idSubFamilia And idFamiliaLocal = idFamilia And indice <> fila) Then
                                 spSalidas.ActiveSheet.Cells(fila, spSalidas.ActiveSheet.Columns("idArticulo").Index).Text = String.Empty
@@ -826,11 +826,11 @@ Public Class Principal
                             End If
                         End If
                     Next
-                    Dim lista As New List(Of EntidadesSalidas.Articulos)
+                    Dim lista As New List(Of ALMEntidadesSalidas.Articulos)
                     lista = articulos.ObtenerListado()
                     If (lista.Count = 1) Then ' Se carga nombre de artículo.
                         spSalidas.ActiveSheet.Cells(fila, spSalidas.ActiveSheet.Columns("nombreArticulo").Index).Value = lista(0).ENombre
-                        Dim lista2 As New List(Of EntidadesSalidas.UnidadesMedidas)
+                        Dim lista2 As New List(Of ALMEntidadesSalidas.UnidadesMedidas)
                         unidadesMedidas.EId = lista(0).EIdUnidadMedida
                         lista2 = unidadesMedidas.ObtenerListado()
                         If (lista2.Count = 1) Then ' Se carga nombre de unidad.
@@ -844,7 +844,7 @@ Public Class Principal
                             listaSaldo = ValidarFechasPosteriores(idAlmacen, idFamilia, idSubFamilia, idArticulo, fecha)
                             Dim resultado As Boolean = listaSaldo(0)
                             Dim idResultado As Integer = listaSaldo(1)
-                            Dim fechaResultado As Date = listaSaldo(2) 
+                            Dim fechaResultado As Date = listaSaldo(2)
                             If (resultado) Then ' Se validan fechas posteriores capturadas.
                                 MsgBox("Este artículo tiene salida(s) con fecha posterior. La mas próxima es la no. " & idResultado & " con fecha de " & fechaResultado, MsgBoxStyle.Exclamation, "No permitido.")
                                 spSalidas.ActiveSheet.ClearRange(fila, spSalidas.ActiveSheet.Columns("idArticulo").Index, 1, spSalidas.ActiveSheet.Columns.Count - 1, True)
@@ -862,17 +862,17 @@ Public Class Principal
                 End If
             ElseIf (columnaActiva = spSalidas.ActiveSheet.Columns("cantidad").Index) Then
                 fila = spSalidas.ActiveSheet.ActiveRowIndex
-                Dim cantidad As Integer = LogicaSalidas.Funciones.ValidarNumeroACero(spSalidas.ActiveSheet.Cells(fila, spSalidas.ActiveSheet.Columns("cantidad").Index).Value)
+                Dim cantidad As Integer = ALMLogicaSalidas.Funciones.ValidarNumeroACero(spSalidas.ActiveSheet.Cells(fila, spSalidas.ActiveSheet.Columns("cantidad").Index).Value)
                 If (cantidad > 0) Then
-                    Dim valorPrecio As String = LogicaSalidas.Funciones.ValidarLetra(spSalidas.ActiveSheet.Cells(fila, spSalidas.ActiveSheet.Columns("precioUnitario").Index).Text)
-                    Dim idAlmacen As Integer = LogicaSalidas.Funciones.ValidarNumeroACero(cbAlmacenes.SelectedValue)
-                    Dim idFamilia As Integer = LogicaSalidas.Funciones.ValidarNumeroACero(spSalidas.ActiveSheet.Cells(fila, spSalidas.ActiveSheet.Columns("idFamilia").Index).Value)
-                    Dim idSubFamilia As Integer = LogicaSalidas.Funciones.ValidarNumeroACero(spSalidas.ActiveSheet.Cells(fila, spSalidas.ActiveSheet.Columns("idSubFamilia").Index).Value)
-                    Dim idArticulo As Integer = LogicaSalidas.Funciones.ValidarNumeroACero(spSalidas.ActiveSheet.Cells(fila, spSalidas.ActiveSheet.Columns("idArticulo").Index).Value)
+                    Dim valorPrecio As String = ALMLogicaSalidas.Funciones.ValidarLetra(spSalidas.ActiveSheet.Cells(fila, spSalidas.ActiveSheet.Columns("precioUnitario").Index).Text)
+                    Dim idAlmacen As Integer = ALMLogicaSalidas.Funciones.ValidarNumeroACero(cbAlmacenes.SelectedValue)
+                    Dim idFamilia As Integer = ALMLogicaSalidas.Funciones.ValidarNumeroACero(spSalidas.ActiveSheet.Cells(fila, spSalidas.ActiveSheet.Columns("idFamilia").Index).Value)
+                    Dim idSubFamilia As Integer = ALMLogicaSalidas.Funciones.ValidarNumeroACero(spSalidas.ActiveSheet.Cells(fila, spSalidas.ActiveSheet.Columns("idSubFamilia").Index).Value)
+                    Dim idArticulo As Integer = ALMLogicaSalidas.Funciones.ValidarNumeroACero(spSalidas.ActiveSheet.Cells(fila, spSalidas.ActiveSheet.Columns("idArticulo").Index).Value)
                     articulos.EIdAlmacen = idAlmacen
                     articulos.EIdFamilia = idFamilia
                     articulos.EIdSubFamilia = idSubFamilia
-                    articulos.EId = idArticulo 
+                    articulos.EId = idArticulo
                     Dim esCapturado As Boolean = spSalidas.ActiveSheet.Cells(fila, spSalidas.ActiveSheet.Columns("esCapturado").Index).Value
                     If (Not esCapturado) Then ' Si no es capturado, es decir, si es nuevo registro. 
                         Dim listaSaldo As New List(Of String)
@@ -888,11 +888,11 @@ Public Class Principal
                     End If
                     If (String.IsNullOrEmpty(valorPrecio)) Then ' Se cargan el precio promedio y totales. 
                         Dim precio As Double = 0
-                        Dim id As Integer = LogicaSalidas.Funciones.ValidarNumeroACero(txtId.Text)
+                        Dim id As Integer = ALMLogicaSalidas.Funciones.ValidarNumeroACero(txtId.Text)
                         precio = CalcularPrecioPromedio(idAlmacen, idFamilia, idSubFamilia, idArticulo)
                         spSalidas.ActiveSheet.Cells(fila, spSalidas.ActiveSheet.Columns("precioUnitario").Index).Value = precio
                         spSalidas.ActiveSheet.Cells(fila, spSalidas.ActiveSheet.Columns("total").Index).Value = cantidad * precio
-                        Dim tipoCambio As Double = LogicaSalidas.Funciones.ValidarNumeroACero(txtTipoCambio.Text)
+                        Dim tipoCambio As Double = ALMLogicaSalidas.Funciones.ValidarNumeroACero(txtTipoCambio.Text)
                         spSalidas.ActiveSheet.Cells(fila, spSalidas.ActiveSheet.Columns("totalPesos").Index).Value = cantidad * precio * tipoCambio
                     End If
                 Else
@@ -901,9 +901,9 @@ Public Class Principal
                 End If
             ElseIf (columnaActiva = spSalidas.ActiveSheet.Columns("precioUnitario").Index) Then
                 fila = spSalidas.ActiveSheet.ActiveRowIndex
-                Dim cantidad As Integer = LogicaSalidas.Funciones.ValidarNumeroACero(spSalidas.ActiveSheet.Cells(fila, spSalidas.ActiveSheet.Columns("cantidad").Index).Value)
-                Dim precio As Double = LogicaSalidas.Funciones.ValidarNumeroACero(spSalidas.ActiveSheet.Cells(fila, spSalidas.ActiveSheet.Columns("precioUnitario").Index).Value)
-                Dim tipoCambio As Double = LogicaSalidas.Funciones.ValidarNumeroACero(txtTipoCambio.Text)
+                Dim cantidad As Integer = ALMLogicaSalidas.Funciones.ValidarNumeroACero(spSalidas.ActiveSheet.Cells(fila, spSalidas.ActiveSheet.Columns("cantidad").Index).Value)
+                Dim precio As Double = ALMLogicaSalidas.Funciones.ValidarNumeroACero(spSalidas.ActiveSheet.Cells(fila, spSalidas.ActiveSheet.Columns("precioUnitario").Index).Value)
+                Dim tipoCambio As Double = ALMLogicaSalidas.Funciones.ValidarNumeroACero(txtTipoCambio.Text)
                 If (cantidad > 0) Then
                     spSalidas.ActiveSheet.Cells(fila, spSalidas.ActiveSheet.Columns("total").Index).Value = cantidad * precio
                     If (tipoCambio > 0) Then
@@ -917,9 +917,9 @@ Public Class Principal
                 End If
             ElseIf (columnaActiva = spSalidas.ActiveSheet.Columns("total").Index) Then
                 fila = spSalidas.ActiveSheet.ActiveRowIndex
-                Dim cantidad As Integer = LogicaSalidas.Funciones.ValidarNumeroACero(spSalidas.ActiveSheet.Cells(fila, spSalidas.ActiveSheet.Columns("cantidad").Index).Value)
-                Dim total As Double = LogicaSalidas.Funciones.ValidarNumeroACero(spSalidas.ActiveSheet.Cells(fila, spSalidas.ActiveSheet.Columns("total").Index).Value)
-                Dim tipoCambio As Double = LogicaSalidas.Funciones.ValidarNumeroACero(txtTipoCambio.Text)
+                Dim cantidad As Integer = ALMLogicaSalidas.Funciones.ValidarNumeroACero(spSalidas.ActiveSheet.Cells(fila, spSalidas.ActiveSheet.Columns("cantidad").Index).Value)
+                Dim total As Double = ALMLogicaSalidas.Funciones.ValidarNumeroACero(spSalidas.ActiveSheet.Cells(fila, spSalidas.ActiveSheet.Columns("total").Index).Value)
+                Dim tipoCambio As Double = ALMLogicaSalidas.Funciones.ValidarNumeroACero(txtTipoCambio.Text)
                 If (cantidad > 0) Then
                     spSalidas.ActiveSheet.Cells(fila, spSalidas.ActiveSheet.Columns("precioUnitario").Index).Value = total / cantidad
                     If (tipoCambio > 0) Then
@@ -936,7 +936,7 @@ Public Class Principal
 
     Private Sub CargarIdConsecutivo()
 
-        salidas.EIdAlmacen = LogicaSalidas.Funciones.ValidarNumeroACero(cbAlmacenes.SelectedValue)
+        salidas.EIdAlmacen = ALMLogicaSalidas.Funciones.ValidarNumeroACero(cbAlmacenes.SelectedValue)
         Dim idMaximo As Integer = salidas.ObtenerMaximoId()
         txtId.Text = idMaximo
 
@@ -973,7 +973,7 @@ Public Class Principal
         Dim columna As Integer = spSalidas.ActiveSheet.ActiveColumnIndex
         If (columna = spSalidas.ActiveSheet.Columns("idFamilia").Index) Or (columna = spSalidas.ActiveSheet.Columns("nombreFamilia").Index) Then
             Me.opcionCatalogoSeleccionada = OpcionCatalogo.familia
-            Dim idAlmacen As Integer = LogicaSalidas.Funciones.ValidarNumeroACero(cbAlmacenes.SelectedValue)
+            Dim idAlmacen As Integer = ALMLogicaSalidas.Funciones.ValidarNumeroACero(cbAlmacenes.SelectedValue)
             If (idAlmacen > 0) Then
                 familias.EIdAlmacen = idAlmacen
                 familias.EId = 0
@@ -994,8 +994,8 @@ Public Class Principal
             FormatearSpreadCatalogo(OpcionPosicion.centro)
         ElseIf (columna = spSalidas.ActiveSheet.Columns("idSubFamilia").Index) Or (columna = spSalidas.ActiveSheet.Columns("nombreSubFamilia").Index) Then
             Me.opcionCatalogoSeleccionada = OpcionCatalogo.subfamilia
-            Dim idAlmacen As Integer = LogicaSalidas.Funciones.ValidarNumeroACero(cbAlmacenes.SelectedValue)
-            Dim idFamilia As Integer = LogicaSalidas.Funciones.ValidarNumeroACero(spSalidas.ActiveSheet.Cells(spSalidas.ActiveSheet.ActiveRowIndex, spSalidas.ActiveSheet.Columns("idFamilia").Index).Text)
+            Dim idAlmacen As Integer = ALMLogicaSalidas.Funciones.ValidarNumeroACero(cbAlmacenes.SelectedValue)
+            Dim idFamilia As Integer = ALMLogicaSalidas.Funciones.ValidarNumeroACero(spSalidas.ActiveSheet.Cells(spSalidas.ActiveSheet.ActiveRowIndex, spSalidas.ActiveSheet.Columns("idFamilia").Index).Text)
             If (idAlmacen > 0 And idFamilia > 0) Then
                 subFamilias.EIdAlmacen = idAlmacen
                 subFamilias.EIdFamilia = idFamilia
@@ -1017,9 +1017,9 @@ Public Class Principal
             FormatearSpreadCatalogo(OpcionPosicion.centro)
         ElseIf (columna = spSalidas.ActiveSheet.Columns("idArticulo").Index) Or (columna = spSalidas.ActiveSheet.Columns("nombreArticulo").Index) Then
             Me.opcionCatalogoSeleccionada = OpcionCatalogo.articulo
-            Dim idAlmacen As Integer = LogicaSalidas.Funciones.ValidarNumeroACero(cbAlmacenes.SelectedValue)
-            Dim idFamilia As Integer = LogicaSalidas.Funciones.ValidarNumeroACero(spSalidas.ActiveSheet.Cells(spSalidas.ActiveSheet.ActiveRowIndex, spSalidas.ActiveSheet.Columns("idFamilia").Index).Text)
-            Dim idSubFamilia As Integer = LogicaSalidas.Funciones.ValidarNumeroACero(spSalidas.ActiveSheet.Cells(spSalidas.ActiveSheet.ActiveRowIndex, spSalidas.ActiveSheet.Columns("idSubFamilia").Index).Text)
+            Dim idAlmacen As Integer = ALMLogicaSalidas.Funciones.ValidarNumeroACero(cbAlmacenes.SelectedValue)
+            Dim idFamilia As Integer = ALMLogicaSalidas.Funciones.ValidarNumeroACero(spSalidas.ActiveSheet.Cells(spSalidas.ActiveSheet.ActiveRowIndex, spSalidas.ActiveSheet.Columns("idFamilia").Index).Text)
+            Dim idSubFamilia As Integer = ALMLogicaSalidas.Funciones.ValidarNumeroACero(spSalidas.ActiveSheet.Cells(spSalidas.ActiveSheet.ActiveRowIndex, spSalidas.ActiveSheet.Columns("idSubFamilia").Index).Text)
             If (idAlmacen > 0 And idFamilia > 0 And idSubFamilia > 0) Then
                 articulos.EIdAlmacen = idAlmacen
                 articulos.EIdFamilia = idFamilia
@@ -1126,10 +1126,10 @@ Public Class Principal
     Private Sub CargarSalidas()
 
         Me.Cursor = Cursors.WaitCursor
-        salidas.EIdAlmacen = LogicaSalidas.Funciones.ValidarNumeroACero(cbAlmacenes.SelectedValue)
-        salidas.EId = LogicaSalidas.Funciones.ValidarNumeroACero(txtId.Text)
+        salidas.EIdAlmacen = ALMLogicaSalidas.Funciones.ValidarNumeroACero(cbAlmacenes.SelectedValue)
+        salidas.EId = ALMLogicaSalidas.Funciones.ValidarNumeroACero(txtId.Text)
         If (salidas.EId > 0) Then
-            Dim lista As New List(Of EntidadesSalidas.Salidas)
+            Dim lista As New List(Of ALMEntidadesSalidas.Salidas)
             lista = salidas.ObtenerListado()
             If (lista.Count > 0) Then
                 cbMonedas.SelectedValue = lista(0).EIdMoneda
@@ -1139,7 +1139,7 @@ Public Class Principal
                 cbTiposSalidas.SelectedValue = lista(0).EIdTipoSalida
                 Dim idCliente As Integer = lista(0).EIdCliente
                 txtIdCliente.Text = idCliente
-                Dim lista2 As New List(Of EntidadesSalidas.Clientes)
+                Dim lista2 As New List(Of ALMEntidadesSalidas.Clientes)
                 clientes.EId = idCliente
                 lista2 = clientes.ObtenerListado()
                 If (lista2.Count = 1) Then
@@ -1258,32 +1258,32 @@ Public Class Principal
         Me.Cursor = Cursors.WaitCursor
         Me.esGuardadoValido = True
         ' Parte superior.
-        Dim idAlmacen As Integer = LogicaSalidas.Funciones.ValidarNumeroACero(cbAlmacenes.SelectedValue)
+        Dim idAlmacen As Integer = ALMLogicaSalidas.Funciones.ValidarNumeroACero(cbAlmacenes.SelectedValue)
         If (idAlmacen <= 0) Then
             cbAlmacenes.BackColor = Color.Orange
             Me.esGuardadoValido = False
         End If
-        Dim id As Integer = LogicaSalidas.Funciones.ValidarNumeroACero(txtId.Text)
+        Dim id As Integer = ALMLogicaSalidas.Funciones.ValidarNumeroACero(txtId.Text)
         If (id <= 0) Then
             txtId.BackColor = Color.Orange
             Me.esGuardadoValido = False
         End If
-        Dim idMoneda As Integer = LogicaSalidas.Funciones.ValidarNumeroACero(cbMonedas.SelectedValue)
+        Dim idMoneda As Integer = ALMLogicaSalidas.Funciones.ValidarNumeroACero(cbMonedas.SelectedValue)
         If (idMoneda <= 0) Then
             cbMonedas.BackColor = Color.Orange
             Me.esGuardadoValido = False
         End If
-        Dim tipoCambio As Double = LogicaSalidas.Funciones.ValidarNumeroAUno(txtTipoCambio.Text)
+        Dim tipoCambio As Double = ALMLogicaSalidas.Funciones.ValidarNumeroAUno(txtTipoCambio.Text)
         If (tipoCambio < 1) Then
             txtTipoCambio.BackColor = Color.Orange
             Me.esGuardadoValido = False
         End If
-        Dim idTipoEntrada As Integer = LogicaSalidas.Funciones.ValidarNumeroACero(cbTiposSalidas.SelectedValue)
+        Dim idTipoEntrada As Integer = ALMLogicaSalidas.Funciones.ValidarNumeroACero(cbTiposSalidas.SelectedValue)
         If (idTipoEntrada <= 0) Then
             cbTiposSalidas.BackColor = Color.Orange
             Me.esGuardadoValido = False
         End If
-        Dim idCliente As Integer = LogicaSalidas.Funciones.ValidarNumeroACero(txtIdCliente.Text)
+        Dim idCliente As Integer = ALMLogicaSalidas.Funciones.ValidarNumeroACero(txtIdCliente.Text)
         If (idCliente <= 0) Then
             txtIdCliente.BackColor = Color.Orange
             txtNombreCliente.BackColor = Color.Orange
@@ -1291,29 +1291,29 @@ Public Class Principal
         End If
         ' Parte inferior.
         For fila As Integer = 0 To spSalidas.ActiveSheet.Rows.Count - 1
-            Dim idFamilia As Integer = LogicaSalidas.Funciones.ValidarNumeroACero(spSalidas.ActiveSheet.Cells(fila, spSalidas.ActiveSheet.Columns("idFamilia").Index).Text)
-            Dim idSubFamilia As Integer = LogicaSalidas.Funciones.ValidarNumeroACero(spSalidas.ActiveSheet.Cells(fila, spSalidas.ActiveSheet.Columns("idSubFamilia").Index).Text)
-            Dim idArticulo As Integer = LogicaSalidas.Funciones.ValidarNumeroACero(spSalidas.ActiveSheet.Cells(fila, spSalidas.ActiveSheet.Columns("idArticulo").Index).Text)
+            Dim idFamilia As Integer = ALMLogicaSalidas.Funciones.ValidarNumeroACero(spSalidas.ActiveSheet.Cells(fila, spSalidas.ActiveSheet.Columns("idFamilia").Index).Text)
+            Dim idSubFamilia As Integer = ALMLogicaSalidas.Funciones.ValidarNumeroACero(spSalidas.ActiveSheet.Cells(fila, spSalidas.ActiveSheet.Columns("idSubFamilia").Index).Text)
+            Dim idArticulo As Integer = ALMLogicaSalidas.Funciones.ValidarNumeroACero(spSalidas.ActiveSheet.Cells(fila, spSalidas.ActiveSheet.Columns("idArticulo").Index).Text)
             If (idFamilia > 0 And idSubFamilia > 0 And idArticulo > 0) Then
-                Dim cantidad As Integer = LogicaSalidas.Funciones.ValidarNumeroACero(spSalidas.ActiveSheet.Cells(fila, spSalidas.ActiveSheet.Columns("cantidad").Index).Text)
+                Dim cantidad As Integer = ALMLogicaSalidas.Funciones.ValidarNumeroACero(spSalidas.ActiveSheet.Cells(fila, spSalidas.ActiveSheet.Columns("cantidad").Index).Text)
                 If (cantidad <= 0) Then
                     spSalidas.ActiveSheet.Cells(fila, spSalidas.ActiveSheet.Columns("cantidad").Index).BackColor = Color.Orange
                     Me.esGuardadoValido = False
                 End If
                 Dim precioUnitario As String = spSalidas.ActiveSheet.Cells(fila, spSalidas.ActiveSheet.Columns("precioUnitario").Index).Text
-                Dim precioUnitario2 As Double = LogicaSalidas.Funciones.ValidarNumeroACero(spSalidas.ActiveSheet.Cells(fila, spSalidas.ActiveSheet.Columns("precioUnitario").Index).Text)
+                Dim precioUnitario2 As Double = ALMLogicaSalidas.Funciones.ValidarNumeroACero(spSalidas.ActiveSheet.Cells(fila, spSalidas.ActiveSheet.Columns("precioUnitario").Index).Text)
                 If (String.IsNullOrEmpty(precioUnitario) Or precioUnitario2 < 0) Then
                     spSalidas.ActiveSheet.Cells(fila, spSalidas.ActiveSheet.Columns("precioUnitario").Index).BackColor = Color.Orange
                     Me.esGuardadoValido = False
                 End If
                 Dim total As String = spSalidas.ActiveSheet.Cells(fila, spSalidas.ActiveSheet.Columns("total").Index).Text
-                Dim total2 As Double = LogicaSalidas.Funciones.ValidarNumeroACero(spSalidas.ActiveSheet.Cells(fila, spSalidas.ActiveSheet.Columns("total").Index).Text)
+                Dim total2 As Double = ALMLogicaSalidas.Funciones.ValidarNumeroACero(spSalidas.ActiveSheet.Cells(fila, spSalidas.ActiveSheet.Columns("total").Index).Text)
                 If (String.IsNullOrEmpty(total) Or total2 < 0) Then
                     spSalidas.ActiveSheet.Cells(fila, spSalidas.ActiveSheet.Columns("total").Index).BackColor = Color.Orange
                     Me.esGuardadoValido = False
                 End If
                 Dim totalPesos As String = spSalidas.ActiveSheet.Cells(fila, spSalidas.ActiveSheet.Columns("totalPesos").Index).Text
-                Dim totalPesos2 As Double = LogicaSalidas.Funciones.ValidarNumeroACero(spSalidas.ActiveSheet.Cells(fila, spSalidas.ActiveSheet.Columns("totalPesos").Index).Text)
+                Dim totalPesos2 As Double = ALMLogicaSalidas.Funciones.ValidarNumeroACero(spSalidas.ActiveSheet.Cells(fila, spSalidas.ActiveSheet.Columns("totalPesos").Index).Text)
                 If (String.IsNullOrEmpty(totalPesos) Or totalPesos2 < 0) Then
                     spSalidas.ActiveSheet.Cells(fila, spSalidas.ActiveSheet.Columns("totalPesos").Index).BackColor = Color.Orange
                     Me.esGuardadoValido = False
@@ -1329,23 +1329,23 @@ Public Class Principal
         Me.Cursor = Cursors.WaitCursor
         EliminarSalidas(False)
         ' Parte superior.
-        Dim idAlmacen As Integer = LogicaSalidas.Funciones.ValidarNumeroACero(cbAlmacenes.SelectedValue)
-        Dim id As Integer = LogicaSalidas.Funciones.ValidarNumeroACero(txtId.Text)
+        Dim idAlmacen As Integer = ALMLogicaSalidas.Funciones.ValidarNumeroACero(cbAlmacenes.SelectedValue)
+        Dim id As Integer = ALMLogicaSalidas.Funciones.ValidarNumeroACero(txtId.Text)
         Dim idExterno As String = txtIdExterno.Text
-        Dim idMoneda As Integer = LogicaSalidas.Funciones.ValidarNumeroACero(cbMonedas.SelectedValue)
-        Dim tipoCambio As Double = LogicaSalidas.Funciones.ValidarNumeroAUno(txtTipoCambio.Text)
+        Dim idMoneda As Integer = ALMLogicaSalidas.Funciones.ValidarNumeroACero(cbMonedas.SelectedValue)
+        Dim tipoCambio As Double = ALMLogicaSalidas.Funciones.ValidarNumeroAUno(txtTipoCambio.Text)
         Dim fecha As Date = dtpFecha.Value
-        Dim idTipoSalida As Integer = LogicaSalidas.Funciones.ValidarNumeroACero(cbTiposSalidas.SelectedValue)
-        Dim idCliente As Integer = LogicaSalidas.Funciones.ValidarNumeroACero(txtIdCliente.Text)
+        Dim idTipoSalida As Integer = ALMLogicaSalidas.Funciones.ValidarNumeroACero(cbTiposSalidas.SelectedValue)
+        Dim idCliente As Integer = ALMLogicaSalidas.Funciones.ValidarNumeroACero(txtIdCliente.Text)
         ' Parte inferior.
         For fila As Integer = 0 To spSalidas.ActiveSheet.Rows.Count - 1
-            Dim idFamilia As Integer = LogicaSalidas.Funciones.ValidarNumeroACero(spSalidas.ActiveSheet.Cells(fila, spSalidas.ActiveSheet.Columns("idFamilia").Index).Text)
-            Dim idSubFamilia As Integer = LogicaSalidas.Funciones.ValidarNumeroACero(spSalidas.ActiveSheet.Cells(fila, spSalidas.ActiveSheet.Columns("idSubFamilia").Index).Text)
-            Dim idArticulo As Integer = LogicaSalidas.Funciones.ValidarNumeroACero(spSalidas.ActiveSheet.Cells(fila, spSalidas.ActiveSheet.Columns("idArticulo").Index).Text)
-            Dim cantidad As Integer = LogicaSalidas.Funciones.ValidarNumeroACero(spSalidas.ActiveSheet.Cells(fila, spSalidas.ActiveSheet.Columns("cantidad").Index).Text)
-            Dim precioUnitario As Double = LogicaSalidas.Funciones.ValidarNumeroACero(spSalidas.ActiveSheet.Cells(fila, spSalidas.ActiveSheet.Columns("precioUnitario").Index).Text)
-            Dim total As Double = LogicaSalidas.Funciones.ValidarNumeroACero(spSalidas.ActiveSheet.Cells(fila, spSalidas.ActiveSheet.Columns("total").Index).Text)
-            Dim totalPesos As Double = LogicaSalidas.Funciones.ValidarNumeroACero(spSalidas.ActiveSheet.Cells(fila, spSalidas.ActiveSheet.Columns("totalPesos").Index).Text)
+            Dim idFamilia As Integer = ALMLogicaSalidas.Funciones.ValidarNumeroACero(spSalidas.ActiveSheet.Cells(fila, spSalidas.ActiveSheet.Columns("idFamilia").Index).Text)
+            Dim idSubFamilia As Integer = ALMLogicaSalidas.Funciones.ValidarNumeroACero(spSalidas.ActiveSheet.Cells(fila, spSalidas.ActiveSheet.Columns("idSubFamilia").Index).Text)
+            Dim idArticulo As Integer = ALMLogicaSalidas.Funciones.ValidarNumeroACero(spSalidas.ActiveSheet.Cells(fila, spSalidas.ActiveSheet.Columns("idArticulo").Index).Text)
+            Dim cantidad As Integer = ALMLogicaSalidas.Funciones.ValidarNumeroACero(spSalidas.ActiveSheet.Cells(fila, spSalidas.ActiveSheet.Columns("cantidad").Index).Text)
+            Dim precioUnitario As Double = ALMLogicaSalidas.Funciones.ValidarNumeroACero(spSalidas.ActiveSheet.Cells(fila, spSalidas.ActiveSheet.Columns("precioUnitario").Index).Text)
+            Dim total As Double = ALMLogicaSalidas.Funciones.ValidarNumeroACero(spSalidas.ActiveSheet.Cells(fila, spSalidas.ActiveSheet.Columns("total").Index).Text)
+            Dim totalPesos As Double = ALMLogicaSalidas.Funciones.ValidarNumeroACero(spSalidas.ActiveSheet.Cells(fila, spSalidas.ActiveSheet.Columns("totalPesos").Index).Text)
             Dim orden As Integer = fila
             Dim observaciones As String = spSalidas.ActiveSheet.Cells(fila, spSalidas.ActiveSheet.Columns("observaciones").Index).Text
             Dim factura As String = spSalidas.ActiveSheet.Cells(fila, spSalidas.ActiveSheet.Columns("factura").Index).Text
@@ -1396,8 +1396,8 @@ Public Class Principal
             End If
         End If
         If ((respuestaSi) Or (Not conMensaje)) Then
-            salidas.EIdAlmacen = LogicaSalidas.Funciones.ValidarNumeroACero(cbAlmacenes.SelectedValue)
-            salidas.EId = LogicaSalidas.Funciones.ValidarNumeroACero(txtId.Text)
+            salidas.EIdAlmacen = ALMLogicaSalidas.Funciones.ValidarNumeroACero(cbAlmacenes.SelectedValue)
+            salidas.EId = ALMLogicaSalidas.Funciones.ValidarNumeroACero(txtId.Text)
             salidas.Eliminar()
         End If
         If (conMensaje And respuestaSi) Then
@@ -1422,7 +1422,7 @@ Public Class Principal
         Dim datos As New DataTable
         datos = salidas.ObtenerSaldos()
         If (datos.Rows.Count = 1) Then
-            saldo = LogicaSalidas.Funciones.ValidarNumeroACero(datos.Rows(0).Item("Cantidad").ToString)
+            saldo = ALMLogicaSalidas.Funciones.ValidarNumeroACero(datos.Rows(0).Item("Cantidad").ToString)
             If (saldo >= cantidad) Then
                 valor = True
             Else

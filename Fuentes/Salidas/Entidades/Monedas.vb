@@ -28,8 +28,8 @@ Public Class Monedas
             Dim datos As New DataTable
             Dim comando As New SqlCommand()
             comando.Connection = BaseDatos.conexionCatalogo
-            comando.CommandText = "SELECT Id, Nombre FROM " & LogicaSalidas.Programas.prefijoBaseDatosAlmacen & "Monedas " & _
-            " UNION SELECT -1 AS Id, NULL AS Nombre FROM " & LogicaSalidas.Programas.prefijoBaseDatosAlmacen & "Monedas " & _
+            comando.CommandText = "SELECT Id, Nombre FROM " & ALMLogicaSalidas.Programas.prefijoBaseDatosAlmacen & "Monedas " & _
+            " UNION SELECT -1 AS Id, NULL AS Nombre FROM " & ALMLogicaSalidas.Programas.prefijoBaseDatosAlmacen & "Monedas " & _
             " ORDER BY Id ASC"
             BaseDatos.conexionCatalogo.Open()
             Dim lectorDatos As SqlDataReader

@@ -27,7 +27,7 @@ Public Class TiposEntradas
         Try
             Dim comando As New SqlCommand()
             comando.Connection = BaseDatos.conexionCatalogo
-            comando.CommandText = "INSERT INTO " & LogicaCatalogos.Programas.prefijoBaseDatosAlmacen & "TiposEntradas (Id, Nombre) VALUES (@id, @nombre)"
+            comando.CommandText = "INSERT INTO " & ALMLogicaCatalogos.Programas.prefijoBaseDatosAlmacen & "TiposEntradas (Id, Nombre) VALUES (@id, @nombre)"
             comando.Parameters.AddWithValue("@id", Me.EId)
             comando.Parameters.AddWithValue("@nombre", Me.ENombre)
             BaseDatos.conexionCatalogo.Open()
@@ -50,7 +50,7 @@ Public Class TiposEntradas
             If (Me.EId > 0) Then
                 condicion &= " WHERE Id=@id"
             End If
-            comando.CommandText = "DELETE FROM " & LogicaCatalogos.Programas.prefijoBaseDatosAlmacen & "TiposEntradas " & condicion
+            comando.CommandText = "DELETE FROM " & ALMLogicaCatalogos.Programas.prefijoBaseDatosAlmacen & "TiposEntradas " & condicion
             comando.Parameters.AddWithValue("@id", Me.id)
             BaseDatos.conexionCatalogo.Open()
             comando.ExecuteNonQuery()
@@ -69,7 +69,7 @@ Public Class TiposEntradas
             Dim datos As New DataTable
             Dim comando As New SqlCommand()
             comando.Connection = BaseDatos.conexionCatalogo
-            comando.CommandText = "SELECT Id, Nombre FROM " & LogicaCatalogos.Programas.prefijoBaseDatosAlmacen & "TiposEntradas ORDER BY Id ASC"
+            comando.CommandText = "SELECT Id, Nombre FROM " & ALMLogicaCatalogos.Programas.prefijoBaseDatosAlmacen & "TiposEntradas ORDER BY Id ASC"
             BaseDatos.conexionCatalogo.Open()
             Dim dataReader As SqlDataReader
             dataReader = comando.ExecuteReader()

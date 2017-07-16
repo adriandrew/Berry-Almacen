@@ -134,3 +134,19 @@ C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Princip
 C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Principal\Escritorio\obj\x86\Release\PrincipalBerry.exe.licenses
 C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Principal\Escritorio\obj\x86\Release\PrincipalBerry.exe
 C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Principal\Escritorio\obj\x86\Release\PrincipalBerry.pdb
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Principal\Escritorio\bin\x86\Release\PrincipalBerry.exe
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Principal\Escritorio\bin\x86\Release\PrincipalBerry.pdb
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Principal\Escritorio\bin\x86\Release\Entidades.dll
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Principal\Escritorio\bin\x86\Release\Logica.dll
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Principal\Escritorio\bin\x86\Release\Entidades.pdb
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Principal\Escritorio\bin\x86\Release\Logica.pdb
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Principal\Escritorio\obj\x86\Release\Escritorio.csprojResolveAssemblyReference.cache
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Principal\Escritorio\obj\x86\Release\Escritorio.PanelControl.resources
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Principal\Escritorio\obj\x86\Release\Escritorio.AdministrarDirectorios.resources
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Principal\Escritorio\obj\x86\Release\Escritorio.Principal.resources
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Principal\Escritorio\obj\x86\Release\PrincipalBerry.Properties.Resources.resources
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Principal\Escritorio\obj\x86\Release\PrincipalBerry.Properties.Resource.resources
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Principal\Escritorio\obj\x86\Release\Escritorio.csproj.GenerateResource.Cache
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Principal\Escritorio\obj\x86\Release\PrincipalBerry.exe.licenses
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Principal\Escritorio\obj\x86\Release\PrincipalBerry.exe
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Principal\Escritorio\obj\x86\Release\PrincipalBerry.pdb

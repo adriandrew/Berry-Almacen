@@ -64,9 +64,9 @@ Namespace My
     Friend Module MySettingsProperty
 
         <Global.System.ComponentModel.Design.HelpKeywordAttribute("My.Settings")> _
-        Friend ReadOnly Property Settings() As Global.LogicaReporteMovimientos.My.MySettings
+        Friend ReadOnly Property Settings() As Global.ALMLogicaReporteMovimientos.My.MySettings
             Get
-                Return Global.LogicaReporteMovimientos.My.MySettings.Default
+                Return Global.ALMLogicaReporteMovimientos.My.MySettings.Default
             End Get
         End Property
     End Module
