@@ -316,6 +316,7 @@ Partial Class Principal
         '
         'btnIdSiguiente
         '
+        Me.btnIdSiguiente.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnIdSiguiente.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnIdSiguiente.Location = New System.Drawing.Point(417, 3)
         Me.btnIdSiguiente.Name = "btnIdSiguiente"
@@ -326,6 +327,7 @@ Partial Class Principal
         '
         'btnIdAnterior
         '
+        Me.btnIdAnterior.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnIdAnterior.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnIdAnterior.Location = New System.Drawing.Point(393, 3)
         Me.btnIdAnterior.Name = "btnIdAnterior"
@@ -352,6 +354,7 @@ Partial Class Principal
         Me.chkConservarDatos.AutoSize = True
         Me.chkConservarDatos.Checked = True
         Me.chkConservarDatos.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.chkConservarDatos.Cursor = System.Windows.Forms.Cursors.Hand
         Me.chkConservarDatos.ForeColor = System.Drawing.Color.Green
         Me.chkConservarDatos.Location = New System.Drawing.Point(1009, 3)
         Me.chkConservarDatos.Name = "chkConservarDatos"
@@ -502,6 +505,7 @@ Partial Class Principal
         '
         Me.dtpFecha.CalendarForeColor = System.Drawing.Color.Black
         Me.dtpFecha.CalendarMonthBackground = System.Drawing.Color.White
+        Me.dtpFecha.Cursor = System.Windows.Forms.Cursors.Hand
         Me.dtpFecha.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.dtpFecha.Location = New System.Drawing.Point(699, 4)
         Me.dtpFecha.Name = "dtpFecha"

@@ -308,7 +308,7 @@ Public Class Principal
 
     End Sub
 
-    Private Sub txtIdProveedor_KeyDown(sender As Object, e As KeyEventArgs) Handles txtIdProveedor.KeyDown
+    Private Sub txtIdProveedor_KeyDown(sender As Object, e As KeyEventArgs) Handles txtIdProveedor.KeyDown, txtNombreProveedor.KeyDown
 
         If (e.KeyData = Keys.Enter) Then
             e.SuppressKeyPress = True
