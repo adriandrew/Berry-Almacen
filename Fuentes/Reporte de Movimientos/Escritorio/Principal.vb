@@ -88,12 +88,6 @@ Public Class Principal
 
     End Sub
 
-    Private Sub btnGuardar_MouseEnter(sender As Object, e As EventArgs)
-
-        AsignarTooltips("Guardar.")
-
-    End Sub
-
     Private Sub btnSalir_MouseEnter(sender As Object, e As EventArgs) Handles btnSalir.MouseEnter
 
         AsignarTooltips("Salir.")
@@ -486,6 +480,8 @@ Public Class Principal
             ALMLogicaReporteMovimientos.Directorios.instanciaSql = "BERRY1-DELL\SQLEXPRESS2008"
             ALMLogicaReporteMovimientos.Directorios.usuarioSql = "AdminBerry"
             ALMLogicaReporteMovimientos.Directorios.contrasenaSql = "@berry2017"
+            pnlEncabezado.BackColor = Color.DarkRed
+            pnlPie.BackColor = Color.DarkRed
         Else
             ALMLogicaReporteMovimientos.Directorios.ObtenerParametros()
             ALMLogicaReporteMovimientos.Usuarios.ObtenerParametros()
@@ -834,8 +830,8 @@ Public Class Principal
         temporizador.Start()
         Dim ancho As Integer = -(pnlFiltros.Width - (pnlFiltros.Width / 3))
         If (pnlFiltros.Location.X > ancho) Then
-            pnlFiltros.Location = New Point(pnlFiltros.Location.X - 80, pnlFiltros.Location.Y)
-            spReporte.Location = New Point(spReporte.Location.X - 80, spReporte.Location.Y)
+            pnlFiltros.Location = New Point(pnlFiltros.Location.X - (pnlFiltros.Width / 5), pnlFiltros.Location.Y)
+            spReporte.Location = New Point(spReporte.Location.X - (pnlFiltros.Width / 5), spReporte.Location.Y)
             Application.DoEvents()
         Else
             temporizador.Enabled = False
@@ -849,7 +845,7 @@ Public Class Principal
 
         pnlFiltros.BackColor = Color.Gray
         btnGenerar.Enabled = False
-        spReporte.Width = pnlCuerpo.Width - 80
+        spReporte.Width = pnlCuerpo.Width - (pnlFiltros.Width / 5) - 5
         Application.DoEvents()
 
     End Sub
@@ -1017,7 +1013,7 @@ Public Class Principal
         spReporte.ActiveSheet.AddColumnHeaderSpanCell(0, spReporte.ActiveSheet.Columns("fecha").Index, 2, 1)
         spReporte.ActiveSheet.ColumnHeader.Cells(0, spReporte.ActiveSheet.Columns("fecha").Index).Value = "Fecha".ToUpper
         spReporte.ActiveSheet.AddColumnHeaderSpanCell(0, spReporte.ActiveSheet.Columns("idAlmacen").Index, 1, 3)
-        spReporte.ActiveSheet.ColumnHeader.Cells(0, spReporte.ActiveSheet.Columns("idAlmacen").Index).Value = "Almacen".ToUpper
+        spReporte.ActiveSheet.ColumnHeader.Cells(0, spReporte.ActiveSheet.Columns("idAlmacen").Index).Value = "Almacén".ToUpper
         spReporte.ActiveSheet.ColumnHeader.Cells(1, spReporte.ActiveSheet.Columns("idAlmacen").Index).Value = "No.".ToUpper
         spReporte.ActiveSheet.ColumnHeader.Cells(1, spReporte.ActiveSheet.Columns("abreviatura").Index).Value = "Abrev.".ToUpper
         spReporte.ActiveSheet.ColumnHeader.Cells(1, spReporte.ActiveSheet.Columns("nombreAlmacen").Index).Value = "Nombre".ToUpper

@@ -37,12 +37,12 @@ Public Class UnidadesMedidas
             BaseDatos.conexionCatalogo.Open()
             Dim lectorDatos As SqlDataReader
             lectorDatos = comando.ExecuteReader()
-            Dim unidadesMedidas As UnidadesMedidas
+            Dim tabla As UnidadesMedidas
             While lectorDatos.Read()
-                unidadesMedidas = New UnidadesMedidas()
-                unidadesMedidas.id = Convert.ToInt32(lectorDatos("Id").ToString())
-                unidadesMedidas.nombre = lectorDatos("Nombre").ToString()
-                lista.Add(unidadesMedidas)
+                tabla = New UnidadesMedidas()
+                tabla.id = Convert.ToInt32(lectorDatos("Id").ToString())
+                tabla.nombre = lectorDatos("Nombre").ToString()
+                lista.Add(tabla)
             End While
             BaseDatos.conexionCatalogo.Close()
             Return lista

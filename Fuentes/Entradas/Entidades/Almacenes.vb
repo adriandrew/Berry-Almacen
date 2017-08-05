@@ -68,13 +68,13 @@ Public Class Almacenes
             comando.Parameters.AddWithValue("@id", Me.id)
             BaseDatos.conexionCatalogo.Open()
             Dim lectorDatos As SqlDataReader = comando.ExecuteReader()
-            Dim almacenes As Almacenes
+            Dim tabla As Almacenes
             While lectorDatos.Read()
-                almacenes = New Almacenes()
-                almacenes.id = Convert.ToInt32(lectorDatos("Id").ToString())
-                almacenes.nombre = lectorDatos("Nombre").ToString()
-                almacenes.abreviatura = lectorDatos("Abreviatura").ToString()
-                lista.Add(almacenes)
+                tabla = New Almacenes()
+                tabla.id = Convert.ToInt32(lectorDatos("Id").ToString())
+                tabla.nombre = lectorDatos("Nombre").ToString()
+                tabla.abreviatura = lectorDatos("Abreviatura").ToString()
+                lista.Add(tabla)
             End While
             BaseDatos.conexionCatalogo.Close()
             Return lista

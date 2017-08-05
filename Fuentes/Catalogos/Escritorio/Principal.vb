@@ -651,8 +651,9 @@ Public Class Principal
             ALMLogicaCatalogos.Directorios.id = 1
             ALMLogicaCatalogos.Directorios.instanciaSql = "BERRY1-DELL\SQLEXPRESS2008"
             ALMLogicaCatalogos.Directorios.usuarioSql = "AdminBerry"
-            ALMLogicaCatalogos.Directorios.contrasenaSql = "@berry2017"
-            ALMLogicaCatalogos.Usuarios.id = 1
+            ALMLogicaCatalogos.Directorios.contrasenaSql = "@berry2017" 
+            pnlEncabezado.BackColor = Color.DarkRed
+            pnlPie.BackColor = Color.DarkRed
         Else
             ALMLogicaCatalogos.Directorios.ObtenerParametros()
             ALMLogicaCatalogos.Usuarios.ObtenerParametros()
@@ -679,7 +680,7 @@ Public Class Principal
         Dim lista As New List(Of ALMEntidadesCatalogos.Usuarios)
         usuarios.EId = ALMLogicaCatalogos.Usuarios.id
         lista = usuarios.ObtenerListado()
-        If (lista.Count > 0) Then
+        If (lista.Count = 1) Then
             ALMLogicaCatalogos.Usuarios.id = lista(0).EId
             ALMLogicaCatalogos.Usuarios.nombre = lista(0).ENombre
             ALMLogicaCatalogos.Usuarios.contrasena = lista(0).EContrasena
@@ -710,7 +711,7 @@ Public Class Principal
         End If
         ejecutarProgramaPrincipal.UseShellExecute = True
         ejecutarProgramaPrincipal.FileName = nombre & Convert.ToString(".exe")
-        ejecutarProgramaPrincipal.WorkingDirectory = Directory.GetCurrentDirectory()
+        ejecutarProgramaPrincipal.WorkingDirectory = Application.StartupPath
         ejecutarProgramaPrincipal.Arguments = ALMLogicaCatalogos.Directorios.id.ToString().Trim().Replace(" ", "|") & " " & ALMLogicaCatalogos.Directorios.nombre.ToString().Trim().Replace(" ", "|") & " " & ALMLogicaCatalogos.Directorios.descripcion.ToString().Trim().Replace(" ", "|") & " " & ALMLogicaCatalogos.Directorios.rutaLogo.ToString().Trim().Replace(" ", "|") & " " & ALMLogicaCatalogos.Directorios.esPredeterminado.ToString().Trim().Replace(" ", "|") & " " & ALMLogicaCatalogos.Directorios.instanciaSql.ToString().Trim().Replace(" ", "|") & " " & ALMLogicaCatalogos.Directorios.usuarioSql.ToString().Trim().Replace(" ", "|") & " " & ALMLogicaCatalogos.Directorios.contrasenaSql.ToString().Trim().Replace(" ", "|") & " " & "Aquí terminan los de directorios, indice 9 ;)".Replace(" ", "|") & " " & ALMLogicaCatalogos.Usuarios.id.ToString().Trim().Replace(" ", "|") & " " & "Aquí terminan los de usuario, indice 11 ;)".Replace(" ", "|")
         Try
             Dim proceso = Process.Start(ejecutarProgramaPrincipal)

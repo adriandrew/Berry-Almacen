@@ -87,7 +87,7 @@ Public Class Monedas
     Public Function ObtenerListado() As List(Of Monedas)
 
         Try
-            Dim lista As New List(Of Monedas)()
+            Dim lista As New List(Of Monedas)
             Dim comando As New SqlCommand()
             comando.Connection = BaseDatos.conexionCatalogo
             Dim condicion As String = String.Empty
@@ -98,12 +98,12 @@ Public Class Monedas
             comando.Parameters.AddWithValue("@id", Me.id)
             BaseDatos.conexionCatalogo.Open()
             Dim dataReader As SqlDataReader = comando.ExecuteReader()
-            Dim monedas As Monedas
+            Dim tabla As Monedas
             While dataReader.Read()
-                monedas = New Monedas()
-                monedas.id = Convert.ToInt32(dataReader("Id").ToString())
-                monedas.nombre = dataReader("Nombre").ToString()
-                lista.Add(monedas)
+                tabla = New Monedas()
+                tabla.id = Convert.ToInt32(dataReader("Id").ToString())
+                tabla.nombre = dataReader("Nombre").ToString()
+                lista.Add(tabla)
             End While
             BaseDatos.conexionCatalogo.Close()
             Return lista

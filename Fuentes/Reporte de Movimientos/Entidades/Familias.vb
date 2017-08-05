@@ -80,13 +80,13 @@ Public Class Familias
             comando.Parameters.AddWithValue("@id", Me.EId)
             BaseDatos.conexionCatalogo.Open()
             Dim lectorDatos As SqlDataReader = comando.ExecuteReader()
-            Dim familias As Familias
+            Dim tabla As Familias
             While lectorDatos.Read()
-                familias = New Familias()
-                familias.idAlmacen = Convert.ToInt32(lectorDatos("IdAlmacen").ToString())
-                familias.id = Convert.ToInt32(lectorDatos("Id").ToString())
-                familias.nombre = lectorDatos("Nombre").ToString()
-                lista.Add(familias)
+                tabla = New Familias()
+                tabla.idAlmacen = Convert.ToInt32(lectorDatos("IdAlmacen").ToString())
+                tabla.id = Convert.ToInt32(lectorDatos("Id").ToString())
+                tabla.nombre = lectorDatos("Nombre").ToString()
+                lista.Add(tabla)
             End While
             BaseDatos.conexionCatalogo.Close()
             Return lista

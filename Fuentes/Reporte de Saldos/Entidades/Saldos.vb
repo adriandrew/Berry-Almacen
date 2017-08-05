@@ -64,8 +64,10 @@ Public Class Saldos
         Try
             Dim comando As New SqlCommand()
             comando.Connection = BaseDatos.conexionAlmacen
-            Dim condicion As String = String.Empty : Dim condicionFechaRango As String = String.Empty
+            Dim condicion As String = String.Empty
+            Dim condicionFechaRango As String = String.Empty
             Dim condicionFechaAnterior As String = String.Empty
+            Dim condicionFechaFinal As String = String.Empty
             If (Me.EIdAlmacen > 0) Then
                 condicion &= " AND IdAlmacen=@idAlmacen "
             End If
@@ -81,6 +83,7 @@ Public Class Saldos
             If (aplicaFecha) Then
                 condicionFechaRango &= " AND Fecha BETWEEN @fecha AND @fecha2 "
                 condicionFechaAnterior &= " AND Fecha < @fecha "
+                condicionFechaFinal &= " AND Fecha <= @fecha2 "
             End If 
             comando.CommandText = "SELECT Catalogo.*, SaldosFinales.SaldoAnterior, SaldosFinales.CostoAnterior, SaldosFinales.SaldoEntradasRango, SaldosFinales.CostoEntradasRango, SaldosFinales.SaldoSalidasRango, SaldosFinales.CostoSalidasRango, SaldosFinales.SaldoActual, SaldosFinales.CostoActual FROM " & _
             " ( " & _
@@ -89,22 +92,22 @@ Public Class Saldos
                     " SELECT Actual.IdAlmacen, Actual.IdFamilia, Actual.IdSubFamilia, Actual.IdArticulo, 0 AS SaldoAnterior, 0 AS CostoAnterior, 0 AS SaldoEntradasRango, 0 AS CostoEntradasRango, 0 AS SaldoSalidasRango, 0 AS CostoSalidasRango, SUM(ISNULL(Actual.SaldoEntradasActual, 0)) - SUM(ISNULL(Actual.SaldoSalidasActual, 0)) AS SaldoActual, SUM(ISNULL(Actual.CostoEntradasActual, 0)) - SUM(ISNULL(Actual.CostoSalidasActual, 0)) AS CostoActual " & _
                     " FROM " & _
                     " ( " & _
-                        " ( SELECT IdAlmacen, IdFamilia, IdSubFamilia, IdArticulo, SUM(ISNULL(Cantidad, 0)) AS SaldoEntradasActual, SUM(ISNULL(Total, 0)) AS CostoEntradasActual, 0 AS SaldoSalidasActual, 0 AS CostoSalidasActual FROM Entradas WHERE 0=0 " & condicion & " GROUP BY IdAlmacen, IdFamilia, IdSubFamilia, IdArticulo ) " & _
+                        " ( SELECT IdAlmacen, IdFamilia, IdSubFamilia, IdArticulo, SUM(ISNULL(Cantidad, 0)) AS SaldoEntradasActual, SUM(ISNULL(Total, 0)) AS CostoEntradasActual, 0 AS SaldoSalidasActual, 0 AS CostoSalidasActual FROM Entradas WHERE 0=0 " & condicion & condicionFechaFinal & " GROUP BY IdAlmacen, IdFamilia, IdSubFamilia, IdArticulo ) " & _
                         " UNION ALL " & _
-                        " (  SELECT IdAlmacen, IdFamilia, IdSubFamilia, IdArticulo, 0 AS SaldoEntradasActual, 0 AS CostoEntradasActual, SUM(ISNULL(Cantidad, 0)) AS SaldoSalidasActual, SUM(ISNULL(Total, 0)) AS CostoSalidasActual FROM Salidas WHERE 0=0 " & condicion & " GROUP BY IdAlmacen, IdFamilia, IdSubFamilia, IdArticulo ) " & _
+                        " (  SELECT IdAlmacen, IdFamilia, IdSubFamilia, IdArticulo, 0 AS SaldoEntradasActual, 0 AS CostoEntradasActual, SUM(ISNULL(Cantidad, 0)) AS SaldoSalidasActual, SUM(ISNULL(Total, 0)) AS CostoSalidasActual FROM Salidas WHERE 0=0 " & condicion & condicionFechaFinal & " GROUP BY IdAlmacen, IdFamilia, IdSubFamilia, IdArticulo ) " & _
                     " ) AS Actual " & _
                     " GROUP BY Actual.IdAlmacen, Actual.IdFamilia, Actual.IdSubFamilia, Actual.IdArticulo " & _
                 " UNION ALL " & _
-                    " ( SELECT IdAlmacen, IdFamilia, IdSubFamilia, IdArticulo, 0 AS SaldoAnterior, 0 AS CostoAnterior, SUM(ISNULL(Cantidad, 0)) AS SaldoEntradasRango, SUM(ISNULL(Total, 0)) AS CostoEntradasRango, 0 AS SaldoSalidasRango, 0 AS CostoSalidasRango, 0 AS SaldoActual, 0 AS CostoActual FROM Entradas WHERE 0=0 " & condicion & " " & condicionFechaRango & " GROUP BY IdAlmacen, IdFamilia, IdSubFamilia, IdArticulo ) " & _
+                    " ( SELECT IdAlmacen, IdFamilia, IdSubFamilia, IdArticulo, 0 AS SaldoAnterior, 0 AS CostoAnterior, SUM(ISNULL(Cantidad, 0)) AS SaldoEntradasRango, SUM(ISNULL(Total, 0)) AS CostoEntradasRango, 0 AS SaldoSalidasRango, 0 AS CostoSalidasRango, 0 AS SaldoActual, 0 AS CostoActual FROM Entradas WHERE 0=0 " & condicion & condicionFechaRango & " GROUP BY IdAlmacen, IdFamilia, IdSubFamilia, IdArticulo ) " & _
                     " UNION ALL " & _
-                    " ( SELECT IdAlmacen, IdFamilia, IdSubFamilia, IdArticulo, 0 AS SaldoAnterior, 0 AS CostoAnterior, 0 AS SaldoEntradasRango, 0 AS CostoEntradasRango, SUM(ISNULL(Cantidad, 0)) AS SaldoSalidasRango, SUM(ISNULL(Total, 0)) AS CostoSalidasRango, 0 AS SaldoActual, 0 AS CostoActual FROM Salidas WHERE 0=0 " & condicion & " " & condicionFechaRango & " GROUP BY IdAlmacen, IdFamilia, IdSubFamilia, IdArticulo ) " & _
+                    " ( SELECT IdAlmacen, IdFamilia, IdSubFamilia, IdArticulo, 0 AS SaldoAnterior, 0 AS CostoAnterior, 0 AS SaldoEntradasRango, 0 AS CostoEntradasRango, SUM(ISNULL(Cantidad, 0)) AS SaldoSalidasRango, SUM(ISNULL(Total, 0)) AS CostoSalidasRango, 0 AS SaldoActual, 0 AS CostoActual FROM Salidas WHERE 0=0 " & condicion & condicionFechaRango & " GROUP BY IdAlmacen, IdFamilia, IdSubFamilia, IdArticulo ) " & _
                 " UNION ALL " & _
                     " SELECT Anterior.IdAlmacen, Anterior.IdFamilia, Anterior.IdSubFamilia, Anterior.IdArticulo, SUM(ISNULL(Anterior.SaldoEntradasAnterior, 0)) - SUM(ISNULL(Anterior.SaldoSalidasAnterior, 0)) AS SaldoAnterior, SUM(ISNULL(Anterior.CostoEntradasAnterior, 0)) - SUM(ISNULL(Anterior.CostoSalidasAnterior, 0)) AS CostoAnterior, 0 AS SaldoEntradasRango, 0 AS CostoEntradasRango, 0 AS SaldoSalidasRango, 0 AS CostoSalidasRango, 0 AS SaldoActual, 0 AS CostoActual " & _
                     " FROM " & _
                     " ( " & _
-                        " ( SELECT IdAlmacen, IdFamilia, IdSubFamilia, IdArticulo, SUM(ISNULL(Cantidad, 0)) AS SaldoEntradasAnterior, SUM(ISNULL(Total, 0)) AS CostoEntradasAnterior, 0 AS SaldoSalidasAnterior, 0 AS CostoSalidasAnterior FROM Entradas WHERE 0=0 " & condicion & " " & condicionFechaAnterior & " GROUP BY IdAlmacen, IdFamilia, IdSubFamilia, IdArticulo ) " & _
+                        " ( SELECT IdAlmacen, IdFamilia, IdSubFamilia, IdArticulo, SUM(ISNULL(Cantidad, 0)) AS SaldoEntradasAnterior, SUM(ISNULL(Total, 0)) AS CostoEntradasAnterior, 0 AS SaldoSalidasAnterior, 0 AS CostoSalidasAnterior FROM Entradas WHERE 0=0 " & condicion & condicionFechaAnterior & " GROUP BY IdAlmacen, IdFamilia, IdSubFamilia, IdArticulo ) " & _
                         " UNION ALL " & _
-                        " ( SELECT IdAlmacen, IdFamilia, IdSubFamilia, IdArticulo, 0 AS SaldoEntradasAnterior, 0 AS CostoEntradasAnterior, SUM(ISNULL(Cantidad, 0)) AS SaldoSalidasAnterior, SUM(ISNULL(Total, 0)) AS CostoSalidasAnterior FROM Salidas WHERE 0=0 " & condicion & " " & condicionFechaAnterior & " GROUP BY IdAlmacen, IdFamilia, IdSubFamilia, IdArticulo ) " & _
+                        " ( SELECT IdAlmacen, IdFamilia, IdSubFamilia, IdArticulo, 0 AS SaldoEntradasAnterior, 0 AS CostoEntradasAnterior, SUM(ISNULL(Cantidad, 0)) AS SaldoSalidasAnterior, SUM(ISNULL(Total, 0)) AS CostoSalidasAnterior FROM Salidas WHERE 0=0 " & condicion & condicionFechaAnterior & " GROUP BY IdAlmacen, IdFamilia, IdSubFamilia, IdArticulo ) " & _
                     " ) AS Anterior " & _
                     " GROUP BY Anterior.IdAlmacen, Anterior.IdFamilia, Anterior.IdSubFamilia, Anterior.IdArticulo " & _
                     " ) AS PreSaldos " & _

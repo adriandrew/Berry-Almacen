@@ -468,6 +468,8 @@ Public Class Principal
             ALMLogicaReporteSaldos.Directorios.instanciaSql = "BERRY1-DELL\SQLEXPRESS2008"
             ALMLogicaReporteSaldos.Directorios.usuarioSql = "AdminBerry"
             ALMLogicaReporteSaldos.Directorios.contrasenaSql = "@berry2017"
+            pnlEncabezado.BackColor = Color.DarkRed
+            pnlPie.BackColor = Color.DarkRed
         Else
             ALMLogicaReporteSaldos.Directorios.ObtenerParametros()
             ALMLogicaReporteSaldos.Usuarios.ObtenerParametros()
@@ -491,7 +493,7 @@ Public Class Principal
         Dim lista As New List(Of ALMEntidadesReporteSaldos.Usuarios)
         usuarios.EId = ALMLogicaReporteSaldos.Usuarios.id
         lista = usuarios.ObtenerListado()
-        If (lista.Count > 0) Then
+        If (lista.Count = 1) Then
             ALMLogicaReporteSaldos.Usuarios.id = lista(0).EId
             ALMLogicaReporteSaldos.Usuarios.nombre = lista(0).ENombre
             ALMLogicaReporteSaldos.Usuarios.contrasena = lista(0).EContrasena
@@ -687,11 +689,11 @@ Public Class Principal
 
     Private Function ClonarSpread(baseObject As FpSpread) As FpSpread
 
-        'Copying to a memory stream
+        ' Copying to a memory stream
         Dim ms As New System.IO.MemoryStream()
         FarPoint.Win.Spread.Model.SpreadSerializer.SaveXml(spReporte, ms, False)
         ms = New System.IO.MemoryStream(ms.ToArray())
-        'Copying from memory stream to clone spread object
+        ' Copying from memory stream to clone spread object
         Dim newSpread As New FarPoint.Win.Spread.FpSpread()
         FarPoint.Win.Spread.Model.SpreadSerializer.OpenXml(newSpread, ms)
         Dim fInfo As FieldInfo() = GetType(FarPoint.Win.Spread.FpSpread).GetFields(BindingFlags.Instance Or BindingFlags.[Public] Or BindingFlags.NonPublic Or BindingFlags.[Static])
@@ -816,8 +818,8 @@ Public Class Principal
         temporizador.Start()
         Dim ancho As Integer = -(pnlFiltros.Width - (pnlFiltros.Width / 3))
         If (pnlFiltros.Location.X > ancho) Then
-            pnlFiltros.Location = New Point(pnlFiltros.Location.X - 80, pnlFiltros.Location.Y)
-            spReporte.Location = New Point(spReporte.Location.X - 80, spReporte.Location.Y)
+            pnlFiltros.Location = New Point(pnlFiltros.Location.X - (pnlFiltros.Width / 5), pnlFiltros.Location.Y)
+            spReporte.Location = New Point(spReporte.Location.X - (pnlFiltros.Width / 5), spReporte.Location.Y)
             Application.DoEvents()
         Else
             temporizador.Enabled = False
@@ -831,7 +833,7 @@ Public Class Principal
 
         pnlFiltros.BackColor = Color.Gray
         btnGenerar.Enabled = False
-        spReporte.Width = pnlCuerpo.Width - 80
+        spReporte.Width = pnlCuerpo.Width - (pnlFiltros.Width / 5) - 5
         Application.DoEvents()
 
     End Sub
@@ -871,6 +873,8 @@ Public Class Principal
         spReporte.ActiveSheet.DataSource = datos
         FormatearSpreadReporte(spReporte.ActiveSheet.Columns.Count)
         CalcularTotales(0, "Total", 8, spReporte.ActiveSheet.Columns("saldoAnterior").Index, spReporte.ActiveSheet.Columns.Count, 0, spReporte.ActiveSheet.Rows.Count)
+        GenerarReporteGraficoCircular()
+        GenerarReporteGraficoBarras()
         AlinearFiltrosIzquierda()
         btnImprimir.Enabled = True
         btnExportarExcel.Enabled = True
@@ -907,6 +911,159 @@ Public Class Principal
 
     End Sub
 
+    Private Sub GenerarReporteGraficoCircular()
+
+        Me.Cursor = Cursors.WaitCursor
+        ' Se agrega una hoja.
+        spReporte.Sheets.Count += 1
+        spReporte.ActiveSheetIndex = spReporte.Sheets.Count - 1
+        FormatearSpreadReporteGrafico()
+        spReporte.ActiveSheet.SheetName = "Reporte de Saldos Gráficos Circular"
+        ' Se crea la gráfica circular.
+        Dim rango As New FarPoint.Win.Chart.PieSeries()
+        rango.SeriesName = "Cantidad"
+        spReporte.ActiveSheetIndex = 0 ' Se toma del reporte principal.
+        For columna = 0 To spReporte.ActiveSheet.Columns.Count - 1
+            If (columna = spReporte.ActiveSheet.Columns("saldoActual").Index) Then
+                For fila = 0 To spReporte.ActiveSheet.Rows.Count - 2 ' Se excluye uno mas por los totales.
+                    rango.Values.Add(spReporte.ActiveSheet.Cells(fila, columna).Text) ' Valor del elemento de la gráfica, en este caso son artículos.
+                    rango.CategoryNames.Item(fila) = spReporte.ActiveSheet.Cells(fila, spReporte.ActiveSheet.Columns("nombreArticulo").Index).Text & " (" & spReporte.ActiveSheet.Cells(fila, spReporte.ActiveSheet.Columns("saldoActual").Index).Text & ")" ' Nombre de elemento o categoría, en este caso son artículos. 
+                Next
+            End If
+        Next
+        spReporte.ActiveSheetIndex = spReporte.Sheets.Count - 1 ' Se regresa al reporte actual.
+        Dim veces As Integer = Math.Ceiling(rango.Count / 50) ' Se dividen los elementos entre 50, que son los que se ven bien.
+        If (veces > 2) Then
+            veces = 2
+        End If
+        spReporte.ActiveSheet.Rows.Count = 50 * veces ' Se generan las filas por la cantidad de veces.
+        Dim alto As Double = 1000 * veces 
+        spReporte.ActiveSheet.Columns.Count = 26 * veces ' Se generan las columnas por la cantidad de veces.
+        Dim ancho As Double = 1550 * veces 
+        Dim plano As New FarPoint.Win.Chart.PiePlotArea()
+        plano.Location = New PointF(0.0F, 0.1F)
+        plano.Size = New SizeF(0.6F, 0.6F)
+        plano.Series.Add(rango)
+        Dim etiqueta As New FarPoint.Win.Chart.LabelArea()
+        etiqueta.Text = "Saldos Actuales"
+        etiqueta.Location = New PointF(0.5F, 0.02F)
+        etiqueta.AlignmentX = 0.5F
+        etiqueta.AlignmentY = 0.0F
+        etiqueta.TextFont = New Font(Principal.tipoLetraSpread, Principal.tamañoLetraSpread + 10)
+        Dim leyenda As New FarPoint.Win.Chart.LegendArea()
+        leyenda.Location = New PointF(0.7F, 0.5F)
+        leyenda.AlignmentX = 1.0F
+        leyenda.AlignmentY = 0.5F
+        Dim modelo As New FarPoint.Win.Chart.ChartModel()
+        modelo.LabelAreas.Add(etiqueta)
+        If (rango.Count <= 100) Then ' Se le agrega solo si son menos de 100, para que no pierdan visibilidad.
+            modelo.LegendAreas.Add(leyenda)
+        End If
+        modelo.PlotAreas.Add(plano)
+        Dim grafico As New FarPoint.Win.Spread.Chart.SpreadChart()
+        grafico.Size = New Size(ancho, alto)
+        grafico.Location = New Point(1, 1)
+        grafico.Model = modelo
+        spReporte.ActiveSheet.Charts.Add(grafico)
+        ' Se regresa al reporte principal.
+        spReporte.ActiveSheetIndex = 0
+        Application.DoEvents()
+        Me.Cursor = Cursors.Default
+
+    End Sub
+
+    Private Sub GenerarReporteGraficoBarras()
+
+        Me.Cursor = Cursors.WaitCursor
+        ' Se agrega una hoja.
+        spReporte.Sheets.Count += 1
+        spReporte.ActiveSheetIndex = spReporte.Sheets.Count - 1
+        FormatearSpreadReporteGrafico()
+        spReporte.ActiveSheet.SheetName = "Reporte de Saldos Gráficos Barras"
+        ' Se crea la gráfica de barras.
+        Dim rango2 As New FarPoint.Win.Chart.BarSeries()
+        rango2.SeriesName = "Cantidad"
+        spReporte.ActiveSheetIndex = 0 ' Se toma del reporte principal.
+        For columna = 0 To spReporte.ActiveSheet.Columns.Count - 1
+            If (columna = spReporte.ActiveSheet.Columns("saldoActual").Index) Then
+                For fila = 0 To spReporte.ActiveSheet.Rows.Count - 2 ' Se excluye uno mas por los totales.
+                    rango2.Values.Add(spReporte.ActiveSheet.Cells(fila, columna).Text) ' Valor del elemento de la gráfica, en este caso son artículos. 
+                    Dim nombresArticulo As String() = spReporte.ActiveSheet.Cells(fila, spReporte.ActiveSheet.Columns("nombreArticulo").Index).Text.Split(" ")
+                    Dim nombreArticulo As String = String.Empty
+                    For indice = 0 To nombresArticulo.Length - 1
+                        If (Not String.IsNullOrEmpty(nombresArticulo(indice).ToString.Trim)) Then
+                            nombreArticulo &= nombresArticulo(indice) & vbNewLine
+                        End If
+                    Next
+                    rango2.CategoryNames.Item(fila) = nombreArticulo & " (" & spReporte.ActiveSheet.Cells(fila, spReporte.ActiveSheet.Columns("saldoActual").Index).Text & ")" ' Nombre de elemento o categoría, en este caso son artículos. 
+                Next
+            End If
+        Next 
+        spReporte.ActiveSheetIndex = spReporte.Sheets.Count - 1 ' Se regresa al reporte actual.
+        Dim veces As Integer = Math.Ceiling(rango2.Count / 20) ' Se dividen los elementos entre 20, que son los que se ven bien.
+        spReporte.ActiveSheet.Columns.Count = 26 * veces ' Se generan las columnas por la cantidad de veces.
+        Dim ancho As Double = 1550 * veces
+        rango2.VaryColors = True
+        Dim plano2 As New FarPoint.Win.Chart.YPlotArea()
+        plano2.Location = New PointF(0.05F, 0.2F)
+        plano2.Size = New SizeF(0.9F, 0.6F)
+        plano2.Series.Add(rango2)
+        Dim etiqueta2 As New FarPoint.Win.Chart.LabelArea()
+        etiqueta2.Text = "Saldos Actuales"
+        etiqueta2.Location = New PointF(0.5F, 0.02F)
+        etiqueta2.AlignmentX = 0.5F
+        etiqueta2.AlignmentY = 0.0F
+        etiqueta2.TextFont = New Font(Principal.tipoLetraSpread, Principal.tamañoLetraSpread + 10)
+        'Dim leyenda2 As New FarPoint.Win.Chart.LegendArea()
+        'leyenda2.Location = New PointF(0.5F, 0.92F)
+        'leyenda2.AlignmentX = 0.1F
+        'leyenda2.AlignmentY = 0.5F
+        'leyenda2.Vertical = False 
+        Dim modelo2 As New FarPoint.Win.Chart.ChartModel()
+        modelo2.LabelAreas.Add(etiqueta2)
+        'modelo2.LegendAreas.Add(leyenda2) ' No se le agrega, ya que tienen los nombres cada barra.
+        modelo2.PlotAreas.Add(plano2)
+        Dim grafico2 As New FarPoint.Win.Spread.Chart.SpreadChart()
+        grafico2.Size = New Size(ancho, 1000)
+        grafico2.Location = New Point(1, 1)
+        grafico2.Model = modelo2
+        spReporte.ActiveSheet.Charts.Add(grafico2)
+        ' Se regresa al reporte principal.
+        spReporte.ActiveSheetIndex = 0
+        Application.DoEvents()
+        Me.Cursor = Cursors.Default
+
+    End Sub
+
+    Private Sub FormatearSpreadReporteGrafico()
+
+        ' Estilo blanco totalmente, nombre de hoja, etc.
+        spReporte.HorizontalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.AsNeeded
+        spReporte.VerticalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.AsNeeded
+        spReporte.ActiveSheet.GrayAreaBackColor = Color.White
+        spReporte.ActiveSheet.SheetName = "Reporte de Saldos Gráficos"
+        spReporte.ActiveSheet.HorizontalGridLine = New FarPoint.Win.Spread.GridLine(Nothing)
+        spReporte.ActiveSheet.VerticalGridLine = New FarPoint.Win.Spread.GridLine(Nothing)
+        ' Se ocultan datos. 
+        spReporte.ActiveSheet.ColumnHeader.Visible = False
+        spReporte.ActiveSheet.RowHeader.Visible = False
+        ' Se agrega una trampa de celdas para contener los gráficos.
+        spReporte.ActiveSheet.Rows.Count = 50
+        spReporte.ActiveSheet.Columns.Count = 26
+
+    End Sub
+
+    Public Function CopiarHoja(hoja As FarPoint.Win.Spread.SheetView) As FarPoint.Win.Spread.SheetView
+
+        Dim nuevaHoja As FarPoint.Win.Spread.SheetView = Nothing
+        If Not IsNothing(hoja) Then
+            nuevaHoja = FarPoint.Win.Serializer.LoadObjectXml(GetType(FarPoint.Win.Spread.SheetView), FarPoint.Win.Serializer.GetObjectXml(hoja, "CopySheet"), "CopySheet")
+        End If
+        nuevaHoja.SheetName = "Nueva hoja"
+        Return nuevaHoja
+
+    End Function
+
     Private Sub FormatearSpread()
 
         spReporte.Reset()
@@ -923,7 +1080,7 @@ Public Class Principal
 
     Private Sub FormatearSpreadReporte(ByVal cantidadColumnas As Integer)
 
-        spReporte.Visible = True
+        spReporte.Visible = True 
         spReporte.ActiveSheet.SheetName = "Reporte de Saldos"
         spReporte.ActiveSheet.GrayAreaBackColor = Principal.colorAreaGris
         spReporte.ActiveSheet.ColumnHeader.RowCount = 2
@@ -973,7 +1130,7 @@ Public Class Principal
         spReporte.ActiveSheet.Columns("saldoActual").CellType = tipoEntero
         spReporte.ActiveSheet.Columns("costoActual").CellType = tipoDoble
         spReporte.ActiveSheet.AddColumnHeaderSpanCell(0, spReporte.ActiveSheet.Columns("idAlmacen").Index, 1, 2)
-        spReporte.ActiveSheet.ColumnHeader.Cells(0, spReporte.ActiveSheet.Columns("idAlmacen").Index).Value = "Almacen".ToUpper
+        spReporte.ActiveSheet.ColumnHeader.Cells(0, spReporte.ActiveSheet.Columns("idAlmacen").Index).Value = "Almacén".ToUpper
         spReporte.ActiveSheet.ColumnHeader.Cells(1, spReporte.ActiveSheet.Columns("idAlmacen").Index).Value = "No.".ToUpper
         spReporte.ActiveSheet.ColumnHeader.Cells(1, spReporte.ActiveSheet.Columns("nombreAlmacen").Index).Value = "Nombre".ToUpper
         spReporte.ActiveSheet.AddColumnHeaderSpanCell(0, spReporte.ActiveSheet.Columns("idFamilia").Index, 1, 2)

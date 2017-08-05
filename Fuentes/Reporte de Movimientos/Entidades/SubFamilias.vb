@@ -98,14 +98,14 @@ Public Class SubFamilias
             comando.Parameters.AddWithValue("@id", Me.EId)
             BaseDatos.conexionCatalogo.Open()
             Dim lectorDatos As SqlDataReader = comando.ExecuteReader()
-            Dim subFamilias As SubFamilias
+            Dim tabla As SubFamilias
             While lectorDatos.Read()
-                subFamilias = New SubFamilias()
-                subFamilias.idAlmacen = Convert.ToInt32(lectorDatos("IdAlmacen").ToString())
-                subFamilias.idFamilia = Convert.ToInt32(lectorDatos("idFamilia").ToString())
-                subFamilias.id = Convert.ToInt32(lectorDatos("Id").ToString())
-                subFamilias.nombre = lectorDatos("Nombre").ToString()
-                lista.Add(subFamilias)
+                tabla = New SubFamilias()
+                tabla.idAlmacen = Convert.ToInt32(lectorDatos("IdAlmacen").ToString())
+                tabla.idFamilia = Convert.ToInt32(lectorDatos("idFamilia").ToString())
+                tabla.id = Convert.ToInt32(lectorDatos("Id").ToString())
+                tabla.nombre = lectorDatos("Nombre").ToString()
+                lista.Add(tabla)
             End While
             BaseDatos.conexionCatalogo.Close()
             Return lista

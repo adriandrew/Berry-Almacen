@@ -60,8 +60,8 @@ Public Class Empresas
 
     Public Function Obtener(ByVal primerElemento As Boolean) As List(Of Empresas)
 
-        Dim lista As New List(Of Empresas)()
         Try
+            Dim lista As New List(Of Empresas)
             Dim comando As New SqlCommand()
             comando.Connection = BaseDatos.conexionCatalogo
             Dim consulta As String = String.Empty : Dim condicion As String = String.Empty
@@ -77,16 +77,16 @@ Public Class Empresas
             comando.Parameters.AddWithValue("@id", Me.EId)
             BaseDatos.conexionCatalogo.Open()
             Dim dataReader As SqlDataReader = comando.ExecuteReader()
-            Dim empresas As Empresas
+            Dim tabla As Empresas
             While dataReader.Read()
-                empresas = New Empresas()
-                empresas.id = Convert.ToInt32(dataReader("id").ToString())
-                empresas.nombre = dataReader("nombre").ToString()
-                empresas.descripcion = dataReader("descripcion").ToString()
-                empresas.domicilio = dataReader("domicilio").ToString()
-                empresas.localidad = dataReader("localidad").ToString()
-                empresas.rfc = dataReader("rfc").ToString()
-                lista.Add(empresas)
+                tabla = New Empresas()
+                tabla.id = Convert.ToInt32(dataReader("id").ToString())
+                tabla.nombre = dataReader("nombre").ToString()
+                tabla.descripcion = dataReader("descripcion").ToString()
+                tabla.domicilio = dataReader("domicilio").ToString()
+                tabla.localidad = dataReader("localidad").ToString()
+                tabla.rfc = dataReader("rfc").ToString()
+                lista.Add(tabla)
             End While
             BaseDatos.conexionCatalogo.Close()
             Return lista

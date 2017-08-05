@@ -81,7 +81,7 @@ Public Class Usuarios
     Public Function ObtenerListado() As List(Of Usuarios)
 
         Try
-            Dim lista As New List(Of Usuarios)()
+            Dim lista As New List(Of Usuarios)
             Dim comando As New SqlCommand()
             comando.Connection = BaseDatos.conexionCatalogo
             Dim condicion As String = String.Empty
@@ -92,15 +92,15 @@ Public Class Usuarios
             comando.Parameters.AddWithValue("@id", Me.id)
             BaseDatos.conexionCatalogo.Open()
             Dim dataReader As SqlDataReader = comando.ExecuteReader()
-            Dim usuarios As Usuarios
+            Dim tabla As Usuarios
             While dataReader.Read()
-                usuarios = New Usuarios()
-                usuarios.id = Convert.ToInt32(dataReader("Id").ToString())
-                usuarios.nombre = dataReader("Nombre").ToString()
-                usuarios.contrasena = dataReader("Contrasena").ToString()
-                usuarios.nivel = Convert.ToInt32(dataReader("Nivel").ToString())
-                usuarios.accesoTotal = Convert.ToBoolean(dataReader("AccesoTotal").ToString())
-                lista.Add(usuarios)
+                tabla = New Usuarios()
+                tabla.id = Convert.ToInt32(dataReader("Id").ToString())
+                tabla.nombre = dataReader("Nombre").ToString()
+                tabla.contrasena = dataReader("Contrasena").ToString()
+                tabla.nivel = Convert.ToInt32(dataReader("Nivel").ToString())
+                tabla.accesoTotal = Convert.ToBoolean(dataReader("AccesoTotal").ToString())
+                lista.Add(tabla)
             End While
             BaseDatos.conexionCatalogo.Close()
             Return lista

@@ -46,13 +46,13 @@ Public Class TiposCambios
             comando.Parameters.AddWithValue("@fecha", ALMLogicaEntradas.Funciones.ValidarFechaAEstandar(Me.fecha))
             BaseDatos.conexionCatalogo.Open()
             Dim lectorDatos As SqlDataReader = comando.ExecuteReader()
-            Dim tiposCambios As TiposCambios
+            Dim tabla As TiposCambios
             While lectorDatos.Read()
-                tiposCambios = New TiposCambios()
-                tiposCambios.idMoneda = Convert.ToInt32(lectorDatos("IdMoneda").ToString())
-                tiposCambios.fecha = Convert.ToDateTime(lectorDatos("Fecha").ToString())
-                tiposCambios.valor = Convert.ToDouble(lectorDatos("Valor").ToString())
-                lista.Add(tiposCambios)
+                tabla = New TiposCambios()
+                tabla.idMoneda = Convert.ToInt32(lectorDatos("IdMoneda").ToString())
+                tabla.fecha = Convert.ToDateTime(lectorDatos("Fecha").ToString())
+                tabla.valor = Convert.ToDouble(lectorDatos("Valor").ToString())
+                lista.Add(tabla)
             End While
             BaseDatos.conexionCatalogo.Close()
             Return lista

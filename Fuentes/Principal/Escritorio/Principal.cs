@@ -702,7 +702,7 @@ namespace Escritorio
         private void AsignarFocos()
         {
 
-            this.btnEntrar.Focus();            
+            this.btnEntrar.Focus();
 
         }
 
@@ -712,6 +712,8 @@ namespace Escritorio
             if (this.esDesarrollo)
             {
                 baseDatos.CadenaConexionPrincipal = "C:\\Berry ERP\\DatosPrincipales.sdf";
+                pnlEncabezado.BackColor = Color.DarkRed;
+                pnlPie.BackColor = Color.DarkRed;
             }
             else
             {

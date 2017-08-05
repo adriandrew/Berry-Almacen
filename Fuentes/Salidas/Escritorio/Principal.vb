@@ -486,7 +486,8 @@ Public Class Principal
             ALMLogicaSalidas.Directorios.instanciaSql = "BERRY1-DELL\SQLEXPRESS2008"
             ALMLogicaSalidas.Directorios.usuarioSql = "AdminBerry"
             ALMLogicaSalidas.Directorios.contrasenaSql = "@berry2017"
-            ALMLogicaSalidas.Usuarios.id = 1
+            pnlEncabezado.BackColor = Color.DarkRed
+            pnlPie.BackColor = Color.DarkRed
         Else
             ALMLogicaSalidas.Directorios.ObtenerParametros()
             ALMLogicaSalidas.Usuarios.ObtenerParametros()
@@ -516,7 +517,7 @@ Public Class Principal
         Dim lista As New List(Of ALMEntidadesSalidas.Usuarios)
         usuarios.EId = ALMLogicaSalidas.Usuarios.id
         lista = usuarios.ObtenerListado()
-        If (lista.Count > 0) Then
+        If (lista.Count = 1) Then
             ALMLogicaSalidas.Usuarios.id = lista(0).EId
             ALMLogicaSalidas.Usuarios.nombre = lista(0).ENombre
             ALMLogicaSalidas.Usuarios.contrasena = lista(0).EContrasena

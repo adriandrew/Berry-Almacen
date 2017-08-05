@@ -67,15 +67,15 @@ Public Class Usuarios
             comando.Parameters.AddWithValue("@id", Me.id)
             BaseDatos.conexionCatalogo.Open()
             Dim lectorDatos As SqlDataReader = comando.ExecuteReader()
-            Dim usuarios As Usuarios
+            Dim tabla As Usuarios
             While lectorDatos.Read()
-                usuarios = New Usuarios()
-                usuarios.id = Convert.ToInt32(lectorDatos("Id").ToString())
-                usuarios.nombre = lectorDatos("Nombre").ToString()
-                usuarios.contrasena = lectorDatos("Contrasena").ToString()
-                usuarios.nivel = Convert.ToInt32(lectorDatos("Nivel").ToString())
-                usuarios.accesoTotal = Convert.ToBoolean(lectorDatos("AccesoTotal").ToString())
-                lista.Add(usuarios)
+                tabla = New Usuarios()
+                tabla.id = Convert.ToInt32(lectorDatos("Id").ToString())
+                tabla.nombre = lectorDatos("Nombre").ToString()
+                tabla.contrasena = lectorDatos("Contrasena").ToString()
+                tabla.nivel = Convert.ToInt32(lectorDatos("Nivel").ToString())
+                tabla.accesoTotal = Convert.ToBoolean(lectorDatos("AccesoTotal").ToString())
+                lista.Add(tabla)
             End While
             BaseDatos.conexionCatalogo.Close()
             Return lista

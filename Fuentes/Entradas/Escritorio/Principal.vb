@@ -484,7 +484,8 @@ Public Class Principal
             ALMLogicaEntradas.Directorios.instanciaSql = "BERRY1-DELL\SQLEXPRESS2008"
             ALMLogicaEntradas.Directorios.usuarioSql = "AdminBerry"
             ALMLogicaEntradas.Directorios.contrasenaSql = "@berry2017"
-            ALMLogicaEntradas.Usuarios.id = 1
+            pnlEncabezado.BackColor = Color.DarkRed
+            pnlPie.BackColor = Color.DarkRed
         Else
             ALMLogicaEntradas.Directorios.ObtenerParametros()
             ALMLogicaEntradas.Usuarios.ObtenerParametros()
@@ -514,7 +515,7 @@ Public Class Principal
         Dim lista As New List(Of ALMEntidadesEntradas.Usuarios)
         usuarios.EId = ALMLogicaEntradas.Usuarios.id
         lista = usuarios.ObtenerListado()
-        If (lista.Count > 0) Then
+        If (lista.Count = 1) Then
             ALMLogicaEntradas.Usuarios.id = lista(0).EId
             ALMLogicaEntradas.Usuarios.nombre = lista(0).ENombre
             ALMLogicaEntradas.Usuarios.contrasena = lista(0).EContrasena
@@ -545,7 +546,7 @@ Public Class Principal
         End If
         ejecutarProgramaPrincipal.UseShellExecute = True
         ejecutarProgramaPrincipal.FileName = nombre & Convert.ToString(".exe")
-        ejecutarProgramaPrincipal.WorkingDirectory = Directory.GetCurrentDirectory()
+        ejecutarProgramaPrincipal.WorkingDirectory = Application.StartupPath
         ejecutarProgramaPrincipal.Arguments = ALMLogicaEntradas.Directorios.id.ToString().Trim().Replace(" ", "|") & " " & ALMLogicaEntradas.Directorios.nombre.ToString().Trim().Replace(" ", "|") & " " & ALMLogicaEntradas.Directorios.descripcion.ToString().Trim().Replace(" ", "|") & " " & ALMLogicaEntradas.Directorios.rutaLogo.ToString().Trim().Replace(" ", "|") & " " & ALMLogicaEntradas.Directorios.esPredeterminado.ToString().Trim().Replace(" ", "|") & " " & ALMLogicaEntradas.Directorios.instanciaSql.ToString().Trim().Replace(" ", "|") & " " & ALMLogicaEntradas.Directorios.usuarioSql.ToString().Trim().Replace(" ", "|") & " " & ALMLogicaEntradas.Directorios.contrasenaSql.ToString().Trim().Replace(" ", "|") & " " & "Aquí terminan los de directorios, indice 9 ;)".Replace(" ", "|") & " " & ALMLogicaEntradas.Usuarios.id.ToString().Trim().Replace(" ", "|") & " " & "Aquí terminan los de usuario, indice 11 ;)".Replace(" ", "|")
         Try
             Dim proceso = Process.Start(ejecutarProgramaPrincipal)
@@ -1141,7 +1142,7 @@ Public Class Principal
         spEntradas.ActiveSheet.Columns("idSubFamilia").Width = 50
         spEntradas.ActiveSheet.Columns("nombreSubFamilia").Width = 150
         spEntradas.ActiveSheet.Columns("idArticulo").Width = 50
-        spEntradas.ActiveSheet.Columns("nombreArticulo").Width = 150
+        spEntradas.ActiveSheet.Columns("nombreArticulo").Width = 200
         spEntradas.ActiveSheet.Columns("nombreUnidadMedida").Width = 100
         spEntradas.ActiveSheet.Columns("cantidad").Width = 110
         spEntradas.ActiveSheet.Columns("precioUnitario").Width = 110
