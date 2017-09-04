@@ -149,8 +149,7 @@ namespace Escritorio
 
             lblEncabezadoPrograma.Text = "Programa: " + this.Text;
             lblEncabezadoDirectorio.Text = "Directorio: " + Logica.Directorios.nombre;
-            lblEncabezadoUsuario.Text = "Usuario: " + Logica.Usuarios.nombre;
-            Application.DoEvents();
+            lblEncabezadoUsuario.Text = "Usuario: " + Logica.Usuarios.nombre; 
 
         }
 
@@ -169,25 +168,28 @@ namespace Escritorio
             FarPoint.Win.Spread.CellType.NumberCellType tipoDoble = new FarPoint.Win.Spread.CellType.NumberCellType();
             FarPoint.Win.Spread.CellType.PercentCellType tipoPorcentaje = new FarPoint.Win.Spread.CellType.PercentCellType();
             FarPoint.Win.Spread.CellType.DateTimeCellType tipoHora = new FarPoint.Win.Spread.CellType.DateTimeCellType();
-            spDirectorios.ActiveSheet.ColumnHeader.Rows[0].Height = Principal.alturaEncabezadosChicoSpread; Application.DoEvents();
-            spDirectorios.ActiveSheet.Rows[-1].Height = Principal.alturaFilasSpread; Application.DoEvents();
-            spDirectorios.ActiveSheet.GrayAreaBackColor = Color.White; Application.DoEvents();
-            spDirectorios.ActiveSheet.OperationMode = FarPoint.Win.Spread.OperationMode.SingleSelect; Application.DoEvents();
-            spDirectorios.Font = new Font(Principal.tipoLetraSpread, Principal.tamañoLetraSpread, FontStyle.Regular); Application.DoEvents();
-            spDirectorios.ActiveSheet.ColumnHeader.Rows[0].Font = new Font(Principal.tipoLetraSpread, Principal.tamañoLetraSpread, FontStyle.Bold); Application.DoEvents();
+            spDirectorios.VerticalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.AsNeeded;
+            spDirectorios.HorizontalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.AsNeeded;
+            spDirectorios.ActiveSheet.ColumnHeader.Rows[0].Height = Principal.alturaEncabezadosChicoSpread; 
+            spDirectorios.ActiveSheet.Rows[-1].Height = Principal.alturaEncabezadosGrandeSpread; 
+            spDirectorios.ActiveSheet.GrayAreaBackColor = Color.White; 
+            spDirectorios.ActiveSheet.OperationMode = FarPoint.Win.Spread.OperationMode.SingleSelect; 
+            spDirectorios.Font = new Font(Principal.tipoLetraSpread, Principal.tamañoLetraSpread, FontStyle.Regular); 
+            spDirectorios.ActiveSheet.ColumnHeader.Rows[0].Font = new Font(Principal.tipoLetraSpread, Principal.tamañoLetraSpread, FontStyle.Bold); 
             int numeracion = 0;
             spDirectorios.ActiveSheet.Columns[numeracion].Tag = "id"; numeracion += 1;
             spDirectorios.ActiveSheet.Columns[numeracion].Tag = "nombre"; numeracion += 1;
             spDirectorios.ActiveSheet.Columns[numeracion].Tag = "descripcion"; numeracion += 1;
             spDirectorios.ActiveSheet.Columns[numeracion].Tag = "esPredeterminado"; numeracion += 1; 
-            spDirectorios.ActiveSheet.Columns["id"].Width = 50; Application.DoEvents();
-            spDirectorios.ActiveSheet.Columns["nombre"].Width = 400; Application.DoEvents();
-            spDirectorios.ActiveSheet.Columns["descripcion"].Width = 500; Application.DoEvents();
-            spDirectorios.ActiveSheet.Columns["esPredeterminado"].Width = 200; Application.DoEvents();
-            spDirectorios.ActiveSheet.ColumnHeader.Cells[0, spDirectorios.ActiveSheet.Columns["id"].Index].Value = "No.".ToUpper(); Application.DoEvents();
-            spDirectorios.ActiveSheet.ColumnHeader.Cells[0, spDirectorios.ActiveSheet.Columns["nombre"].Index].Value = "Nombre".ToUpper(); Application.DoEvents();
-            spDirectorios.ActiveSheet.ColumnHeader.Cells[0, spDirectorios.ActiveSheet.Columns["descripcion"].Index].Value = "Descripción".ToUpper(); Application.DoEvents();
-            spDirectorios.ActiveSheet.ColumnHeader.Cells[0, spDirectorios.ActiveSheet.Columns["esPredeterminado"].Index].Value = "Es Predeterminado?".ToUpper(); Application.DoEvents();
+            spDirectorios.ActiveSheet.Columns["id"].Width = 50; 
+            spDirectorios.ActiveSheet.Columns["nombre"].Width = 400; 
+            spDirectorios.ActiveSheet.Columns["descripcion"].Width = 500; 
+            spDirectorios.ActiveSheet.Columns["esPredeterminado"].Width = 200; 
+            spDirectorios.ActiveSheet.ColumnHeader.Cells[0, spDirectorios.ActiveSheet.Columns["id"].Index].Value = "No.".ToUpper(); 
+            spDirectorios.ActiveSheet.ColumnHeader.Cells[0, spDirectorios.ActiveSheet.Columns["nombre"].Index].Value = "Nombre".ToUpper(); 
+            spDirectorios.ActiveSheet.ColumnHeader.Cells[0, spDirectorios.ActiveSheet.Columns["descripcion"].Index].Value = "Descripción".ToUpper(); 
+            spDirectorios.ActiveSheet.ColumnHeader.Cells[0, spDirectorios.ActiveSheet.Columns["esPredeterminado"].Index].Value = "Es Predeterminado?".ToUpper();
+            Application.DoEvents();
 
         }
 

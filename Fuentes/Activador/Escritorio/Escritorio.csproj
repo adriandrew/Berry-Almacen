@@ -71,7 +71,7 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Logo3.ico</ApplicationIcon>
+    <ApplicationIcon>Logos\Logo3.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <SignAssembly>false</SignAssembly>
@@ -244,9 +244,18 @@
     <Content Include="Iconos Usados\help-48.png" />
     <Content Include="Iconos Usados\save-48.png" />
     <Content Include="Iconos Usados\user-48.png" />
-    <Content Include="Logo.ico" />
-    <Content Include="Logo2.ico" />
-    <Content Include="Logo3.ico" />
+    <Content Include="Logos\2.JPG" />
+    <Content Include="Logos\aurora.jpg" />
+    <Content Include="Logos\colores difuminados.jpg" />
+    <Content Include="Logos\deg.png" />
+    <Content Include="Logos\fondo.jpg" />
+    <Content Include="Logos\Logo-Mediano.png" />
+    <Content Include="Logos\Logo.ico" />
+    <Content Include="Logos\Logo.png" />
+    <Content Include="Logos\Logo2.ico" />
+    <Content Include="Logos\Logo2.png" />
+    <Content Include="Logos\Logo3.ico" />
+    <Content Include="Logos\space-galaxy-colors-wide-wallpaper-65979.jpg" />
     <None Include="Logos\Logo3.png" />
     <None Include="Logos\hiedra.jpg" />
   </ItemGroup>

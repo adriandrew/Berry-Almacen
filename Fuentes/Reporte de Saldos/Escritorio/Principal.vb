@@ -1,6 +1,7 @@
 ﻿Imports System.IO
 Imports FarPoint.Win.Spread
 Imports System.Reflection
+Imports System.Threading
 
 Public Class Principal
 
@@ -34,10 +35,38 @@ Public Class Principal
     Public estaCerrando As Boolean = False
     Public prefijoBaseDatosAlmacen As String = "ALM" & "_"
     Public colorFiltros As Color
+    ' Hilos para carga rapida. 
+    Public hiloCentrar As New Thread(AddressOf Centrar)
+    Public hiloNombrePrograma As New Thread(AddressOf CargarNombrePrograma)
+    Public hiloTooltips As New Thread(AddressOf AsignarTooltips)
+    Public hiloEncabezadosTitulos As New Thread(AddressOf CargarEncabezadosTitulos)
+    Public hiloColor As New Thread(AddressOf CargarValorColor)
+    Public hiloTiposDatos As New Thread(AddressOf CargarTiposDeDatos)
     ' Variable de desarrollo.
     Public esDesarrollo As Boolean = False
 
 #Region "Eventos"
+
+    Private Sub Principal_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+        Me.Cursor = Cursors.WaitCursor
+        MostrarCargando(True) 
+        ConfigurarConexiones()
+        IniciarHilosCarga() 
+        Me.Cursor = Cursors.Default
+
+    End Sub
+
+    Private Sub Principal_Shown(sender As Object, e As EventArgs) Handles MyBase.Shown
+
+        Me.Cursor = Cursors.WaitCursor 
+        CargarComboAlmacenes()
+        Me.estaMostrado = True
+        AsignarFoco(dtpFecha)
+        MostrarCargando(False)
+        Me.Cursor = Cursors.Default
+
+    End Sub
 
     Private Sub Principal_FormClosed(sender As Object, e As FormClosedEventArgs) Handles Me.FormClosed
 
@@ -52,32 +81,10 @@ Public Class Principal
 
     Private Sub Principal_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
 
+        Me.Cursor = Cursors.WaitCursor
         Me.estaCerrando = True
+        MostrarCargando(True)
         Desvanecer()
-
-    End Sub
-
-    Private Sub Principal_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
-        Centrar()
-        CargarNombrePrograma()
-        AsignarTooltips()
-        ConfigurarConexiones()
-        CargarTiposDeDatos()
-
-    End Sub
-
-    Private Sub Principal_Shown(sender As Object, e As EventArgs) Handles MyBase.Shown
-
-        Me.Cursor = Cursors.AppStarting
-        Me.Enabled = False
-        CargarEncabezados()
-        CargarTitulosDirectorio()
-        CargarValorColor()
-        CargarComboAlmacenes()
-        Me.estaMostrado = True
-        Me.Enabled = True
-        AsignarFoco(dtpFecha)
         Me.Cursor = Cursors.Default
 
     End Sub
@@ -356,6 +363,66 @@ Public Class Principal
 
 #Region "Básicos"
 
+    Public Sub IniciarHilosCarga()
+
+        CheckForIllegalCrossThreadCalls = False
+        hiloNombrePrograma.Start()
+        hiloCentrar.Start()
+        hiloTooltips.Start()
+        hiloEncabezadosTitulos.Start()
+        hiloColor.Start()
+        hiloTiposDatos.Start()
+
+    End Sub
+
+    Private Sub MostrarCargando(ByVal mostrar As Boolean)
+
+        Dim pnlCargando As New Panel
+        Dim lblCargando As New Label
+        Dim crear As Boolean = False
+        If (Me.Controls.Find("pnlCargando", True).Count = 0) Then ' Si no existe, se crea. 
+            crear = True
+        Else ' Si existe, se obtiene.
+            pnlCargando = Me.Controls.Find("pnlCargando", False)(0)
+            crear = False
+        End If
+        If (crear And mostrar) Then ' Si se tiene que crear y mostrar.
+            ' Imagen de fondo.
+            pnlCargando.BackgroundImage = Global.ReporteSaldos.My.Resources.bienvenida
+            pnlCargando.BackgroundImageLayout = ImageLayout.Center
+            pnlCargando.BackColor = Color.DarkSlateGray
+            pnlCargando.Width = Me.Width
+            pnlCargando.Height = Me.Height
+            pnlCargando.Location = New Point(Me.Location)
+            pnlCargando.Name = "pnlCargando"
+            pnlCargando.Visible = True
+            Me.Controls.Add(pnlCargando)
+            ' Etiqueta de cargando.
+            lblCargando.Text = "¡cargando!"
+            lblCargando.BackColor = pnlCargando.BackColor
+            lblCargando.ForeColor = Color.White
+            lblCargando.AutoSize = False
+            lblCargando.Width = Me.Width
+            lblCargando.Height = 75
+            lblCargando.TextAlign = ContentAlignment.TopCenter
+            lblCargando.Font = New Font(Principal.tipoLetraSpread, 40, FontStyle.Regular)
+            lblCargando.Location = New Point(lblCargando.Location.X, (Me.Height / 2) + 140)
+            pnlCargando.Controls.Add(lblCargando)
+            pnlCargando.BringToFront()
+            pnlCargando.Focus()
+        ElseIf (Not crear) Then ' Si ya existe, se checa si se muestra o no.
+            If (mostrar) Then ' Se muestra.
+                pnlCargando.Visible = True
+                pnlCargando.BringToFront()
+            Else ' No se muestra.
+                pnlCargando.Visible = False
+                pnlCargando.SendToBack()
+            End If
+        End If
+        Application.DoEvents()
+
+    End Sub
+
     Private Sub AsignarFoco(ByVal c As Control)
 
         c.Focus()
@@ -402,12 +469,14 @@ Public Class Principal
         Me.Opacity = 0.98
         Me.Location = Screen.PrimaryScreen.WorkingArea.Location
         Me.Size = Screen.PrimaryScreen.WorkingArea.Size
+        hiloCentrar.Abort()
 
     End Sub
 
     Private Sub CargarNombrePrograma()
 
         Me.nombreEstePrograma = Me.Text
+        hiloNombrePrograma.Abort()
 
     End Sub
 
@@ -425,6 +494,7 @@ Public Class Principal
         tp.SetToolTip(Me.btnGenerar, "Generar Reporte.")
         tp.SetToolTip(Me.pnlFiltros, "Filtros para Generar el Reporte.")
         tp.SetToolTip(Me.spReporte, "Datos del Reporte.")
+        hiloTooltips.Abort()
 
     End Sub
 
@@ -458,6 +528,7 @@ Public Class Principal
         tipoEntero.DecimalPlaces = 0
         tipoEntero.Separator = ","
         tipoEntero.ShowSeparator = True
+        hiloTiposDatos.Abort()
 
     End Sub
 
@@ -508,24 +579,21 @@ Public Class Principal
         ALMLogicaReporteSaldos.Programas.prefijoBaseDatosAlmacen = Me.prefijoBaseDatosAlmacen
 
     End Sub
-
-    Private Sub CargarTitulosDirectorio()
-
-        Me.Text = "Programa:  " + Me.nombreEstePrograma + "              Directorio:  " + ALMLogicaReporteSaldos.Directorios.nombre + "              Usuario:  " + ALMLogicaReporteSaldos.Usuarios.nombre
-
-    End Sub
-
-    Private Sub CargarEncabezados()
+     
+    Private Sub CargarEncabezadosTitulos()
 
         lblEncabezadoPrograma.Text = "Programa: " + Me.Text
         lblEncabezadoEmpresa.Text = "Directorio: " + ALMLogicaReporteSaldos.Directorios.nombre
         lblEncabezadoUsuario.Text = "Usuario: " + ALMLogicaReporteSaldos.Usuarios.nombre
+        Me.Text = "Programa:  " + Me.nombreEstePrograma + "              Directorio:  " + ALMLogicaReporteSaldos.Directorios.nombre + "              Usuario:  " + ALMLogicaReporteSaldos.Usuarios.nombre
+        hiloEncabezadosTitulos.Abort()
 
     End Sub
 
     Private Sub CargarValorColor()
 
         Me.colorFiltros = pnlFiltros.BackColor
+        hiloColor.Abort()
 
     End Sub
 
@@ -937,9 +1005,9 @@ Public Class Principal
             veces = 2
         End If
         spReporte.ActiveSheet.Rows.Count = 50 * veces ' Se generan las filas por la cantidad de veces.
-        Dim alto As Double = 1000 * veces 
+        Dim alto As Double = 1000 * veces
         spReporte.ActiveSheet.Columns.Count = 26 * veces ' Se generan las columnas por la cantidad de veces.
-        Dim ancho As Double = 1550 * veces 
+        Dim ancho As Double = 1550 * veces
         Dim plano As New FarPoint.Win.Chart.PiePlotArea()
         plano.Location = New PointF(0.0F, 0.1F)
         plano.Size = New SizeF(0.6F, 0.6F)
@@ -998,7 +1066,7 @@ Public Class Principal
                     rango2.CategoryNames.Item(fila) = nombreArticulo & " (" & spReporte.ActiveSheet.Cells(fila, spReporte.ActiveSheet.Columns("saldoActual").Index).Text & ")" ' Nombre de elemento o categoría, en este caso son artículos. 
                 Next
             End If
-        Next 
+        Next
         spReporte.ActiveSheetIndex = spReporte.Sheets.Count - 1 ' Se regresa al reporte actual.
         Dim veces As Integer = Math.Ceiling(rango2.Count / 20) ' Se dividen los elementos entre 20, que son los que se ven bien.
         spReporte.ActiveSheet.Columns.Count = 26 * veces ' Se generan las columnas por la cantidad de veces.
@@ -1080,7 +1148,7 @@ Public Class Principal
 
     Private Sub FormatearSpreadReporte(ByVal cantidadColumnas As Integer)
 
-        spReporte.Visible = True 
+        spReporte.Visible = True
         spReporte.ActiveSheet.SheetName = "Reporte de Saldos"
         spReporte.ActiveSheet.GrayAreaBackColor = Principal.colorAreaGris
         spReporte.ActiveSheet.ColumnHeader.RowCount = 2

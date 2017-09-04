@@ -41,8 +41,8 @@ namespace Escritorio
         public int idUsuarioSesion = 0; public int idModuloSesion = 0; public int idProgramaSesion = 0; public int idSubProgramaSesion = 0;
         public string nombreEstePrograma = string.Empty; public string nombreProgramaAbierto = string.Empty;
         public bool estaCerrando = false; public bool estaAbriendoPrograma = false;
-        public string nombreEsteEquipo = System.Environment.MachineName;
         public bool esInicioSesion = true;
+        public string nombreEsteEquipo = System.Environment.MachineName;
         public ProcessStartInfo ejecutarPrograma = new ProcessStartInfo();
         public int diasDePrueba = 15;
         // Estilos.
@@ -95,15 +95,19 @@ namespace Escritorio
         private void Principal_FormClosed(object sender, FormClosedEventArgs e)
         {
 
+            this.Cursor = Cursors.WaitCursor;
             Salir();
+            this.Cursor = Cursors.Default;
 
         }
 
         private void Principal_FormClosing(object sender, FormClosingEventArgs e)
         {
 
+            this.Cursor = Cursors.WaitCursor;
             this.estaCerrando = true;
             Desvanecer();
+            this.Cursor = Cursors.Default;
 
         }
 
@@ -172,7 +176,7 @@ namespace Escritorio
 
             this.Cursor = Cursors.WaitCursor;
             if (Principal.esConexionesVariasCorrecta) 
-                GuardarEditarRegistro(0, false);
+                GuardarEditarRegistro(0, false); 
             new AdministrarDirectorios().Show();
             this.Hide();
             this.Cursor = Cursors.Default;
@@ -414,18 +418,16 @@ namespace Escritorio
         private void Salir() 
         {
 
-            this.Cursor = Cursors.WaitCursor; 
             if (this.estaAbriendoPrograma)
             {
                 System.Threading.Thread.Sleep(3000);
             }
-            else
-            {
-                if (Principal.esConexionesVariasCorrecta) 
-                    GuardarEditarRegistro(0, false); 
-            }
-            ApplicationExit();
-            this.Cursor = Cursors.Default;
+            //else
+            //{
+            //    if (Principal.esConexionesVariasCorrecta) 
+            //        GuardarEditarRegistro(0, false); 
+            //}
+            ApplicationExit(); 
 
         }
 
@@ -545,9 +547,9 @@ namespace Escritorio
         private void ValidarSesion()
         { 
 
-            if (!string.IsNullOrEmpty(txtUsuario.Text) && !string.IsNullOrEmpty(txtContraseña.Text))
+            if (!string.IsNullOrEmpty(txtUsuario.Text) && !string.IsNullOrEmpty(txtContraseña.Text)) // Si tiene datos capturados.
             {
-                if (txtUsuario.Text.ToUpper().Equals("Admin".ToUpper()))
+                if (txtUsuario.Text.ToUpper().Equals("Admin".ToUpper())) // Si es para el panel de control.
                 {
                     if (txtContraseña.Text.Equals("@berry2017"))
                     {
@@ -561,9 +563,9 @@ namespace Escritorio
                         txtContraseña.Focus();
                     }
                 }
-                else
+                else // Si es para cualquier usuario del sistema.
                 {
-                    if (!Principal.esConexionPrincipalCorrecta || !Principal.esConexionesVariasCorrecta)
+                    if (!Principal.esConexionPrincipalCorrecta || !Principal.esConexionesVariasCorrecta) // Si las conexiones a los directorios resultaron incorrectas limpia los datos y no permite ingresar.
                     {
                         txtUsuario.Clear();
                         txtContraseña.Clear();
@@ -574,29 +576,29 @@ namespace Escritorio
                     List<Entidades.Usuarios> lista = usuarios.ObtenerListadoPorNombre();
                     if (lista.Count > 0)
                     {
-                        if (txtContraseña.Text.Equals(lista[0].Contrasena))
+                        if (txtContraseña.Text.Equals(lista[0].Contrasena)) // Se valida si la contraseña es correcta.
                         {
                             // Se guarda registro de los equipos.
                             GuardarEditarRegistro(lista[0].Id, true);
                             PermitirAcceso(lista[0].Id);
                         }
-                        else
+                        else // Si no es contraseña correcta.
                         {
-                            if (lista[0].Id.Equals(string.Empty))
+                            if (lista[0].Id.Equals(string.Empty)) // Si el usuario no existe.
                             {
                                 MessageBox.Show("Usuario inexistente en este directorio.", "Datos incorrectos.", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 txtUsuario.Clear();
                                 txtContraseña.Clear();
                                 txtUsuario.Focus();
                             }
-                            else
+                            else // Si es incorrecto se limpia la contraseña para volver a capturarla.
                             {
                                 txtContraseña.Clear();
                                 txtContraseña.Focus();
                             }
                         }
                     }
-                    else
+                    else // Si el usuario no existe.
                     {
                         MessageBox.Show("Usuario inexistente en este directorio.", "Datos incorrectos.", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         txtUsuario.Clear();
@@ -605,7 +607,7 @@ namespace Escritorio
                     }
                 }
             }
-            else
+            else  // Si no tiene datos capturados.
             {
                 MessageBox.Show("Faltan datos.", "Faltan datos.", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 txtUsuario.Focus(); 
@@ -727,31 +729,28 @@ namespace Escritorio
 
         public void ConfigurarConexiones() 
         {
- 
+            
             // Se verifica si tiene parametros.
 	        string[] parametros = Environment.GetCommandLineArgs().ToArray();
 	        if (parametros.Length > 1)
             {
-		        this.tieneParametros = true;
-	        } 
-            ConfigurarConexionPrincipal(); 
-            if (this.tieneParametros)
+                this.tieneParametros = true; 
+	        }
+            ConfigurarConexionPrincipal(); // Se obtiene la ruta de la bd de configuración principal.
+            if (this.tieneParametros) // Si tiene parametros.
             {
                 Logica.Directorios.ObtenerParametros(); // Se obtienen los parametros.
                 Logica.Usuarios.ObtenerParametros(); // Se obtienen los parametros.
                 Principal.esConexionPrincipalCorrecta = true; // Se supone que debe ser una conexión correcta si tiene parametros.
             }
-            else
-            {
-                if (Principal.esCambioDirectorio) // Si viene de cambiar el directorio, se toma el id que seleccionó, de lo contrario, se carga el predeterminado.
-                {
-                    ConsultarInformacionDirectorioPorId(Principal.idDirectorioSeleccionado);
-                }
-                else
-                { 
-                    ConsultarInformacionDirectorioPredeterminado();
-                }
+            else //  Si no tiene parametros, se carga el directorio predeterminado.
+            { 
+                ConsultarInformacionDirectorioPredeterminado(); 
             }
+            if (Principal.esCambioDirectorio) // Si viene de cambiar el directorio, se toma el id que seleccionó.
+            {
+                ConsultarInformacionDirectorioPorId(Principal.idDirectorioSeleccionado);
+            } 
             if (!Principal.esConexionPrincipalCorrecta)
             {
                 Principal.esConexionesVariasCorrecta = true;

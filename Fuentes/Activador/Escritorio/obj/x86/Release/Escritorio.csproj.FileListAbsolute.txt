@@ -157,3 +157,4 @@ C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Activad
 C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Activador\Escritorio\obj\x86\Release\Activador.application
 C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Activador\Escritorio\obj\x86\Release\Activador.exe
 C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Activador\Escritorio\obj\x86\Release\Activador.pdb
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Activador\Escritorio\obj\x86\Release\Escritorio.csprojResolveAssemblyReference.cache

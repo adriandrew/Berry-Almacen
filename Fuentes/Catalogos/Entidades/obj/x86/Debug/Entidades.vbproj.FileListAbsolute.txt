@@ -1,0 +1,12 @@
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Catalogos\Entidades\bin\x86\Debug\ALMEntidadesCatalogos.dll
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Catalogos\Entidades\bin\x86\Debug\ALMEntidadesCatalogos.pdb
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Catalogos\Entidades\bin\x86\Debug\ALMEntidadesCatalogos.xml
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Catalogos\Entidades\bin\x86\Debug\ALMLogicaCatalogos.dll
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Catalogos\Entidades\bin\x86\Debug\ALMLogicaCatalogos.pdb
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Catalogos\Entidades\bin\x86\Debug\ALMLogicaCatalogos.xml
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Catalogos\Entidades\obj\x86\Debug\Entidades.vbprojResolveAssemblyReference.cache
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Catalogos\Entidades\obj\x86\Debug\ALMEntidadesCatalogos.Resources.resources
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Catalogos\Entidades\obj\x86\Debug\Entidades.vbproj.GenerateResource.Cache
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Catalogos\Entidades\obj\x86\Debug\ALMEntidadesCatalogos.dll
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Catalogos\Entidades\obj\x86\Debug\ALMEntidadesCatalogos.xml
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Catalogos\Entidades\obj\x86\Debug\ALMEntidadesCatalogos.pdb

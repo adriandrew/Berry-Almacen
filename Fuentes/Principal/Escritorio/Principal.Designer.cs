@@ -200,7 +200,7 @@
             // 
             this.pnlPie.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.pnlPie.BackColor = System.Drawing.Color.Black;
+            this.pnlPie.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.pnlPie.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlPie.Controls.Add(this.btnRegresarMenu);
             this.pnlPie.Controls.Add(this.btnAyuda);
@@ -306,7 +306,7 @@
             // 
             this.pnlEncabezado.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.pnlEncabezado.BackColor = System.Drawing.Color.Black;
+            this.pnlEncabezado.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.pnlEncabezado.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlEncabezado.Controls.Add(this.lblEncabezadoLicencia);
             this.pnlEncabezado.Controls.Add(this.lblEncabezadoUsuario);

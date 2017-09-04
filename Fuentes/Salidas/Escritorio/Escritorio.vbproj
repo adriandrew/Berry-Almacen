@@ -164,9 +164,25 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Iconos Usados\agreement-48.png" />
+    <Content Include="Iconos Usados\angle_right-48.png" />
+    <Content Include="Iconos Usados\arrows_long_right-32.png" />
+    <Content Include="Iconos Usados\delete-48.png" />
+    <Content Include="Iconos Usados\exit_sign-48.png" />
+    <Content Include="Iconos Usados\hand_left-32.png" />
+    <Content Include="Iconos Usados\hand_left-48.png" />
+    <Content Include="Iconos Usados\hand_right-32.png" />
+    <Content Include="Iconos Usados\hand_right-48.png" />
+    <Content Include="Iconos Usados\PDF_2-48.png" />
+    <Content Include="Iconos Usados\print-48.png" />
+    <Content Include="Iconos Usados\printer_maintenance-48.png" />
+    <Content Include="Iconos Usados\save-48.png" />
+    <Content Include="Iconos Usados\user-48.png" />
+    <Content Include="Iconos Usados\XLS-48.png" />
     <Content Include="Logos\Logo.ico" />
     <Content Include="Logos\Logo2.ico" />
     <Content Include="Logos\Logo3.ico" />
+    <None Include="Resources\bienvenida.png" />
     <None Include="Logos\Logo3.png" />
     <Content Include="Logos\Logo4.ico" />
   </ItemGroup>

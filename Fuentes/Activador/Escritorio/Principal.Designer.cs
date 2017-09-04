@@ -152,7 +152,7 @@
             // 
             this.pnlPie.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.pnlPie.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.pnlPie.BackColor = System.Drawing.Color.Transparent;
             this.pnlPie.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlPie.Controls.Add(this.btnAyuda);
             this.pnlPie.Controls.Add(this.lblDescripcionTooltip);
@@ -215,7 +215,7 @@
             // 
             this.pnlEncabezado.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.pnlEncabezado.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.pnlEncabezado.BackColor = System.Drawing.Color.Transparent;
             this.pnlEncabezado.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlEncabezado.Controls.Add(this.lblEncabezadoArea);
             this.pnlEncabezado.Controls.Add(this.lblEncabezadoUsuario);

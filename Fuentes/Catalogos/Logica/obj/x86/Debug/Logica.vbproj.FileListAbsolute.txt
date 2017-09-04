@@ -1,0 +1,8 @@
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Catalogos\Logica\bin\x86\Debug\ALMLogicaCatalogos.dll
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Catalogos\Logica\bin\x86\Debug\ALMLogicaCatalogos.pdb
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Catalogos\Logica\bin\x86\Debug\ALMLogicaCatalogos.xml
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Catalogos\Logica\obj\x86\Debug\ALMLogicaCatalogos.Resources.resources
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Catalogos\Logica\obj\x86\Debug\Logica.vbproj.GenerateResource.Cache
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Catalogos\Logica\obj\x86\Debug\ALMLogicaCatalogos.dll
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Catalogos\Logica\obj\x86\Debug\ALMLogicaCatalogos.xml
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Catalogos\Logica\obj\x86\Debug\ALMLogicaCatalogos.pdb
