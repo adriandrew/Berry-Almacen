@@ -37,8 +37,7 @@ Public Class Principal
     Public colorFiltros As Color
     ' Hilos para carga rapida. 
     Public hiloCentrar As New Thread(AddressOf Centrar)
-    Public hiloNombrePrograma As New Thread(AddressOf CargarNombrePrograma)
-    Public hiloTooltips As New Thread(AddressOf AsignarTooltips)
+    Public hiloNombrePrograma As New Thread(AddressOf CargarNombrePrograma) 
     Public hiloEncabezadosTitulos As New Thread(AddressOf CargarEncabezadosTitulos)
     Public hiloTiposDatos As New Thread(AddressOf CargarTiposDeDatos)
     Public hiloColor As New Thread(AddressOf CargarValorColor)
@@ -52,7 +51,8 @@ Public Class Principal
         Me.Cursor = Cursors.WaitCursor
         MostrarCargando(True) 
         ConfigurarConexiones()
-        IniciarHilosCarga() 
+        IniciarHilosCarga()
+        AsignarTooltips()
         Me.Cursor = Cursors.Default
 
     End Sub
@@ -388,7 +388,11 @@ Public Class Principal
         End If
         If (crear And mostrar) Then ' Si se tiene que crear y mostrar.
             ' Imagen de fondo.
-            pnlCargando.BackgroundImage = Global.ReporteMovimientos.My.Resources.bienvenida
+            Try
+                pnlCargando.BackgroundImage = Image.FromFile(String.Format("{0}\{1}\{2}", IIf(Me.esDesarrollo, "W:", Application.StartupPath), "Imagenes", "cargando.png"))
+            Catch
+                pnlCargando.BackgroundImage = Image.FromFile(String.Format("{0}\{1}\{2}", IIf(Me.esDesarrollo, "W:", Application.StartupPath), "Imagenes", "logoBerry.png"))
+            End Try
             pnlCargando.BackgroundImageLayout = ImageLayout.Center
             pnlCargando.BackColor = Color.DarkSlateGray
             pnlCargando.Width = Me.Width
@@ -427,8 +431,7 @@ Public Class Principal
 
         CheckForIllegalCrossThreadCalls = False
         hiloNombrePrograma.Start()
-        hiloCentrar.Start()
-        hiloTooltips.Start()
+        hiloCentrar.Start() 
         hiloEncabezadosTitulos.Start()
         hiloTiposDatos.Start()
         hiloColor.Start()
@@ -500,13 +503,13 @@ Public Class Principal
         tp.ReshowDelay = 100
         tp.ShowAlways = True
         tp.SetToolTip(Me.btnSalir, "Salir.")
+        tp.SetToolTip(Me.btnAyuda, "Ayuda.")
         tp.SetToolTip(Me.btnImprimir, "Imprimir.")
         tp.SetToolTip(Me.btnExportarExcel, "Exportar a Excel.")
         tp.SetToolTip(Me.btnExportarPdf, "Exportar a Pdf.")
         tp.SetToolTip(Me.btnGenerar, "Generar Reporte.")
         tp.SetToolTip(Me.pnlFiltros, "Filtros para Generar el Reporte.")
-        tp.SetToolTip(Me.spReporte, "Datos del Reporte.")
-        hiloTooltips.Abort()
+        tp.SetToolTip(Me.spReporte, "Datos del Reporte.") 
 
     End Sub
 

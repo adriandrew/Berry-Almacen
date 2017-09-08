@@ -130,7 +130,7 @@
             this.btnSalir.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumAquamarine;
             this.btnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSalir.Image = ((System.Drawing.Image)(resources.GetObject("btnSalir.Image")));
-            this.btnSalir.Location = new System.Drawing.Point(972, -1);
+            this.btnSalir.Location = new System.Drawing.Point(972, 0);
             this.btnSalir.Margin = new System.Windows.Forms.Padding(0);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(60, 60);
@@ -145,7 +145,8 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlContenido.BackColor = System.Drawing.Color.DarkSlateGray;
-            this.pnlContenido.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pnlContenido.BackgroundImage = global::PrincipalBerry.Properties.Resources.Logo3;
+            this.pnlContenido.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pnlContenido.Controls.Add(this.pnlEncabezado);
             this.pnlContenido.Controls.Add(this.pnlCuerpo);
             this.pnlContenido.Controls.Add(this.pnlPie);

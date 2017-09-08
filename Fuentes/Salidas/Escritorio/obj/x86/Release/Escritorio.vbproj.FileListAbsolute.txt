@@ -139,8 +139,8 @@ C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Salidas
 C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Salidas\Escritorio\bin\x86\Release\ALMLogicaSalidas.pdb
 C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Salidas\Escritorio\bin\x86\Release\ALMLogicaSalidas.xml
 C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Salidas\Escritorio\obj\x86\Release\Escritorio.vbprojResolveAssemblyReference.cache
-C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Salidas\Escritorio\obj\x86\Release\Salidas.Resources.resources
-C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Salidas\Escritorio\obj\x86\Release\Salidas.Principal.resources
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Salidas\Escritorio\obj\x86\Release\ALMSalidas.Resources.resources
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Salidas\Escritorio\obj\x86\Release\ALMSalidas.Principal.resources
 C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Salidas\Escritorio\obj\x86\Release\Escritorio.vbproj.GenerateResource.Cache
 C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Salidas\Escritorio\obj\x86\Release\ALM03.exe.licenses
 C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Salidas\Escritorio\obj\x86\Release\ALM03.exe

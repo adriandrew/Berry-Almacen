@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{0838C334-6727-4837-93EB-09282233D30E}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <StartupObject>Catalogos.My.MyApplication</StartupObject>
-    <RootNamespace>Catalogos</RootNamespace>
+    <StartupObject>ALMCatalogos.My.MyApplication</StartupObject>
+    <RootNamespace>ALMCatalogos</RootNamespace>
     <AssemblyName>ALM01</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>WindowsForms</MyType>

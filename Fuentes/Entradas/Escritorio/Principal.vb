@@ -48,10 +48,8 @@ Public Class Principal
     Public esGuardadoValido As Boolean = True
     ' Hilos para carga rapida. 
     Public hiloCentrar As New Thread(AddressOf Centrar)
-    Public hiloNombrePrograma As New Thread(AddressOf CargarNombrePrograma)
-    Public hiloTooltips As New Thread(AddressOf AsignarTooltips)
-    Public hiloEncabezadosTitulos As New Thread(AddressOf CargarEncabezadosTitulos)
-    Public hiloMedidas As New Thread(AddressOf CargarMedidas)
+    Public hiloNombrePrograma As New Thread(AddressOf CargarNombrePrograma) 
+    Public hiloEncabezadosTitulos As New Thread(AddressOf CargarEncabezadosTitulos) 
     ' Variable de desarrollo.
     Public esDesarrollo As Boolean = False
 
@@ -63,6 +61,8 @@ Public Class Principal
         MostrarCargando(True)
         ConfigurarConexiones()
         IniciarHilosCarga()
+        AsignarTooltips()
+        CargarMedidas()
         Me.Cursor = Cursors.Default
 
     End Sub
@@ -392,7 +392,11 @@ Public Class Principal
         End If
         If (crear And mostrar) Then ' Si se tiene que crear y mostrar.
             ' Imagen de fondo.
-            pnlCargando.BackgroundImage = Global.Entradas.My.Resources.bienvenida
+            Try
+                pnlCargando.BackgroundImage = Image.FromFile(String.Format("{0}\{1}\{2}", IIf(Me.esDesarrollo, "W:", Application.StartupPath), "Imagenes", "cargando.png"))
+            Catch
+                pnlCargando.BackgroundImage = Image.FromFile(String.Format("{0}\{1}\{2}", IIf(Me.esDesarrollo, "W:", Application.StartupPath), "Imagenes", "logoBerry.png"))
+            End Try
             pnlCargando.BackgroundImageLayout = ImageLayout.Center
             pnlCargando.BackColor = Color.DarkSlateGray
             pnlCargando.Width = Me.Width
@@ -431,10 +435,8 @@ Public Class Principal
 
         CheckForIllegalCrossThreadCalls = False
         hiloNombrePrograma.Start()
-        hiloCentrar.Start()
-        hiloTooltips.Start()
-        hiloEncabezadosTitulos.Start()
-        hiloMedidas.Start()
+        hiloCentrar.Start() 
+        hiloEncabezadosTitulos.Start() 
 
     End Sub
 
@@ -531,8 +533,7 @@ Public Class Principal
         tp.SetToolTip(Me.btnAyuda, "Ayuda.")
         tp.SetToolTip(Me.btnSalir, "Salir.")
         tp.SetToolTip(Me.btnGuardar, "Guardar.")
-        tp.SetToolTip(Me.btnEliminar, "Eliminar.")
-        hiloTooltips.Abort()
+        tp.SetToolTip(Me.btnEliminar, "Eliminar.") 
 
     End Sub
 
@@ -674,8 +675,7 @@ Public Class Principal
         Me.altoMitad = Me.altoTotal / 2
         Me.anchoTercio = Me.anchoTotal / 3
         Me.altoTercio = Me.altoTotal / 3
-        Me.altoCuarto = Me.altoTotal / 4
-        hiloMedidas.Abort()
+        Me.altoCuarto = Me.altoTotal / 4 
 
     End Sub
 

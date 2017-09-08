@@ -31,7 +31,6 @@
             FarPoint.Win.Spread.CellType.EnhancedColumnHeaderRenderer enhancedColumnHeaderRenderer1 = new FarPoint.Win.Spread.CellType.EnhancedColumnHeaderRenderer();
             FarPoint.Win.Spread.CellType.EnhancedColumnHeaderRenderer enhancedColumnHeaderRenderer2 = new FarPoint.Win.Spread.CellType.EnhancedColumnHeaderRenderer();
             FarPoint.Win.Spread.CellType.EnhancedRowHeaderRenderer enhancedRowHeaderRenderer1 = new FarPoint.Win.Spread.CellType.EnhancedRowHeaderRenderer();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PanelControl));
             FarPoint.Win.Spread.EnhancedScrollBarRenderer enhancedScrollBarRenderer9 = new FarPoint.Win.Spread.EnhancedScrollBarRenderer();
             FarPoint.Win.Spread.EnhancedScrollBarRenderer enhancedScrollBarRenderer10 = new FarPoint.Win.Spread.EnhancedScrollBarRenderer();
             FarPoint.Win.Spread.EnhancedScrollBarRenderer enhancedScrollBarRenderer11 = new FarPoint.Win.Spread.EnhancedScrollBarRenderer();
@@ -57,13 +56,12 @@
             FarPoint.Win.Spread.EnhancedScrollBarRenderer enhancedScrollBarRenderer4 = new FarPoint.Win.Spread.EnhancedScrollBarRenderer();
             FarPoint.Win.Spread.EnhancedScrollBarRenderer enhancedScrollBarRenderer5 = new FarPoint.Win.Spread.EnhancedScrollBarRenderer();
             FarPoint.Win.Spread.EnhancedScrollBarRenderer enhancedScrollBarRenderer6 = new FarPoint.Win.Spread.EnhancedScrollBarRenderer();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PanelControl));
             this.pnlContenido = new System.Windows.Forms.Panel();
             this.pnlEncabezado = new System.Windows.Forms.Panel();
             this.lblEncabezadoDirectorio = new System.Windows.Forms.Label();
             this.lblEncabezadoPrograma = new System.Windows.Forms.Label();
             this.pnlCuerpo = new System.Windows.Forms.Panel();
-            this.btnGuardar = new System.Windows.Forms.Button();
-            this.btnEliminar = new System.Windows.Forms.Button();
             this.pnlMenu = new System.Windows.Forms.Panel();
             this.rbtnDirectorios = new System.Windows.Forms.RadioButton();
             this.rbtnSubProgramas = new System.Windows.Forms.RadioButton();
@@ -83,6 +81,8 @@
             this.spSubProgramas = new FarPoint.Win.Spread.FpSpread();
             this.spSubProgramas_Sheet1 = new FarPoint.Win.Spread.SheetView();
             this.pnlPie = new System.Windows.Forms.Panel();
+            this.btnGuardar = new System.Windows.Forms.Button();
+            this.btnEliminar = new System.Windows.Forms.Button();
             this.lblDescripcionTooltip = new System.Windows.Forms.Label();
             this.btnSalir = new System.Windows.Forms.Button();
             this.pnlContenido.SuspendLayout();
@@ -131,7 +131,8 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlContenido.BackColor = System.Drawing.Color.DarkSlateGray;
-            this.pnlContenido.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pnlContenido.BackgroundImage = global::PrincipalBerry.Properties.Resources.Logo3;
+            this.pnlContenido.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pnlContenido.Controls.Add(this.pnlEncabezado);
             this.pnlContenido.Controls.Add(this.pnlCuerpo);
             this.pnlContenido.Controls.Add(this.pnlPie);
@@ -183,8 +184,6 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlCuerpo.AutoScroll = true;
             this.pnlCuerpo.BackColor = System.Drawing.Color.Transparent;
-            this.pnlCuerpo.Controls.Add(this.btnGuardar);
-            this.pnlCuerpo.Controls.Add(this.btnEliminar);
             this.pnlCuerpo.Controls.Add(this.pnlMenu);
             this.pnlCuerpo.Controls.Add(this.spDirectorios);
             this.pnlCuerpo.Controls.Add(this.spModulos);
@@ -197,44 +196,6 @@
             this.pnlCuerpo.Size = new System.Drawing.Size(1032, 489);
             this.pnlCuerpo.TabIndex = 12;
             this.pnlCuerpo.MouseEnter += new System.EventHandler(this.pnlCuerpo_MouseEnter);
-            // 
-            // btnGuardar
-            // 
-            this.btnGuardar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnGuardar.BackColor = System.Drawing.Color.White;
-            this.btnGuardar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnGuardar.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.btnGuardar.FlatAppearance.BorderSize = 3;
-            this.btnGuardar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumAquamarine;
-            this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGuardar.Image = ((System.Drawing.Image)(resources.GetObject("btnGuardar.Image")));
-            this.btnGuardar.Location = new System.Drawing.Point(969, 429);
-            this.btnGuardar.Margin = new System.Windows.Forms.Padding(0);
-            this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(60, 60);
-            this.btnGuardar.TabIndex = 19;
-            this.btnGuardar.UseVisualStyleBackColor = false;
-            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
-            this.btnGuardar.MouseEnter += new System.EventHandler(this.btnGuardar_MouseEnter);
-            // 
-            // btnEliminar
-            // 
-            this.btnEliminar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnEliminar.BackColor = System.Drawing.Color.White;
-            this.btnEliminar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnEliminar.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.btnEliminar.FlatAppearance.BorderSize = 3;
-            this.btnEliminar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumAquamarine;
-            this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEliminar.Image = ((System.Drawing.Image)(resources.GetObject("btnEliminar.Image")));
-            this.btnEliminar.Location = new System.Drawing.Point(908, 429);
-            this.btnEliminar.Margin = new System.Windows.Forms.Padding(0);
-            this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(60, 60);
-            this.btnEliminar.TabIndex = 20;
-            this.btnEliminar.UseVisualStyleBackColor = false;
-            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
-            this.btnEliminar.MouseEnter += new System.EventHandler(this.btnEliminar_MouseEnter);
             // 
             // pnlMenu
             // 
@@ -255,65 +216,75 @@
             // rbtnDirectorios
             // 
             this.rbtnDirectorios.AutoSize = true;
+            this.rbtnDirectorios.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rbtnDirectorios.ForeColor = System.Drawing.Color.White;
-            this.rbtnDirectorios.Location = new System.Drawing.Point(576, 3);
+            this.rbtnDirectorios.Location = new System.Drawing.Point(600, 6);
             this.rbtnDirectorios.Name = "rbtnDirectorios";
-            this.rbtnDirectorios.Size = new System.Drawing.Size(117, 28);
+            this.rbtnDirectorios.Size = new System.Drawing.Size(150, 24);
             this.rbtnDirectorios.TabIndex = 5;
             this.rbtnDirectorios.TabStop = true;
-            this.rbtnDirectorios.Text = "Directorios";
+            this.rbtnDirectorios.Text = "DIRECTORIOS";
+            this.rbtnDirectorios.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.rbtnDirectorios.UseVisualStyleBackColor = true;
             this.rbtnDirectorios.CheckedChanged += new System.EventHandler(this.rbtnDirectorios_CheckedChanged);
             // 
             // rbtnSubProgramas
             // 
             this.rbtnSubProgramas.AutoSize = true;
+            this.rbtnSubProgramas.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rbtnSubProgramas.ForeColor = System.Drawing.Color.White;
-            this.rbtnSubProgramas.Location = new System.Drawing.Point(281, 3);
+            this.rbtnSubProgramas.Location = new System.Drawing.Point(285, 6);
             this.rbtnSubProgramas.Name = "rbtnSubProgramas";
-            this.rbtnSubProgramas.Size = new System.Drawing.Size(153, 28);
+            this.rbtnSubProgramas.Size = new System.Drawing.Size(178, 24);
             this.rbtnSubProgramas.TabIndex = 4;
             this.rbtnSubProgramas.TabStop = true;
-            this.rbtnSubProgramas.Text = "SubProgramas";
+            this.rbtnSubProgramas.Text = "SUBPROGRAMAS";
+            this.rbtnSubProgramas.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.rbtnSubProgramas.UseVisualStyleBackColor = true;
             this.rbtnSubProgramas.CheckedChanged += new System.EventHandler(this.rbtnSubProgramas_CheckedChanged);
             // 
             // rbtnModulos
             // 
             this.rbtnModulos.AutoSize = true;
+            this.rbtnModulos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rbtnModulos.ForeColor = System.Drawing.Color.White;
-            this.rbtnModulos.Location = new System.Drawing.Point(13, 3);
+            this.rbtnModulos.Location = new System.Drawing.Point(13, 6);
             this.rbtnModulos.Name = "rbtnModulos";
-            this.rbtnModulos.Size = new System.Drawing.Size(101, 28);
+            this.rbtnModulos.Size = new System.Drawing.Size(115, 24);
             this.rbtnModulos.TabIndex = 3;
             this.rbtnModulos.TabStop = true;
-            this.rbtnModulos.Text = "Módulos";
+            this.rbtnModulos.Text = "MÓDULOS";
+            this.rbtnModulos.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.rbtnModulos.UseVisualStyleBackColor = true;
             this.rbtnModulos.CheckedChanged += new System.EventHandler(this.rbtnModulos_CheckedChanged);
             // 
             // rbtnProgramas
             // 
             this.rbtnProgramas.AutoSize = true;
+            this.rbtnProgramas.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rbtnProgramas.ForeColor = System.Drawing.Color.White;
-            this.rbtnProgramas.Location = new System.Drawing.Point(140, 3);
+            this.rbtnProgramas.Location = new System.Drawing.Point(136, 6);
             this.rbtnProgramas.Name = "rbtnProgramas";
-            this.rbtnProgramas.Size = new System.Drawing.Size(119, 28);
+            this.rbtnProgramas.Size = new System.Drawing.Size(141, 24);
             this.rbtnProgramas.TabIndex = 2;
             this.rbtnProgramas.TabStop = true;
-            this.rbtnProgramas.Text = "Programas";
+            this.rbtnProgramas.Text = "PROGRAMAS";
+            this.rbtnProgramas.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.rbtnProgramas.UseVisualStyleBackColor = true;
             this.rbtnProgramas.CheckedChanged += new System.EventHandler(this.rbtnProgramas_CheckedChanged);
             // 
             // rbtnUsuarios
             // 
             this.rbtnUsuarios.AutoSize = true;
+            this.rbtnUsuarios.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rbtnUsuarios.ForeColor = System.Drawing.Color.White;
-            this.rbtnUsuarios.Location = new System.Drawing.Point(454, 3);
+            this.rbtnUsuarios.Location = new System.Drawing.Point(471, 6);
             this.rbtnUsuarios.Name = "rbtnUsuarios";
-            this.rbtnUsuarios.Size = new System.Drawing.Size(101, 28);
+            this.rbtnUsuarios.Size = new System.Drawing.Size(121, 24);
             this.rbtnUsuarios.TabIndex = 0;
             this.rbtnUsuarios.TabStop = true;
-            this.rbtnUsuarios.Text = "Usuarios";
+            this.rbtnUsuarios.Text = "USUARIOS";
+            this.rbtnUsuarios.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.rbtnUsuarios.UseVisualStyleBackColor = true;
             this.rbtnUsuarios.CheckedChanged += new System.EventHandler(this.rbtnUsuarios_CheckedChanged);
             // 
@@ -703,7 +674,7 @@
             this.spProgramas.HorizontalScrollBar.Renderer = enhancedScrollBarRenderer3;
             this.spProgramas.HorizontalScrollBar.TabIndex = 2;
             this.spProgramas.HorizontalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.AsNeeded;
-            this.spProgramas.Location = new System.Drawing.Point(347, 255);
+            this.spProgramas.Location = new System.Drawing.Point(352, 255);
             this.spProgramas.Name = "spProgramas";
             this.spProgramas.Sheets.AddRange(new FarPoint.Win.Spread.SheetView[] {
             this.spProgramas_Sheet1});
@@ -823,6 +794,8 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlPie.BackColor = System.Drawing.Color.Transparent;
             this.pnlPie.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlPie.Controls.Add(this.btnGuardar);
+            this.pnlPie.Controls.Add(this.btnEliminar);
             this.pnlPie.Controls.Add(this.lblDescripcionTooltip);
             this.pnlPie.Controls.Add(this.btnSalir);
             this.pnlPie.Location = new System.Drawing.Point(0, 570);
@@ -830,6 +803,44 @@
             this.pnlPie.Size = new System.Drawing.Size(1034, 60);
             this.pnlPie.TabIndex = 9;
             this.pnlPie.MouseEnter += new System.EventHandler(this.pnlPie_MouseEnter);
+            // 
+            // btnGuardar
+            // 
+            this.btnGuardar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnGuardar.BackColor = System.Drawing.Color.White;
+            this.btnGuardar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnGuardar.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btnGuardar.FlatAppearance.BorderSize = 3;
+            this.btnGuardar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumAquamarine;
+            this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGuardar.Image = ((System.Drawing.Image)(resources.GetObject("btnGuardar.Image")));
+            this.btnGuardar.Location = new System.Drawing.Point(907, 0);
+            this.btnGuardar.Margin = new System.Windows.Forms.Padding(0);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(60, 60);
+            this.btnGuardar.TabIndex = 19;
+            this.btnGuardar.UseVisualStyleBackColor = false;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
+            this.btnGuardar.MouseEnter += new System.EventHandler(this.btnGuardar_MouseEnter);
+            // 
+            // btnEliminar
+            // 
+            this.btnEliminar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEliminar.BackColor = System.Drawing.Color.White;
+            this.btnEliminar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEliminar.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btnEliminar.FlatAppearance.BorderSize = 3;
+            this.btnEliminar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumAquamarine;
+            this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEliminar.Image = ((System.Drawing.Image)(resources.GetObject("btnEliminar.Image")));
+            this.btnEliminar.Location = new System.Drawing.Point(846, 0);
+            this.btnEliminar.Margin = new System.Windows.Forms.Padding(0);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(60, 60);
+            this.btnEliminar.TabIndex = 20;
+            this.btnEliminar.UseVisualStyleBackColor = false;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
+            this.btnEliminar.MouseEnter += new System.EventHandler(this.btnEliminar_MouseEnter);
             // 
             // lblDescripcionTooltip
             // 
@@ -851,7 +862,7 @@
             this.btnSalir.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumAquamarine;
             this.btnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSalir.Image = ((System.Drawing.Image)(resources.GetObject("btnSalir.Image")));
-            this.btnSalir.Location = new System.Drawing.Point(972, -1);
+            this.btnSalir.Location = new System.Drawing.Point(972, 0);
             this.btnSalir.Margin = new System.Windows.Forms.Padding(0);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(60, 60);

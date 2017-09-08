@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{0838C334-6727-4837-93EB-09282233D30E}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <StartupObject>ReporteMovimientos.My.MyApplication</StartupObject>
-    <RootNamespace>ReporteMovimientos</RootNamespace>
+    <StartupObject>ALMReporteMovimientos.My.MyApplication</StartupObject>
+    <RootNamespace>ALMReporteMovimientos</RootNamespace>
     <AssemblyName>ALM05</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>WindowsForms</MyType>
