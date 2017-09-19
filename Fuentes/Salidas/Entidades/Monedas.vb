@@ -28,9 +28,30 @@ Public Class Monedas
             Dim datos As New DataTable
             Dim comando As New SqlCommand()
             comando.Connection = BaseDatos.conexionCatalogo
-            comando.CommandText = "SELECT Id, Nombre FROM " & ALMLogicaSalidas.Programas.prefijoBaseDatosAlmacen & "Monedas " & _
-            " UNION SELECT -1 AS Id, NULL AS Nombre FROM " & ALMLogicaSalidas.Programas.prefijoBaseDatosAlmacen & "Monedas " & _
-            " ORDER BY Id ASC"
+            comando.CommandText = String.Format("SELECT Id, Nombre, (CAST(Id AS Varchar)+' - '+ Nombre) AS IdNombre FROM {0}Monedas " & _
+            " UNION SELECT -1 AS Id, NULL AS Nombre, NULL AS IdNombre FROM {0}Monedas " & _
+            " ORDER BY Id ASC", ALMLogicaSalidas.Programas.prefijoBaseDatosAlmacen)
+            BaseDatos.conexionCatalogo.Open()
+            Dim lectorDatos As SqlDataReader
+            lectorDatos = comando.ExecuteReader()
+            datos.Load(lectorDatos)
+            BaseDatos.conexionCatalogo.Close()
+            Return datos
+        Catch ex As Exception
+            Throw ex
+        Finally
+            BaseDatos.conexionCatalogo.Close()
+        End Try
+
+    End Function
+
+    Public Function ObtenerListadoReporteCatalogo() As DataTable
+
+        Try
+            Dim datos As New DataTable
+            Dim comando As New SqlCommand()
+            comando.Connection = BaseDatos.conexionCatalogo
+            comando.CommandText = String.Format("SELECT Id, Nombre FROM {0}Monedas ORDER BY Id ASC", ALMLogicaSalidas.Programas.prefijoBaseDatosAlmacen)
             BaseDatos.conexionCatalogo.Open()
             Dim lectorDatos As SqlDataReader
             lectorDatos = comando.ExecuteReader()

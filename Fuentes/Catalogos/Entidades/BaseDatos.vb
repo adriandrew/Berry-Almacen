@@ -7,7 +7,7 @@ Public Module BaseDatos
     Private cadenaConexionAlmacen As String
     Public conexionConfiguracion As New SqlConnection()
     Public conexionCatalogo As New SqlConnection()
-    Public conexionAgenda As New SqlConnection()
+    Public conexionAlmacen As New SqlConnection()
 
     Public Property ECadenaConexionConfiguracion() As String
         Get
@@ -51,7 +51,7 @@ Public Module BaseDatos
     Public Sub AbrirConexionAlmacen()
 
         BaseDatos.ECadenaConexionAlmacen = String.Format("Data Source={0};Initial Catalog={1};User Id={2};Password={3}", ALMLogicaCatalogos.Directorios.instanciaSql, BaseDatos.ECadenaConexionAlmacen, ALMLogicaCatalogos.Directorios.usuarioSql, ALMLogicaCatalogos.Directorios.contrasenaSql)
-        conexionAgenda.ConnectionString = BaseDatos.ECadenaConexionAlmacen
+        conexionAlmacen.ConnectionString = BaseDatos.ECadenaConexionAlmacen
 
     End Sub
 

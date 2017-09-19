@@ -131,7 +131,6 @@ Partial Class Principal
         'rbtnEntradas
         '
         Me.rbtnEntradas.Appearance = System.Windows.Forms.Appearance.Button
-        Me.rbtnEntradas.AutoSize = True
         Me.rbtnEntradas.BackColor = System.Drawing.Color.White
         Me.rbtnEntradas.Cursor = System.Windows.Forms.Cursors.Hand
         Me.rbtnEntradas.FlatAppearance.BorderColor = System.Drawing.Color.Silver
@@ -141,18 +140,18 @@ Partial Class Principal
         Me.rbtnEntradas.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.rbtnEntradas.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.rbtnEntradas.ForeColor = System.Drawing.Color.Black
-        Me.rbtnEntradas.Location = New System.Drawing.Point(7, 3)
+        Me.rbtnEntradas.Location = New System.Drawing.Point(5, 3)
         Me.rbtnEntradas.Name = "rbtnEntradas"
-        Me.rbtnEntradas.Size = New System.Drawing.Size(110, 32)
+        Me.rbtnEntradas.Size = New System.Drawing.Size(155, 32)
         Me.rbtnEntradas.TabIndex = 3
         Me.rbtnEntradas.TabStop = True
         Me.rbtnEntradas.Text = "ENTRADAS"
+        Me.rbtnEntradas.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         Me.rbtnEntradas.UseVisualStyleBackColor = False
         '
         'rbtnSalidas
         '
         Me.rbtnSalidas.Appearance = System.Windows.Forms.Appearance.Button
-        Me.rbtnSalidas.AutoSize = True
         Me.rbtnSalidas.BackColor = System.Drawing.Color.White
         Me.rbtnSalidas.Cursor = System.Windows.Forms.Cursors.Hand
         Me.rbtnSalidas.FlatAppearance.BorderColor = System.Drawing.Color.Silver
@@ -162,12 +161,13 @@ Partial Class Principal
         Me.rbtnSalidas.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.rbtnSalidas.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.rbtnSalidas.ForeColor = System.Drawing.Color.Black
-        Me.rbtnSalidas.Location = New System.Drawing.Point(120, 3)
+        Me.rbtnSalidas.Location = New System.Drawing.Point(163, 3)
         Me.rbtnSalidas.Name = "rbtnSalidas"
-        Me.rbtnSalidas.Size = New System.Drawing.Size(89, 32)
+        Me.rbtnSalidas.Size = New System.Drawing.Size(155, 32)
         Me.rbtnSalidas.TabIndex = 2
         Me.rbtnSalidas.TabStop = True
         Me.rbtnSalidas.Text = "SALIDAS"
+        Me.rbtnSalidas.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         Me.rbtnSalidas.UseVisualStyleBackColor = False
         '
         'spParaClonar
@@ -723,7 +723,6 @@ Partial Class Principal
         Me.pnlContenido.ResumeLayout(False)
         Me.pnlCuerpo.ResumeLayout(False)
         Me.pnlMenu.ResumeLayout(False)
-        Me.pnlMenu.PerformLayout()
         CType(Me.spParaClonar, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.spParaClonar_Sheet1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.pnlFiltros.ResumeLayout(False)

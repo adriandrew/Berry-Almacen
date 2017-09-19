@@ -16,7 +16,7 @@ namespace Escritorio
 {
     public partial class Principal : Form
     {
-        
+
         // Variables de objetos de entidades.
         public Entidades.BaseDatos baseDatos = new Entidades.BaseDatos();
         public Entidades.Directorios directorios = new Entidades.Directorios(); 

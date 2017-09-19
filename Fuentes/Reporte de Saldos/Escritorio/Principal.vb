@@ -437,32 +437,33 @@ Public Class Principal
         Dim pnlAyuda As New Panel()
         Dim txtAyuda As New TextBox()
         If (pnlContenido.Controls.Find("pnlAyuda", True).Count = 0) Then
-            pnlAyuda.Name = "pnlAyuda" : Application.DoEvents()
-            pnlAyuda.Visible = False : Application.DoEvents()
-            pnlContenido.Controls.Add(pnlAyuda) : Application.DoEvents()
-            txtAyuda.Name = "txtAyuda" : Application.DoEvents()
-            pnlAyuda.Controls.Add(txtAyuda) : Application.DoEvents()
+            pnlAyuda.Name = "pnlAyuda"
+            pnlAyuda.Visible = False
+            pnlContenido.Controls.Add(pnlAyuda)
+            txtAyuda.Name = "txtAyuda"
+            pnlAyuda.Controls.Add(txtAyuda)
         Else
-            pnlAyuda = pnlContenido.Controls.Find("pnlAyuda", False)(0) : Application.DoEvents()
-            txtAyuda = pnlAyuda.Controls.Find("txtAyuda", False)(0) : Application.DoEvents()
+            pnlAyuda = pnlContenido.Controls.Find("pnlAyuda", False)(0)
+            txtAyuda = pnlAyuda.Controls.Find("txtAyuda", False)(0)
         End If
         If (Not pnlAyuda.Visible) Then
-            pnlCuerpo.Visible = False : Application.DoEvents()
-            pnlAyuda.Visible = True : Application.DoEvents()
-            pnlAyuda.Size = pnlCuerpo.Size : Application.DoEvents()
-            pnlAyuda.Location = pnlCuerpo.Location : Application.DoEvents()
-            pnlContenido.Controls.Add(pnlAyuda) : Application.DoEvents()
-            txtAyuda.ScrollBars = ScrollBars.Both : Application.DoEvents()
-            txtAyuda.Multiline = True : Application.DoEvents()
-            txtAyuda.Width = pnlAyuda.Width - 10 : Application.DoEvents()
-            txtAyuda.Height = pnlAyuda.Height - 10 : Application.DoEvents()
-            txtAyuda.Location = New Point(5, 5) : Application.DoEvents()
-            txtAyuda.Text = "Sección de Ayuda: " & vbNewLine & vbNewLine & "* Reporte: " & vbNewLine & "En esta pantalla se desplegará el reporte de acuerdo a los filtros que se hayan seleccionado. " & vbNewLine & "En la parte izquierda se puede agregar cualquiera de los filtros. Existen unos botones que se encuentran en las fechas que contienen la palabra si o no, si la palabra mostrada es si, el rango de fecha correspondiente se incluirá como filtro para el reporte, esto aplica para todas las opciones de fechas. Posteriormente se procede a generar el reporte con los criterios seleccionados. Cuando se termine de generar dicho reporte, se habilitarán las opciones de imprimir, exportar a excel o exportar a pdf, en estas dos últimas el usuario puede guardarlos directamente desde el archivo que se muestra en pantalla si así lo desea, mas no desde el sistema directamente." : Application.DoEvents()
-            pnlAyuda.Controls.Add(txtAyuda) : Application.DoEvents()
+            pnlCuerpo.Visible = False
+            pnlAyuda.Visible = True
+            pnlAyuda.Size = pnlCuerpo.Size
+            pnlAyuda.Location = pnlCuerpo.Location
+            pnlContenido.Controls.Add(pnlAyuda)
+            txtAyuda.ScrollBars = ScrollBars.Both
+            txtAyuda.Multiline = True
+            txtAyuda.Width = pnlAyuda.Width - 10
+            txtAyuda.Height = pnlAyuda.Height - 10
+            txtAyuda.Location = New Point(5, 5)
+            txtAyuda.Text = "Sección de Ayuda: " & vbNewLine & vbNewLine & "* Reporte: " & vbNewLine & "En esta pantalla se desplegará el reporte de acuerdo a los filtros que se hayan seleccionado. " & vbNewLine & "En la parte izquierda se puede agregar cualquiera de los filtros. Existen unos botones que se encuentran en las fechas que contienen la palabra si o no, si la palabra mostrada es si, el rango de fecha correspondiente se incluirá como filtro para el reporte, esto aplica para todas las opciones de fechas. Posteriormente se procede a generar el reporte con los criterios seleccionados. Cuando se termine de generar dicho reporte, se habilitarán las opciones de imprimir, exportar a excel o exportar a pdf, en estas dos últimas el usuario puede guardarlos directamente desde el archivo que se muestra en pantalla si así lo desea, mas no desde el sistema directamente."
+            pnlAyuda.Controls.Add(txtAyuda)
         Else
-            pnlCuerpo.Visible = True : Application.DoEvents()
-            pnlAyuda.Visible = False : Application.DoEvents()
+            pnlCuerpo.Visible = True
+            pnlAyuda.Visible = False
         End If
+        Application.DoEvents()
 
     End Sub
 
@@ -688,7 +689,7 @@ Public Class Principal
         encabezado2 = encabezado2.ToUpper
         encabezado3 = "/l/fz""" & fuente7 & """" & lista(0).ELocalidad & "/c/fb1/fz""" & fuente8 & """" & spReporte.ActiveSheet.SheetName & "/r/fz""" & fuente7 & """" & "Hora: " & Now.ToShortTimeString
         encabezado3 = encabezado3.ToUpper
-        If esPdf Then
+        If (esPdf) Then
             Dim bandera As Boolean = True
             Dim obtenerRandom As System.Random = New System.Random()
             Try
@@ -712,12 +713,12 @@ Public Class Principal
         For indice = 0 To spReporte.Sheets.Count - 1
             spReporte.Sheets(indice).PrintInfo = informacionImpresion
         Next
-        If Not esPdf Then
-            If impresor.ShowDialog = Windows.Forms.DialogResult.OK Then
-                spReporte.PrintSheet(-1)
+        If (Not esPdf) Then
+            If (impresor.ShowDialog = Windows.Forms.DialogResult.OK) Then
+                spReporte.PrintSheet(0)
             End If
         Else
-            spReporte.PrintSheet(-1)
+            spReporte.PrintSheet(0)
             Try
                 System.Diagnostics.Process.Start(nombrePdf)
                 System.Diagnostics.Process.Start(rutaTemporal & nombrePdf)
@@ -1038,7 +1039,7 @@ Public Class Principal
         spReporte.ActiveSheet.Charts.Add(grafico)
         ' Se regresa al reporte principal.
         spReporte.ActiveSheetIndex = 0
-        Application.DoEvents()
+        spReporte.Refresh()
         Me.Cursor = Cursors.Default
 
     End Sub
@@ -1101,7 +1102,7 @@ Public Class Principal
         spReporte.ActiveSheet.Charts.Add(grafico2)
         ' Se regresa al reporte principal.
         spReporte.ActiveSheetIndex = 0
-        Application.DoEvents()
+        spReporte.Refresh()
         Me.Cursor = Cursors.Default
 
     End Sub
@@ -1145,7 +1146,7 @@ Public Class Principal
         spReporte.HorizontalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.AsNeeded
         spReporte.VerticalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.AsNeeded
         spReporte.ActiveSheet.Rows(-1).Height = Principal.alturaFilasSpread
-        Application.DoEvents()
+        spReporte.Refresh()
 
     End Sub
 
@@ -1183,7 +1184,7 @@ Public Class Principal
         spReporte.ActiveSheet.Columns("idSubFamilia").Width = 50
         spReporte.ActiveSheet.Columns("nombreSubFamilia").Width = 170
         spReporte.ActiveSheet.Columns("idArticulo").Width = 50
-        spReporte.ActiveSheet.Columns("nombreArticulo").Width = 170
+        spReporte.ActiveSheet.Columns("nombreArticulo").Width = 200
         spReporte.ActiveSheet.Columns("saldoAnterior").Width = 100
         spReporte.ActiveSheet.Columns("costoAnterior").Width = 100
         spReporte.ActiveSheet.Columns("saldoEntradasRango").Width = 100
@@ -1192,6 +1193,10 @@ Public Class Principal
         spReporte.ActiveSheet.Columns("costoSalidasRango").Width = 100
         spReporte.ActiveSheet.Columns("saldoActual").Width = 100
         spReporte.ActiveSheet.Columns("costoActual").Width = 100
+        spReporte.ActiveSheet.Columns("idAlmacen").CellType = tipoEntero
+        spReporte.ActiveSheet.Columns("idFamilia").CellType = tipoEntero
+        spReporte.ActiveSheet.Columns("idSubFamilia").CellType = tipoEntero
+        spReporte.ActiveSheet.Columns("idArticulo").CellType = tipoEntero
         spReporte.ActiveSheet.Columns("saldoAnterior").CellType = tipoEntero
         spReporte.ActiveSheet.Columns("costoAnterior").CellType = tipoDoble
         spReporte.ActiveSheet.Columns("saldoEntradasRango").CellType = tipoEntero
@@ -1236,7 +1241,7 @@ Public Class Principal
         If (Not chkFecha.Checked) Then
             spReporte.ActiveSheet.Columns(spReporte.ActiveSheet.Columns("saldoAnterior").Index, spReporte.ActiveSheet.Columns("saldoActual").Index - 1).Visible = False
         End If
-        Application.DoEvents()
+        spReporte.Refresh()
 
     End Sub
 

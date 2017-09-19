@@ -138,22 +138,22 @@ Public Class Usuarios
         Try
             Dim resultado As Boolean = False
             Dim comando As New SqlCommand()
-            comando.Connection = BaseDatos.conexionAgenda
+            comando.Connection = BaseDatos.conexionAlmacen
             comando.CommandText = "SELECT * FROM Actividades WHERE IdUsuario=@id OR IdUsuarioDestino=@id"
             comando.Parameters.AddWithValue("@id", Me.Id)
-            BaseDatos.conexionAgenda.Open()
+            BaseDatos.conexionAlmacen.Open()
             Dim dataReader As SqlDataReader = comando.ExecuteReader()
             If dataReader.HasRows Then
                 resultado = True
             Else
                 resultado = False
             End If
-            BaseDatos.conexionAgenda.Close()
+            BaseDatos.conexionAlmacen.Close()
             Return resultado
         Catch ex As Exception
             Throw ex
         Finally
-            BaseDatos.conexionAgenda.Close()
+            BaseDatos.conexionAlmacen.Close()
         End Try
 
     End Function

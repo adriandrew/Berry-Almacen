@@ -37,9 +37,9 @@ Public Class Almacenes
             Dim datos As New DataTable
             Dim comando As New SqlCommand()
             comando.Connection = BaseDatos.conexionCatalogo
-            comando.CommandText = "SELECT Id, Nombre FROM " & ALMLogicaEntradas.Programas.prefijoBaseDatosAlmacen & "Almacenes " & _
-            " UNION SELECT -1 AS Id, NULL AS Nombre FROM " & ALMLogicaEntradas.Programas.prefijoBaseDatosAlmacen & "Almacenes " & _
-            " ORDER BY Id ASC"
+            comando.CommandText = String.Format("SELECT Id, Nombre, (CAST(Id AS Varchar)+' - '+Nombre) AS IdNombre FROM {0}Almacenes " & _
+            " UNION SELECT -1 AS Id, NULL AS Nombre, NULL AS IdNombre FROM {0}Almacenes " & _
+            " ORDER BY Id ASC", ALMLogicaEntradas.Programas.prefijoBaseDatosAlmacen)
             BaseDatos.conexionCatalogo.Open()
             Dim lectorDatos As SqlDataReader
             lectorDatos = comando.ExecuteReader()
@@ -54,30 +54,19 @@ Public Class Almacenes
 
     End Function
 
-    Public Function ObtenerListado() As List(Of Almacenes)
+    Public Function ObtenerListadoReporteCatalogo() As DataTable
 
         Try
-            Dim lista As New List(Of Almacenes)
+            Dim datos As New DataTable
             Dim comando As New SqlCommand()
             comando.Connection = BaseDatos.conexionCatalogo
-            Dim condicion As String = String.Empty
-            If (Me.EId > 0) Then
-                condicion &= " WHERE Id=@id"
-            End If
-            comando.CommandText = "SELECT * FROM " & ALMLogicaEntradas.Programas.prefijoBaseDatosAlmacen & "Almacenes " & condicion
-            comando.Parameters.AddWithValue("@id", Me.id)
+            comando.CommandText = String.Format("SELECT Id, Nombre FROM {0}Almacenes ORDER BY Id ASC", ALMLogicaEntradas.Programas.prefijoBaseDatosAlmacen)
             BaseDatos.conexionCatalogo.Open()
-            Dim lectorDatos As SqlDataReader = comando.ExecuteReader()
-            Dim tabla As Almacenes
-            While lectorDatos.Read()
-                tabla = New Almacenes()
-                tabla.id = Convert.ToInt32(lectorDatos("Id").ToString())
-                tabla.nombre = lectorDatos("Nombre").ToString()
-                tabla.abreviatura = lectorDatos("Abreviatura").ToString()
-                lista.Add(tabla)
-            End While
+            Dim lectorDatos As SqlDataReader
+            lectorDatos = comando.ExecuteReader()
+            datos.Load(lectorDatos)
             BaseDatos.conexionCatalogo.Close()
-            Return lista
+            Return datos
         Catch ex As Exception
             Throw ex
         Finally

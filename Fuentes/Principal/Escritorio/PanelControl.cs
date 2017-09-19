@@ -545,7 +545,7 @@ namespace Escritorio
                 {
                     if (MessageBox.Show("Confirmas que deseas eliminar el registro seleccionado?", "Confirmación.", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
-                        EliminarRegistro(spUsuarios);
+                        EliminarRegistro(spDirectorios);
                     }
                 }
             }
@@ -683,49 +683,50 @@ namespace Escritorio
             tipoEntero.DecimalPlaces = 0;
             tipoTextoContrasena.PasswordChar = '*';
             // Se cargan las opciones generales de cada spread.
-            spDirectorios.Skin = FarPoint.Win.Spread.DefaultSpreadSkins.Seashell; Application.DoEvents();
-            spUsuarios.Skin = FarPoint.Win.Spread.DefaultSpreadSkins.Seashell; Application.DoEvents();
-            spModulos.Skin = FarPoint.Win.Spread.DefaultSpreadSkins.Seashell; Application.DoEvents();
-            spProgramas.Skin = FarPoint.Win.Spread.DefaultSpreadSkins.Seashell; Application.DoEvents();
-            spSubProgramas.Skin = FarPoint.Win.Spread.DefaultSpreadSkins.Seashell; Application.DoEvents();
-            spCatalogos.Skin = FarPoint.Win.Spread.DefaultSpreadSkins.Midnight; Application.DoEvents();
-            spDirectorios.ActiveSheet.GrayAreaBackColor = Color.White; Application.DoEvents();
-            spUsuarios.ActiveSheet.GrayAreaBackColor = Color.White; Application.DoEvents();
-            spModulos.ActiveSheet.GrayAreaBackColor = Color.White; Application.DoEvents();
-            spProgramas.ActiveSheet.GrayAreaBackColor = Color.White; Application.DoEvents();
-            spSubProgramas.ActiveSheet.GrayAreaBackColor = Color.White; Application.DoEvents();
-            spCatalogos.ActiveSheet.GrayAreaBackColor = Color.FromArgb(230, 230, 255); Application.DoEvents();
-            spDirectorios.Font = new Font(Principal.tipoLetraSpread, Principal.tamañoLetraSpread, FontStyle.Regular); Application.DoEvents();
-            spUsuarios.Font = new Font(Principal.tipoLetraSpread, Principal.tamañoLetraSpread, FontStyle.Regular); Application.DoEvents();
-            spModulos.Font = new Font(Principal.tipoLetraSpread, Principal.tamañoLetraSpread, FontStyle.Regular); Application.DoEvents();
-            spProgramas.Font = new Font(Principal.tipoLetraSpread, Principal.tamañoLetraSpread, FontStyle.Regular); Application.DoEvents();
-            spSubProgramas.Font = new Font(Principal.tipoLetraSpread, Principal.tamañoLetraSpread, FontStyle.Regular); Application.DoEvents();
-            spCatalogos.Font = new Font(Principal.tipoLetraSpread, Principal.tamañoLetraSpread, FontStyle.Regular); Application.DoEvents();
-            spDirectorios.VerticalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.AsNeeded; Application.DoEvents();
-            spUsuarios.VerticalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.AsNeeded; Application.DoEvents();
-            spModulos.VerticalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.AsNeeded; Application.DoEvents();
-            spProgramas.VerticalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.AsNeeded; Application.DoEvents();
-            spSubProgramas.VerticalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.AsNeeded; Application.DoEvents();
-            spCatalogos.VerticalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.AsNeeded; Application.DoEvents();
-            spDirectorios.ActiveSheet.ColumnHeader.Rows[0].Height = Principal.alturaEncabezadosGrandeSpread; Application.DoEvents();
-            spUsuarios.ActiveSheet.ColumnHeader.Rows[0].Height = Principal.alturaEncabezadosGrandeSpread; Application.DoEvents();
-            spModulos.ActiveSheet.ColumnHeader.Rows[0].Height = Principal.alturaEncabezadosGrandeSpread; Application.DoEvents();
-            spProgramas.ActiveSheet.ColumnHeader.Rows[0].Height = Principal.alturaEncabezadosGrandeSpread; Application.DoEvents();
-            spSubProgramas.ActiveSheet.ColumnHeader.Rows[0].Height = Principal.alturaEncabezadosGrandeSpread; Application.DoEvents();
-            spCatalogos.ActiveSheet.ColumnHeader.Rows[0].Height = Principal.alturaEncabezadosGrandeSpread; Application.DoEvents();
-            spDirectorios.ActiveSheet.Rows[-1].Height = Principal.alturaFilasSpread; Application.DoEvents();
-            spUsuarios.ActiveSheet.Rows[-1].Height = Principal.alturaFilasSpread; Application.DoEvents();
-            spModulos.ActiveSheet.Rows[-1].Height = Principal.alturaFilasSpread; Application.DoEvents();
-            spProgramas.ActiveSheet.Rows[-1].Height = Principal.alturaFilasSpread; Application.DoEvents();
-            spSubProgramas.ActiveSheet.Rows[-1].Height = Principal.alturaFilasSpread; Application.DoEvents();
-            spCatalogos.ActiveSheet.Rows[-1].Height = Principal.alturaFilasSpread; Application.DoEvents();
+            spDirectorios.Skin = FarPoint.Win.Spread.DefaultSpreadSkins.Seashell; 
+            spUsuarios.Skin = FarPoint.Win.Spread.DefaultSpreadSkins.Seashell; 
+            spModulos.Skin = FarPoint.Win.Spread.DefaultSpreadSkins.Seashell; 
+            spProgramas.Skin = FarPoint.Win.Spread.DefaultSpreadSkins.Seashell; 
+            spSubProgramas.Skin = FarPoint.Win.Spread.DefaultSpreadSkins.Seashell; 
+            spCatalogos.Skin = FarPoint.Win.Spread.DefaultSpreadSkins.Midnight; 
+            spDirectorios.ActiveSheet.GrayAreaBackColor = Color.White; 
+            spUsuarios.ActiveSheet.GrayAreaBackColor = Color.White; 
+            spModulos.ActiveSheet.GrayAreaBackColor = Color.White; 
+            spProgramas.ActiveSheet.GrayAreaBackColor = Color.White; 
+            spSubProgramas.ActiveSheet.GrayAreaBackColor = Color.White; 
+            spCatalogos.ActiveSheet.GrayAreaBackColor = Color.FromArgb(230, 230, 255); 
+            spDirectorios.Font = new Font(Principal.tipoLetraSpread, Principal.tamañoLetraSpread, FontStyle.Regular); 
+            spUsuarios.Font = new Font(Principal.tipoLetraSpread, Principal.tamañoLetraSpread, FontStyle.Regular); 
+            spModulos.Font = new Font(Principal.tipoLetraSpread, Principal.tamañoLetraSpread, FontStyle.Regular); 
+            spProgramas.Font = new Font(Principal.tipoLetraSpread, Principal.tamañoLetraSpread, FontStyle.Regular); 
+            spSubProgramas.Font = new Font(Principal.tipoLetraSpread, Principal.tamañoLetraSpread, FontStyle.Regular); 
+            spCatalogos.Font = new Font(Principal.tipoLetraSpread, Principal.tamañoLetraSpread, FontStyle.Regular); 
+            spDirectorios.VerticalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.AsNeeded; 
+            spUsuarios.VerticalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.AsNeeded; 
+            spModulos.VerticalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.AsNeeded; 
+            spProgramas.VerticalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.AsNeeded; 
+            spSubProgramas.VerticalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.AsNeeded; 
+            spCatalogos.VerticalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.AsNeeded; 
+            spDirectorios.ActiveSheet.ColumnHeader.Rows[0].Height = Principal.alturaEncabezadosGrandeSpread; 
+            spUsuarios.ActiveSheet.ColumnHeader.Rows[0].Height = Principal.alturaEncabezadosGrandeSpread; 
+            spModulos.ActiveSheet.ColumnHeader.Rows[0].Height = Principal.alturaEncabezadosGrandeSpread; 
+            spProgramas.ActiveSheet.ColumnHeader.Rows[0].Height = Principal.alturaEncabezadosGrandeSpread; 
+            spSubProgramas.ActiveSheet.ColumnHeader.Rows[0].Height = Principal.alturaEncabezadosGrandeSpread; 
+            spCatalogos.ActiveSheet.ColumnHeader.Rows[0].Height = Principal.alturaEncabezadosGrandeSpread; 
+            spDirectorios.ActiveSheet.Rows[-1].Height = Principal.alturaFilasSpread; 
+            spUsuarios.ActiveSheet.Rows[-1].Height = Principal.alturaFilasSpread; 
+            spModulos.ActiveSheet.Rows[-1].Height = Principal.alturaFilasSpread; 
+            spProgramas.ActiveSheet.Rows[-1].Height = Principal.alturaFilasSpread; 
+            spSubProgramas.ActiveSheet.Rows[-1].Height = Principal.alturaFilasSpread; 
+            spCatalogos.ActiveSheet.Rows[-1].Height = Principal.alturaFilasSpread;
+            Application.DoEvents();
             
         }
         
         private void FormatearSpreadUsuarios()
         {
 
-            spUsuarios.ActiveSheet.ColumnHeader.Rows[0].Font = new Font(Principal.tipoLetraSpread, Principal.tamañoLetraSpread, FontStyle.Bold); Application.DoEvents();
+            spUsuarios.ActiveSheet.ColumnHeader.Rows[0].Font = new Font(Principal.tipoLetraSpread, Principal.tamañoLetraSpread, FontStyle.Bold); 
             ControlarSpreadEnterASiguienteColumna(spUsuarios);
             int numeracion = 0; 
             spUsuarios.ActiveSheet.Columns[numeracion].Tag = "id"; numeracion += 1;
@@ -733,22 +734,23 @@ namespace Escritorio
             spUsuarios.ActiveSheet.Columns[numeracion].Tag = "contrasena"; numeracion += 1;
             spUsuarios.ActiveSheet.Columns[numeracion].Tag = "nivel"; numeracion += 1;
             spUsuarios.ActiveSheet.Columns[numeracion].Tag = "accesoTotal"; numeracion += 1;
-            spUsuarios.ActiveSheet.Columns["id"].Width = 40; Application.DoEvents();
-            spUsuarios.ActiveSheet.Columns["nombre"].Width = 220; Application.DoEvents();
-            spUsuarios.ActiveSheet.Columns["contrasena"].Width = 180; Application.DoEvents();
-            spUsuarios.ActiveSheet.Columns["nivel"].Width = 80; Application.DoEvents();
-            spUsuarios.ActiveSheet.Columns["accesoTotal"].Width = 120; Application.DoEvents();
-            spUsuarios.ActiveSheet.Columns["id"].CellType = tipoEntero; Application.DoEvents();
-            spUsuarios.ActiveSheet.Columns["nombre"].CellType = tipoTexto; Application.DoEvents();
-            spUsuarios.ActiveSheet.Columns["contrasena"].CellType = tipoTextoContrasena; Application.DoEvents();
-            spUsuarios.ActiveSheet.Columns["nivel"].CellType = tipoEntero; Application.DoEvents();
-            spUsuarios.ActiveSheet.Columns["accesoTotal"].CellType = tipoBooleano; Application.DoEvents();
-            spUsuarios.ActiveSheet.ColumnHeader.Cells[0, spUsuarios.ActiveSheet.Columns["id"].Index].Value = "No.".ToUpper(); Application.DoEvents();
-            spUsuarios.ActiveSheet.ColumnHeader.Cells[0, spUsuarios.ActiveSheet.Columns["nombre"].Index].Value = "Nombre".ToUpper(); Application.DoEvents();
-            spUsuarios.ActiveSheet.ColumnHeader.Cells[0, spUsuarios.ActiveSheet.Columns["contrasena"].Index].Value = "Contraseña".ToUpper(); Application.DoEvents();
-            spUsuarios.ActiveSheet.ColumnHeader.Cells[0, spUsuarios.ActiveSheet.Columns["nivel"].Index].Value = "Nivel".ToUpper(); Application.DoEvents();
-            spUsuarios.ActiveSheet.ColumnHeader.Cells[0, spUsuarios.ActiveSheet.Columns["accesoTotal"].Index].Value = "Acceso Total".ToUpper(); Application.DoEvents();
-            spUsuarios.ActiveSheet.Rows.Count += 1; Application.DoEvents();
+            spUsuarios.ActiveSheet.Columns["id"].Width = 40; 
+            spUsuarios.ActiveSheet.Columns["nombre"].Width = 220; 
+            spUsuarios.ActiveSheet.Columns["contrasena"].Width = 180; 
+            spUsuarios.ActiveSheet.Columns["nivel"].Width = 80; 
+            spUsuarios.ActiveSheet.Columns["accesoTotal"].Width = 120; 
+            spUsuarios.ActiveSheet.Columns["id"].CellType = tipoEntero; 
+            spUsuarios.ActiveSheet.Columns["nombre"].CellType = tipoTexto; 
+            spUsuarios.ActiveSheet.Columns["contrasena"].CellType = tipoTextoContrasena; 
+            spUsuarios.ActiveSheet.Columns["nivel"].CellType = tipoEntero; 
+            spUsuarios.ActiveSheet.Columns["accesoTotal"].CellType = tipoBooleano; 
+            spUsuarios.ActiveSheet.ColumnHeader.Cells[0, spUsuarios.ActiveSheet.Columns["id"].Index].Value = "No.".ToUpper(); 
+            spUsuarios.ActiveSheet.ColumnHeader.Cells[0, spUsuarios.ActiveSheet.Columns["nombre"].Index].Value = "Nombre".ToUpper(); 
+            spUsuarios.ActiveSheet.ColumnHeader.Cells[0, spUsuarios.ActiveSheet.Columns["contrasena"].Index].Value = "Contraseña".ToUpper(); 
+            spUsuarios.ActiveSheet.ColumnHeader.Cells[0, spUsuarios.ActiveSheet.Columns["nivel"].Index].Value = "Nivel".ToUpper(); 
+            spUsuarios.ActiveSheet.ColumnHeader.Cells[0, spUsuarios.ActiveSheet.Columns["accesoTotal"].Index].Value = "Acceso Total".ToUpper(); 
+            spUsuarios.ActiveSheet.Rows.Count += 1;
+            spUsuarios.Refresh();
 
         }
 
@@ -756,64 +758,65 @@ namespace Escritorio
         {
           
             spModulos.Enabled = estaHabilitado;
-            spModulos.ActiveSheet.ColumnHeader.Rows[0].Font = new Font(Principal.tipoLetraSpread, Principal.tamañoLetraSpread, FontStyle.Bold); Application.DoEvents();
+            spModulos.ActiveSheet.ColumnHeader.Rows[0].Font = new Font(Principal.tipoLetraSpread, Principal.tamañoLetraSpread, FontStyle.Bold); 
             if (this.opcionSeleccionada == (int)TipoControl.Modulos)
             {
-                spModulos.ActiveSheet.OperationMode = FarPoint.Win.Spread.OperationMode.Normal; Application.DoEvents(); 
+                spModulos.ActiveSheet.OperationMode = FarPoint.Win.Spread.OperationMode.Normal;  
                 ControlarSpreadEnterASiguienteColumna(spModulos);
             }
             else
-                spModulos.ActiveSheet.OperationMode = FarPoint.Win.Spread.OperationMode.SingleSelect; Application.DoEvents(); 
+                spModulos.ActiveSheet.OperationMode = FarPoint.Win.Spread.OperationMode.SingleSelect;  
             int columnas = 0;
             if (this.opcionSeleccionada == (int)TipoControl.Usuarios) 
                 columnas = 4; 
             else 
                 columnas = 3; 
-            spModulos.ActiveSheet.Columns.Count = columnas; Application.DoEvents();
+            spModulos.ActiveSheet.Columns.Count = columnas; 
             int numeracion = 0;
             spModulos.ActiveSheet.Columns[numeracion].Tag = "id"; numeracion += 1;
             spModulos.ActiveSheet.Columns[numeracion].Tag = "nombre"; numeracion += 1;
             spModulos.ActiveSheet.Columns[numeracion].Tag = "prefijo"; numeracion += 1;
             if (this.opcionSeleccionada == (int)TipoControl.Usuarios) 
                 spModulos.ActiveSheet.Columns[numeracion].Tag = "estatus"; numeracion += 1;
-            spModulos.ActiveSheet.Columns["id"].Width = 40; Application.DoEvents();
-            spModulos.ActiveSheet.Columns["nombre"].Width = 220; Application.DoEvents();
-            spModulos.ActiveSheet.Columns["prefijo"].Width = 180; Application.DoEvents();
+            spModulos.ActiveSheet.Columns["id"].Width = 40; 
+            spModulos.ActiveSheet.Columns["nombre"].Width = 220; 
+            spModulos.ActiveSheet.Columns["prefijo"].Width = 180; 
             if (this.opcionSeleccionada == (int)TipoControl.Usuarios) 
-                spModulos.ActiveSheet.Columns["estatus"].Width = 120; Application.DoEvents(); 
-            spModulos.ActiveSheet.Columns["id"].CellType = tipoEntero; Application.DoEvents();
-            spModulos.ActiveSheet.Columns["nombre"].CellType = tipoTexto; Application.DoEvents();
-            spModulos.ActiveSheet.Columns["prefijo"].CellType = tipoTexto; Application.DoEvents();
+                spModulos.ActiveSheet.Columns["estatus"].Width = 120;  
+            spModulos.ActiveSheet.Columns["id"].CellType = tipoEntero; 
+            spModulos.ActiveSheet.Columns["nombre"].CellType = tipoTexto; 
+            spModulos.ActiveSheet.Columns["prefijo"].CellType = tipoTexto; 
             if (this.opcionSeleccionada == (int)TipoControl.Usuarios) 
-                spModulos.ActiveSheet.Columns["estatus"].CellType = tipoBooleano; Application.DoEvents(); 
-            spModulos.ActiveSheet.ColumnHeader.Cells[0, spModulos.ActiveSheet.Columns["id"].Index].Value = "No.".ToUpper(); Application.DoEvents();
-            spModulos.ActiveSheet.ColumnHeader.Cells[0, spModulos.ActiveSheet.Columns["nombre"].Index].Value = "Nombre".ToUpper(); Application.DoEvents();
-            spModulos.ActiveSheet.ColumnHeader.Cells[0, spModulos.ActiveSheet.Columns["prefijo"].Index].Value = "Prefijo".ToUpper(); Application.DoEvents();
+                spModulos.ActiveSheet.Columns["estatus"].CellType = tipoBooleano;  
+            spModulos.ActiveSheet.ColumnHeader.Cells[0, spModulos.ActiveSheet.Columns["id"].Index].Value = "No.".ToUpper(); 
+            spModulos.ActiveSheet.ColumnHeader.Cells[0, spModulos.ActiveSheet.Columns["nombre"].Index].Value = "Nombre".ToUpper(); 
+            spModulos.ActiveSheet.ColumnHeader.Cells[0, spModulos.ActiveSheet.Columns["prefijo"].Index].Value = "Prefijo".ToUpper(); 
             if (this.opcionSeleccionada == (int)TipoControl.Usuarios) 
-                spModulos.ActiveSheet.ColumnHeader.Cells[0, spModulos.ActiveSheet.Columns["estatus"].Index].Value = "Bloquear".ToUpper(); Application.DoEvents();
+                spModulos.ActiveSheet.ColumnHeader.Cells[0, spModulos.ActiveSheet.Columns["estatus"].Index].Value = "Bloquear".ToUpper(); 
             if (this.opcionSeleccionada == (int)TipoControl.Modulos)
-                spModulos.ActiveSheet.Rows.Count += 1; Application.DoEvents(); 
+                spModulos.ActiveSheet.Rows.Count += 1;  
             this.filaModulosDeProgramas = -1;
+            spModulos.Refresh();
 
         }
 
         private void FormatearSpreadProgramas()
         {
 
-            spProgramas.ActiveSheet.ColumnHeader.Rows[0].Font = new Font(Principal.tipoLetraSpread, Principal.tamañoLetraSpread, FontStyle.Bold); Application.DoEvents();
+            spProgramas.ActiveSheet.ColumnHeader.Rows[0].Font = new Font(Principal.tipoLetraSpread, Principal.tamañoLetraSpread, FontStyle.Bold); 
             if (this.opcionSeleccionada == (int)TipoControl.Programas)
             {
-                spProgramas.ActiveSheet.OperationMode = FarPoint.Win.Spread.OperationMode.Normal; Application.DoEvents(); 
+                spProgramas.ActiveSheet.OperationMode = FarPoint.Win.Spread.OperationMode.Normal;  
                 ControlarSpreadEnterASiguienteColumna(spProgramas);
             }
             else
-                spProgramas.ActiveSheet.OperationMode = FarPoint.Win.Spread.OperationMode.SingleSelect; Application.DoEvents(); 
+                spProgramas.ActiveSheet.OperationMode = FarPoint.Win.Spread.OperationMode.SingleSelect;  
             int columnas = 0;
             if (this.opcionSeleccionada == (int)TipoControl.Usuarios)
                 columnas = 5;
             else
                 columnas = 4;
-            spProgramas.ActiveSheet.Columns.Count = columnas; Application.DoEvents();
+            spProgramas.ActiveSheet.Columns.Count = columnas; 
             int numeracion = 0;
             spProgramas.ActiveSheet.Columns[numeracion].Tag = "idModulo"; numeracion += 1;
             spProgramas.ActiveSheet.Columns[numeracion].Tag = "nombreModulo"; numeracion += 1;
@@ -821,96 +824,71 @@ namespace Escritorio
             spProgramas.ActiveSheet.Columns[numeracion].Tag = "nombre"; numeracion += 1;
             if (this.opcionSeleccionada == (int)TipoControl.Usuarios)
                 spProgramas.ActiveSheet.Columns[numeracion].Tag = "estatus"; numeracion += 1;
-            spProgramas.ActiveSheet.Columns["idModulo"].Width = 100; Application.DoEvents();
-            spProgramas.ActiveSheet.Columns["nombreModulo"].Width = 200; Application.DoEvents();
-            spProgramas.ActiveSheet.Columns["id"].Width = 40; Application.DoEvents();
-            spProgramas.ActiveSheet.Columns["nombre"].Width = 300; Application.DoEvents();
+            spProgramas.ActiveSheet.Columns["idModulo"].Width = 100; 
+            spProgramas.ActiveSheet.Columns["nombreModulo"].Width = 200; 
+            spProgramas.ActiveSheet.Columns["id"].Width = 40; 
+            spProgramas.ActiveSheet.Columns["nombre"].Width = 300; 
             if (this.opcionSeleccionada == (int)TipoControl.Usuarios)
-                spProgramas.ActiveSheet.Columns["estatus"].Width = 120; Application.DoEvents();
-            spProgramas.ActiveSheet.Columns["idModulo"].CellType = tipoEntero; Application.DoEvents();
-            spProgramas.ActiveSheet.Columns["nombreModulo"].CellType = tipoTexto; Application.DoEvents();
-            spProgramas.ActiveSheet.Columns["id"].CellType = tipoEntero; Application.DoEvents();
-            spProgramas.ActiveSheet.Columns["nombre"].CellType = tipoTexto; Application.DoEvents();
+                spProgramas.ActiveSheet.Columns["estatus"].Width = 120; 
+            spProgramas.ActiveSheet.Columns["idModulo"].CellType = tipoEntero; 
+            spProgramas.ActiveSheet.Columns["nombreModulo"].CellType = tipoTexto; 
+            spProgramas.ActiveSheet.Columns["id"].CellType = tipoEntero; 
+            spProgramas.ActiveSheet.Columns["nombre"].CellType = tipoTexto; 
             if (this.opcionSeleccionada == (int)TipoControl.Usuarios)
-                spProgramas.ActiveSheet.Columns["estatus"].CellType = tipoBooleano; Application.DoEvents();
-            spProgramas.ActiveSheet.ColumnHeader.Cells[0, spProgramas.ActiveSheet.Columns["idModulo"].Index].Value = "No. Módulo".ToUpper(); Application.DoEvents();
-            spProgramas.ActiveSheet.ColumnHeader.Cells[0, spProgramas.ActiveSheet.Columns["nombreModulo"].Index].Value = "Nombre Módulo".ToUpper(); Application.DoEvents();
-            spProgramas.ActiveSheet.ColumnHeader.Cells[0, spProgramas.ActiveSheet.Columns["id"].Index].Value = "No.".ToUpper(); Application.DoEvents();
-            spProgramas.ActiveSheet.ColumnHeader.Cells[0, spProgramas.ActiveSheet.Columns["nombre"].Index].Value = "Nombre".ToUpper(); Application.DoEvents();
+                spProgramas.ActiveSheet.Columns["estatus"].CellType = tipoBooleano; 
+            spProgramas.ActiveSheet.ColumnHeader.Cells[0, spProgramas.ActiveSheet.Columns["idModulo"].Index].Value = "No. Módulo".ToUpper(); 
+            spProgramas.ActiveSheet.ColumnHeader.Cells[0, spProgramas.ActiveSheet.Columns["nombreModulo"].Index].Value = "Nombre Módulo".ToUpper(); 
+            spProgramas.ActiveSheet.ColumnHeader.Cells[0, spProgramas.ActiveSheet.Columns["id"].Index].Value = "No.".ToUpper(); 
+            spProgramas.ActiveSheet.ColumnHeader.Cells[0, spProgramas.ActiveSheet.Columns["nombre"].Index].Value = "Nombre".ToUpper(); 
             if (this.opcionSeleccionada == (int)TipoControl.Usuarios)
-                spProgramas.ActiveSheet.ColumnHeader.Cells[0, spProgramas.ActiveSheet.Columns["estatus"].Index].Value = "Bloquear".ToUpper(); Application.DoEvents();
+                spProgramas.ActiveSheet.ColumnHeader.Cells[0, spProgramas.ActiveSheet.Columns["estatus"].Index].Value = "Bloquear".ToUpper(); 
             if (this.opcionSeleccionada == (int)TipoControl.Programas)
-                spProgramas.ActiveSheet.Rows.Count += 1; Application.DoEvents(); 
+                spProgramas.ActiveSheet.Rows.Count += 1;  
             if (this.opcionSeleccionada != (int)TipoControl.Usuarios)
             {
-                spProgramas.ActiveSheet.Columns["idModulo"].Visible = false; Application.DoEvents();
-                spProgramas.ActiveSheet.Columns["nombreModulo"].Visible = false; Application.DoEvents();
+                spProgramas.ActiveSheet.Columns["idModulo"].Visible = false; 
+                spProgramas.ActiveSheet.Columns["nombreModulo"].Visible = false; 
             }
             this.filaProgramasDeSubProgramas = -1;
+            spProgramas.Refresh();
 
         }
 
         private void FormatearSpreadSubProgramas()
         {
 
-            spSubProgramas.ActiveSheet.ColumnHeader.Rows[0].Font = new Font(Principal.tipoLetraSpread, Principal.tamañoLetraSpread, FontStyle.Bold); Application.DoEvents();
+            spSubProgramas.ActiveSheet.ColumnHeader.Rows[0].Font = new Font(Principal.tipoLetraSpread, Principal.tamañoLetraSpread, FontStyle.Bold); 
             if (this.opcionSeleccionada == (int)TipoControl.SubProgramas)
             {
-                spSubProgramas.ActiveSheet.OperationMode = FarPoint.Win.Spread.OperationMode.Normal; Application.DoEvents(); 
+                spSubProgramas.ActiveSheet.OperationMode = FarPoint.Win.Spread.OperationMode.Normal;  
                 ControlarSpreadEnterASiguienteColumna(spSubProgramas);
             }
             else
-                spSubProgramas.ActiveSheet.OperationMode = FarPoint.Win.Spread.OperationMode.SingleSelect; Application.DoEvents(); 
-            int columnas = 0;
-            //if (this.opcionSeleccionada == (int)TipoControl.Usuarios)
-            //    columnas = 3;
-            //else
+                spSubProgramas.ActiveSheet.OperationMode = FarPoint.Win.Spread.OperationMode.SingleSelect;  
+            int columnas = 0; 
                 columnas = 2;
-            spSubProgramas.ActiveSheet.Columns.Count = columnas; Application.DoEvents();
+            spSubProgramas.ActiveSheet.Columns.Count = columnas; 
             int numeracion = 0;
             spSubProgramas.ActiveSheet.Columns[numeracion].Tag = "id"; numeracion += 1;
             spSubProgramas.ActiveSheet.Columns[numeracion].Tag = "nombre"; numeracion += 1;
-            spSubProgramas.ActiveSheet.Columns["id"].Width = 40; Application.DoEvents();
-            spSubProgramas.ActiveSheet.Columns["nombre"].Width = 300; Application.DoEvents();
-            spSubProgramas.ActiveSheet.Columns["id"].CellType = tipoEntero; Application.DoEvents();
-            spSubProgramas.ActiveSheet.Columns["nombre"].CellType = tipoTexto; Application.DoEvents();
-            spSubProgramas.ActiveSheet.ColumnHeader.Cells[0, spSubProgramas.ActiveSheet.Columns["id"].Index].Value = "No.".ToUpper(); Application.DoEvents();
-            spSubProgramas.ActiveSheet.ColumnHeader.Cells[0, spSubProgramas.ActiveSheet.Columns["nombre"].Index].Value = "Nombre".ToUpper(); Application.DoEvents();
+            spSubProgramas.ActiveSheet.Columns["id"].Width = 40; 
+            spSubProgramas.ActiveSheet.Columns["nombre"].Width = 300; 
+            spSubProgramas.ActiveSheet.Columns["id"].CellType = tipoEntero; 
+            spSubProgramas.ActiveSheet.Columns["nombre"].CellType = tipoTexto; 
+            spSubProgramas.ActiveSheet.ColumnHeader.Cells[0, spSubProgramas.ActiveSheet.Columns["id"].Index].Value = "No.".ToUpper(); 
+            spSubProgramas.ActiveSheet.ColumnHeader.Cells[0, spSubProgramas.ActiveSheet.Columns["nombre"].Index].Value = "Nombre".ToUpper(); 
             if (this.opcionSeleccionada == (int)TipoControl.SubProgramas)
-                spSubProgramas.ActiveSheet.Rows.Count += 1; Application.DoEvents(); 
+                spSubProgramas.ActiveSheet.Rows.Count += 1;
+            spSubProgramas.Refresh();
 
         }
-
-        //private void FormatearSpreadCatalogoAreas()
-        //{
-
-        //    spCatalogos.ActiveSheet.ColumnHeader.Rows[0].Font = new Font(Principal.nombreLetraSpread, Principal.tamañoLetraSpread, FontStyle.Bold); Application.DoEvents();
-        //    spCatalogos.Location = new Point(spUsuarios.Location.X, spUsuarios.Location.Y); Application.DoEvents();
-        //    spCatalogos.Visible = true; Application.DoEvents();
-        //    spCatalogos.HorizontalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.Never; Application.DoEvents();
-        //    spCatalogos.ActiveSheet.OperationMode = FarPoint.Win.Spread.OperationMode.SingleSelect; Application.DoEvents();
-        //    spCatalogos.Height = spUsuarios.Height; Application.DoEvents();
-        //    spCatalogos.Width = 305; Application.DoEvents();
-        //    int numeracion = 0; 
-        //    spCatalogos.ActiveSheet.Columns[numeracion].Tag = "idArea"; numeracion += 1;
-        //    spCatalogos.ActiveSheet.Columns[numeracion].Tag = "nombreArea"; numeracion += 1;
-        //    spCatalogos.ActiveSheet.Columns[numeracion].Tag = "claveArea"; numeracion += 1;  
-        //    spCatalogos.ActiveSheet.Columns["idArea"].Width = 50; Application.DoEvents();
-        //    spCatalogos.ActiveSheet.Columns["nombreArea"].Width = 220; Application.DoEvents(); 
-        //    spCatalogos.ActiveSheet.Columns["idArea"].CellType = tipoEntero; Application.DoEvents();
-        //    spCatalogos.ActiveSheet.Columns["nombreArea"].CellType = tipoTexto; Application.DoEvents(); 
-        //    spCatalogos.ActiveSheet.ColumnHeader.Cells[0, spCatalogos.ActiveSheet.Columns["idArea"].Index].Value = "No.".ToUpper(); Application.DoEvents();
-        //    spCatalogos.ActiveSheet.ColumnHeader.Cells[0, spCatalogos.ActiveSheet.Columns["nombreArea"].Index].Value = "Nombre".ToUpper(); Application.DoEvents();
-        //    spCatalogos.ActiveSheet.Columns["claveArea"].Visible = false; Application.DoEvents();
-
-        //}
 
         private void CargarUsuarios()
         {
 
             OcultarSpreads();
             spUsuarios.Visible = true;
-            Application.DoEvents();
+            spUsuarios.Refresh();
             spUsuarios.Width = this.anchoTotal;
             spUsuarios.Height = this.altoTotal;
             spUsuarios.Left = this.izquierda;
@@ -937,7 +915,8 @@ namespace Escritorio
                 bloqueoUsuarios.IdModulo = idModulo;
                 bloqueoUsuarios.IdPrograma = idPrograma;
                 bloqueoUsuarios.IdSubPrograma = idSubPrograma;
-                spProgramas.ActiveSheet.Cells[fila, spProgramas.ActiveSheet.Columns["estatus"].Index].Value = bloqueoUsuarios.Obtener(); Application.DoEvents();
+                spProgramas.ActiveSheet.Cells[fila, spProgramas.ActiveSheet.Columns["estatus"].Index].Value = bloqueoUsuarios.Obtener();
+                spProgramas.Refresh();
             }
 
         }
@@ -1052,7 +1031,8 @@ namespace Escritorio
                 bloqueoUsuarios.IdModulo = idModulo;
                 bloqueoUsuarios.IdPrograma = idPrograma;
                 bloqueoUsuarios.IdSubPrograma = idSubPrograma;
-                spModulos.ActiveSheet.Cells[fila, spModulos.ActiveSheet.Columns["estatus"].Index].Value = bloqueoUsuarios.Obtener(); Application.DoEvents();
+                spModulos.ActiveSheet.Cells[fila, spModulos.ActiveSheet.Columns["estatus"].Index].Value = bloqueoUsuarios.Obtener(); 
+                spModulos.Refresh();
             }
 
         }
@@ -1063,7 +1043,7 @@ namespace Escritorio
             OcultarSpreads();
             spModulos.Visible = true;
             spProgramas.Visible = true;
-            Application.DoEvents();
+            spProgramas.Refresh();
             spModulos.Width = this.anchoMitad;
             spModulos.Height = this.altoTotal;
             spModulos.Top = this.arriba;
@@ -1155,7 +1135,7 @@ namespace Escritorio
 
             OcultarSpreads();
             spModulos.Visible = true;
-            Application.DoEvents();
+            spModulos.Refresh();
             spModulos.Height = this.altoTotal;
             spModulos.Width = this.anchoTotal;
             spModulos.Top = this.arriba;
@@ -1354,7 +1334,7 @@ namespace Escritorio
 
             OcultarSpreads();
             spDirectorios.Visible = true;
-            Application.DoEvents();
+            spDirectorios.Refresh();
             spDirectorios.Height = this.altoTotal;
             spDirectorios.Width = this.anchoTotal;
             spDirectorios.Top = this.arriba;
@@ -1414,11 +1394,11 @@ namespace Escritorio
         private void FormatearSpreadDirectorios()
         {
              
-            spDirectorios.ActiveSheet.ColumnHeader.Rows[0].Font = new Font(Principal.tipoLetraSpread, Principal.tamañoLetraSpread, FontStyle.Bold); Application.DoEvents();
-            spDirectorios.ActiveSheet.OperationMode = FarPoint.Win.Spread.OperationMode.Normal; Application.DoEvents(); 
+            spDirectorios.ActiveSheet.ColumnHeader.Rows[0].Font = new Font(Principal.tipoLetraSpread, Principal.tamañoLetraSpread, FontStyle.Bold); 
+            spDirectorios.ActiveSheet.OperationMode = FarPoint.Win.Spread.OperationMode.Normal;  
             ControlarSpreadEnterASiguienteColumna(spDirectorios); 
             //int columnas = 8;
-            //spDirectorios.ActiveSheet.Columns.Count = columnas; Application.DoEvents();
+            //spDirectorios.ActiveSheet.Columns.Count = columnas; 
             int numeracion = 0;
             spDirectorios.ActiveSheet.Columns[numeracion].Tag = "id"; numeracion += 1;
             spDirectorios.ActiveSheet.Columns[numeracion].Tag = "nombre"; numeracion += 1;
@@ -1428,31 +1408,32 @@ namespace Escritorio
             spDirectorios.ActiveSheet.Columns[numeracion].Tag = "instanciaSql"; numeracion += 1;
             spDirectorios.ActiveSheet.Columns[numeracion].Tag = "usuarioSql"; numeracion += 1;
             spDirectorios.ActiveSheet.Columns[numeracion].Tag = "contrasenaSql"; numeracion += 1; 
-            spDirectorios.ActiveSheet.Columns["id"].Width = 50; Application.DoEvents();
-            spDirectorios.ActiveSheet.Columns["nombre"].Width = 400; Application.DoEvents();
-            spDirectorios.ActiveSheet.Columns["descripcion"].Width = 500; Application.DoEvents();
-            spDirectorios.ActiveSheet.Columns["rutaLogo"].Width = 200; Application.DoEvents();
-            spDirectorios.ActiveSheet.Columns["esPredeterminado"].Width = 200; Application.DoEvents();
-            spDirectorios.ActiveSheet.Columns["instanciaSql"].Width = 350; Application.DoEvents();
-            spDirectorios.ActiveSheet.Columns["usuarioSql"].Width = 200; Application.DoEvents();
-            spDirectorios.ActiveSheet.Columns["contrasenaSql"].Width = 150; Application.DoEvents(); 
-            spDirectorios.ActiveSheet.Columns["id"].CellType = tipoEntero; Application.DoEvents();
-            spDirectorios.ActiveSheet.Columns["nombre"].CellType = tipoTexto; Application.DoEvents();
-            spDirectorios.ActiveSheet.Columns["descripcion"].CellType = tipoTexto; Application.DoEvents();
-            spDirectorios.ActiveSheet.Columns["rutaLogo"].CellType = tipoTexto; Application.DoEvents();
-            spDirectorios.ActiveSheet.Columns["esPredeterminado"].CellType = tipoBooleano; Application.DoEvents();
-            spDirectorios.ActiveSheet.Columns["instanciaSql"].CellType = tipoTexto; Application.DoEvents();
-            spDirectorios.ActiveSheet.Columns["usuarioSql"].CellType = tipoTexto; Application.DoEvents();
-            spDirectorios.ActiveSheet.Columns["contrasenaSql"].CellType = tipoTexto; Application.DoEvents();  
-            spDirectorios.ActiveSheet.ColumnHeader.Cells[0, spDirectorios.ActiveSheet.Columns["id"].Index].Value = "No.".ToUpper(); Application.DoEvents();
-            spDirectorios.ActiveSheet.ColumnHeader.Cells[0, spDirectorios.ActiveSheet.Columns["nombre"].Index].Value = "Nombre".ToUpper(); Application.DoEvents();
-            spDirectorios.ActiveSheet.ColumnHeader.Cells[0, spDirectorios.ActiveSheet.Columns["descripcion"].Index].Value = "Descripción".ToUpper(); Application.DoEvents();
-            spDirectorios.ActiveSheet.ColumnHeader.Cells[0, spDirectorios.ActiveSheet.Columns["rutaLogo"].Index].Value = "Ruta Logo".ToUpper(); Application.DoEvents();
-            spDirectorios.ActiveSheet.ColumnHeader.Cells[0, spDirectorios.ActiveSheet.Columns["esPredeterminado"].Index].Value = "Es Predeterminado".ToUpper(); Application.DoEvents();
-            spDirectorios.ActiveSheet.ColumnHeader.Cells[0, spDirectorios.ActiveSheet.Columns["instanciaSql"].Index].Value = "Instancia Sql".ToUpper(); Application.DoEvents();
-            spDirectorios.ActiveSheet.ColumnHeader.Cells[0, spDirectorios.ActiveSheet.Columns["usuarioSql"].Index].Value = "Usuario Sql".ToUpper(); Application.DoEvents();
-            spDirectorios.ActiveSheet.ColumnHeader.Cells[0, spDirectorios.ActiveSheet.Columns["contrasenaSql"].Index].Value = "Contraseña Sql".ToUpper(); Application.DoEvents();
-            spDirectorios.ActiveSheet.Rows.Count += 1; Application.DoEvents(); 
+            spDirectorios.ActiveSheet.Columns["id"].Width = 50; 
+            spDirectorios.ActiveSheet.Columns["nombre"].Width = 400; 
+            spDirectorios.ActiveSheet.Columns["descripcion"].Width = 500; 
+            spDirectorios.ActiveSheet.Columns["rutaLogo"].Width = 200; 
+            spDirectorios.ActiveSheet.Columns["esPredeterminado"].Width = 200; 
+            spDirectorios.ActiveSheet.Columns["instanciaSql"].Width = 350; 
+            spDirectorios.ActiveSheet.Columns["usuarioSql"].Width = 200; 
+            spDirectorios.ActiveSheet.Columns["contrasenaSql"].Width = 150;  
+            spDirectorios.ActiveSheet.Columns["id"].CellType = tipoEntero; 
+            spDirectorios.ActiveSheet.Columns["nombre"].CellType = tipoTexto; 
+            spDirectorios.ActiveSheet.Columns["descripcion"].CellType = tipoTexto; 
+            spDirectorios.ActiveSheet.Columns["rutaLogo"].CellType = tipoTexto; 
+            spDirectorios.ActiveSheet.Columns["esPredeterminado"].CellType = tipoBooleano; 
+            spDirectorios.ActiveSheet.Columns["instanciaSql"].CellType = tipoTexto; 
+            spDirectorios.ActiveSheet.Columns["usuarioSql"].CellType = tipoTexto; 
+            spDirectorios.ActiveSheet.Columns["contrasenaSql"].CellType = tipoTexto;   
+            spDirectorios.ActiveSheet.ColumnHeader.Cells[0, spDirectorios.ActiveSheet.Columns["id"].Index].Value = "No.".ToUpper(); 
+            spDirectorios.ActiveSheet.ColumnHeader.Cells[0, spDirectorios.ActiveSheet.Columns["nombre"].Index].Value = "Nombre".ToUpper(); 
+            spDirectorios.ActiveSheet.ColumnHeader.Cells[0, spDirectorios.ActiveSheet.Columns["descripcion"].Index].Value = "Descripción".ToUpper(); 
+            spDirectorios.ActiveSheet.ColumnHeader.Cells[0, spDirectorios.ActiveSheet.Columns["rutaLogo"].Index].Value = "Ruta Logo".ToUpper(); 
+            spDirectorios.ActiveSheet.ColumnHeader.Cells[0, spDirectorios.ActiveSheet.Columns["esPredeterminado"].Index].Value = "Es Predeterminado".ToUpper(); 
+            spDirectorios.ActiveSheet.ColumnHeader.Cells[0, spDirectorios.ActiveSheet.Columns["instanciaSql"].Index].Value = "Instancia Sql".ToUpper(); 
+            spDirectorios.ActiveSheet.ColumnHeader.Cells[0, spDirectorios.ActiveSheet.Columns["usuarioSql"].Index].Value = "Usuario Sql".ToUpper(); 
+            spDirectorios.ActiveSheet.ColumnHeader.Cells[0, spDirectorios.ActiveSheet.Columns["contrasenaSql"].Index].Value = "Contraseña Sql".ToUpper(); 
+            spDirectorios.ActiveSheet.Rows.Count += 1;
+            spDirectorios.Refresh();
 
         }
          
