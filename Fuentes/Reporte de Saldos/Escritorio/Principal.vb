@@ -568,7 +568,7 @@ Public Class Principal
         Dim lista As New List(Of ALMEntidadesReporteSaldos.Usuarios)
         usuarios.EId = ALMLogicaReporteSaldos.Usuarios.id
         lista = usuarios.ObtenerListado()
-        If (lista.Count = 1) Then
+        If (lista.Count > 0) Then
             ALMLogicaReporteSaldos.Usuarios.id = lista(0).EId
             ALMLogicaReporteSaldos.Usuarios.nombre = lista(0).ENombre
             ALMLogicaReporteSaldos.Usuarios.contrasena = lista(0).EContrasena
@@ -655,7 +655,7 @@ Public Class Principal
         ' Se carga la información de la empresa.
         Dim lista As New List(Of ALMEntidadesReporteSaldos.Empresas)
         empresas.EId = 0 ' Se busca la primer empresa.
-        lista = empresas.Obtener(True)
+        lista = empresas.ObtenerListado(True)
         If (lista.Count = 0) Then
             MsgBox("No existen datos de la empresa para encabezados de impresión. Se cancelará la impresión.", MsgBoxStyle.Information, "Faltan datos.")
             Exit Sub
@@ -739,7 +739,7 @@ Public Class Principal
         Dim bandera As Boolean = True
         Dim nombreExcel As String = "\Temporal.xls"
         Dim obtenerRandom As System.Random = New System.Random()
-        FormatearExcel()
+        FormatearSpreadExcel()
         Application.DoEvents()
         Try
             If (Not Directory.Exists(rutaTemporal)) Then
@@ -788,12 +788,12 @@ Public Class Principal
 
     End Function
 
-    Private Sub FormatearExcel()
+    Private Sub FormatearSpreadExcel()
 
         ' Se carga la información de la empresa.
         Dim lista As New List(Of ALMEntidadesReporteSaldos.Empresas)
         empresas.EId = 0 ' Se busca la primer empresa.
-        lista = empresas.Obtener(True)
+        lista = empresas.ObtenerListado(True)
         If (lista.Count = 0) Then
             MsgBox("No existen datos de la empresa para encabezados de impresión. Se cancelará la impresión.", MsgBoxStyle.Information, "Faltan datos.")
             Exit Sub

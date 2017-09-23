@@ -27,7 +27,7 @@ Public Class UnidadesMedidas
         Try
             Dim comando As New SqlCommand()
             comando.Connection = BaseDatos.conexionCatalogo
-            comando.CommandText = "INSERT INTO " & ALMLogicaCatalogos.Programas.prefijoBaseDatosAlmacen & "UnidadesMedidas (Id, Nombre) VALUES (@id, @nombre)"
+            comando.CommandText = String.Format("INSERT INTO {0}UnidadesMedidas (Id, Nombre) VALUES (@id, @nombre)", ALMLogicaCatalogos.Programas.prefijoBaseDatosAlmacen)
             comando.Parameters.AddWithValue("@id", Me.EId)
             comando.Parameters.AddWithValue("@nombre", Me.ENombre)
             BaseDatos.conexionCatalogo.Open()
@@ -50,8 +50,8 @@ Public Class UnidadesMedidas
             If (Me.EId > 0) Then
                 condicion &= " WHERE Id=@id"
             End If
-            comando.CommandText = "DELETE FROM " & ALMLogicaCatalogos.Programas.prefijoBaseDatosAlmacen & "UnidadesMedidas " & condicion
-            comando.Parameters.AddWithValue("@id", Me.id)
+            comando.CommandText = String.Format("DELETE FROM {0}UnidadesMedidas ", ALMLogicaCatalogos.Programas.prefijoBaseDatosAlmacen, condicion)
+            comando.Parameters.AddWithValue("@id", Me.EId)
             BaseDatos.conexionCatalogo.Open()
             comando.ExecuteNonQuery()
             BaseDatos.conexionCatalogo.Close()
@@ -63,30 +63,24 @@ Public Class UnidadesMedidas
 
     End Sub
 
-    Public Function ObtenerListado() As List(Of UnidadesMedidas)
+    Public Function ObtenerListado() As DataTable
 
         Try
-            Dim lista As New List(Of UnidadesMedidas)
+            Dim datos As New DataTable
             Dim comando As New SqlCommand()
             comando.Connection = BaseDatos.conexionCatalogo
             Dim condicion As String = String.Empty
             If (Me.EId > 0) Then
-                condicion &= " WHERE Id=@id"
+                condicion &= " AND Id=@id"
             End If
-            comando.CommandText = "SELECT Id, Nombre FROM " & ALMLogicaCatalogos.Programas.prefijoBaseDatosAlmacen & "UnidadesMedidas " & condicion & " ORDER BY Id ASC"
-            comando.Parameters.AddWithValue("@id", Me.id)
+            comando.CommandText = String.Format("SELECT Id, Nombre FROM {0}UnidadesMedidas WHERE 0=0 {1} ORDER BY Id ASC", ALMLogicaCatalogos.Programas.prefijoBaseDatosAlmacen, condicion)
+            comando.Parameters.AddWithValue("@id", Me.EId)
             BaseDatos.conexionCatalogo.Open()
             Dim dataReader As SqlDataReader
             dataReader = comando.ExecuteReader()
-            Dim tabla As UnidadesMedidas
-            While dataReader.Read()
-                tabla = New UnidadesMedidas()
-                tabla.id = Convert.ToInt32(dataReader("Id").ToString())
-                tabla.nombre = dataReader("Nombre").ToString()
-                lista.Add(tabla)
-            End While
+            datos.Load(dataReader)
             BaseDatos.conexionCatalogo.Close()
-            Return lista
+            Return datos
         Catch ex As Exception
             Throw ex
         Finally

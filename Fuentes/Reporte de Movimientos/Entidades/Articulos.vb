@@ -140,9 +140,9 @@ Public Class Articulos
             If (Me.EId > 0) Then
                 condicion &= " AND Id=@id"
             End If
-            comando.CommandText = "SELECT -1 AS Id, 'Todos' AS Nombre FROM " & ALMLogicaReporteMovimientos.Programas.prefijoBaseDatosAlmacen & "Articulos " & _
-            " UNION SELECT Id, Nombre FROM " & ALMLogicaReporteMovimientos.Programas.prefijoBaseDatosAlmacen & "Articulos " & _
-            " WHERE 0=0 " & condicion
+            comando.CommandText = String.Format("SELECT -1 AS Id, 'Todos' AS Nombre FROM {0}Articulos " & _
+            " UNION SELECT Id, Nombre FROM {0}Articulos " & _
+            " WHERE 0=0 {1}", ALMLogicaReporteMovimientos.Programas.prefijoBaseDatosAlmacen, condicion)
             comando.Parameters.AddWithValue("@idAlmacen", Me.EIdAlmacen)
             comando.Parameters.AddWithValue("@idFamilia", Me.EIdFamilia)
             comando.Parameters.AddWithValue("@idSubFamilia", Me.EIdSubFamilia)
@@ -153,59 +153,6 @@ Public Class Articulos
             datos.Load(lectorDatos)
             BaseDatos.conexionCatalogo.Close()
             Return datos
-        Catch ex As Exception
-            Throw ex
-        Finally
-            BaseDatos.conexionCatalogo.Close()
-        End Try
-
-    End Function
-
-    Public Function ObtenerListado() As List(Of Articulos)
-
-        Try
-            Dim lista As New List(Of Articulos)
-            Dim comando As New SqlCommand()
-            comando.Connection = BaseDatos.conexionCatalogo
-            Dim condicion As String = String.Empty
-            If Me.EIdAlmacen > 0 Then
-                condicion &= " AND IdAlmacen=@idAlmacen"
-            End If
-            If Me.EIdFamilia > 0 Then
-                condicion &= " AND IdFamilia=@idFamilia"
-            End If
-            If (Me.EIdSubFamilia > 0) Then
-                condicion &= " AND IdSubFamilia=@idSubFamilia"
-            End If
-            If Me.EId > 0 Then
-                condicion &= " AND Id=@id"
-            End If
-            comando.CommandText = "SELECT IdAlmacen, IdFamilia, IdSubFamilia, Id, Nombre, NombreComercial, IdUnidadMedida, CantidadMinima, CantidadMaxima, Precio, Seccion, Estante, Nivel FROM " & ALMLogicaReporteMovimientos.Programas.prefijoBaseDatosAlmacen & "Articulos WHERE 0=0 " & condicion
-            comando.Parameters.AddWithValue("@idAlmacen", Me.EIdAlmacen)
-            comando.Parameters.AddWithValue("@idFamilia", Me.EIdFamilia)
-            comando.Parameters.AddWithValue("@idSubFamilia", Me.EIdSubFamilia)
-            comando.Parameters.AddWithValue("@id", Me.EId)
-            BaseDatos.conexionCatalogo.Open()
-            Dim lectorDatos As SqlDataReader = comando.ExecuteReader()
-            Dim tabla As Articulos
-            While lectorDatos.Read()
-                tabla = New Articulos()
-                tabla.idAlmacen = Convert.ToInt32(lectorDatos("IdAlmacen").ToString())
-                tabla.idFamilia = Convert.ToInt32(lectorDatos("idFamilia").ToString())
-                tabla.id = Convert.ToInt32(lectorDatos("Id").ToString())
-                tabla.nombre = lectorDatos("Nombre").ToString()
-                tabla.nombreComercial = lectorDatos("NombreComercial").ToString()
-                tabla.idUnidadMedida = Convert.ToInt32(lectorDatos("IdUnidadMedida").ToString())
-                tabla.cantidadMinima = Convert.ToInt32(lectorDatos("CantidadMinima").ToString())
-                tabla.cantidadMaxima = Convert.ToInt32(lectorDatos("CantidadMaxima").ToString())
-                tabla.precio = Convert.ToDouble(lectorDatos("Precio").ToString())
-                tabla.seccion = lectorDatos("Seccion").ToString()
-                tabla.estante = lectorDatos("Estante").ToString()
-                tabla.nivel = lectorDatos("Nivel").ToString()
-                lista.Add(tabla)
-            End While
-            BaseDatos.conexionCatalogo.Close()
-            Return lista
         Catch ex As Exception
             Throw ex
         Finally

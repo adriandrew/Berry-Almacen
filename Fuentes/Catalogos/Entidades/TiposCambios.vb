@@ -36,7 +36,7 @@ Public Class TiposCambios
         Try
             Dim comando As New SqlCommand()
             comando.Connection = BaseDatos.conexionCatalogo
-            comando.CommandText = "INSERT INTO " & ALMLogicaCatalogos.Programas.prefijoBaseDatosAlmacen & "TiposCambios (IdMoneda, Fecha, Valor) VALUES (@idMoneda, @fecha, @valor)"
+            comando.CommandText = String.Format("INSERT INTO {0}TiposCambios (IdMoneda, Fecha, Valor) VALUES (@idMoneda, @fecha, @valor)", ALMLogicaCatalogos.Programas.prefijoBaseDatosAlmacen)
             comando.Parameters.AddWithValue("@idMoneda", Me.EIdMoneda)
             comando.Parameters.AddWithValue("@fecha", ALMLogicaCatalogos.Funciones.ValidarFechaAEstandar(Me.fecha))
             comando.Parameters.AddWithValue("@valor", Me.EValor)
@@ -63,7 +63,7 @@ Public Class TiposCambios
             If (IsDate(Me.EFecha)) Then
                 condicion &= " AND Fecha=@fecha"
             End If
-            comando.CommandText = "DELETE FROM " & ALMLogicaCatalogos.Programas.prefijoBaseDatosAlmacen & "TiposCambios WHERE 0=0 " & condicion
+            comando.CommandText = String.Format("DELETE FROM {0}TiposCambios WHERE 0=0 {1}", ALMLogicaCatalogos.Programas.prefijoBaseDatosAlmacen, condicion)
             comando.Parameters.AddWithValue("@idMoneda", Me.EIdMoneda)
             comando.Parameters.AddWithValue("@fecha", ALMLogicaCatalogos.Funciones.ValidarFechaAEstandar(Me.fecha))
             comando.Parameters.AddWithValue("@valor", Me.EValor)
@@ -91,8 +91,8 @@ Public Class TiposCambios
             'If (IsDate(Me.EFecha)) Then
             '    condicion &= " AND Fecha=@fecha"
             'End If
-            comando.CommandText = "SELECT TC.IdMoneda, M.Nombre, TC.Fecha, TC.Valor FROM " & ALMLogicaCatalogos.Programas.prefijoBaseDatosAlmacen & "TiposCambios AS TC LEFT JOIN " & ALMLogicaCatalogos.Programas.prefijoBaseDatosAlmacen & "Monedas AS M ON TC.IdMoneda = M.Id WHERE 0=0 " & condicion & " ORDER BY Fecha, IdMoneda ASC"
-            comando.Parameters.AddWithValue("@idMoneda", Me.idMoneda)
+            comando.CommandText = String.Format("SELECT TC.IdMoneda, M.Nombre, TC.Fecha, TC.Valor FROM {0}TiposCambios AS TC LEFT JOIN {0}Monedas AS M ON TC.IdMoneda = M.Id WHERE 0=0 {1} ORDER BY Fecha, IdMoneda ASC", ALMLogicaCatalogos.Programas.prefijoBaseDatosAlmacen, condicion)
+            comando.Parameters.AddWithValue("@idMoneda", Me.EIdMoneda)
             comando.Parameters.AddWithValue("@fecha", ALMLogicaCatalogos.Funciones.ValidarFechaAEstandar(Me.fecha))
             BaseDatos.conexionCatalogo.Open()
             Dim lectorDatos As SqlDataReader

@@ -596,7 +596,7 @@ Partial Class Principal
         Me.spSalidas.Location = New System.Drawing.Point(407, 0)
         Me.spSalidas.Name = "spSalidas"
         Me.spSalidas.Sheets.AddRange(New FarPoint.Win.Spread.SheetView() {Me.spSalidas_Sheet1})
-        Me.spSalidas.Size = New System.Drawing.Size(621, 491)
+        Me.spSalidas.Size = New System.Drawing.Size(621, 490)
         Me.spSalidas.Skin = FarPoint.Win.Spread.DefaultSpreadSkins.Seashell
         Me.spSalidas.TabIndex = 0
         Me.spSalidas.VerticalScrollBar.Buttons = New FarPoint.Win.Spread.FpScrollBarButtonCollection("BackwardLineButton,ThumbTrack,ForwardLineButton")

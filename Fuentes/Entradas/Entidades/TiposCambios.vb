@@ -31,46 +31,19 @@ Public Class TiposCambios
         End Set
     End Property
 
-    Public Function ObtenerListado() As List(Of TiposCambios)
-
-        Try
-            Dim lista As New List(Of TiposCambios)
-            Dim comando As New SqlCommand()
-            comando.Connection = BaseDatos.conexionCatalogo
-            Dim condicion As String = String.Empty
-            If (Me.EIdMoneda > 0) Then
-                condicion &= " AND IdMoneda=@idMoneda AND Fecha=@fecha"
-            End If 
-            comando.CommandText = "SELECT IdMoneda, Fecha, Valor FROM " & ALMLogicaEntradas.Programas.prefijoBaseDatosAlmacen & "TiposCambios WHERE 0=0 " & condicion & " ORDER BY Fecha, IdMoneda DESC"
-            comando.Parameters.AddWithValue("@idMoneda", Me.idMoneda)
-            comando.Parameters.AddWithValue("@fecha", ALMLogicaEntradas.Funciones.ValidarFechaAEstandar(Me.fecha))
-            BaseDatos.conexionCatalogo.Open()
-            Dim lectorDatos As SqlDataReader = comando.ExecuteReader()
-            Dim tabla As TiposCambios
-            While lectorDatos.Read()
-                tabla = New TiposCambios()
-                tabla.idMoneda = Convert.ToInt32(lectorDatos("IdMoneda").ToString())
-                tabla.fecha = Convert.ToDateTime(lectorDatos("Fecha").ToString())
-                tabla.valor = Convert.ToDouble(lectorDatos("Valor").ToString())
-                lista.Add(tabla)
-            End While
-            BaseDatos.conexionCatalogo.Close()
-            Return lista
-        Catch ex As Exception
-            Throw ex
-        Finally
-            BaseDatos.conexionCatalogo.Close()
-        End Try
-
-    End Function
-
-    Public Function ObtenerListadoReporte() As DataTable
+    Public Function ObtenerListado() As DataTable
 
         Try
             Dim datos As New DataTable
             Dim comando As New SqlCommand()
             comando.Connection = BaseDatos.conexionCatalogo
-            comando.CommandText = "SELECT IdMoneda, Fecha, Valor FROM " & ALMLogicaEntradas.Programas.prefijoBaseDatosAlmacen & "TiposCambios ORDER BY Fecha, IdMoneda DESC"
+            Dim condicion As String = String.Empty
+            If (Me.EIdMoneda > 0) Then
+                condicion &= " AND IdMoneda=@idMoneda AND Fecha=@fecha"
+            End If
+            comando.CommandText = String.Format("SELECT IdMoneda, Fecha, Valor FROM {0}TiposCambios WHERE 0=0 {1} ORDER BY Fecha, IdMoneda DESC", ALMLogicaEntradas.Programas.prefijoBaseDatosAlmacen, condicion)
+            comando.Parameters.AddWithValue("@idMoneda", Me.EIdMoneda)
+            comando.Parameters.AddWithValue("@fecha", ALMLogicaEntradas.Funciones.ValidarFechaAEstandar(Me.EFecha))
             BaseDatos.conexionCatalogo.Open()
             Dim lectorDatos As SqlDataReader
             lectorDatos = comando.ExecuteReader()

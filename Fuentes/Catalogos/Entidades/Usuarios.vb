@@ -53,31 +53,6 @@ Public Class Usuarios
         End Set
     End Property 
      
-    Public Function ValidarPorId() As Boolean
-
-        Try
-            Dim resultado As Boolean = False
-            Dim comando As New SqlCommand()
-            comando.Connection = BaseDatos.conexionCatalogo
-            comando.CommandText = "SELECT * FROM Usuarios WHERE Id=@id"
-            comando.Parameters.AddWithValue("@id", Me.Id)
-            BaseDatos.conexionCatalogo.Open()
-            Dim dataReader As SqlDataReader = comando.ExecuteReader()
-            If (dataReader.HasRows) Then
-                resultado = True
-            Else
-                resultado = False
-            End If
-            BaseDatos.conexionCatalogo.Close()
-            Return resultado
-        Catch ex As Exception
-            Throw ex
-        Finally
-            BaseDatos.conexionCatalogo.Close()
-        End Try
-
-    End Function
-
     Public Function ObtenerListado() As List(Of Usuarios)
 
         Try
@@ -88,8 +63,8 @@ Public Class Usuarios
             If (Me.EId > 0) Then
                 condicion &= " WHERE Id=@id"
             End If
-            comando.CommandText = "SELECT * FROM Usuarios " & condicion
-            comando.Parameters.AddWithValue("@id", Me.id)
+            comando.CommandText = String.Format("SELECT * FROM Usuarios {0}", condicion)
+            comando.Parameters.AddWithValue("@id", Me.EId)
             BaseDatos.conexionCatalogo.Open()
             Dim dataReader As SqlDataReader = comando.ExecuteReader()
             Dim tabla As Usuarios
@@ -111,51 +86,5 @@ Public Class Usuarios
         End Try
 
     End Function
-
-    Public Function ObtenerListadoReporte() As DataTable
-
-        Try
-            Dim datos As New DataTable
-            Dim comando As New SqlCommand()
-            comando.Connection = BaseDatos.conexionCatalogo
-            comando.CommandText = "SELECT Id, Nombre FROM Usuarios ORDER BY Id"
-            BaseDatos.conexionCatalogo.Open()
-            Dim dataReader As SqlDataReader
-            dataReader = comando.ExecuteReader()
-            datos.Load(dataReader)
-            BaseDatos.conexionCatalogo.Close()
-            Return datos
-        Catch ex As Exception
-            Throw ex
-        Finally
-            BaseDatos.conexionCatalogo.Close()
-        End Try
-
-    End Function
-
-    Public Function ValidarActividadPorId() As Boolean
-
-        Try
-            Dim resultado As Boolean = False
-            Dim comando As New SqlCommand()
-            comando.Connection = BaseDatos.conexionAlmacen
-            comando.CommandText = "SELECT * FROM Actividades WHERE IdUsuario=@id OR IdUsuarioDestino=@id"
-            comando.Parameters.AddWithValue("@id", Me.Id)
-            BaseDatos.conexionAlmacen.Open()
-            Dim dataReader As SqlDataReader = comando.ExecuteReader()
-            If dataReader.HasRows Then
-                resultado = True
-            Else
-                resultado = False
-            End If
-            BaseDatos.conexionAlmacen.Close()
-            Return resultado
-        Catch ex As Exception
-            Throw ex
-        Finally
-            BaseDatos.conexionAlmacen.Close()
-        End Try
-
-    End Function
-
+     
 End Class

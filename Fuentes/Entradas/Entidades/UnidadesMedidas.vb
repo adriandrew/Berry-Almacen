@@ -22,30 +22,24 @@ Public Class UnidadesMedidas
         End Set
     End Property
      
-    Public Function ObtenerListado() As List(Of UnidadesMedidas)
+    Public Function ObtenerListado() As DataTable
 
         Try
-            Dim lista As New List(Of UnidadesMedidas)
+            Dim datos As New DataTable
             Dim comando As New SqlCommand()
             comando.Connection = BaseDatos.conexionCatalogo
             Dim condicion As String = String.Empty
             If (Me.EId > 0) Then
                 condicion &= " WHERE Id=@id"
             End If
-            comando.CommandText = "SELECT Id, Nombre FROM " & ALMLogicaEntradas.Programas.prefijoBaseDatosAlmacen & "UnidadesMedidas " & condicion & " ORDER BY Id ASC"
-            comando.Parameters.AddWithValue("@id", Me.id)
+            comando.CommandText = String.Format("SELECT Id, Nombre FROM {0}UnidadesMedidas {1} ORDER BY Id ASC", ALMLogicaEntradas.Programas.prefijoBaseDatosAlmacen, condicion)
+            comando.Parameters.AddWithValue("@id", Me.EId)
             BaseDatos.conexionCatalogo.Open()
             Dim lectorDatos As SqlDataReader
             lectorDatos = comando.ExecuteReader()
-            Dim tabla As UnidadesMedidas
-            While lectorDatos.Read()
-                tabla = New UnidadesMedidas()
-                tabla.id = Convert.ToInt32(lectorDatos("Id").ToString())
-                tabla.nombre = lectorDatos("Nombre").ToString()
-                lista.Add(tabla)
-            End While
+            datos.Load(lectorDatos)
             BaseDatos.conexionCatalogo.Close()
-            Return lista
+            Return datos
         Catch ex As Exception
             Throw ex
         Finally

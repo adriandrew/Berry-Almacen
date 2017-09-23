@@ -21,7 +21,7 @@ Public Class TiposEntradas
             nombre = value
         End Set
     End Property
-     
+
     Public Function ObtenerListadoReporte() As DataTable
 
         Try

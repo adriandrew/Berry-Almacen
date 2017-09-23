@@ -198,7 +198,7 @@ Public Class Entradas
         Try
             Dim comando As New SqlCommand()
             comando.Connection = BaseDatos.conexionAlmacen
-            comando.CommandText = "INSERT INTO Entradas (IdAlmacen, IdFamilia, IdSubFamilia, IdArticulo, Id, IdExterno, IdTipoEntrada, IdProveedor, IdMoneda, TipoCambio, Fecha, Cantidad, PrecioUnitario, Total, TotalPesos, Orden, Observaciones, Factura, Chofer, Camion, NoEconomico) VALUES (@idAlmacen, @idFamilia, @idSubFamilia, @idArticulo, @id, @idExterno, @idTipoEntrada, @idProveedor, @idMoneda, @tipoCambio, @fecha, @cantidad, @precioUnitario, @total, @totalPesos, @orden, @observaciones, @factura, @chofer, @camion, @noEconomico)"
+            comando.CommandText = String.Format("INSERT INTO Entradas (IdAlmacen, IdFamilia, IdSubFamilia, IdArticulo, Id, IdExterno, IdTipoEntrada, IdProveedor, IdMoneda, TipoCambio, Fecha, Cantidad, PrecioUnitario, Total, TotalPesos, Orden, Observaciones, Factura, Chofer, Camion, NoEconomico) VALUES (@idAlmacen, @idFamilia, @idSubFamilia, @idArticulo, @id, @idExterno, @idTipoEntrada, @idProveedor, @idMoneda, @tipoCambio, @fecha, @cantidad, @precioUnitario, @total, @totalPesos, @orden, @observaciones, @factura, @chofer, @camion, @noEconomico)")
             comando.Parameters.AddWithValue("@idAlmacen", Me.EIdAlmacen)
             comando.Parameters.AddWithValue("@idFamilia", Me.EIdFamilia)
             comando.Parameters.AddWithValue("@idSubFamilia", Me.EIdSubFamilia)
@@ -243,9 +243,9 @@ Public Class Entradas
             If (Me.EId > 0) Then
                 condicion &= " AND Id=@id"
             End If
-            comando.CommandText = "DELETE FROM Entradas WHERE 0=0 " & condicion
+            comando.CommandText = String.Format("DELETE FROM Entradas WHERE 0=0 {0}", condicion)
             comando.Parameters.AddWithValue("@idAlmacen", Me.EIdAlmacen)
-            comando.Parameters.AddWithValue("@id", Me.id)
+            comando.Parameters.AddWithValue("@id", Me.EId)
             BaseDatos.conexionAlmacen.Open()
             comando.ExecuteNonQuery()
             BaseDatos.conexionAlmacen.Close()
@@ -266,7 +266,7 @@ Public Class Entradas
             If (Me.EIdAlmacen > 0) Then
                 condicion &= " WHERE IdAlmacen=@idAlmacen"
             End If
-            comando.CommandText = "SELECT MAX(CAST (Id AS Int)) AS IdMaximo FROM Entradas" + condicion
+            comando.CommandText = String.Format("SELECT MAX(CAST (Id AS Int)) AS IdMaximo FROM Entradas {0}", condicion)
             comando.Parameters.AddWithValue("@idAlmacen", Me.EIdAlmacen)
             BaseDatos.conexionAlmacen.Open()
             Dim lectorDatos As SqlDataReader = comando.ExecuteReader()
@@ -297,13 +297,13 @@ Public Class Entradas
             If (Me.EId > 0) Then
                 condicion &= " AND E.Id=@id"
             End If
-            comando.CommandText = "SELECT E.IdFamilia, F.Nombre, E.IdSubFamilia, SF.Nombre, E.IdArticulo, A.Nombre, UM.Nombre, E.Cantidad, E.PrecioUnitario, E.Total, E.TotalPesos, E.Observaciones, E.Factura, E.Chofer, E.Camion, E.NoEconomico " & _
+            comando.CommandText = String.Format("SELECT E.IdFamilia, F.Nombre, E.IdSubFamilia, SF.Nombre, E.IdArticulo, A.Nombre, UM.Nombre, E.Cantidad, E.PrecioUnitario, E.Total, E.TotalPesos, E.Observaciones, E.Factura, E.Chofer, E.Camion, E.NoEconomico " & _
             " FROM Entradas AS E " & _
-            " LEFT JOIN " & ALMLogicaEntradas.Programas.bdCatalogo & ".dbo." & ALMLogicaEntradas.Programas.prefijoBaseDatosAlmacen & "Familias AS F ON E.IdFamilia = F.Id AND E.IdAlmacen = F.IdAlmacen" & _
-            " LEFT JOIN " & ALMLogicaEntradas.Programas.bdCatalogo & ".dbo." & ALMLogicaEntradas.Programas.prefijoBaseDatosAlmacen & "SubFamilias AS SF ON E.IdSubFamilia = SF.Id AND E.IdFamilia = SF.IdFamilia AND E.IdAlmacen = SF.IdAlmacen" & _
-            " LEFT JOIN " & ALMLogicaEntradas.Programas.bdCatalogo & ".dbo." & ALMLogicaEntradas.Programas.prefijoBaseDatosAlmacen & "Articulos AS A ON E.IdArticulo = A.Id AND E.IdSubFamilia = A.IdSubFamilia AND E.IdFamilia = A.IdFamilia AND E.IdAlmacen = A.IdAlmacen" & _
-            " LEFT JOIN " & ALMLogicaEntradas.Programas.bdCatalogo & ".dbo." & ALMLogicaEntradas.Programas.prefijoBaseDatosAlmacen & "UnidadesMedidas AS UM ON A.IdUnidadMedida = UM.Id" & _
-            " WHERE 0=0 " & condicion & " ORDER BY E.Orden ASC"
+            " LEFT JOIN {0}Familias AS F ON E.IdFamilia = F.Id AND E.IdAlmacen = F.IdAlmacen" & _
+            " LEFT JOIN {0}SubFamilias AS SF ON E.IdSubFamilia = SF.Id AND E.IdFamilia = SF.IdFamilia AND E.IdAlmacen = SF.IdAlmacen" & _
+            " LEFT JOIN {0}Articulos AS A ON E.IdArticulo = A.Id AND E.IdSubFamilia = A.IdSubFamilia AND E.IdFamilia = A.IdFamilia AND E.IdAlmacen = A.IdAlmacen" & _
+            " LEFT JOIN {0}UnidadesMedidas AS UM ON A.IdUnidadMedida = UM.Id" & _
+            " WHERE 0=0 {1} ORDER BY E.Orden ASC", ALMLogicaEntradas.Programas.bdCatalogo & ".dbo." & ALMLogicaEntradas.Programas.prefijoBaseDatosAlmacen, condicion)
             comando.Parameters.AddWithValue("@idAlmacen", Me.EIdAlmacen)
             comando.Parameters.AddWithValue("@id", Me.EId)
             BaseDatos.conexionAlmacen.Open()
@@ -320,10 +320,10 @@ Public Class Entradas
 
     End Function
 
-    Public Function ObtenerListado() As List(Of Entradas)
+    Public Function ObtenerListado() As DataTable
 
         Try
-            Dim lista As New List(Of Entradas)
+            Dim datos As New DataTable
             Dim comando As New SqlCommand()
             comando.Connection = BaseDatos.conexionAlmacen
             Dim condicion As String = String.Empty
@@ -333,39 +333,15 @@ Public Class Entradas
             If (Me.EId > 0) Then
                 condicion &= " AND Id=@id"
             End If
-            comando.CommandText = "SELECT * FROM Entradas WHERE 0=0 " & condicion & " ORDER BY Orden ASC"
+            comando.CommandText = String.Format("SELECT IdExterno, Fecha, IdMoneda, TipoCambio, IdTipoEntrada, IdProveedor FROM Entradas WHERE 0=0 {0} ORDER BY Orden ASC", condicion)
             comando.Parameters.AddWithValue("@idAlmacen", Me.EIdAlmacen)
             comando.Parameters.AddWithValue("@id", Me.EId)
             BaseDatos.conexionAlmacen.Open()
-            Dim lectorDatos As SqlDataReader = comando.ExecuteReader()
-            Dim tabla As Entradas
-            While lectorDatos.Read()
-                tabla = New Entradas()
-                tabla.idAlmacen = Convert.ToInt32(lectorDatos("IdAlmacen").ToString())
-                tabla.idFamilia = Convert.ToInt32(lectorDatos("IdFamilia").ToString())
-                tabla.idSubFamilia = Convert.ToInt32(lectorDatos("IdSubFamilia").ToString())
-                tabla.idArticulo = Convert.ToInt32(lectorDatos("IdArticulo").ToString())
-                tabla.id = Convert.ToInt32(lectorDatos("Id").ToString())
-                tabla.idExterno = lectorDatos("IdExterno").ToString()
-                tabla.idTipoEntrada = lectorDatos("IdTipoEntrada").ToString()
-                tabla.idProveedor = Convert.ToInt32(lectorDatos("IdProveedor").ToString())
-                tabla.idMoneda = Convert.ToInt32(lectorDatos("IdMoneda").ToString())
-                tabla.tipoCambio = Convert.ToDouble(lectorDatos("TipoCambio").ToString())
-                tabla.fecha = Convert.ToDateTime(lectorDatos("Fecha").ToString())
-                tabla.cantidad = Convert.ToInt32(lectorDatos("Cantidad").ToString())
-                tabla.precioUnitario = Convert.ToDouble(lectorDatos("PrecioUnitario").ToString())
-                tabla.total = Convert.ToDouble(lectorDatos("Total").ToString())
-                tabla.totalPesos = Convert.ToDouble(lectorDatos("TotalPesos").ToString())
-                tabla.orden = Convert.ToInt32(lectorDatos("Orden").ToString())
-                tabla.observaciones = lectorDatos("Observaciones").ToString()
-                tabla.factura = lectorDatos("Factura").ToString()
-                tabla.chofer = lectorDatos("Chofer").ToString()
-                tabla.camion = lectorDatos("Camion").ToString()
-                tabla.noEconomico = lectorDatos("NoEconomico").ToString()
-                lista.Add(tabla)
-            End While
+            Dim lectorDatos As SqlDataReader
+            lectorDatos = comando.ExecuteReader()
+            datos.Load(lectorDatos)
             BaseDatos.conexionAlmacen.Close()
-            Return lista
+            Return datos
         Catch ex As Exception
             Throw ex
         Finally

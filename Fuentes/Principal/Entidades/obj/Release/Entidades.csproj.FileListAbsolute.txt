@@ -47,3 +47,12 @@ C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Princip
 C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Principal\Entidades\obj\Release\Entidades.csprojResolveAssemblyReference.cache
 C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Principal\Entidades\obj\Release\Entidades.dll
 C:\Users\Berry 1\Desktop\Proyectos Berry\ERP-Almacen\Fuentes Modificados\Principal\Entidades\obj\Release\Entidades.pdb
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Principal\Entidades\bin\Release\Entidades.dll
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Principal\Entidades\bin\Release\Entidades.pdb
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Principal\Entidades\bin\Release\Entidades.dll.CodeAnalysisLog.xml
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Principal\Entidades\bin\Release\Entidades.dll.lastcodeanalysissucceeded
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Principal\Entidades\bin\Release\Logica.dll
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Principal\Entidades\bin\Release\Logica.pdb
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Principal\Entidades\obj\Release\Entidades.csprojResolveAssemblyReference.cache
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Principal\Entidades\obj\Release\Entidades.dll
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Principal\Entidades\obj\Release\Entidades.pdb

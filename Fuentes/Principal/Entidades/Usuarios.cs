@@ -104,10 +104,10 @@ namespace Entidades
             {
                 SqlCommand comando = new SqlCommand();
                 comando.Connection = BaseDatos.conexionCatalogo;
-                string condiciones = string.Empty;
+                string condicion = string.Empty;
                 if (this.Id > 0)
                 {
-                    condiciones += " WHERE Id=@id";
+                    condicion += " WHERE Id=@id";
                 }
                 comando.CommandText = "DELETE FROM Usuarios";
                 comando.Parameters.AddWithValue("@id", this.Id);

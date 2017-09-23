@@ -38,13 +38,13 @@ Public Class Familias
             Dim comando As New SqlCommand()
             comando.Connection = BaseDatos.conexionCatalogo
             Dim condicion As String = String.Empty
-            If Me.EIdAlmacen > 0 Then
+            If (Me.EIdAlmacen > 0) Then
                 condicion &= " AND IdAlmacen=@idAlmacen"
             End If
-            If Me.EId > 0 Then
+            If (Me.EId > 0) Then
                 condicion &= " AND Id=@id"
             End If
-            comando.CommandText = "SELECT Id, Nombre FROM " & ALMLogicaSalidas.Programas.prefijoBaseDatosAlmacen & "Familias WHERE 0=0 " & condicion & " ORDER BY IdAlmacen, Id ASC"
+            comando.CommandText = String.Format("SELECT Id, Nombre FROM {0}Familias WHERE 0=0 {1} ORDER BY IdAlmacen, Id ASC", ALMLogicaSalidas.Programas.prefijoBaseDatosAlmacen, condicion)
             comando.Parameters.AddWithValue("@idAlmacen", Me.EIdAlmacen)
             comando.Parameters.AddWithValue("@id", Me.EId)
             BaseDatos.conexionCatalogo.Open()
@@ -61,10 +61,10 @@ Public Class Familias
 
     End Function
 
-    Public Function ObtenerListado() As List(Of Familias)
+    Public Function ObtenerListado() As DataTable
 
         Try
-            Dim lista As New List(Of Familias)
+            Dim datos As New DataTable
             Dim comando As New SqlCommand()
             comando.Connection = BaseDatos.conexionCatalogo
             Dim condicion As String = String.Empty
@@ -74,21 +74,15 @@ Public Class Familias
             If (Me.EId > 0) Then
                 condicion &= " AND Id=@id"
             End If
-            comando.CommandText = "SELECT IdAlmacen, Id, Nombre FROM " & ALMLogicaSalidas.Programas.prefijoBaseDatosAlmacen & "Familias WHERE 0=0 " & condicion
+            comando.CommandText = String.Format("SELECT IdAlmacen, Id, Nombre FROM {0}Familias WHERE 0=0 {1}", ALMLogicaSalidas.Programas.prefijoBaseDatosAlmacen, condicion)
             comando.Parameters.AddWithValue("@idAlmacen", Me.EIdAlmacen)
             comando.Parameters.AddWithValue("@id", Me.EId)
             BaseDatos.conexionCatalogo.Open()
-            Dim lectorDatos As SqlDataReader = comando.ExecuteReader()
-            Dim tabla As Familias
-            While lectorDatos.Read()
-                tabla = New Familias()
-                tabla.idAlmacen = Convert.ToInt32(lectorDatos("IdAlmacen").ToString())
-                tabla.id = Convert.ToInt32(lectorDatos("Id").ToString())
-                tabla.nombre = lectorDatos("Nombre").ToString()
-                lista.Add(tabla)
-            End While
+            Dim lectorDatos As SqlDataReader
+            lectorDatos = comando.ExecuteReader()
+            datos.Load(lectorDatos)
             BaseDatos.conexionCatalogo.Close()
-            Return lista
+            Return datos
         Catch ex As Exception
             Throw ex
         Finally

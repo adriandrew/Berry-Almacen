@@ -36,7 +36,7 @@ Public Class Familias
         Try
             Dim comando As New SqlCommand()
             comando.Connection = BaseDatos.conexionCatalogo
-            comando.CommandText = "INSERT INTO " & ALMLogicaCatalogos.Programas.prefijoBaseDatosAlmacen & "Familias (IdAlmacen, Id, Nombre) VALUES (@idAlmacen, @id, @nombre)"
+            comando.CommandText = String.Format("INSERT INTO {0}Familias (IdAlmacen, Id, Nombre) VALUES (@idAlmacen, @id, @nombre)", ALMLogicaCatalogos.Programas.prefijoBaseDatosAlmacen)
             comando.Parameters.AddWithValue("@idAlmacen", Me.EIdAlmacen)
             comando.Parameters.AddWithValue("@id", Me.EId)
             comando.Parameters.AddWithValue("@nombre", Me.ENombre)
@@ -63,9 +63,9 @@ Public Class Familias
             If (Me.EId > 0) Then
                 condicion &= " AND Id=@id"
             End If
-            comando.CommandText = "DELETE FROM " & ALMLogicaCatalogos.Programas.prefijoBaseDatosAlmacen & "Familias WHERE 0=0 " & condicion
+            comando.CommandText = String.Format("DELETE FROM {0}Familias WHERE 0=0 {1}", ALMLogicaCatalogos.Programas.prefijoBaseDatosAlmacen, condicion)
             comando.Parameters.AddWithValue("@idAlmacen", Me.EIdAlmacen)
-            comando.Parameters.AddWithValue("@id", Me.id)
+            comando.Parameters.AddWithValue("@id", Me.EId)
             BaseDatos.conexionCatalogo.Open()
             comando.ExecuteNonQuery()
             BaseDatos.conexionCatalogo.Close()
@@ -84,13 +84,13 @@ Public Class Familias
             Dim comando As New SqlCommand()
             comando.Connection = BaseDatos.conexionCatalogo
             Dim condicion As String = String.Empty
-            If Me.EIdAlmacen > 0 Then
+            If (Me.EIdAlmacen > 0) Then
                 condicion &= " AND IdAlmacen=@idAlmacen"
             End If
-            If Me.EId > 0 Then
+            If (Me.EId > 0) Then
                 condicion &= " AND Id=@id"
             End If
-            comando.CommandText = "SELECT Id, Nombre FROM " & ALMLogicaCatalogos.Programas.prefijoBaseDatosAlmacen & "Familias WHERE 0=0 " & condicion & " ORDER BY IdAlmacen, Id ASC"
+            comando.CommandText = String.Format("SELECT Id, Nombre FROM {0}Familias WHERE 0=0 {1} ORDER BY IdAlmacen, Id ASC", ALMLogicaCatalogos.Programas.prefijoBaseDatosAlmacen, condicion)
             comando.Parameters.AddWithValue("@idAlmacen", Me.EIdAlmacen)
             comando.Parameters.AddWithValue("@id", Me.EId)
             BaseDatos.conexionCatalogo.Open()

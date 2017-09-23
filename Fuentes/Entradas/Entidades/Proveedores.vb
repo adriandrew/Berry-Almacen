@@ -27,7 +27,7 @@ Public Class Proveedores
             nombre = value
         End Set
     End Property
-    Public Property Erfc() As String
+    Public Property ERfc() As String
         Get
             Return rfc
         End Get
@@ -112,43 +112,6 @@ Public Class Proveedores
             datos.Load(lectorDatos)
             BaseDatos.conexionCatalogo.Close()
             Return datos
-        Catch ex As Exception
-            Throw ex
-        Finally
-            BaseDatos.conexionCatalogo.Close()
-        End Try
-
-    End Function
-
-    Public Function ObtenerListado() As List(Of Proveedores)
-
-        Try
-            Dim lista As New List(Of Proveedores)
-            Dim comando As New SqlCommand()
-            comando.Connection = BaseDatos.conexionCatalogo
-            Dim condicion As String = String.Empty
-            If (Me.EId > 0) Then
-                condicion &= " AND Id=@id"
-            End If
-            comando.CommandText = "SELECT Id, Nombre, Rfc, Domicilio, Municipio, Estado, Telefono, Correo FROM " & ALMLogicaEntradas.Programas.prefijoBaseDatosAlmacen & "Proveedores WHERE 0=0 " & condicion
-            comando.Parameters.AddWithValue("@id", Me.EId)
-            BaseDatos.conexionCatalogo.Open()
-            Dim lectorDatos As SqlDataReader = comando.ExecuteReader()
-            Dim tabla As Proveedores
-            While lectorDatos.Read()
-                tabla = New Proveedores()
-                tabla.id = Convert.ToInt32(lectorDatos("Id").ToString())
-                tabla.nombre = lectorDatos("Nombre").ToString()
-                tabla.rfc = lectorDatos("Rfc").ToString()
-                tabla.domicilio = lectorDatos("Domicilio").ToString()
-                tabla.municipio = lectorDatos("Municipio").ToString()
-                tabla.estado = lectorDatos("Estado").ToString()
-                tabla.telefono = lectorDatos("Telefono").ToString()
-                tabla.correo = lectorDatos("Correo").ToString()
-                lista.Add(tabla)
-            End While
-            BaseDatos.conexionCatalogo.Close()
-            Return lista
         Catch ex As Exception
             Throw ex
         Finally

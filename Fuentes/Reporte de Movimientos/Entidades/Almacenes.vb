@@ -37,47 +37,15 @@ Public Class Almacenes
             Dim datos As New DataTable
             Dim comando As New SqlCommand()
             comando.Connection = BaseDatos.conexionCatalogo
-            comando.CommandText = "SELECT Id, Nombre FROM " & ALMLogicaReporteMovimientos.Programas.prefijoBaseDatosAlmacen & "Almacenes " & _
-            " UNION SELECT -1 AS Id, 'Todos' AS Nombre FROM " & ALMLogicaReporteMovimientos.Programas.prefijoBaseDatosAlmacen & "Almacenes " & _
-            " ORDER BY Id ASC"
+            comando.CommandText = String.Format("SELECT Id, Nombre FROM {0}Almacenes " & _
+            " UNION SELECT -1 AS Id, 'Todos' AS Nombre FROM {0}Almacenes " & _
+            " ORDER BY Id ASC", ALMLogicaReporteMovimientos.Programas.prefijoBaseDatosAlmacen)
             BaseDatos.conexionCatalogo.Open()
             Dim lectorDatos As SqlDataReader
             lectorDatos = comando.ExecuteReader()
             datos.Load(lectorDatos)
             BaseDatos.conexionCatalogo.Close()
             Return datos
-        Catch ex As Exception
-            Throw ex
-        Finally
-            BaseDatos.conexionCatalogo.Close()
-        End Try
-
-    End Function
-
-    Public Function ObtenerListado() As List(Of Almacenes)
-
-        Try
-            Dim lista As New List(Of Almacenes)
-            Dim comando As New SqlCommand()
-            comando.Connection = BaseDatos.conexionCatalogo
-            Dim condicion As String = String.Empty
-            If (Me.EId > 0) Then
-                condicion &= " WHERE Id=@id"
-            End If
-            comando.CommandText = "SELECT * FROM " & ALMLogicaReporteMovimientos.Programas.prefijoBaseDatosAlmacen & "Almacenes " & condicion
-            comando.Parameters.AddWithValue("@id", Me.id)
-            BaseDatos.conexionCatalogo.Open()
-            Dim lectorDatos As SqlDataReader = comando.ExecuteReader()
-            Dim tabla As Almacenes
-            While lectorDatos.Read()
-                tabla = New Almacenes()
-                tabla.id = Convert.ToInt32(lectorDatos("Id").ToString())
-                tabla.nombre = lectorDatos("Nombre").ToString()
-                tabla.abreviatura = lectorDatos("Abreviatura").ToString()
-                lista.Add(tabla)
-            End While
-            BaseDatos.conexionCatalogo.Close()
-            Return lista
         Catch ex As Exception
             Throw ex
         Finally

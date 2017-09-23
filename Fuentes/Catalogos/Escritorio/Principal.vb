@@ -947,10 +947,10 @@ Public Class Principal
                 Dim idUnidadMedida As Integer = spArticulos.ActiveSheet.Cells(fila, spArticulos.ActiveSheet.Columns("idUnidadMedida").Index).Value
                 unidadesMedidas.EId = idUnidadMedida
                 If (idUnidadMedida > 0) Then
-                    Dim lista As New List(Of ALMEntidadesCatalogos.UnidadesMedidas)
-                    lista = unidadesMedidas.ObtenerListado()
-                    If (lista.Count > 0) Then
-                        spArticulos.ActiveSheet.Cells(fila, spArticulos.ActiveSheet.Columns("nombreUnidadMedida").Index).Value = lista(0).ENombre
+                    Dim datos As New DataTable
+                    datos = unidadesMedidas.ObtenerListado()
+                    If (datos.Rows.Count > 0) Then
+                        spArticulos.ActiveSheet.Cells(fila, spArticulos.ActiveSheet.Columns("nombreUnidadMedida").Index).Value = datos.Rows(0).Item("Nombre")
                     End If
                 End If
             End If
@@ -959,11 +959,11 @@ Public Class Principal
             If (columnaActiva = spVarios.ActiveSheet.Columns("idMoneda").Index) Then
                 Dim idMonedaa As Integer = ALMLogicaCatalogos.Funciones.ValidarNumeroACero(spVarios.ActiveSheet.Cells(fila, spVarios.ActiveSheet.Columns("idMoneda").Index).Text)
                 If (idMonedaa > 0) Then
-                    Dim lista As New List(Of ALMEntidadesCatalogos.Monedas)
+                    Dim datos As New DataTable
                     monedas.EId = idMonedaa
-                    lista = monedas.ObtenerListado
-                    If (lista.Count > 0) Then
-                        spVarios.ActiveSheet.Cells(fila, spVarios.ActiveSheet.Columns("nombreMoneda").Index).Text = lista(0).ENombre
+                    datos = monedas.ObtenerListadoReporte()
+                    If (datos.Rows.Count > 0) Then
+                        spVarios.ActiveSheet.Cells(fila, spVarios.ActiveSheet.Columns("nombreMoneda").Index).Text = datos.Rows(0).Item("Nombre")
                     End If
                 Else
                     spVarios.ActiveSheet.SetActiveCell(fila - 1, spVarios.ActiveSheet.Columns.Count - 1)
@@ -1025,7 +1025,7 @@ Public Class Principal
     Private Sub CargarCatalogoMonedas()
 
         monedas.EId = 0
-        spCatalogos.ActiveSheet.DataSource = monedas.ObtenerListado()
+        spCatalogos.ActiveSheet.DataSource = monedas.ObtenerListadoReporte()
         spCatalogos.Focus()
 
     End Sub
@@ -1048,17 +1048,18 @@ Public Class Principal
         Dim numeracion As Integer = 0
         spCatalogos.ActiveSheet.Columns(numeracion).Tag = "id" : numeracion += 1
         spCatalogos.ActiveSheet.Columns(numeracion).Tag = "nombre" : numeracion += 1
-        spCatalogos.ActiveSheet.Columns("id").Width = 50
-        spCatalogos.ActiveSheet.Columns("nombre").Width = 400
+        spCatalogos.ActiveSheet.Columns("id").Width = 70
+        spCatalogos.ActiveSheet.Columns("nombre").Width = 370
         spCatalogos.ActiveSheet.ColumnHeader.Cells(0, spCatalogos.ActiveSheet.Columns("id").Index).Value = "No.".ToUpper
         spCatalogos.ActiveSheet.ColumnHeader.Cells(0, spCatalogos.ActiveSheet.Columns("nombre").Index).Value = "Nombre".ToUpper
         pnlCatalogos.Height = Me.altoTotal
         pnlCatalogos.Width = spCatalogos.Width
         spCatalogos.Height = pnlCatalogos.Height - txtBuscarCatalogo.Height - 5
+        spCatalogos.Width = pnlCatalogos.Width
+        spCatalogos.ActiveSheet.Columns(0, spCatalogos.ActiveSheet.Columns.Count - 1).AllowAutoFilter = True
+        spCatalogos.ActiveSheet.Columns(0, spCatalogos.ActiveSheet.Columns.Count - 1).AllowAutoSort = True
         pnlCatalogos.BringToFront()
         pnlCatalogos.Visible = True
-        pnlCatalogos.Focus()
-        spCatalogos.Focus()
         spCatalogos.Refresh()
 
     End Sub

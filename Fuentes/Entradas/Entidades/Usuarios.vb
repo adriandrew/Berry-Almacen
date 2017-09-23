@@ -63,8 +63,8 @@ Public Class Usuarios
             If (Me.EId > 0) Then
                 condicion &= " WHERE Id=@id"
             End If
-            comando.CommandText = "SELECT * FROM Usuarios " & condicion
-            comando.Parameters.AddWithValue("@id", Me.id)
+            comando.CommandText = String.Format("SELECT * FROM Usuarios {0}", condicion)
+            comando.Parameters.AddWithValue("@id", Me.EId)
             BaseDatos.conexionCatalogo.Open()
             Dim lectorDatos As SqlDataReader = comando.ExecuteReader()
             Dim tabla As Usuarios

@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using System.Drawing.Drawing2D;
 using System.Reflection;
 using System.Data.Sql;
+using System.Threading;
 
 namespace Escritorio
 {
@@ -27,7 +28,7 @@ namespace Escritorio
         public Entidades.BloqueoUsuarios bloqueoUsuarios = new Entidades.BloqueoUsuarios();
         public Entidades.Licencia licencia = new Entidades.Licencia();
         public Entidades.Registros registros = new Entidades.Registros();
-        public Entidades.Estilos estilos = new Entidades.Estilos(); 
+        public Entidades.Estilos estilos = new Entidades.Estilos();
         // Variables de menú.
         public Color colorCuadroOriginal = Color.Transparent;
         public int nivelMenu = 1; // 1 módulo, 2 programa y 3 subprograma.
@@ -448,10 +449,12 @@ namespace Escritorio
                 pnlContenido.BackColor = Color.DarkSlateGray;
                 pnlMenu.Visible = false;
                 btnRegresarMenu.Visible = false;
-                pnlIniciarSesion.Visible = true; 
+                pnlIniciarSesion.Visible = true;
+                pnlMenu.Refresh(); pnlIniciarSesion.Refresh();
                 txtContraseña.Text = string.Empty;
                 txtUsuario.Text = string.Empty;
                 txtUsuario.Focus();
+                pnlMenu.Controls.Clear();
                 this.esInicioSesion = true;
             }
             this.Cursor = Cursors.Default;
@@ -466,54 +469,55 @@ namespace Escritorio
             TextBox txtAyuda = new TextBox();
             if (pnlContenido.Controls.Find("pnlAyuda", true).Count() == 0)
             {
-                pnlAyuda.Name = "pnlAyuda"; Application.DoEvents();
-                pnlAyuda.Visible = false; Application.DoEvents();
-                pnlContenido.Controls.Add(pnlAyuda); Application.DoEvents();
-                txtAyuda.Name = "txtAyuda"; Application.DoEvents();
-                pnlAyuda.Controls.Add(txtAyuda); Application.DoEvents();
+                pnlAyuda.Name = "pnlAyuda"; 
+                pnlAyuda.Visible = false; 
+                pnlContenido.Controls.Add(pnlAyuda); 
+                txtAyuda.Name = "txtAyuda"; 
+                pnlAyuda.Controls.Add(txtAyuda); 
             }
             else
             {
-                pnlAyuda = pnlContenido.Controls.Find("pnlAyuda", false).FirstOrDefault() as Panel; Application.DoEvents();
-                txtAyuda = pnlAyuda.Controls.Find("txtAyuda", false).FirstOrDefault() as TextBox; Application.DoEvents();
+                pnlAyuda = pnlContenido.Controls.Find("pnlAyuda", false).FirstOrDefault() as Panel; 
+                txtAyuda = pnlAyuda.Controls.Find("txtAyuda", false).FirstOrDefault() as TextBox; 
             }
             if (!pnlAyuda.Visible)
             {
                 if (this.esInicioSesion)
                 {
-                    pnlIniciarSesion.Visible = false; Application.DoEvents(); 
+                    pnlIniciarSesion.Visible = false;  
                 }
                 else
                 {
-                    pnlMenu.Visible = false; Application.DoEvents();
+                    pnlMenu.Visible = false; 
                     btnRegresarMenu.Visible = false;
                 }
-                pnlAyuda.Visible = true; Application.DoEvents();
-                pnlAyuda.Size = pnlMenu.Size; Application.DoEvents();
-                pnlAyuda.Location = pnlMenu.Location; Application.DoEvents();
-                pnlContenido.Controls.Add(pnlAyuda); Application.DoEvents();
-                txtAyuda.ScrollBars = ScrollBars.Both; Application.DoEvents();
-                txtAyuda.Multiline = true; Application.DoEvents();
-                txtAyuda.Width = pnlAyuda.Width - 10; Application.DoEvents();
-                txtAyuda.Height = pnlAyuda.Height - 10; Application.DoEvents();
-                txtAyuda.Location = new Point(5, 5); Application.DoEvents();
-                txtAyuda.Text = "Sección de Ayuda: " + System.Environment.NewLine + System.Environment.NewLine + "* Iniciar Sesión: " + System.Environment.NewLine + "En esta parte se capturarán los datos de usuario y contraseña. " + System.Environment.NewLine + "Se le puede dar enter para avanzar, primero en usuario, luego en contraseña y despues de otro enter iniciará sesión, o en su caso darle clic al botón de la flecha. " + System.Environment.NewLine + System.Environment.NewLine + "* Menú: " + System.Environment.NewLine + "Una vez iniciado sesión, en este apartado aparecen todos los programas en un color distinto y aleatorio. " + System.Environment.NewLine + "Para abrir un programa simplemente hay que darle clic en la opción correspondiente y esperar a que se muestre. Dependiendo los permisos de usuario se podrá acceder o no."+ System.Environment.NewLine + System.Environment.NewLine + "* Cambiar directorio: " + System.Environment.NewLine + "En la parte inferior izquierda se encuentra un botón con el cual se puede cambiar de directorio, el cual es practicamente el ambiente donde se encuentra trabajando. Cada directorio tiene su propia información completamente independiente."; Application.DoEvents();
-                pnlAyuda.Controls.Add(txtAyuda); Application.DoEvents();
+                pnlAyuda.Visible = true; 
+                pnlAyuda.Size = pnlMenu.Size; 
+                pnlAyuda.Location = pnlMenu.Location; 
+                pnlContenido.Controls.Add(pnlAyuda); 
+                txtAyuda.ScrollBars = ScrollBars.Both; 
+                txtAyuda.Multiline = true; 
+                txtAyuda.Width = pnlAyuda.Width - 10; 
+                txtAyuda.Height = pnlAyuda.Height - 10; 
+                txtAyuda.Location = new Point(5, 5); 
+                txtAyuda.Text = "Sección de Ayuda: " + System.Environment.NewLine + System.Environment.NewLine + "* Iniciar Sesión: " + System.Environment.NewLine + "En esta parte se capturarán los datos de usuario y contraseña. " + System.Environment.NewLine + "Se le puede dar enter para avanzar, primero en usuario, luego en contraseña y despues de otro enter iniciará sesión, o en su caso darle clic al botón de la flecha. " + System.Environment.NewLine + System.Environment.NewLine + "* Menú: " + System.Environment.NewLine + "Una vez iniciado sesión, en este apartado aparecen todos los programas en un color distinto y aleatorio. " + System.Environment.NewLine + "Para abrir un programa simplemente hay que darle clic en la opción correspondiente y esperar a que se muestre. Dependiendo los permisos de usuario se podrá acceder o no."+ System.Environment.NewLine + System.Environment.NewLine + "* Cambiar directorio: " + System.Environment.NewLine + "En la parte inferior izquierda se encuentra un botón con el cual se puede cambiar de directorio, el cual es practicamente el ambiente donde se encuentra trabajando. Cada directorio tiene su propia información completamente independiente."; 
+                pnlAyuda.Controls.Add(txtAyuda); 
             }
             else
             {
                 if (this.esInicioSesion)
                 {
-                    pnlIniciarSesion.Visible = true; Application.DoEvents(); 
+                    pnlIniciarSesion.Visible = true;  
                 }
                 else 
                 {
-                    pnlMenu.Visible = true; Application.DoEvents();
+                    pnlMenu.Visible = true; 
                     btnRegresarMenu.Visible = true;
                 }
-                pnlAyuda.Visible = false; Application.DoEvents();
+                pnlAyuda.Visible = false; 
             }
             this.Cursor = Cursors.Default;
+            Application.DoEvents();
 
         } 
 
@@ -647,7 +651,7 @@ namespace Escritorio
         private void PermitirAcceso(int idUsuario)
         {
 
-            pnlIniciarSesion.Visible = false; Application.DoEvents(); 
+            pnlIniciarSesion.Visible = false; Application.DoEvents();
             pnlMenu.Visible = true; Application.DoEvents();
             btnRegresarMenu.Visible = true;
             this.esInicioSesion = false; 
@@ -997,8 +1001,9 @@ namespace Escritorio
 
             this.Cursor = Cursors.WaitCursor;
             //CargarEstilos(); TODO. Pendiente.
-            // Se limpia siempre. 
-            pnlMenu.Controls.Clear(); Application.DoEvents();
+            // Se limpia siempre.
+            pnlMenu.Controls.Clear();
+            pnlMenu.Refresh();
             // Se generan las opciones de menú.
             List<Entidades.Modulos> listaModulos = new List<Entidades.Modulos>();
             List<Entidades.Programas> listaProgramas = new List<Entidades.Programas>();
@@ -1069,7 +1074,7 @@ namespace Escritorio
                 //{
                     //cuadro.BackColor = Color.FromName(colorFondoUsuario);
                 //}
-                System.Threading.Thread.Sleep(70);
+                Thread.Sleep(10); // Se quitó, quizá se necesite despues.
                 if (this.nivelMenu == (int)Nivel.Modulos)
                     cuadro.Name = "pnlPrograma_" + listaModulos[indice].Id;
                 else if (this.nivelMenu == (int)Nivel.Programas)
@@ -1080,7 +1085,8 @@ namespace Escritorio
                 cuadro.MouseEnter += new System.EventHandler(cuadro_MouseEnter); // Se genera el evento desde código.
                 cuadro.MouseLeave += new System.EventHandler(cuadro_MouseLeave); // Se genera el evento desde código.
                 cuadro.Cursor = Cursors.Hand;
-                pnlMenu.Controls.Add(cuadro); Application.DoEvents();
+                pnlMenu.Controls.Add(cuadro);
+                Application.DoEvents();
                 // Se crean las etiquetas de los nombres de los paneles.
                 Label etiquetaNombre = new Label();
                 etiquetaNombre.Width = ancho;
@@ -1120,7 +1126,7 @@ namespace Escritorio
                 etiquetaNombre.MouseEnter += new System.EventHandler(etiquetaNombre_MouseEnter); // Se genera el evento desde código.
                 etiquetaNombre.MouseLeave += new System.EventHandler(etiquetaNombre_MouseLeave); // Se genera el evento desde código.
                 etiquetaNombre.Cursor = Cursors.Hand;
-                cuadro.Controls.Add(etiquetaNombre); Application.DoEvents();
+                cuadro.Controls.Add(etiquetaNombre); 
                 // Se calculan y se distribuyen de acuerdo al tamaño del panel del menú.
                 indiceVariable += 1;
                 if (indiceVariable < Convert.ToInt32(cantidadEnAltura)) // Se pinta sobre la misma columna vertical.
@@ -1177,7 +1183,7 @@ namespace Escritorio
             lblEncabezadoPrograma.Text = "Programa: " + this.nombreEstePrograma;
             lblEncabezadoDirectorio.Text = "Directorio: " + Logica.Directorios.nombre;
             lblEncabezadoUsuario.Text = "Usuario: " + Logica.Usuarios.nombre;
-            Application.DoEvents();
+            pnlEncabezado.Refresh();
 
         }
 

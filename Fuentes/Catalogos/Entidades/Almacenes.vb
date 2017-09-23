@@ -36,7 +36,7 @@ Public Class Almacenes
         Try
             Dim comando As New SqlCommand()
             comando.Connection = BaseDatos.conexionCatalogo
-            comando.CommandText = "INSERT INTO " & ALMLogicaCatalogos.Programas.prefijoBaseDatosAlmacen & "Almacenes (Id, Nombre, Abreviatura) VALUES (@id, @nombre, @abreviatura)"
+            comando.CommandText = String.Format("INSERT INTO {0}Almacenes (Id, Nombre, Abreviatura) VALUES (@id, @nombre, @abreviatura)", ALMLogicaCatalogos.Programas.prefijoBaseDatosAlmacen)
             comando.Parameters.AddWithValue("@id", Me.EId)
             comando.Parameters.AddWithValue("@nombre", Me.ENombre)
             comando.Parameters.AddWithValue("@abreviatura", Me.EAbreviatura)
@@ -60,8 +60,8 @@ Public Class Almacenes
             If (Me.EId > 0) Then
                 condicion &= " WHERE Id=@id"
             End If
-            comando.CommandText = "DELETE FROM " & ALMLogicaCatalogos.Programas.prefijoBaseDatosAlmacen & "Almacenes " & condicion
-            comando.Parameters.AddWithValue("@id", Me.id)
+            comando.CommandText = String.Format("DELETE FROM {0}Almacenes {1}", ALMLogicaCatalogos.Programas.prefijoBaseDatosAlmacen, condicion)
+            comando.Parameters.AddWithValue("@id", Me.EId)
             BaseDatos.conexionCatalogo.Open()
             comando.ExecuteNonQuery()
             BaseDatos.conexionCatalogo.Close()
@@ -79,7 +79,7 @@ Public Class Almacenes
             Dim datos As New DataTable
             Dim comando As New SqlCommand()
             comando.Connection = BaseDatos.conexionCatalogo
-            comando.CommandText = "SELECT Id, Nombre, Abreviatura FROM " & ALMLogicaCatalogos.Programas.prefijoBaseDatosAlmacen & "Almacenes ORDER BY Id ASC"
+            comando.CommandText = String.Format("SELECT Id, Nombre, Abreviatura FROM {0}Almacenes ORDER BY Id ASC", ALMLogicaCatalogos.Programas.prefijoBaseDatosAlmacen)
             BaseDatos.conexionCatalogo.Open()
             Dim dataReader As SqlDataReader
             dataReader = comando.ExecuteReader()
