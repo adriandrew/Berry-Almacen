@@ -32,7 +32,7 @@ Public Class Principal
     Public anchoTercio As Integer = 0 : Public altoTercio As Integer = 0 : Public altoCuarto As Integer = 0
     Public izquierda As Integer = 0 : Public arriba As Integer = 0
     ' Variables de formatos de spread.
-    Public Shared tipoLetraSpread As String = "Microsoft Sans Serif" : Public Shared tamañoLetraSpread As Integer = 11
+    Public Shared tipoLetraSpread As String = "Microsoft Sans Serif" : Public Shared tamañoLetraSpread As Integer = 9
     Public Shared alturaFilasEncabezadosGrandesSpread As Integer = 35 : Public Shared alturaFilasEncabezadosMedianosSpread As Integer = 28
     Public Shared alturaFilasEncabezadosChicosSpread As Integer = 22 : Public Shared alturaFilasSpread As Integer = 20
     Public Shared colorAreaGris = Color.White
@@ -1542,8 +1542,8 @@ Public Class Principal
         spArticulos.ActiveSheet.Columns("nombreComercial").Width = 250
         spArticulos.ActiveSheet.Columns("idUnidadMedida").Width = 50
         spArticulos.ActiveSheet.Columns("nombreUnidadMedida").Width = 150
-        spArticulos.ActiveSheet.Columns("cantidadMinima").Width = 120
-        spArticulos.ActiveSheet.Columns("cantidadMaxima").Width = 120
+        spArticulos.ActiveSheet.Columns("cantidadMinima").Width = 110
+        spArticulos.ActiveSheet.Columns("cantidadMaxima").Width = 110
         spArticulos.ActiveSheet.Columns("precio").Width = 120
         spArticulos.ActiveSheet.Columns("seccion").Width = 120
         spArticulos.ActiveSheet.Columns("estante").Width = 120

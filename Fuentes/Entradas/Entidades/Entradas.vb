@@ -2,6 +2,7 @@
 
 Public Class Entradas
 
+    Private idOrigen As Integer
     Private idAlmacen As Integer
     Private idFamilia As Integer
     Private idSubFamilia As Integer
@@ -14,7 +15,7 @@ Public Class Entradas
     Private tipoCambio As Double
     Private fecha As Date
     Private cantidad As Integer
-    Private precioUnitario As Double
+    Private precio As Double
     Private total As Double
     Private totalPesos As Double
     Private orden As Integer
@@ -24,6 +25,14 @@ Public Class Entradas
     Private camion As String
     Private noEconomico As String
 
+    Public Property EIdOrigen() As Integer
+        Get
+            Return idOrigen
+        End Get
+        Set(value As Integer)
+            idOrigen = value
+        End Set
+    End Property
     Public Property EIdAlmacen() As Integer
         Get
             Return idAlmacen
@@ -120,12 +129,12 @@ Public Class Entradas
             cantidad = value
         End Set
     End Property
-    Public Property EPrecioUnitario() As Double
+    Public Property EPrecio() As Double
         Get
-            Return precioUnitario
+            Return precio
         End Get
         Set(value As Double)
-            precioUnitario = value
+            precio = value
         End Set
     End Property
     Public Property ETotal() As Double
@@ -198,7 +207,8 @@ Public Class Entradas
         Try
             Dim comando As New SqlCommand()
             comando.Connection = BaseDatos.conexionAlmacen
-            comando.CommandText = String.Format("INSERT INTO Entradas (IdAlmacen, IdFamilia, IdSubFamilia, IdArticulo, Id, IdExterno, IdTipoEntrada, IdProveedor, IdMoneda, TipoCambio, Fecha, Cantidad, PrecioUnitario, Total, TotalPesos, Orden, Observaciones, Factura, Chofer, Camion, NoEconomico) VALUES (@idAlmacen, @idFamilia, @idSubFamilia, @idArticulo, @id, @idExterno, @idTipoEntrada, @idProveedor, @idMoneda, @tipoCambio, @fecha, @cantidad, @precioUnitario, @total, @totalPesos, @orden, @observaciones, @factura, @chofer, @camion, @noEconomico)")
+            comando.CommandText = String.Format("INSERT INTO Entradas (IdOrigen, IdAlmacen, IdFamilia, IdSubFamilia, IdArticulo, Id, IdExterno, IdTipoEntrada, IdProveedor, IdMoneda, TipoCambio, Fecha, Cantidad, Precio, Total, TotalPesos, Orden, Observaciones, Factura, Chofer, Camion, NoEconomico) VALUES (@idOrigen, @idAlmacen, @idFamilia, @idSubFamilia, @idArticulo, @id, @idExterno, @idTipoEntrada, @idProveedor, @idMoneda, @tipoCambio, @fecha, @cantidad, @precio, @total, @totalPesos, @orden, @observaciones, @factura, @chofer, @camion, @noEconomico)")
+            comando.Parameters.AddWithValue("@idOrigen", Me.EIdOrigen)
             comando.Parameters.AddWithValue("@idAlmacen", Me.EIdAlmacen)
             comando.Parameters.AddWithValue("@idFamilia", Me.EIdFamilia)
             comando.Parameters.AddWithValue("@idSubFamilia", Me.EIdSubFamilia)
@@ -211,7 +221,7 @@ Public Class Entradas
             comando.Parameters.AddWithValue("@tipoCambio", Me.ETipoCambio)
             comando.Parameters.AddWithValue("@fecha", Me.EFecha)
             comando.Parameters.AddWithValue("@cantidad", Me.ECantidad)
-            comando.Parameters.AddWithValue("@precioUnitario", Me.EPrecioUnitario)
+            comando.Parameters.AddWithValue("@precio", Me.EPrecio)
             comando.Parameters.AddWithValue("@total", Me.ETotal)
             comando.Parameters.AddWithValue("@totalPesos", Me.ETotalPesos)
             comando.Parameters.AddWithValue("@orden", Me.EOrden)
@@ -237,6 +247,9 @@ Public Class Entradas
             Dim comando As New SqlCommand()
             comando.Connection = BaseDatos.conexionAlmacen
             Dim condicion As String = String.Empty
+            If (Me.EIdOrigen > 0) Then
+                condicion &= " AND IdOrigen=@idOrigen"
+            End If
             If (Me.EIdAlmacen > 0) Then
                 condicion &= " AND IdAlmacen=@idAlmacen"
             End If
@@ -244,6 +257,7 @@ Public Class Entradas
                 condicion &= " AND Id=@id"
             End If
             comando.CommandText = String.Format("DELETE FROM Entradas WHERE 0=0 {0}", condicion)
+            comando.Parameters.AddWithValue("@idOrigen", Me.EIdOrigen)
             comando.Parameters.AddWithValue("@idAlmacen", Me.EIdAlmacen)
             comando.Parameters.AddWithValue("@id", Me.EId)
             BaseDatos.conexionAlmacen.Open()
@@ -263,10 +277,14 @@ Public Class Entradas
             Dim comando As New SqlCommand()
             comando.Connection = BaseDatos.conexionAlmacen
             Dim condicion As String = String.Empty
-            If (Me.EIdAlmacen > 0) Then
-                condicion &= " WHERE IdAlmacen=@idAlmacen"
+            If (Me.EIdOrigen > 0) Then
+                condicion &= " AND IdOrigen=@idOrigen"
             End If
-            comando.CommandText = String.Format("SELECT MAX(CAST (Id AS Int)) AS IdMaximo FROM Entradas {0}", condicion)
+            If (Me.EIdAlmacen > 0) Then
+                condicion &= " AND IdAlmacen=@idAlmacen"
+            End If
+            comando.CommandText = String.Format("SELECT MAX(CAST (Id AS Int)) AS IdMaximo FROM Entradas WHERE 0=0 {0}", condicion)
+            comando.Parameters.AddWithValue("@idOrigen", Me.EIdOrigen)
             comando.Parameters.AddWithValue("@idAlmacen", Me.EIdAlmacen)
             BaseDatos.conexionAlmacen.Open()
             Dim lectorDatos As SqlDataReader = comando.ExecuteReader()
@@ -284,26 +302,64 @@ Public Class Entradas
 
     End Function
 
-    Public Function ObtenerListadoReporte() As DataTable
+    Public Function ObtenerListadoCargaInferior() As DataTable
 
         Try
             Dim datos As New DataTable
             Dim comando As New SqlCommand()
             comando.Connection = BaseDatos.conexionAlmacen
             Dim condicion As String = String.Empty
+            If (Me.EIdOrigen > 0) Then
+                condicion &= " AND E.IdOrigen=@idOrigen"
+            End If
             If (Me.EIdAlmacen > 0) Then
                 condicion &= " AND E.IdAlmacen=@idAlmacen"
             End If
             If (Me.EId > 0) Then
                 condicion &= " AND E.Id=@id"
             End If
-            comando.CommandText = String.Format("SELECT E.IdFamilia, F.Nombre, E.IdSubFamilia, SF.Nombre, E.IdArticulo, A.Nombre, UM.Nombre, E.Cantidad, E.PrecioUnitario, E.Total, E.TotalPesos, E.Observaciones, E.Factura, E.Chofer, E.Camion, E.NoEconomico " & _
+            comando.CommandText = String.Format("SELECT E.IdFamilia, F.Nombre, E.IdSubFamilia, SF.Nombre, E.IdArticulo, A.Nombre, UM.Nombre, E.Cantidad, E.Precio, E.Total, E.TotalPesos, E.Observaciones, E.Factura, E.Chofer, E.Camion, E.NoEconomico " & _
             " FROM Entradas AS E " & _
             " LEFT JOIN {0}Familias AS F ON E.IdFamilia = F.Id AND E.IdAlmacen = F.IdAlmacen" & _
             " LEFT JOIN {0}SubFamilias AS SF ON E.IdSubFamilia = SF.Id AND E.IdFamilia = SF.IdFamilia AND E.IdAlmacen = SF.IdAlmacen" & _
             " LEFT JOIN {0}Articulos AS A ON E.IdArticulo = A.Id AND E.IdSubFamilia = A.IdSubFamilia AND E.IdFamilia = A.IdFamilia AND E.IdAlmacen = A.IdAlmacen" & _
             " LEFT JOIN {0}UnidadesMedidas AS UM ON A.IdUnidadMedida = UM.Id" & _
             " WHERE 0=0 {1} ORDER BY E.Orden ASC", ALMLogicaEntradas.Programas.bdCatalogo & ".dbo." & ALMLogicaEntradas.Programas.prefijoBaseDatosAlmacen, condicion)
+            comando.Parameters.AddWithValue("@idOrigen", Me.EIdOrigen)
+            comando.Parameters.AddWithValue("@idAlmacen", Me.EIdAlmacen)
+            comando.Parameters.AddWithValue("@id", Me.EId)
+            BaseDatos.conexionAlmacen.Open()
+            Dim lectorDatos As SqlDataReader
+            lectorDatos = comando.ExecuteReader()
+            datos.Load(lectorDatos)
+            BaseDatos.conexionAlmacen.Close()
+            Return datos
+        Catch ex As Exception
+            Throw ex
+        Finally
+            BaseDatos.conexionAlmacen.Close()
+        End Try
+
+    End Function
+
+    Public Function ObtenerListadoCargaSuperior() As DataTable
+
+        Try
+            Dim datos As New DataTable
+            Dim comando As New SqlCommand()
+            comando.Connection = BaseDatos.conexionAlmacen
+            Dim condicion As String = String.Empty
+            If (Me.EIdOrigen > 0) Then
+                condicion &= " AND IdOrigen=@idOrigen"
+            End If
+            If (Me.EIdAlmacen > 0) Then
+                condicion &= " AND IdAlmacen=@idAlmacen"
+            End If
+            If (Me.EId > 0) Then
+                condicion &= " AND Id=@id"
+            End If
+            comando.CommandText = String.Format("SELECT IdExterno, Fecha, IdMoneda, TipoCambio, IdTipoEntrada, IdProveedor FROM Entradas WHERE 0=0 {0} ORDER BY Orden ASC", condicion)
+            comando.Parameters.AddWithValue("@idOrigen", Me.EIdOrigen)
             comando.Parameters.AddWithValue("@idAlmacen", Me.EIdAlmacen)
             comando.Parameters.AddWithValue("@id", Me.EId)
             BaseDatos.conexionAlmacen.Open()
@@ -327,13 +383,21 @@ Public Class Entradas
             Dim comando As New SqlCommand()
             comando.Connection = BaseDatos.conexionAlmacen
             Dim condicion As String = String.Empty
+            If (Me.EIdOrigen > 0) Then
+                condicion &= " AND IdOrigen=@idOrigen"
+            End If
             If (Me.EIdAlmacen > 0) Then
                 condicion &= " AND IdAlmacen=@idAlmacen"
             End If
             If (Me.EId > 0) Then
                 condicion &= " AND Id=@id"
             End If
-            comando.CommandText = String.Format("SELECT IdExterno, Fecha, IdMoneda, TipoCambio, IdTipoEntrada, IdProveedor FROM Entradas WHERE 0=0 {0} ORDER BY Orden ASC", condicion)
+            comando.CommandText = String.Format("SELECT E.IdOrigen, O.Nombre, E.IdAlmacen, A.Nombre, E.Id " & _
+            " FROM (SELECT IdOrigen, IdAlmacen, Id FROM Entradas WHERE 0=0 {1} GROUP BY IdOrigen, IdAlmacen, Id) AS E " & _
+            " LEFT JOIN {0}Origenes AS O ON E.IdOrigen = O.Id " & _
+            " LEFT JOIN {0}Almacenes AS A ON E.IdAlmacen = A.Id " & _
+            " ORDER BY IdOrigen, IdAlmacen, Id ASC", ALMLogicaEntradas.Programas.bdCatalogo & ".dbo." & ALMLogicaEntradas.Programas.prefijoBaseDatosAlmacen, condicion)
+            comando.Parameters.AddWithValue("@idOrigen", Me.EIdOrigen)
             comando.Parameters.AddWithValue("@idAlmacen", Me.EIdAlmacen)
             comando.Parameters.AddWithValue("@id", Me.EId)
             BaseDatos.conexionAlmacen.Open()

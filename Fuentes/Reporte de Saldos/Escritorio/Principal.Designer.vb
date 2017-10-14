@@ -40,13 +40,13 @@ Partial Class Principal
         Me.dtpFecha = New System.Windows.Forms.DateTimePicker()
         Me.gbNiveles = New System.Windows.Forms.GroupBox()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.cbArticulo = New System.Windows.Forms.ComboBox()
+        Me.cbArticulos = New System.Windows.Forms.ComboBox()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.cbFamilia = New System.Windows.Forms.ComboBox()
-        Me.Label11 = New System.Windows.Forms.Label()
-        Me.cbSubFamilia = New System.Windows.Forms.ComboBox()
+        Me.cbFamilias = New System.Windows.Forms.ComboBox()
+        Me.cbSubFamilias = New System.Windows.Forms.ComboBox()
         Me.Label10 = New System.Windows.Forms.Label()
-        Me.cbAlmacen = New System.Windows.Forms.ComboBox()
+        Me.cbAlmacenes = New System.Windows.Forms.ComboBox()
+        Me.Label11 = New System.Windows.Forms.Label()
         Me.btnGenerar = New System.Windows.Forms.Button()
         Me.spReporte = New FarPoint.Win.Spread.FpSpread()
         Me.spReporte_Sheet1 = New FarPoint.Win.Spread.SheetView()
@@ -209,7 +209,7 @@ Partial Class Principal
         Me.Label6.BackColor = System.Drawing.Color.Transparent
         Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label6.ForeColor = System.Drawing.Color.White
-        Me.Label6.Location = New System.Drawing.Point(257, 12)
+        Me.Label6.Location = New System.Drawing.Point(240, 12)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(53, 13)
         Me.Label6.TabIndex = 23
@@ -227,7 +227,7 @@ Partial Class Principal
         Me.chkFecha.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.chkFecha.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.chkFecha.ForeColor = System.Drawing.Color.White
-        Me.chkFecha.Location = New System.Drawing.Point(260, 27)
+        Me.chkFecha.Location = New System.Drawing.Point(243, 27)
         Me.chkFecha.Name = "chkFecha"
         Me.chkFecha.Size = New System.Drawing.Size(45, 25)
         Me.chkFecha.TabIndex = 20
@@ -238,34 +238,34 @@ Partial Class Principal
         'dtpFechaFinal
         '
         Me.dtpFechaFinal.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.dtpFechaFinal.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.dtpFechaFinal.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.dtpFechaFinal.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dtpFechaFinal.Location = New System.Drawing.Point(136, 27)
+        Me.dtpFechaFinal.Location = New System.Drawing.Point(135, 29)
         Me.dtpFechaFinal.Name = "dtpFechaFinal"
-        Me.dtpFechaFinal.Size = New System.Drawing.Size(120, 26)
+        Me.dtpFechaFinal.Size = New System.Drawing.Size(102, 22)
         Me.dtpFechaFinal.TabIndex = 17
         '
         'dtpFecha
         '
         Me.dtpFecha.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.dtpFecha.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.dtpFecha.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.dtpFecha.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dtpFecha.Location = New System.Drawing.Point(12, 27)
+        Me.dtpFecha.Location = New System.Drawing.Point(27, 29)
         Me.dtpFecha.Name = "dtpFecha"
-        Me.dtpFecha.Size = New System.Drawing.Size(120, 26)
+        Me.dtpFecha.Size = New System.Drawing.Size(102, 22)
         Me.dtpFecha.TabIndex = 0
         '
         'gbNiveles
         '
         Me.gbNiveles.BackColor = System.Drawing.Color.Transparent
         Me.gbNiveles.Controls.Add(Me.Label1)
-        Me.gbNiveles.Controls.Add(Me.cbArticulo)
+        Me.gbNiveles.Controls.Add(Me.cbArticulos)
         Me.gbNiveles.Controls.Add(Me.Label2)
-        Me.gbNiveles.Controls.Add(Me.cbFamilia)
-        Me.gbNiveles.Controls.Add(Me.Label11)
-        Me.gbNiveles.Controls.Add(Me.cbSubFamilia)
+        Me.gbNiveles.Controls.Add(Me.cbFamilias)
+        Me.gbNiveles.Controls.Add(Me.cbSubFamilias)
         Me.gbNiveles.Controls.Add(Me.Label10)
-        Me.gbNiveles.Controls.Add(Me.cbAlmacen)
+        Me.gbNiveles.Controls.Add(Me.cbAlmacenes)
+        Me.gbNiveles.Controls.Add(Me.Label11)
         Me.gbNiveles.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.gbNiveles.ForeColor = System.Drawing.Color.White
         Me.gbNiveles.Location = New System.Drawing.Point(3, 75)
@@ -279,104 +279,104 @@ Partial Class Principal
         '
         Me.Label1.AutoSize = True
         Me.Label1.BackColor = System.Drawing.Color.Transparent
-        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.White
-        Me.Label1.Location = New System.Drawing.Point(4, 116)
+        Me.Label1.Location = New System.Drawing.Point(1, 117)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(95, 18)
+        Me.Label1.Size = New System.Drawing.Size(78, 15)
         Me.Label1.TabIndex = 17
         Me.Label1.Text = "ARTÍCULO:"
         '
-        'cbArticulo
+        'cbArticulos
         '
-        Me.cbArticulo.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
-        Me.cbArticulo.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
-        Me.cbArticulo.BackColor = System.Drawing.Color.White
-        Me.cbArticulo.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.cbArticulo.Enabled = False
-        Me.cbArticulo.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cbArticulo.FormattingEnabled = True
-        Me.cbArticulo.Location = New System.Drawing.Point(113, 113)
-        Me.cbArticulo.Name = "cbArticulo"
-        Me.cbArticulo.Size = New System.Drawing.Size(198, 28)
-        Me.cbArticulo.TabIndex = 16
+        Me.cbArticulos.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
+        Me.cbArticulos.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
+        Me.cbArticulos.BackColor = System.Drawing.Color.White
+        Me.cbArticulos.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.cbArticulos.Enabled = False
+        Me.cbArticulos.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbArticulos.FormattingEnabled = True
+        Me.cbArticulos.Location = New System.Drawing.Point(90, 113)
+        Me.cbArticulos.Name = "cbArticulos"
+        Me.cbArticulos.Size = New System.Drawing.Size(223, 24)
+        Me.cbArticulos.TabIndex = 16
         '
         'Label2
         '
         Me.Label2.AutoSize = True
         Me.Label2.BackColor = System.Drawing.Color.Transparent
-        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.ForeColor = System.Drawing.Color.White
-        Me.Label2.Location = New System.Drawing.Point(4, 58)
+        Me.Label2.Location = New System.Drawing.Point(1, 59)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(74, 18)
+        Me.Label2.Size = New System.Drawing.Size(63, 15)
         Me.Label2.TabIndex = 15
         Me.Label2.Text = "FAMILIA:"
         '
-        'cbFamilia
+        'cbFamilias
         '
-        Me.cbFamilia.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
-        Me.cbFamilia.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
-        Me.cbFamilia.BackColor = System.Drawing.Color.White
-        Me.cbFamilia.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.cbFamilia.Enabled = False
-        Me.cbFamilia.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cbFamilia.FormattingEnabled = True
-        Me.cbFamilia.Location = New System.Drawing.Point(113, 55)
-        Me.cbFamilia.Name = "cbFamilia"
-        Me.cbFamilia.Size = New System.Drawing.Size(198, 28)
-        Me.cbFamilia.TabIndex = 14
+        Me.cbFamilias.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
+        Me.cbFamilias.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
+        Me.cbFamilias.BackColor = System.Drawing.Color.White
+        Me.cbFamilias.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.cbFamilias.Enabled = False
+        Me.cbFamilias.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbFamilias.FormattingEnabled = True
+        Me.cbFamilias.Location = New System.Drawing.Point(90, 55)
+        Me.cbFamilias.Name = "cbFamilias"
+        Me.cbFamilias.Size = New System.Drawing.Size(223, 24)
+        Me.cbFamilias.TabIndex = 14
         '
-        'Label11
+        'cbSubFamilias
         '
-        Me.Label11.AutoSize = True
-        Me.Label11.BackColor = System.Drawing.Color.Transparent
-        Me.Label11.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label11.ForeColor = System.Drawing.Color.White
-        Me.Label11.Location = New System.Drawing.Point(5, 87)
-        Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(108, 18)
-        Me.Label11.TabIndex = 13
-        Me.Label11.Text = "SUBFAMILIA:"
-        '
-        'cbSubFamilia
-        '
-        Me.cbSubFamilia.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
-        Me.cbSubFamilia.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
-        Me.cbSubFamilia.BackColor = System.Drawing.Color.White
-        Me.cbSubFamilia.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.cbSubFamilia.Enabled = False
-        Me.cbSubFamilia.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cbSubFamilia.FormattingEnabled = True
-        Me.cbSubFamilia.Location = New System.Drawing.Point(113, 84)
-        Me.cbSubFamilia.Name = "cbSubFamilia"
-        Me.cbSubFamilia.Size = New System.Drawing.Size(198, 28)
-        Me.cbSubFamilia.TabIndex = 12
+        Me.cbSubFamilias.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
+        Me.cbSubFamilias.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
+        Me.cbSubFamilias.BackColor = System.Drawing.Color.White
+        Me.cbSubFamilias.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.cbSubFamilias.Enabled = False
+        Me.cbSubFamilias.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbSubFamilias.FormattingEnabled = True
+        Me.cbSubFamilias.Location = New System.Drawing.Point(90, 84)
+        Me.cbSubFamilias.Name = "cbSubFamilias"
+        Me.cbSubFamilias.Size = New System.Drawing.Size(223, 24)
+        Me.cbSubFamilias.TabIndex = 12
         '
         'Label10
         '
         Me.Label10.AutoSize = True
         Me.Label10.BackColor = System.Drawing.Color.Transparent
-        Me.Label10.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label10.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label10.ForeColor = System.Drawing.Color.White
-        Me.Label10.Location = New System.Drawing.Point(5, 29)
+        Me.Label10.Location = New System.Drawing.Point(2, 30)
         Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(91, 18)
+        Me.Label10.Size = New System.Drawing.Size(75, 15)
         Me.Label10.TabIndex = 11
         Me.Label10.Text = "ALMACÉN:"
         '
-        'cbAlmacen
+        'cbAlmacenes
         '
-        Me.cbAlmacen.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
-        Me.cbAlmacen.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
-        Me.cbAlmacen.BackColor = System.Drawing.Color.White
-        Me.cbAlmacen.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.cbAlmacen.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cbAlmacen.FormattingEnabled = True
-        Me.cbAlmacen.Location = New System.Drawing.Point(113, 26)
-        Me.cbAlmacen.Name = "cbAlmacen"
-        Me.cbAlmacen.Size = New System.Drawing.Size(198, 28)
-        Me.cbAlmacen.TabIndex = 10
+        Me.cbAlmacenes.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
+        Me.cbAlmacenes.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
+        Me.cbAlmacenes.BackColor = System.Drawing.Color.White
+        Me.cbAlmacenes.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.cbAlmacenes.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbAlmacenes.FormattingEnabled = True
+        Me.cbAlmacenes.Location = New System.Drawing.Point(90, 26)
+        Me.cbAlmacenes.Name = "cbAlmacenes"
+        Me.cbAlmacenes.Size = New System.Drawing.Size(223, 24)
+        Me.cbAlmacenes.TabIndex = 10
+        '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.BackColor = System.Drawing.Color.Transparent
+        Me.Label11.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label11.ForeColor = System.Drawing.Color.White
+        Me.Label11.Location = New System.Drawing.Point(2, 88)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(91, 15)
+        Me.Label11.TabIndex = 13
+        Me.Label11.Text = "SUBFAMILIA:"
         '
         'btnGenerar
         '
@@ -386,11 +386,11 @@ Partial Class Principal
         Me.btnGenerar.FlatAppearance.BorderSize = 3
         Me.btnGenerar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumAquamarine
         Me.btnGenerar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnGenerar.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnGenerar.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnGenerar.ForeColor = System.Drawing.Color.Black
-        Me.btnGenerar.Location = New System.Drawing.Point(174, 237)
+        Me.btnGenerar.Location = New System.Drawing.Point(200, 237)
         Me.btnGenerar.Name = "btnGenerar"
-        Me.btnGenerar.Size = New System.Drawing.Size(140, 55)
+        Me.btnGenerar.Size = New System.Drawing.Size(120, 40)
         Me.btnGenerar.TabIndex = 10
         Me.btnGenerar.Text = "GENERAR"
         Me.btnGenerar.UseVisualStyleBackColor = False
@@ -694,13 +694,13 @@ Partial Class Principal
     Friend WithEvents btnGenerar As System.Windows.Forms.Button
     Friend WithEvents gbNiveles As System.Windows.Forms.GroupBox
     Friend WithEvents Label1 As System.Windows.Forms.Label
-    Friend WithEvents cbArticulo As System.Windows.Forms.ComboBox
+    Friend WithEvents cbArticulos As System.Windows.Forms.ComboBox
     Friend WithEvents Label2 As System.Windows.Forms.Label
-    Friend WithEvents cbFamilia As System.Windows.Forms.ComboBox
+    Friend WithEvents cbFamilias As System.Windows.Forms.ComboBox
     Friend WithEvents Label11 As System.Windows.Forms.Label
-    Friend WithEvents cbSubFamilia As System.Windows.Forms.ComboBox
+    Friend WithEvents cbSubFamilias As System.Windows.Forms.ComboBox
     Friend WithEvents Label10 As System.Windows.Forms.Label
-    Friend WithEvents cbAlmacen As System.Windows.Forms.ComboBox
+    Friend WithEvents cbAlmacenes As System.Windows.Forms.ComboBox
     Friend WithEvents gbFechas As System.Windows.Forms.GroupBox
     Friend WithEvents dtpFecha As System.Windows.Forms.DateTimePicker
     Friend WithEvents dtpFechaFinal As System.Windows.Forms.DateTimePicker

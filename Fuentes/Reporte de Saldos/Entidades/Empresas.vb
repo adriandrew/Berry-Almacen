@@ -6,8 +6,13 @@ Public Class Empresas
     Private nombre As String
     Private descripcion As String
     Private domicilio As String
-    Private localidad As String
+    Private municipio As String
+    Private estado As String
+    Private pais As String
     Private rfc As String
+    Private representanteLegal As String
+    Private telefono As String
+    Private logo As String
 
     Public Property EId() As Integer
         Get
@@ -41,12 +46,28 @@ Public Class Empresas
             domicilio = value
         End Set
     End Property
-    Public Property ELocalidad() As String
+    Public Property EMunicipio() As String
         Get
-            Return localidad
+            Return municipio
         End Get
         Set(value As String)
-            localidad = value
+            municipio = value
+        End Set
+    End Property
+    Public Property EEstado() As String
+        Get
+            Return estado
+        End Get
+        Set(value As String)
+            estado = value
+        End Set
+    End Property
+    Public Property EPais() As String
+        Get
+            Return pais
+        End Get
+        Set(value As String)
+            pais = value
         End Set
     End Property
     Public Property ERfc() As String
@@ -57,11 +78,35 @@ Public Class Empresas
             rfc = value
         End Set
     End Property
+    Public Property ERepresentanteLegal() As String
+        Get
+            Return representanteLegal
+        End Get
+        Set(value As String)
+            representanteLegal = value
+        End Set
+    End Property
+    Public Property ETelefono() As String
+        Get
+            Return telefono
+        End Get
+        Set(value As String)
+            telefono = value
+        End Set
+    End Property
+    Public Property ELogo() As String
+        Get
+            Return logo
+        End Get
+        Set(value As String)
+            logo = value
+        End Set
+    End Property
 
-    Public Function ObtenerListado(ByVal primerElemento As Boolean) As List(Of Empresas)
+    Public Function ObtenerListado(ByVal primerElemento As Boolean) As DataTable
 
         Try
-            Dim lista As New List(Of Empresas)
+            Dim datos As New DataTable
             Dim comando As New SqlCommand()
             comando.Connection = BaseDatos.conexionCatalogo
             Dim consulta As String = String.Empty : Dim condicion As String = String.Empty
@@ -76,20 +121,11 @@ Public Class Empresas
             comando.CommandText = consulta
             comando.Parameters.AddWithValue("@id", Me.EId)
             BaseDatos.conexionCatalogo.Open()
-            Dim dataReader As SqlDataReader = comando.ExecuteReader()
-            Dim tabla As Empresas
-            While dataReader.Read()
-                tabla = New Empresas()
-                tabla.id = Convert.ToInt32(dataReader("id").ToString())
-                tabla.nombre = dataReader("nombre").ToString()
-                tabla.descripcion = dataReader("descripcion").ToString()
-                tabla.domicilio = dataReader("domicilio").ToString()
-                tabla.localidad = dataReader("localidad").ToString()
-                tabla.rfc = dataReader("rfc").ToString()
-                lista.Add(tabla)
-            End While
+            Dim lectorDatos As SqlDataReader
+            lectorDatos = comando.ExecuteReader()
+            datos.Load(lectorDatos)
             BaseDatos.conexionCatalogo.Close()
-            Return lista
+            Return datos
         Catch ex As Exception
             Throw ex
         Finally

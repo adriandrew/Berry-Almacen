@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <metadata name="spListados_Sheet1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>943, 17</value>
+  </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="btnMostrarOcultar.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -131,6 +134,16 @@
   <metadata name="spSalidas_Sheet1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <data name="btnListados.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABGdBTUEAALGPC/xhBQAAAQJJREFUaEPt
+        2N0JwkAUROEQsBi78N0q0olV2FSK8Cl1xBnYC2E5j4lxIBc+iMfFjb9IhnVdo2FMgjEJxiQYk2BMgjEJ
+        xqIZ5dmMtOZsGE1zl4/4hvn4TmvPhNE073biW29Y99rcf5h+34LRNMv2AZoF1v3tE4h/B7K/A6bJ/RVK
+        gTEJxiQYk2BMgjEJxiQYTXOTSebGxzdaeyaM1k7YB1sTrHuI/04cqt+3YDSNX/U68TLDOm/Qr9tdv2/B
+        aJr4JxD/Ecr+EqfAmARjEoxJMCbBmARjEoxFc11aPBpG01yXFvfU71swmua6tPgLGIvmurR4NIxJMCbB
+        mARjEoxJMOZYhy/MGL+eXxvOIgAAAABJRU5ErkJggg==
+</value>
+  </data>
   <data name="btnAyuda.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABGdBTUEAALGPC/xhBQAAAvxJREFUaEPV
