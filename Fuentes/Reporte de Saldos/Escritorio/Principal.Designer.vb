@@ -25,14 +25,15 @@ Partial Class Principal
         Me.components = New System.ComponentModel.Container()
         Dim EnhancedScrollBarRenderer1 As FarPoint.Win.Spread.EnhancedScrollBarRenderer = New FarPoint.Win.Spread.EnhancedScrollBarRenderer()
         Dim EnhancedScrollBarRenderer2 As FarPoint.Win.Spread.EnhancedScrollBarRenderer = New FarPoint.Win.Spread.EnhancedScrollBarRenderer()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Principal))
         Dim EnhancedScrollBarRenderer3 As FarPoint.Win.Spread.EnhancedScrollBarRenderer = New FarPoint.Win.Spread.EnhancedScrollBarRenderer()
         Dim EnhancedScrollBarRenderer4 As FarPoint.Win.Spread.EnhancedScrollBarRenderer = New FarPoint.Win.Spread.EnhancedScrollBarRenderer()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Principal))
         Me.pnlContenido = New System.Windows.Forms.Panel()
         Me.pnlCuerpo = New System.Windows.Forms.Panel()
         Me.spParaClonar = New FarPoint.Win.Spread.FpSpread()
         Me.spParaClonar_Sheet1 = New FarPoint.Win.Spread.SheetView()
         Me.pnlFiltros = New System.Windows.Forms.Panel()
+        Me.btnMostrarOcultar = New System.Windows.Forms.Button()
         Me.gbFechas = New System.Windows.Forms.GroupBox()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.chkFecha = New System.Windows.Forms.CheckBox()
@@ -59,6 +60,7 @@ Partial Class Principal
         Me.lblDescripcionTooltip = New System.Windows.Forms.Label()
         Me.btnSalir = New System.Windows.Forms.Button()
         Me.pnlEncabezado = New System.Windows.Forms.Panel()
+        Me.pbMarca = New System.Windows.Forms.PictureBox()
         Me.lblEncabezadoArea = New System.Windows.Forms.Label()
         Me.lblEncabezadoUsuario = New System.Windows.Forms.Label()
         Me.lblEncabezadoEmpresa = New System.Windows.Forms.Label()
@@ -76,6 +78,7 @@ Partial Class Principal
         CType(Me.spReporte_Sheet1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlPie.SuspendLayout()
         Me.pnlEncabezado.SuspendLayout()
+        CType(Me.pbMarca, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'pnlContenido
@@ -90,9 +93,9 @@ Partial Class Principal
         Me.pnlContenido.Controls.Add(Me.pnlPie)
         Me.pnlContenido.Controls.Add(Me.pnlEncabezado)
         Me.pnlContenido.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.pnlContenido.Location = New System.Drawing.Point(2, 1)
+        Me.pnlContenido.Location = New System.Drawing.Point(0, 0)
         Me.pnlContenido.Name = "pnlContenido"
-        Me.pnlContenido.Size = New System.Drawing.Size(1035, 633)
+        Me.pnlContenido.Size = New System.Drawing.Size(1039, 661)
         Me.pnlContenido.TabIndex = 2
         '
         'pnlCuerpo
@@ -107,7 +110,7 @@ Partial Class Principal
         Me.pnlCuerpo.Controls.Add(Me.spReporte)
         Me.pnlCuerpo.Location = New System.Drawing.Point(0, 77)
         Me.pnlCuerpo.Name = "pnlCuerpo"
-        Me.pnlCuerpo.Size = New System.Drawing.Size(1035, 494)
+        Me.pnlCuerpo.Size = New System.Drawing.Size(1039, 521)
         Me.pnlCuerpo.TabIndex = 9
         '
         'spParaClonar
@@ -131,10 +134,10 @@ Partial Class Principal
         EnhancedScrollBarRenderer1.TrackBarSelectedBackgroundColor = System.Drawing.Color.SlateGray
         Me.spParaClonar.HorizontalScrollBar.Renderer = EnhancedScrollBarRenderer1
         Me.spParaClonar.HorizontalScrollBar.TabIndex = 2
-        Me.spParaClonar.Location = New System.Drawing.Point(327, 400)
+        Me.spParaClonar.Location = New System.Drawing.Point(364, 400)
         Me.spParaClonar.Name = "spParaClonar"
         Me.spParaClonar.Sheets.AddRange(New FarPoint.Win.Spread.SheetView() {Me.spParaClonar_Sheet1})
-        Me.spParaClonar.Size = New System.Drawing.Size(148, 94)
+        Me.spParaClonar.Size = New System.Drawing.Size(152, 121)
         Me.spParaClonar.Skin = FarPoint.Win.Spread.DefaultSpreadSkins.Seashell
         Me.spParaClonar.TabIndex = 33
         Me.spParaClonar.VerticalScrollBar.Buttons = New FarPoint.Win.Spread.FpScrollBarButtonCollection("BackwardLineButton,ThumbTrack,ForwardLineButton")
@@ -177,15 +180,34 @@ Partial Class Principal
         Me.pnlFiltros.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.pnlFiltros.AutoScroll = True
-        Me.pnlFiltros.BackColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer))
+        Me.pnlFiltros.BackColor = System.Drawing.Color.White
         Me.pnlFiltros.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.pnlFiltros.Controls.Add(Me.btnMostrarOcultar)
         Me.pnlFiltros.Controls.Add(Me.gbFechas)
         Me.pnlFiltros.Controls.Add(Me.gbNiveles)
         Me.pnlFiltros.Controls.Add(Me.btnGenerar)
         Me.pnlFiltros.Location = New System.Drawing.Point(0, 0)
         Me.pnlFiltros.Name = "pnlFiltros"
-        Me.pnlFiltros.Size = New System.Drawing.Size(325, 494)
+        Me.pnlFiltros.Size = New System.Drawing.Size(364, 521)
         Me.pnlFiltros.TabIndex = 22
+        '
+        'btnMostrarOcultar
+        '
+        Me.btnMostrarOcultar.BackColor = System.Drawing.Color.Transparent
+        Me.btnMostrarOcultar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.btnMostrarOcultar.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnMostrarOcultar.FlatAppearance.BorderColor = System.Drawing.Color.Black
+        Me.btnMostrarOcultar.FlatAppearance.BorderSize = 0
+        Me.btnMostrarOcultar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumAquamarine
+        Me.btnMostrarOcultar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnMostrarOcultar.ForeColor = System.Drawing.Color.Black
+        Me.btnMostrarOcultar.Image = CType(resources.GetObject("btnMostrarOcultar.Image"), System.Drawing.Image)
+        Me.btnMostrarOcultar.Location = New System.Drawing.Point(322, 0)
+        Me.btnMostrarOcultar.Margin = New System.Windows.Forms.Padding(0)
+        Me.btnMostrarOcultar.Name = "btnMostrarOcultar"
+        Me.btnMostrarOcultar.Size = New System.Drawing.Size(40, 38)
+        Me.btnMostrarOcultar.TabIndex = 78
+        Me.btnMostrarOcultar.UseVisualStyleBackColor = False
         '
         'gbFechas
         '
@@ -195,8 +217,8 @@ Partial Class Principal
         Me.gbFechas.Controls.Add(Me.dtpFechaFinal)
         Me.gbFechas.Controls.Add(Me.dtpFecha)
         Me.gbFechas.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.gbFechas.ForeColor = System.Drawing.Color.White
-        Me.gbFechas.Location = New System.Drawing.Point(3, 5)
+        Me.gbFechas.ForeColor = System.Drawing.Color.Black
+        Me.gbFechas.Location = New System.Drawing.Point(3, 3)
         Me.gbFechas.Name = "gbFechas"
         Me.gbFechas.Size = New System.Drawing.Size(317, 64)
         Me.gbFechas.TabIndex = 17
@@ -208,7 +230,7 @@ Partial Class Principal
         Me.Label6.AutoSize = True
         Me.Label6.BackColor = System.Drawing.Color.Transparent
         Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.ForeColor = System.Drawing.Color.White
+        Me.Label6.ForeColor = System.Drawing.Color.Black
         Me.Label6.Location = New System.Drawing.Point(240, 12)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(53, 13)
@@ -223,10 +245,11 @@ Partial Class Principal
         Me.chkFecha.CheckState = System.Windows.Forms.CheckState.Checked
         Me.chkFecha.Cursor = System.Windows.Forms.Cursors.Hand
         Me.chkFecha.FlatAppearance.BorderSize = 2
-        Me.chkFecha.FlatAppearance.CheckedBackColor = System.Drawing.Color.LimeGreen
+        Me.chkFecha.FlatAppearance.CheckedBackColor = System.Drawing.Color.Turquoise
+        Me.chkFecha.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumAquamarine
         Me.chkFecha.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.chkFecha.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.chkFecha.ForeColor = System.Drawing.Color.White
+        Me.chkFecha.ForeColor = System.Drawing.Color.Black
         Me.chkFecha.Location = New System.Drawing.Point(243, 27)
         Me.chkFecha.Name = "chkFecha"
         Me.chkFecha.Size = New System.Drawing.Size(45, 25)
@@ -238,21 +261,21 @@ Partial Class Principal
         'dtpFechaFinal
         '
         Me.dtpFechaFinal.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.dtpFechaFinal.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.dtpFechaFinal.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.dtpFechaFinal.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dtpFechaFinal.Location = New System.Drawing.Point(135, 29)
+        Me.dtpFechaFinal.Location = New System.Drawing.Point(135, 30)
         Me.dtpFechaFinal.Name = "dtpFechaFinal"
-        Me.dtpFechaFinal.Size = New System.Drawing.Size(102, 22)
+        Me.dtpFechaFinal.Size = New System.Drawing.Size(102, 20)
         Me.dtpFechaFinal.TabIndex = 17
         '
         'dtpFecha
         '
         Me.dtpFecha.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.dtpFecha.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.dtpFecha.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.dtpFecha.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dtpFecha.Location = New System.Drawing.Point(27, 29)
+        Me.dtpFecha.Location = New System.Drawing.Point(27, 30)
         Me.dtpFecha.Name = "dtpFecha"
-        Me.dtpFecha.Size = New System.Drawing.Size(102, 22)
+        Me.dtpFecha.Size = New System.Drawing.Size(102, 20)
         Me.dtpFecha.TabIndex = 0
         '
         'gbNiveles
@@ -267,8 +290,8 @@ Partial Class Principal
         Me.gbNiveles.Controls.Add(Me.cbAlmacenes)
         Me.gbNiveles.Controls.Add(Me.Label11)
         Me.gbNiveles.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.gbNiveles.ForeColor = System.Drawing.Color.White
-        Me.gbNiveles.Location = New System.Drawing.Point(3, 75)
+        Me.gbNiveles.ForeColor = System.Drawing.Color.Black
+        Me.gbNiveles.Location = New System.Drawing.Point(3, 73)
         Me.gbNiveles.Name = "gbNiveles"
         Me.gbNiveles.Size = New System.Drawing.Size(317, 156)
         Me.gbNiveles.TabIndex = 15
@@ -279,11 +302,11 @@ Partial Class Principal
         '
         Me.Label1.AutoSize = True
         Me.Label1.BackColor = System.Drawing.Color.Transparent
-        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.ForeColor = System.Drawing.Color.White
-        Me.Label1.Location = New System.Drawing.Point(1, 117)
+        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.ForeColor = System.Drawing.Color.Black
+        Me.Label1.Location = New System.Drawing.Point(1, 119)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(78, 15)
+        Me.Label1.Size = New System.Drawing.Size(73, 13)
         Me.Label1.TabIndex = 17
         Me.Label1.Text = "ARTÍCULO:"
         '
@@ -294,22 +317,22 @@ Partial Class Principal
         Me.cbArticulos.BackColor = System.Drawing.Color.White
         Me.cbArticulos.Cursor = System.Windows.Forms.Cursors.Hand
         Me.cbArticulos.Enabled = False
-        Me.cbArticulos.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbArticulos.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cbArticulos.FormattingEnabled = True
-        Me.cbArticulos.Location = New System.Drawing.Point(90, 113)
+        Me.cbArticulos.Location = New System.Drawing.Point(88, 115)
         Me.cbArticulos.Name = "cbArticulos"
-        Me.cbArticulos.Size = New System.Drawing.Size(223, 24)
+        Me.cbArticulos.Size = New System.Drawing.Size(225, 21)
         Me.cbArticulos.TabIndex = 16
         '
         'Label2
         '
         Me.Label2.AutoSize = True
         Me.Label2.BackColor = System.Drawing.Color.Transparent
-        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.ForeColor = System.Drawing.Color.White
-        Me.Label2.Location = New System.Drawing.Point(1, 59)
+        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.ForeColor = System.Drawing.Color.Black
+        Me.Label2.Location = New System.Drawing.Point(1, 65)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(63, 15)
+        Me.Label2.Size = New System.Drawing.Size(59, 13)
         Me.Label2.TabIndex = 15
         Me.Label2.Text = "FAMILIA:"
         '
@@ -320,11 +343,11 @@ Partial Class Principal
         Me.cbFamilias.BackColor = System.Drawing.Color.White
         Me.cbFamilias.Cursor = System.Windows.Forms.Cursors.Hand
         Me.cbFamilias.Enabled = False
-        Me.cbFamilias.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbFamilias.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cbFamilias.FormattingEnabled = True
-        Me.cbFamilias.Location = New System.Drawing.Point(90, 55)
+        Me.cbFamilias.Location = New System.Drawing.Point(88, 61)
         Me.cbFamilias.Name = "cbFamilias"
-        Me.cbFamilias.Size = New System.Drawing.Size(223, 24)
+        Me.cbFamilias.Size = New System.Drawing.Size(225, 21)
         Me.cbFamilias.TabIndex = 14
         '
         'cbSubFamilias
@@ -334,22 +357,22 @@ Partial Class Principal
         Me.cbSubFamilias.BackColor = System.Drawing.Color.White
         Me.cbSubFamilias.Cursor = System.Windows.Forms.Cursors.Hand
         Me.cbSubFamilias.Enabled = False
-        Me.cbSubFamilias.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbSubFamilias.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cbSubFamilias.FormattingEnabled = True
-        Me.cbSubFamilias.Location = New System.Drawing.Point(90, 84)
+        Me.cbSubFamilias.Location = New System.Drawing.Point(88, 88)
         Me.cbSubFamilias.Name = "cbSubFamilias"
-        Me.cbSubFamilias.Size = New System.Drawing.Size(223, 24)
+        Me.cbSubFamilias.Size = New System.Drawing.Size(225, 21)
         Me.cbSubFamilias.TabIndex = 12
         '
         'Label10
         '
         Me.Label10.AutoSize = True
         Me.Label10.BackColor = System.Drawing.Color.Transparent
-        Me.Label10.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label10.ForeColor = System.Drawing.Color.White
-        Me.Label10.Location = New System.Drawing.Point(2, 30)
+        Me.Label10.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label10.ForeColor = System.Drawing.Color.Black
+        Me.Label10.Location = New System.Drawing.Point(2, 38)
         Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(75, 15)
+        Me.Label10.Size = New System.Drawing.Size(69, 13)
         Me.Label10.TabIndex = 11
         Me.Label10.Text = "ALMACÉN:"
         '
@@ -359,28 +382,28 @@ Partial Class Principal
         Me.cbAlmacenes.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
         Me.cbAlmacenes.BackColor = System.Drawing.Color.White
         Me.cbAlmacenes.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.cbAlmacenes.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbAlmacenes.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cbAlmacenes.FormattingEnabled = True
-        Me.cbAlmacenes.Location = New System.Drawing.Point(90, 26)
+        Me.cbAlmacenes.Location = New System.Drawing.Point(88, 34)
         Me.cbAlmacenes.Name = "cbAlmacenes"
-        Me.cbAlmacenes.Size = New System.Drawing.Size(223, 24)
+        Me.cbAlmacenes.Size = New System.Drawing.Size(225, 21)
         Me.cbAlmacenes.TabIndex = 10
         '
         'Label11
         '
         Me.Label11.AutoSize = True
         Me.Label11.BackColor = System.Drawing.Color.Transparent
-        Me.Label11.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label11.ForeColor = System.Drawing.Color.White
-        Me.Label11.Location = New System.Drawing.Point(2, 88)
+        Me.Label11.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label11.ForeColor = System.Drawing.Color.Black
+        Me.Label11.Location = New System.Drawing.Point(2, 92)
         Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(91, 15)
+        Me.Label11.Size = New System.Drawing.Size(84, 13)
         Me.Label11.TabIndex = 13
         Me.Label11.Text = "SUBFAMILIA:"
         '
         'btnGenerar
         '
-        Me.btnGenerar.BackColor = System.Drawing.Color.White
+        Me.btnGenerar.BackColor = System.Drawing.Color.FromArgb(CType(CType(99, Byte), Integer), CType(CType(160, Byte), Integer), CType(CType(162, Byte), Integer))
         Me.btnGenerar.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnGenerar.FlatAppearance.BorderColor = System.Drawing.Color.Black
         Me.btnGenerar.FlatAppearance.BorderSize = 3
@@ -388,9 +411,9 @@ Partial Class Principal
         Me.btnGenerar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnGenerar.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnGenerar.ForeColor = System.Drawing.Color.Black
-        Me.btnGenerar.Location = New System.Drawing.Point(200, 237)
+        Me.btnGenerar.Location = New System.Drawing.Point(3, 235)
         Me.btnGenerar.Name = "btnGenerar"
-        Me.btnGenerar.Size = New System.Drawing.Size(120, 40)
+        Me.btnGenerar.Size = New System.Drawing.Size(317, 40)
         Me.btnGenerar.TabIndex = 10
         Me.btnGenerar.Text = "GENERAR"
         Me.btnGenerar.UseVisualStyleBackColor = False
@@ -417,10 +440,10 @@ Partial Class Principal
         EnhancedScrollBarRenderer3.TrackBarSelectedBackgroundColor = System.Drawing.Color.SlateGray
         Me.spReporte.HorizontalScrollBar.Renderer = EnhancedScrollBarRenderer3
         Me.spReporte.HorizontalScrollBar.TabIndex = 0
-        Me.spReporte.Location = New System.Drawing.Point(327, 0)
+        Me.spReporte.Location = New System.Drawing.Point(364, 0)
         Me.spReporte.Name = "spReporte"
         Me.spReporte.Sheets.AddRange(New FarPoint.Win.Spread.SheetView() {Me.spReporte_Sheet1})
-        Me.spReporte.Size = New System.Drawing.Size(707, 494)
+        Me.spReporte.Size = New System.Drawing.Size(675, 521)
         Me.spReporte.Skin = FarPoint.Win.Spread.DefaultSpreadSkins.Seashell
         Me.spReporte.TabIndex = 3
         Me.spReporte.VerticalScrollBar.Buttons = New FarPoint.Win.Spread.FpScrollBarButtonCollection("BackwardLineButton,ThumbTrack,ForwardLineButton")
@@ -462,7 +485,7 @@ Partial Class Principal
         '
         Me.pnlPie.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.pnlPie.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.pnlPie.BackColor = System.Drawing.Color.White
         Me.pnlPie.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.pnlPie.Controls.Add(Me.btnAyuda)
         Me.pnlPie.Controls.Add(Me.btnExportarPdf)
@@ -471,15 +494,15 @@ Partial Class Principal
         Me.pnlPie.Controls.Add(Me.btnImprimir)
         Me.pnlPie.Controls.Add(Me.lblDescripcionTooltip)
         Me.pnlPie.Controls.Add(Me.btnSalir)
-        Me.pnlPie.ForeColor = System.Drawing.Color.White
-        Me.pnlPie.Location = New System.Drawing.Point(0, 573)
+        Me.pnlPie.ForeColor = System.Drawing.Color.Black
+        Me.pnlPie.Location = New System.Drawing.Point(0, 600)
         Me.pnlPie.Name = "pnlPie"
-        Me.pnlPie.Size = New System.Drawing.Size(1035, 60)
+        Me.pnlPie.Size = New System.Drawing.Size(1039, 60)
         Me.pnlPie.TabIndex = 8
         '
         'btnAyuda
         '
-        Me.btnAyuda.BackColor = System.Drawing.Color.White
+        Me.btnAyuda.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
         Me.btnAyuda.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnAyuda.FlatAppearance.BorderColor = System.Drawing.Color.Black
         Me.btnAyuda.FlatAppearance.BorderSize = 3
@@ -504,7 +527,7 @@ Partial Class Principal
         Me.btnExportarPdf.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumAquamarine
         Me.btnExportarPdf.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnExportarPdf.Image = CType(resources.GetObject("btnExportarPdf.Image"), System.Drawing.Image)
-        Me.btnExportarPdf.Location = New System.Drawing.Point(179, 0)
+        Me.btnExportarPdf.Location = New System.Drawing.Point(188, 0)
         Me.btnExportarPdf.Name = "btnExportarPdf"
         Me.btnExportarPdf.Size = New System.Drawing.Size(60, 60)
         Me.btnExportarPdf.TabIndex = 53
@@ -533,7 +556,7 @@ Partial Class Principal
         Me.btnExportarExcel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumAquamarine
         Me.btnExportarExcel.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnExportarExcel.Image = CType(resources.GetObject("btnExportarExcel.Image"), System.Drawing.Image)
-        Me.btnExportarExcel.Location = New System.Drawing.Point(120, 0)
+        Me.btnExportarExcel.Location = New System.Drawing.Point(126, 0)
         Me.btnExportarExcel.Name = "btnExportarExcel"
         Me.btnExportarExcel.Size = New System.Drawing.Size(60, 60)
         Me.btnExportarExcel.TabIndex = 50
@@ -549,7 +572,7 @@ Partial Class Principal
         Me.btnImprimir.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumAquamarine
         Me.btnImprimir.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnImprimir.Image = CType(resources.GetObject("btnImprimir.Image"), System.Drawing.Image)
-        Me.btnImprimir.Location = New System.Drawing.Point(61, 0)
+        Me.btnImprimir.Location = New System.Drawing.Point(64, 0)
         Me.btnImprimir.Name = "btnImprimir"
         Me.btnImprimir.Size = New System.Drawing.Size(60, 60)
         Me.btnImprimir.TabIndex = 51
@@ -558,10 +581,11 @@ Partial Class Principal
         'lblDescripcionTooltip
         '
         Me.lblDescripcionTooltip.AutoSize = True
+        Me.lblDescripcionTooltip.BackColor = System.Drawing.Color.FromArgb(CType(CType(99, Byte), Integer), CType(CType(160, Byte), Integer), CType(CType(162, Byte), Integer))
         Me.lblDescripcionTooltip.Cursor = System.Windows.Forms.Cursors.Hand
         Me.lblDescripcionTooltip.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblDescripcionTooltip.ForeColor = System.Drawing.Color.White
-        Me.lblDescripcionTooltip.Location = New System.Drawing.Point(254, 15)
+        Me.lblDescripcionTooltip.ForeColor = System.Drawing.Color.Black
+        Me.lblDescripcionTooltip.Location = New System.Drawing.Point(280, 13)
         Me.lblDescripcionTooltip.Name = "lblDescripcionTooltip"
         Me.lblDescripcionTooltip.Size = New System.Drawing.Size(0, 31)
         Me.lblDescripcionTooltip.TabIndex = 3
@@ -569,7 +593,7 @@ Partial Class Principal
         'btnSalir
         '
         Me.btnSalir.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnSalir.BackColor = System.Drawing.Color.White
+        Me.btnSalir.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
         Me.btnSalir.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnSalir.FlatAppearance.BorderColor = System.Drawing.Color.Black
         Me.btnSalir.FlatAppearance.BorderSize = 3
@@ -577,7 +601,7 @@ Partial Class Principal
         Me.btnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnSalir.ForeColor = System.Drawing.Color.Black
         Me.btnSalir.Image = CType(resources.GetObject("btnSalir.Image"), System.Drawing.Image)
-        Me.btnSalir.Location = New System.Drawing.Point(973, 0)
+        Me.btnSalir.Location = New System.Drawing.Point(977, 0)
         Me.btnSalir.Margin = New System.Windows.Forms.Padding(0)
         Me.btnSalir.Name = "btnSalir"
         Me.btnSalir.Size = New System.Drawing.Size(60, 60)
@@ -590,6 +614,7 @@ Partial Class Principal
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.pnlEncabezado.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.pnlEncabezado.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.pnlEncabezado.Controls.Add(Me.pbMarca)
         Me.pnlEncabezado.Controls.Add(Me.lblEncabezadoArea)
         Me.pnlEncabezado.Controls.Add(Me.lblEncabezadoUsuario)
         Me.pnlEncabezado.Controls.Add(Me.lblEncabezadoEmpresa)
@@ -597,8 +622,23 @@ Partial Class Principal
         Me.pnlEncabezado.ForeColor = System.Drawing.Color.White
         Me.pnlEncabezado.Location = New System.Drawing.Point(0, 0)
         Me.pnlEncabezado.Name = "pnlEncabezado"
-        Me.pnlEncabezado.Size = New System.Drawing.Size(1035, 75)
+        Me.pnlEncabezado.Size = New System.Drawing.Size(1039, 75)
         Me.pnlEncabezado.TabIndex = 7
+        '
+        'pbMarca
+        '
+        Me.pbMarca.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.pbMarca.BackColor = System.Drawing.Color.Transparent
+        Me.pbMarca.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.pbMarca.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.pbMarca.Image = Global.ALMReporteSaldos.My.Resources.Resources.Producido_por
+        Me.pbMarca.ImageLocation = ""
+        Me.pbMarca.Location = New System.Drawing.Point(962, 0)
+        Me.pbMarca.Name = "pbMarca"
+        Me.pbMarca.Size = New System.Drawing.Size(75, 75)
+        Me.pbMarca.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.pbMarca.TabIndex = 5
+        Me.pbMarca.TabStop = False
         '
         'lblEncabezadoArea
         '
@@ -606,7 +646,7 @@ Partial Class Principal
         Me.lblEncabezadoArea.AutoSize = True
         Me.lblEncabezadoArea.Font = New System.Drawing.Font("Microsoft Sans Serif", 21.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblEncabezadoArea.ForeColor = System.Drawing.Color.White
-        Me.lblEncabezadoArea.Location = New System.Drawing.Point(600, 0)
+        Me.lblEncabezadoArea.Location = New System.Drawing.Point(604, 0)
         Me.lblEncabezadoArea.Name = "lblEncabezadoArea"
         Me.lblEncabezadoArea.Size = New System.Drawing.Size(0, 33)
         Me.lblEncabezadoArea.TabIndex = 3
@@ -617,7 +657,7 @@ Partial Class Principal
         Me.lblEncabezadoUsuario.AutoSize = True
         Me.lblEncabezadoUsuario.Font = New System.Drawing.Font("Microsoft Sans Serif", 21.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblEncabezadoUsuario.ForeColor = System.Drawing.Color.White
-        Me.lblEncabezadoUsuario.Location = New System.Drawing.Point(600, 35)
+        Me.lblEncabezadoUsuario.Location = New System.Drawing.Point(604, 35)
         Me.lblEncabezadoUsuario.Name = "lblEncabezadoUsuario"
         Me.lblEncabezadoUsuario.Size = New System.Drawing.Size(0, 33)
         Me.lblEncabezadoUsuario.TabIndex = 2
@@ -654,8 +694,10 @@ Partial Class Principal
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1039, 635)
+        Me.BackColor = System.Drawing.Color.White
+        Me.ClientSize = New System.Drawing.Size(1039, 661)
         Me.Controls.Add(Me.pnlContenido)
+        Me.ForeColor = System.Drawing.Color.Black
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "Principal"
         Me.Text = "Almacén - Reporte de Saldos"
@@ -675,6 +717,7 @@ Partial Class Principal
         Me.pnlPie.PerformLayout()
         Me.pnlEncabezado.ResumeLayout(False)
         Me.pnlEncabezado.PerformLayout()
+        CType(Me.pbMarca, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -715,4 +758,6 @@ Partial Class Principal
     Friend WithEvents spParaClonar_Sheet1 As FarPoint.Win.Spread.SheetView
     Private WithEvents btnAyuda As System.Windows.Forms.Button
     Friend WithEvents Label6 As System.Windows.Forms.Label
+    Private WithEvents btnMostrarOcultar As System.Windows.Forms.Button
+    Friend WithEvents pbMarca As System.Windows.Forms.PictureBox
 End Class

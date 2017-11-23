@@ -238,12 +238,12 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Iconos Usados\angle_right-48.png" />
-    <Content Include="Iconos Usados\arrows_long_right-32.png" />
-    <Content Include="Iconos Usados\exit_sign-48.png" />
-    <Content Include="Iconos Usados\help-48.png" />
-    <Content Include="Iconos Usados\save-48.png" />
-    <Content Include="Iconos Usados\user-48.png" />
+    <Content Include="Iconos\angle_right-48.png" />
+    <Content Include="Iconos\arrows_long_right-32.png" />
+    <Content Include="Iconos\exit_sign-48.png" />
+    <Content Include="Iconos\help-48.png" />
+    <Content Include="Iconos\save-48.png" />
+    <Content Include="Iconos\user-48.png" />
     <Content Include="Logos\2.JPG" />
     <Content Include="Logos\aurora.jpg" />
     <Content Include="Logos\colores difuminados.jpg" />

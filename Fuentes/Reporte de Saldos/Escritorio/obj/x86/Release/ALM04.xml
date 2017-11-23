@@ -15,11 +15,11 @@ ALM04
   Reemplaza la propiedad CurrentUICulture del subproceso actual para todas las
   búsquedas de recursos mediante esta clase de recurso fuertemente tipado.
 </summary>
-</member><member name="P:ALMReporteSaldos.My.Resources.Resources.bienvenida">
+</member><member name="P:ALMReporteSaldos.My.Resources.Resources.Logo3">
 	<summary>
   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
 </summary>
-</member><member name="P:ALMReporteSaldos.My.Resources.Resources.Logo3">
+</member><member name="P:ALMReporteSaldos.My.Resources.Resources.Producido_por">
 	<summary>
   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
 </summary>

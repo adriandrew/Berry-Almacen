@@ -61,7 +61,7 @@
             this.pnlEncabezado.Controls.Add(this.lblEncabezadoPrograma);
             this.pnlEncabezado.Location = new System.Drawing.Point(0, 0);
             this.pnlEncabezado.Name = "pnlEncabezado";
-            this.pnlEncabezado.Size = new System.Drawing.Size(1034, 75);
+            this.pnlEncabezado.Size = new System.Drawing.Size(1039, 75);
             this.pnlEncabezado.TabIndex = 15;
             this.pnlEncabezado.MouseEnter += new System.EventHandler(this.pnlEncabezado_MouseEnter);
             // 
@@ -71,7 +71,7 @@
             this.lblEncabezadoUsuario.AutoSize = true;
             this.lblEncabezadoUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEncabezadoUsuario.ForeColor = System.Drawing.Color.White;
-            this.lblEncabezadoUsuario.Location = new System.Drawing.Point(600, 37);
+            this.lblEncabezadoUsuario.Location = new System.Drawing.Point(605, 37);
             this.lblEncabezadoUsuario.Name = "lblEncabezadoUsuario";
             this.lblEncabezadoUsuario.Size = new System.Drawing.Size(0, 33);
             this.lblEncabezadoUsuario.TabIndex = 6;
@@ -104,9 +104,9 @@
             this.pnlPie.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlPie.Controls.Add(this.lblDescripcionTooltip);
             this.pnlPie.Controls.Add(this.btnSalir);
-            this.pnlPie.Location = new System.Drawing.Point(0, 570);
+            this.pnlPie.Location = new System.Drawing.Point(0, 600);
             this.pnlPie.Name = "pnlPie";
-            this.pnlPie.Size = new System.Drawing.Size(1034, 60);
+            this.pnlPie.Size = new System.Drawing.Size(1039, 60);
             this.pnlPie.TabIndex = 14;
             this.pnlPie.MouseEnter += new System.EventHandler(this.pnlPie_MouseEnter);
             // 
@@ -123,14 +123,14 @@
             // btnSalir
             // 
             this.btnSalir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSalir.BackColor = System.Drawing.Color.White;
+            this.btnSalir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnSalir.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSalir.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.btnSalir.FlatAppearance.BorderSize = 3;
             this.btnSalir.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumAquamarine;
             this.btnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSalir.Image = ((System.Drawing.Image)(resources.GetObject("btnSalir.Image")));
-            this.btnSalir.Location = new System.Drawing.Point(972, 0);
+            this.btnSalir.Location = new System.Drawing.Point(977, 0);
             this.btnSalir.Margin = new System.Windows.Forms.Padding(0);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(60, 60);
@@ -153,7 +153,7 @@
             this.pnlContenido.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pnlContenido.Location = new System.Drawing.Point(0, 0);
             this.pnlContenido.Name = "pnlContenido";
-            this.pnlContenido.Size = new System.Drawing.Size(1034, 630);
+            this.pnlContenido.Size = new System.Drawing.Size(1039, 660);
             this.pnlContenido.TabIndex = 3;
             this.pnlContenido.MouseEnter += new System.EventHandler(this.pnlContenido_MouseEnter);
             // 
@@ -165,9 +165,9 @@
             this.pnlCuerpo.AutoScroll = true;
             this.pnlCuerpo.BackColor = System.Drawing.Color.Transparent;
             this.pnlCuerpo.Controls.Add(this.spDirectorios);
-            this.pnlCuerpo.Location = new System.Drawing.Point(0, 78);
+            this.pnlCuerpo.Location = new System.Drawing.Point(0, 77);
             this.pnlCuerpo.Name = "pnlCuerpo";
-            this.pnlCuerpo.Size = new System.Drawing.Size(1030, 490);
+            this.pnlCuerpo.Size = new System.Drawing.Size(1035, 521);
             this.pnlCuerpo.TabIndex = 12;
             this.pnlCuerpo.MouseEnter += new System.EventHandler(this.pnlCuerpo_MouseEnter);
             // 
@@ -193,11 +193,11 @@
             this.spDirectorios.HorizontalScrollBar.Renderer = enhancedScrollBarRenderer1;
             this.spDirectorios.HorizontalScrollBar.TabIndex = 2;
             this.spDirectorios.HorizontalScrollBarPolicy = FarPoint.Win.Spread.ScrollBarPolicy.AsNeeded;
-            this.spDirectorios.Location = new System.Drawing.Point(5, 0);
+            this.spDirectorios.Location = new System.Drawing.Point(3, 0);
             this.spDirectorios.Name = "spDirectorios";
             this.spDirectorios.Sheets.AddRange(new FarPoint.Win.Spread.SheetView[] {
             this.spDirectorios_Sheet1});
-            this.spDirectorios.Size = new System.Drawing.Size(1024, 487);
+            this.spDirectorios.Size = new System.Drawing.Size(1033, 518);
             this.spDirectorios.Skin = FarPoint.Win.Spread.DefaultSpreadSkins.Seashell;
             this.spDirectorios.TabIndex = 4;
             this.spDirectorios.VerticalScrollBar.Buttons = new FarPoint.Win.Spread.FpScrollBarButtonCollection("BackwardLineButton,ThumbTrack,ForwardLineButton");
@@ -243,7 +243,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1034, 631);
+            this.ClientSize = new System.Drawing.Size(1039, 661);
             this.Controls.Add(this.pnlContenido);
             this.ForeColor = System.Drawing.Color.Black;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));

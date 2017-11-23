@@ -47,6 +47,7 @@
             this.btnSalir = new System.Windows.Forms.Button();
             this.btnCambiarDirectorio = new System.Windows.Forms.Button();
             this.pnlEncabezado = new System.Windows.Forms.Panel();
+            this.pbMarca = new System.Windows.Forms.PictureBox();
             this.lblEncabezadoLicencia = new System.Windows.Forms.Label();
             this.lblEncabezadoUsuario = new System.Windows.Forms.Label();
             this.lblEncabezadoDirectorio = new System.Windows.Forms.Label();
@@ -56,6 +57,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.picUsuario)).BeginInit();
             this.pnlPie.SuspendLayout();
             this.pnlEncabezado.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbMarca)).BeginInit();
             this.SuspendLayout();
             // 
             // temporizador
@@ -78,7 +80,7 @@
             this.pnlContenido.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pnlContenido.Location = new System.Drawing.Point(0, 0);
             this.pnlContenido.Name = "pnlContenido";
-            this.pnlContenido.Size = new System.Drawing.Size(1034, 630);
+            this.pnlContenido.Size = new System.Drawing.Size(1039, 661);
             this.pnlContenido.TabIndex = 1;
             this.pnlContenido.MouseEnter += new System.EventHandler(this.pnlContenido_MouseEnter);
             // 
@@ -95,7 +97,7 @@
             this.pnlIniciarSesion.Controls.Add(this.lblUsuario);
             this.pnlIniciarSesion.Controls.Add(this.picUsuario);
             this.pnlIniciarSesion.ForeColor = System.Drawing.Color.Black;
-            this.pnlIniciarSesion.Location = new System.Drawing.Point(310, 224);
+            this.pnlIniciarSesion.Location = new System.Drawing.Point(312, 239);
             this.pnlIniciarSesion.Name = "pnlIniciarSesion";
             this.pnlIniciarSesion.Size = new System.Drawing.Size(422, 206);
             this.pnlIniciarSesion.TabIndex = 6;
@@ -189,9 +191,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlMenu.AutoScroll = true;
             this.pnlMenu.BackColor = System.Drawing.Color.Transparent;
-            this.pnlMenu.Location = new System.Drawing.Point(3, 77);
+            this.pnlMenu.Location = new System.Drawing.Point(0, 77);
             this.pnlMenu.Name = "pnlMenu";
-            this.pnlMenu.Size = new System.Drawing.Size(1028, 490);
+            this.pnlMenu.Size = new System.Drawing.Size(1039, 521);
             this.pnlMenu.TabIndex = 9;
             this.pnlMenu.Visible = false;
             this.pnlMenu.MouseEnter += new System.EventHandler(this.pnlMenu_MouseEnter);
@@ -200,7 +202,7 @@
             // 
             this.pnlPie.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.pnlPie.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.pnlPie.BackColor = System.Drawing.Color.White;
             this.pnlPie.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlPie.Controls.Add(this.btnRegresarMenu);
             this.pnlPie.Controls.Add(this.btnAyuda);
@@ -208,16 +210,16 @@
             this.pnlPie.Controls.Add(this.btnSalir);
             this.pnlPie.Controls.Add(this.btnCambiarDirectorio);
             this.pnlPie.ForeColor = System.Drawing.Color.White;
-            this.pnlPie.Location = new System.Drawing.Point(0, 570);
+            this.pnlPie.Location = new System.Drawing.Point(0, 600);
             this.pnlPie.Name = "pnlPie";
-            this.pnlPie.Size = new System.Drawing.Size(1034, 60);
+            this.pnlPie.Size = new System.Drawing.Size(1039, 60);
             this.pnlPie.TabIndex = 8;
             this.pnlPie.MouseEnter += new System.EventHandler(this.pnlPie_MouseEnter);
             // 
             // btnRegresarMenu
             // 
             this.btnRegresarMenu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnRegresarMenu.BackColor = System.Drawing.Color.White;
+            this.btnRegresarMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnRegresarMenu.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnRegresarMenu.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.btnRegresarMenu.FlatAppearance.BorderSize = 3;
@@ -225,7 +227,7 @@
             this.btnRegresarMenu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRegresarMenu.ForeColor = System.Drawing.Color.Black;
             this.btnRegresarMenu.Image = ((System.Drawing.Image)(resources.GetObject("btnRegresarMenu.Image")));
-            this.btnRegresarMenu.Location = new System.Drawing.Point(912, 0);
+            this.btnRegresarMenu.Location = new System.Drawing.Point(913, 0);
             this.btnRegresarMenu.Margin = new System.Windows.Forms.Padding(0);
             this.btnRegresarMenu.Name = "btnRegresarMenu";
             this.btnRegresarMenu.Size = new System.Drawing.Size(60, 60);
@@ -237,7 +239,7 @@
             // 
             // btnAyuda
             // 
-            this.btnAyuda.BackColor = System.Drawing.Color.White;
+            this.btnAyuda.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnAyuda.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAyuda.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.btnAyuda.FlatAppearance.BorderSize = 3;
@@ -267,14 +269,14 @@
             // btnSalir
             // 
             this.btnSalir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSalir.BackColor = System.Drawing.Color.White;
+            this.btnSalir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnSalir.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSalir.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.btnSalir.FlatAppearance.BorderSize = 3;
             this.btnSalir.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumAquamarine;
             this.btnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSalir.Image = ((System.Drawing.Image)(resources.GetObject("btnSalir.Image")));
-            this.btnSalir.Location = new System.Drawing.Point(972, 0);
+            this.btnSalir.Location = new System.Drawing.Point(977, 0);
             this.btnSalir.Margin = new System.Windows.Forms.Padding(0);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(60, 60);
@@ -285,7 +287,7 @@
             // 
             // btnCambiarDirectorio
             // 
-            this.btnCambiarDirectorio.BackColor = System.Drawing.Color.White;
+            this.btnCambiarDirectorio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.btnCambiarDirectorio.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCambiarDirectorio.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.btnCambiarDirectorio.FlatAppearance.BorderSize = 3;
@@ -293,7 +295,7 @@
             this.btnCambiarDirectorio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCambiarDirectorio.ForeColor = System.Drawing.Color.Black;
             this.btnCambiarDirectorio.Image = ((System.Drawing.Image)(resources.GetObject("btnCambiarDirectorio.Image")));
-            this.btnCambiarDirectorio.Location = new System.Drawing.Point(60, 0);
+            this.btnCambiarDirectorio.Location = new System.Drawing.Point(64, 0);
             this.btnCambiarDirectorio.Margin = new System.Windows.Forms.Padding(0);
             this.btnCambiarDirectorio.Name = "btnCambiarDirectorio";
             this.btnCambiarDirectorio.Size = new System.Drawing.Size(60, 60);
@@ -308,6 +310,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlEncabezado.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.pnlEncabezado.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlEncabezado.Controls.Add(this.pbMarca);
             this.pnlEncabezado.Controls.Add(this.lblEncabezadoLicencia);
             this.pnlEncabezado.Controls.Add(this.lblEncabezadoUsuario);
             this.pnlEncabezado.Controls.Add(this.lblEncabezadoDirectorio);
@@ -315,9 +318,24 @@
             this.pnlEncabezado.ForeColor = System.Drawing.Color.White;
             this.pnlEncabezado.Location = new System.Drawing.Point(0, 0);
             this.pnlEncabezado.Name = "pnlEncabezado";
-            this.pnlEncabezado.Size = new System.Drawing.Size(1034, 75);
+            this.pnlEncabezado.Size = new System.Drawing.Size(1039, 75);
             this.pnlEncabezado.TabIndex = 7;
             this.pnlEncabezado.MouseEnter += new System.EventHandler(this.pnlEncabezado_MouseEnter);
+            // 
+            // pbMarca
+            // 
+            this.pbMarca.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pbMarca.BackColor = System.Drawing.Color.Transparent;
+            this.pbMarca.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pbMarca.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pbMarca.Image = global::PrincipalBerry.Properties.Resources.Producido_por;
+            this.pbMarca.ImageLocation = "";
+            this.pbMarca.Location = new System.Drawing.Point(962, 0);
+            this.pbMarca.Name = "pbMarca";
+            this.pbMarca.Size = new System.Drawing.Size(75, 75);
+            this.pbMarca.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbMarca.TabIndex = 6;
+            this.pbMarca.TabStop = false;
             // 
             // lblEncabezadoLicencia
             // 
@@ -325,7 +343,7 @@
             this.lblEncabezadoLicencia.AutoSize = true;
             this.lblEncabezadoLicencia.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEncabezadoLicencia.ForeColor = System.Drawing.Color.White;
-            this.lblEncabezadoLicencia.Location = new System.Drawing.Point(600, 0);
+            this.lblEncabezadoLicencia.Location = new System.Drawing.Point(605, 0);
             this.lblEncabezadoLicencia.Name = "lblEncabezadoLicencia";
             this.lblEncabezadoLicencia.Size = new System.Drawing.Size(0, 33);
             this.lblEncabezadoLicencia.TabIndex = 5;
@@ -336,7 +354,7 @@
             this.lblEncabezadoUsuario.AutoSize = true;
             this.lblEncabezadoUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEncabezadoUsuario.ForeColor = System.Drawing.Color.White;
-            this.lblEncabezadoUsuario.Location = new System.Drawing.Point(600, 35);
+            this.lblEncabezadoUsuario.Location = new System.Drawing.Point(605, 35);
             this.lblEncabezadoUsuario.Name = "lblEncabezadoUsuario";
             this.lblEncabezadoUsuario.Size = new System.Drawing.Size(0, 33);
             this.lblEncabezadoUsuario.TabIndex = 4;
@@ -366,7 +384,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1034, 631);
+            this.ClientSize = new System.Drawing.Size(1039, 661);
             this.Controls.Add(this.pnlContenido);
             this.DoubleBuffered = true;
             this.ForeColor = System.Drawing.Color.Black;
@@ -386,6 +404,7 @@
             this.pnlPie.PerformLayout();
             this.pnlEncabezado.ResumeLayout(false);
             this.pnlEncabezado.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbMarca)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -413,6 +432,7 @@
         private System.Windows.Forms.Button btnAyuda;
         private System.Windows.Forms.Button btnRegresarMenu;
         private System.Windows.Forms.Label lblEncabezadoLicencia;
+        internal System.Windows.Forms.PictureBox pbMarca;
 
     }
 }

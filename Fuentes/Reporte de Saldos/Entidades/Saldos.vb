@@ -85,7 +85,7 @@ Public Class Saldos
                 condicionFechaAnterior &= " AND Fecha < @fecha "
                 condicionFechaFinal &= " AND Fecha <= @fecha2 "
             End If 
-            comando.CommandText = String.Format("SELECT Catalogo.*, SaldosFinales.SaldoAnterior, SaldosFinales.CostoAnterior, SaldosFinales.SaldoEntradasRango, SaldosFinales.CostoEntradasRango, SaldosFinales.SaldoSalidasRango, SaldosFinales.CostoSalidasRango, SaldosFinales.SaldoActual, SaldosFinales.CostoActual FROM " & _
+            comando.CommandText = String.Format("SELECT CASE WHEN SaldosFinales.SaldoActual<Catalogo.CantidadMinima THEN '1' WHEN SaldosFinales.SaldoActual=Catalogo.CantidadMinima THEN '2' ELSE '0' END, Catalogo.*, SaldosFinales.SaldoAnterior, SaldosFinales.CostoAnterior, SaldosFinales.SaldoEntradasRango, SaldosFinales.CostoEntradasRango, SaldosFinales.SaldoSalidasRango, SaldosFinales.CostoSalidasRango, SaldosFinales.SaldoActual, SaldosFinales.CostoActual FROM " & _
             " ( " & _
                 "SELECT PreSaldos.IdAlmacen, PreSaldos.IdFamilia, PreSaldos.IdSubFamilia, PreSaldos.IdArticulo, SUM(PreSaldos.SaldoAnterior) AS SaldoAnterior, SUM(PreSaldos.CostoAnterior) AS CostoAnterior, SUM(PreSaldos.SaldoEntradasRango) AS SaldoEntradasRango, SUM(PreSaldos.CostoEntradasRango) AS CostoEntradasRango, SUM(PreSaldos.SaldoSalidasRango) AS SaldoSalidasRango, SUM(PreSaldos.CostoSalidasRango) AS CostoSalidasRango, SUM(PreSaldos.SaldoActual) AS SaldoActual, SUM(PreSaldos.CostoActual) AS CostoActual FROM " & _
                     " ( " & _
@@ -114,7 +114,7 @@ Public Class Saldos
                 " GROUP BY PreSaldos.IdAlmacen, PreSaldos.IdFamilia, PreSaldos.IdSubFamilia, PreSaldos.IdArticulo " & _
             " ) AS SaldosFinales " & _
             " LEFT JOIN " & _
-                "( SELECT A.Id AS IdAlmacen, A.Nombre AS NombreAlmacen, F.Id AS IdFamilia, F.Nombre AS NombreFamilia, SF.Id AS IdSubFamilia, SF.Nombre AS NombreSubFamilia, AR.Id AS IdArticulo, AR.Nombre AS NombreArticulo FROM {0}Almacenes AS A LEFT JOIN {0}Familias AS F ON A.Id = F.IdAlmacen LEFT JOIN {0}SubFamilias AS SF ON A.Id = SF.IdAlmacen AND F.Id = SF.IdFamilia LEFT JOIN {0}Articulos AS AR ON A.Id = AR.IdAlmacen AND F.Id = AR.IdFamilia AND SF.Id = AR.IdSubFamilia " & _
+                "( SELECT AR.CantidadMinima, A.Id AS IdAlmacen, A.Nombre AS NombreAlmacen, F.Id AS IdFamilia, F.Nombre AS NombreFamilia, SF.Id AS IdSubFamilia, SF.Nombre AS NombreSubFamilia, AR.Id AS IdArticulo, AR.Nombre AS NombreArticulo FROM {0}Almacenes AS A LEFT JOIN {0}Familias AS F ON A.Id = F.IdAlmacen LEFT JOIN {0}SubFamilias AS SF ON A.Id = SF.IdAlmacen AND F.Id = SF.IdFamilia LEFT JOIN {0}Articulos AS AR ON A.Id = AR.IdAlmacen AND F.Id = AR.IdFamilia AND SF.Id = AR.IdSubFamilia " & _
                 " ) AS Catalogo " & _
             " ON SaldosFinales.IdAlmacen = Catalogo.IdAlmacen AND SaldosFinales.IdFamilia = Catalogo.IdFamilia AND SaldosFinales.IdSubFamilia = Catalogo.IdSubFamilia AND SaldosFinales.IdArticulo = Catalogo.IdArticulo", ALMLogicaReporteSaldos.Programas.bdCatalogo & ".dbo." & ALMLogicaReporteSaldos.Programas.prefijoBaseDatosAlmacen, condicion & condicionFechaFinal, condicion & condicionFechaRango, condicion & condicionFechaAnterior)
             comando.Parameters.AddWithValue("@idAlmacen", Me.EIdAlmacen)

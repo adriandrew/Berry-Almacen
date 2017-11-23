@@ -108,6 +108,7 @@
     <Compile Include="Origenes.vb" />
     <Compile Include="Salidas.vb" />
     <Compile Include="SubFamilias.vb" />
+    <Compile Include="Sucursales.vb" />
     <Compile Include="TiposCambios.vb" />
     <Compile Include="TiposSalidas.vb" />
     <Compile Include="UnidadesMedidas.vb" />

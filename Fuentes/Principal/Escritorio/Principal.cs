@@ -35,6 +35,13 @@ namespace Escritorio
         // Variables de formatos de spread.
         public static int tamañoLetraSpread = 12; public static string tipoLetraSpread = "Microsoft Sans Serif";
         public static int alturaEncabezadosGrandeSpread = 45; public static int alturaEncabezadosChicoSpread = 35; public static int alturaFilasSpread = 25;
+        // Variables de estilos.
+        public static Color colorSpreadAreaGris = Color.FromArgb(245, 245, 245);
+        public static Color colorSpreadTotal = Color.White;
+        public static Color colorCaptura = Color.White;
+        public static Color colorCapturaBloqueada = Color.FromArgb(235, 255, 255);
+        public static Color colorAdvertencia = Color.Orange;
+        public static Color colorTemaAzul = Color.FromArgb(99, 160, 162);
         // Variables generales.
         public static bool esConexionesVariasCorrecta = false; public static bool esConexionPrincipalCorrecta = false;
         public static bool esCambioDirectorio = false; public static int idDirectorioSeleccionado;
@@ -89,6 +96,7 @@ namespace Escritorio
             VerificarLicencia();
             this.txtUsuario.Focus();
             //}
+            CargarEstilosTemporal();
             this.Cursor = Cursors.Default;
 
         }
@@ -345,6 +353,14 @@ namespace Escritorio
         #endregion
 
         #region Métodos
+
+        private void CargarEstilosTemporal()
+        {
+
+            pnlIniciarSesion.BackColor = Principal.colorSpreadAreaGris;
+            pnlPie.BackColor = Principal.colorSpreadAreaGris;
+
+        }
 
         private void VerificarLicencia()
         {
@@ -906,7 +922,7 @@ namespace Escritorio
                 objetoPanel = (Panel)(pnlMenu.Controls[nombre]);
                 objetoPanel.BorderStyle = BorderStyle.Fixed3D;
                 this.colorCuadroOriginal = objetoPanel.BackColor;
-                objetoPanel.BackColor = ControlPaint.Dark(objetoPanel.BackColor);
+                objetoPanel.BackColor = ControlPaint.Light(objetoPanel.BackColor);
             }
             catch (Exception)
             {  
@@ -1034,11 +1050,13 @@ namespace Escritorio
             int alto = 0; int ancho = 0; // Los tamaños de los controles.
             if (this.nivelMenu == (int)Nivel.Modulos)
             {
-                alto = 237; ancho = 475;
+                //alto = 237; ancho = 475;
+                alto = 178; ancho = 356;
             }
             else if (this.nivelMenu == (int)Nivel.Programas || this.nivelMenu == (int)Nivel.SubProgramas)
             {
-                alto = 190; ancho = 380; 
+                //alto = 190; ancho = 380;
+                alto = 142; ancho = 285;
             } 
             int posicionY = 0; int posicionX = 0; // Las posiciones donde inician los controles.
             int margen = 5; // Margen de espacio hacia los lados
@@ -1050,7 +1068,7 @@ namespace Escritorio
             else if (this.nivelMenu == (int)Nivel.Programas)
                 cantidad = listaProgramas.Count;
             else if (this.nivelMenu == (int)Nivel.SubProgramas)
-                cantidad = listaSubProgramas.Count; 
+                cantidad = listaSubProgramas.Count;
             int indiceVariable = 0; // Se utiliza para controlar la cantidad de opciones verticales.
             for (int indice = 0; indice < cantidad; indice++) // Crea todos los controles.
             {
@@ -1097,19 +1115,23 @@ namespace Escritorio
                     nombre = listaProgramas[indice].Nombre.ToString();
                 else if (this.nivelMenu == (int)Nivel.SubProgramas)
                     nombre = listaSubProgramas[indice].Nombre.ToString();
-                if (nombre.Length > 24)
-                {
-                    if (this.nivelMenu == (int)Nivel.Programas || this.nivelMenu == (int)Nivel.SubProgramas)
-                    {
-                        etiquetaNombre.Top = cuadro.Height - etiquetaNombre.Height - 45;
-                        etiquetaNombre.Height = 80;
-                    }
-                }
-                else
-                {
-                    etiquetaNombre.Top = cuadro.Height - etiquetaNombre.Height - 15;
-                    etiquetaNombre.Height = 40;
-                }
+                // Esto es para poner los nombres al final del cuadro.
+                //if (nombre.Length > 24)
+                //{
+                //    if (this.nivelMenu == (int)Nivel.Programas || this.nivelMenu == (int)Nivel.SubProgramas)
+                //    {
+                //        etiquetaNombre.Top = cuadro.Height - etiquetaNombre.Height - 45;
+                //        etiquetaNombre.Height = 80;
+                //    }
+                //}
+                //else
+                //{
+                //    etiquetaNombre.Top = cuadro.Height - etiquetaNombre.Height - 15;
+                //    etiquetaNombre.Height = 40;
+                //}
+                // Se dejarán por defecto los nombres al inicio del cuadro.
+                etiquetaNombre.Top = 0;
+                etiquetaNombre.Height = cuadro.Height;
                 etiquetaNombre.BorderStyle = BorderStyle.None;
                 etiquetaNombre.Left = 0;
                 etiquetaNombre.Text = nombre;
@@ -1120,7 +1142,7 @@ namespace Escritorio
                 //    colorLetraUsuario = listaEstilos[0].ColorLetraMenu;
                 //}
                 //etiquetaNombre.ForeColor = Color.FromName(colorLetraUsuario);
-                etiquetaNombre.ForeColor = Color.White;
+                etiquetaNombre.ForeColor = Color.Black;
                 etiquetaNombre.Font = new Font(Principal.tipoLetraSpread, 20, FontStyle.Regular);
                 etiquetaNombre.Click += new System.EventHandler(etiquetaNombre_Click); // Se genera el evento desde código. 
                 etiquetaNombre.MouseEnter += new System.EventHandler(etiquetaNombre_MouseEnter); // Se genera el evento desde código.
@@ -1144,7 +1166,7 @@ namespace Escritorio
 
         }
         
-        private Color ObtenerColorAleatorio() 
+        private Color ObtenerColorAleatorio()
         {
 
             Random aleatorio = new Random();
@@ -1152,7 +1174,7 @@ namespace Escritorio
             KnownColor[] nombres = (KnownColor[])Enum.GetValues(typeof(KnownColor));
             KnownColor nombreAleatorio = nombres[aleatorio.Next(nombres.Length)];
             opcionColor = Color.FromKnownColor(nombreAleatorio); 
-            Color colorOscuro = ControlPaint.Dark(opcionColor); // Se oscurece el color elegido.
+            Color colorOscuro = ControlPaint.LightLight(opcionColor); // Se oscurece el color elegido.
             return colorOscuro;
 
         }

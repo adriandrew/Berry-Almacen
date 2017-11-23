@@ -112,7 +112,7 @@ namespace Escritorio
                         //}
                         //else
                         //{
-                            EliminarRegistro(spUsuarios);
+                            EliminarRegistroDeSpread(spUsuarios);
                         //}
                     }
                 }
@@ -414,7 +414,7 @@ namespace Escritorio
                 { 
                     if (MessageBox.Show("Confirmas que deseas eliminar el registro seleccionado?", "Confirmación.", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
-                            EliminarRegistro(spProgramas);
+                            EliminarRegistroDeSpread(spProgramas);
                     }
                 }
             }
@@ -445,7 +445,7 @@ namespace Escritorio
                 { 
                     if (MessageBox.Show("Confirmas que deseas eliminar el registro seleccionado?", "Confirmación.", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
-                            EliminarRegistro(spModulos);
+                            EliminarRegistroDeSpread(spModulos);
                     }
                 }
             }
@@ -476,7 +476,7 @@ namespace Escritorio
                 { 
                     if (MessageBox.Show("Confirmas que deseas eliminar el registro seleccionado?", "Confirmación.", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
-                            EliminarRegistro(spSubProgramas);
+                            EliminarRegistroDeSpread(spSubProgramas);
                     }
                 }
             }
@@ -545,7 +545,7 @@ namespace Escritorio
                 {
                     if (MessageBox.Show("Confirmas que deseas eliminar el registro seleccionado?", "Confirmación.", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
-                        EliminarRegistro(spDirectorios);
+                        EliminarRegistroDeSpread(spDirectorios);
                     }
                 }
             }
@@ -1437,13 +1437,14 @@ namespace Escritorio
 
         }
          
-        private void EliminarRegistro(FarPoint.Win.Spread.FpSpread spread)
+        private void EliminarRegistroDeSpread(FarPoint.Win.Spread.FpSpread spread)
         {
 
-            spread.ActiveSheet.Rows.Remove(spread.ActiveSheet.ActiveRowIndex, 1); 
+            spread.ActiveSheet.Rows.Remove(spread.ActiveSheet.ActiveRowIndex, 1);
+            spread.ActiveSheet.Rows.Count += 1;
 
         }
-         
+
         private void ControlarSpreadEnterASiguienteColumna(FarPoint.Win.Spread.FpSpread spread)
         {
 

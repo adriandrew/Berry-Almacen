@@ -132,13 +132,13 @@
             // chkActivar
             // 
             this.chkActivar.Appearance = System.Windows.Forms.Appearance.Button;
-            this.chkActivar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
-            this.chkActivar.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.chkActivar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.chkActivar.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.chkActivar.FlatAppearance.BorderSize = 3;
-            this.chkActivar.FlatAppearance.CheckedBackColor = System.Drawing.Color.LimeGreen;
+            this.chkActivar.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.chkActivar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkActivar.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkActivar.ForeColor = System.Drawing.Color.White;
+            this.chkActivar.ForeColor = System.Drawing.Color.Black;
             this.chkActivar.Location = new System.Drawing.Point(221, 127);
             this.chkActivar.Name = "chkActivar";
             this.chkActivar.Size = new System.Drawing.Size(138, 45);
@@ -165,7 +165,7 @@
             // 
             // btnAyuda
             // 
-            this.btnAyuda.BackColor = System.Drawing.Color.White;
+            this.btnAyuda.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnAyuda.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAyuda.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.btnAyuda.FlatAppearance.BorderSize = 3;
@@ -195,7 +195,7 @@
             // btnSalir
             // 
             this.btnSalir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSalir.BackColor = System.Drawing.Color.White;
+            this.btnSalir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnSalir.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSalir.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.btnSalir.FlatAppearance.BorderSize = 3;
@@ -316,7 +316,7 @@
             // btnEntrar
             // 
             this.btnEntrar.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnEntrar.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.btnEntrar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.btnEntrar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnEntrar.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.btnEntrar.FlatAppearance.BorderSize = 3;

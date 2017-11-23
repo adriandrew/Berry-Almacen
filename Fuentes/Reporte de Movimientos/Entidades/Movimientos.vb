@@ -67,6 +67,7 @@ Public Class Movimientos
             Dim condicion As String = String.Empty
             Dim condicionFechaRango As String = String.Empty
             Dim tabla As String = String.Empty
+            Dim campo As String = String.Empty
             If (Me.EIdAlmacen > 0) Then
                 condicion &= " AND IdAlmacen=@idAlmacen "
             End If
@@ -84,25 +85,32 @@ Public Class Movimientos
             End If
             If (opcionMovimiento = 0) Then
                 tabla = "Entradas"
+                campo = "Entrada"
             Else
                 tabla = "Salidas"
+                campo = "Salida"
             End If 
-            comando.CommandText = String.Format("SELECT O.Nombre, M.Id, M.Fecha, C.*, M.Cantidad, M.Precio, M.Costo " & _
+            comando.CommandText = String.Format("SELECT O.Nombre, M.Id, M.Fecha, C.*, M.IdTipo{2}, TM.Nombre, M.Cantidad, M.Precio, M.Costo " & _
             " FROM " & _
             " ( " & _
-                " SELECT IdOrigen, IdAlmacen, IdFamilia, IdSubFamilia, IdArticulo, Fecha, Id, SUM(ISNULL(Cantidad, 0)) AS Cantidad, SUM(ISNULL(Precio, 0)) AS Precio, SUM(ISNULL(Total, 0)) AS Costo " & _
-                " FROM {1} WHERE 0=0 {2} GROUP BY  IdOrigen, IdAlmacen, IdFamilia, IdSubFamilia, IdArticulo, Fecha, Id " & _
+                " SELECT IdOrigen, IdAlmacen, IdFamilia, IdSubFamilia, IdArticulo, Fecha, Id, IdTipo{2}, NULL AS NombreTipo, ISNULL(SUM(Cantidad), 0) AS Cantidad, ISNULL(SUM(Precio), 0) AS Precio, ISNULL(SUM(Total), 0) AS Costo " & _
+                " FROM {1} WHERE 0=0 {3} GROUP BY  IdOrigen, IdAlmacen, IdFamilia, IdSubFamilia, IdArticulo, Fecha, Id, IdTipo{2} " & _
             " ) AS M " & _
             " LEFT JOIN " & _
             " ( " & _
-                " SELECT A.Id AS IdAlmacen, A.Abreviatura AS Abreviatura, A.Nombre AS NombreAlmacen, F.Id AS IdFamilia, F.Nombre AS NombreFamilia, SF.Id AS IdSubFamilia, SF.Nombre AS NombreSubFamilia, AR.Id AS IdArticulo, AR.Nombre AS NombreArticulo " & _
-                " FROM {0}Almacenes AS A LEFT JOIN {0}Familias AS F ON A.Id = F.IdAlmacen LEFT JOIN {0}SubFamilias AS SF ON A.Id = SF.IdAlmacen AND F.Id = SF.IdFamilia LEFT JOIN {0}Articulos AS AR ON A.Id = AR.IdAlmacen AND F.Id = AR.IdFamilia AND SF.Id = AR.IdSubFamilia " & _
+                " SELECT A.Id AS IdAlmacen, A.Abreviatura AS Abreviatura, A.Nombre AS NombreAlmacen, F.Id AS IdFamilia, F.Nombre AS NombreFamilia, SF.Id AS IdSubFamilia, SF.Nombre AS NombreSubFamilia, A2.Id AS IdArticulo, A2.Nombre AS NombreArticulo " & _
+                " FROM {0}Almacenes AS A LEFT JOIN {0}Familias AS F ON A.Id = F.IdAlmacen LEFT JOIN {0}SubFamilias AS SF ON A.Id = SF.IdAlmacen AND F.Id = SF.IdFamilia LEFT JOIN {0}Articulos AS A2 ON A.Id = A2.IdAlmacen AND F.Id = A2.IdFamilia AND SF.Id = A2.IdSubFamilia " & _
             " ) AS C " & _
             " ON M.IdAlmacen = C.IdAlmacen AND M.IdFamilia = C.IdFamilia AND M.IdSubFamilia = C.IdSubFamilia AND M.IdArticulo = C.IdArticulo " & _
-            " LEFT JOIN ( " & _
+            " LEFT JOIN " & _
+            " ( " & _
                 " SELECT Id, Nombre FROM {0}Origenes " & _
             " ) AS O ON M.IdOrigen = O.Id " & _
-            " GROUP BY O.Nombre, M.Id, M.Fecha, M.Cantidad, M.Precio, M.Costo, C.IdAlmacen, C.Abreviatura, C.NombreAlmacen, C.IdFamilia, C.NombreFamilia, C.IdSubFamilia, C.NombreSubFamilia, C.IdArticulo, C.NombreArticulo ORDER BY M.Id ASC, C.IdAlmacen ASC", ALMLogicaReporteMovimientos.Programas.bdCatalogo & ".dbo." & ALMLogicaReporteMovimientos.Programas.prefijoBaseDatosAlmacen, tabla, condicionFechaRango & " " & condicion)
+            " LEFT JOIN " & _
+            " ( " & _
+                " SELECT Id, Nombre FROM {0}Tipos{1} " & _
+            " ) AS TM ON M.IdTipo{2} = TM.Id " & _
+            " GROUP BY O.Nombre, M.Id, M.Fecha, M.IdTipo{2}, TM.Nombre, M.Cantidad, M.Precio, M.Costo, C.IdAlmacen, C.Abreviatura, C.NombreAlmacen, C.IdFamilia, C.NombreFamilia, C.IdSubFamilia, C.NombreSubFamilia, C.IdArticulo, C.NombreArticulo ORDER BY M.Id ASC, C.IdAlmacen ASC", ALMLogicaReporteMovimientos.Programas.bdCatalogo & ".dbo." & ALMLogicaReporteMovimientos.Programas.prefijoBaseDatosAlmacen, tabla, campo, condicionFechaRango & condicion)
             comando.Parameters.AddWithValue("@idAlmacen", Me.EIdAlmacen)
             comando.Parameters.AddWithValue("@idFamilia", Me.EIdFamilia)
             comando.Parameters.AddWithValue("@idSubFamilia", Me.EIdSubFamilia)

@@ -109,11 +109,11 @@
     <Compile Include="PanelControl.Designer.cs">
       <DependentUpon>PanelControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="AdministrarDirectorios.cs">
+    <Compile Include="Directorios.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AdministrarDirectorios.Designer.cs">
-      <DependentUpon>AdministrarDirectorios.cs</DependentUpon>
+    <Compile Include="Directorios.Designer.cs">
+      <DependentUpon>Directorios.cs</DependentUpon>
     </Compile>
     <Compile Include="Principal.cs">
       <SubType>Form</SubType>
@@ -131,8 +131,8 @@
     <EmbeddedResource Include="PanelControl.resx">
       <DependentUpon>PanelControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AdministrarDirectorios.resx">
-      <DependentUpon>AdministrarDirectorios.cs</DependentUpon>
+    <EmbeddedResource Include="Directorios.resx">
+      <DependentUpon>Directorios.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Principal.resx">
@@ -186,16 +186,17 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Iconos Usados\angle_right-48.png" />
-    <Content Include="Iconos Usados\arrows_long_right-32.png" />
-    <Content Include="Iconos Usados\exit_sign-48.png" />
-    <Content Include="Iconos Usados\help-48.png" />
-    <Content Include="Iconos Usados\save-48.png" />
-    <Content Include="Iconos Usados\sorting_arrows_horizontal-48.png" />
-    <Content Include="Iconos Usados\user-48.png" />
+    <Content Include="Iconos\angle_right-48.png" />
+    <Content Include="Iconos\arrows_long_right-32.png" />
+    <Content Include="Iconos\exit_sign-48.png" />
+    <Content Include="Iconos\help-48.png" />
+    <Content Include="Iconos\save-48.png" />
+    <Content Include="Iconos\sorting_arrows_horizontal-48.png" />
+    <Content Include="Iconos\user-48.png" />
     <Content Include="Logos\Logo3.ico" />
     <Content Include="Logos\Logo4.ico" />
     <Content Include="Logos\Logo4.png" />
+    <None Include="Logos\Producido_por.png" />
     <None Include="Logos\Logo5.png" />
     <None Include="Logos\Logo3.png" />
   </ItemGroup>

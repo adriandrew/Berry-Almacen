@@ -65,7 +65,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>pQdroBu9GcjtAfb0VrKdHYYeI/o=</dsig:DigestValue>
+        <dsig:DigestValue>Dc4pSqKFEFKjLt20AOBoFoBOgQs=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -105,7 +105,7 @@
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="Iconos Usados\angle_right-48.png" size="259">
+  <file name="Iconos\angle_right-48.png" size="259">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
@@ -114,7 +114,7 @@
       <dsig:DigestValue>EMatDYCsRvcKg5VM/YRGc/veyhE=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Iconos Usados\arrows_long_right-32.png" size="162">
+  <file name="Iconos\arrows_long_right-32.png" size="162">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
@@ -123,7 +123,7 @@
       <dsig:DigestValue>3yypSDZUWlh8Xj2I1+kasGXlYwk=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Iconos Usados\exit_sign-48.png" size="788">
+  <file name="Iconos\exit_sign-48.png" size="788">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
@@ -132,7 +132,7 @@
       <dsig:DigestValue>8rcirOshkoldmL+iIdX6AQvIq00=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Iconos Usados\help-48.png" size="662">
+  <file name="Iconos\help-48.png" size="662">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
@@ -141,7 +141,7 @@
       <dsig:DigestValue>JVOAOqdkVkY9mdWFQAkEm0yYh58=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Iconos Usados\save-48.png" size="273">
+  <file name="Iconos\save-48.png" size="273">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
@@ -150,7 +150,7 @@
       <dsig:DigestValue>praBFC01JE56QXYYhEJnfK1Ze5Y=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Iconos Usados\user-48.png" size="856">
+  <file name="Iconos\user-48.png" size="856">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />

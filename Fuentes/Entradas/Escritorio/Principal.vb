@@ -17,6 +17,7 @@ Public Class Principal
     Public monedas As New ALMEntidadesEntradas.Monedas()
     Public tiposCambios As New ALMEntidadesEntradas.TiposCambios()
     Public tiposEntradas As New ALMEntidadesEntradas.TiposEntradas()
+    Public sucursales As New ALMEntidadesEntradas.Sucursales()
     ' Variables de tipos de datos de spread.
     Public tipoTexto As New FarPoint.Win.Spread.CellType.TextCellType()
     Public tipoTextoContrasena As New FarPoint.Win.Spread.CellType.TextCellType()
@@ -33,10 +34,14 @@ Public Class Principal
     Public anchoTercio As Integer = 0 : Public altoTercio As Integer = 0 : Public altoCuarto As Integer = 0
     Public izquierda As Integer = 0 : Public arriba As Integer = 0
     ' Variables de formatos de spread.
-    Public Shared tipoLetraSpread As String = "Microsoft Sans Serif" : Public Shared tamañoLetraSpread As Integer = 9
+    Public Shared tipoLetraSpread As String = "Microsoft Sans Serif" : Public Shared tamañoLetraSpread As Integer = 8
     Public Shared alturaFilasEncabezadosGrandesSpread As Integer = 35 : Public Shared alturaFilasEncabezadosMedianosSpread As Integer = 28
     Public Shared alturaFilasEncabezadosChicosSpread As Integer = 22 : Public Shared alturaFilasSpread As Integer = 20
-    Public Shared colorAreaGris = Color.White
+    ' Variables de estilos.
+    Public Shared colorSpreadAreaGris As Color = Color.FromArgb(245, 245, 245) : Public Shared colorSpreadTotal As Color = Color.White
+    Public Shared colorCaptura As Color = Color.White : Public Shared colorCapturaBloqueada As Color = Color.FromArgb(235, 255, 255)
+    Public Shared colorAdvertencia As Color = Color.Orange
+    Public Shared colorTemaAzul As Color = Color.FromArgb(99, 160, 162)
     ' Variables generales.
     Public nombreEstePrograma As String = String.Empty
     Public estaCerrando As Boolean = False
@@ -47,12 +52,13 @@ Public Class Principal
     Public opcionCatalogoSeleccionada As Integer = 0
     Public esGuardadoValido As Boolean = True
     Public esIzquierda As Boolean = False
+    Public idTipoEntradaTraspaso As Integer = 3 ' Es para tipo de entrada o salida por traspaso.
     ' Variables fijas.
     Public idOrigen As Integer = 1 ' Siempre es 1 para el almacén.
     ' Hilos para carga rapida. 
     Public hiloCentrar As New Thread(AddressOf Centrar)
-    Public hiloNombrePrograma As New Thread(AddressOf CargarNombrePrograma) 
-    Public hiloEncabezadosTitulos As New Thread(AddressOf CargarEncabezadosTitulos) 
+    Public hiloNombrePrograma As New Thread(AddressOf CargarNombrePrograma)
+    Public hiloEncabezadosTitulos As New Thread(AddressOf CargarEncabezadosTitulos)
     ' Variable de desarrollo.
     Public esDesarrollo As Boolean = False
 
@@ -72,18 +78,20 @@ Public Class Principal
 
     Private Sub Principal_Shown(sender As Object, e As EventArgs) Handles Me.Shown
 
-        Me.Cursor = Cursors.WaitCursor 
+        Me.Cursor = Cursors.WaitCursor
         'If (Not ValidarAccesoTotal()) Then
         '    Salir()
         'End If 
         FormatearSpread()
         FormatearSpreadEntradas()
-        CargarOrigenes()
-        CargarAlmacenes()
-        CargarMonedas()
-        CargarTiposEntradas()
-        CargarProveedores()
+        CargarComboOrigenes()
+        CargarComboAlmacenes()
+        CargarComboMonedas()
+        CargarComboTiposEntradas()
+        CargarComboProveedores()
+        CargarComboSucursales()
         AsignarFoco(cbAlmacenes)
+        CargarEstilos()
         Me.estaMostrado = True
         MostrarCargando(False)
         Me.Cursor = Cursors.Default
@@ -132,27 +140,31 @@ Public Class Principal
             End If
         ElseIf (e.KeyData = Keys.Enter) Then ' Validar registros.
             ControlarSpreadEnter(spEntradas)
-        ElseIf (e.KeyData = Keys.F5) Then ' Abrir catalogos. 
+        ElseIf (e.KeyData = Keys.F5) Then ' Abrir catalogos.
             CargarCatalogoEnSpread()
         ElseIf (e.KeyData = Keys.Escape) Then
             spEntradas.ActiveSheet.SetActiveCell(0, 0)
-            AsignarFoco(cbProveedores)
+            AsignarFoco(IIf(cbTiposEntradas.SelectedValue = Me.idTipoEntradaTraspaso, cbSucursalesOrigen, txtFactura))
         End If
 
     End Sub
 
     Private Sub btnGuardar_Click(sender As Object, e As EventArgs) Handles btnGuardar.Click
 
-        ValidarGuardado()
+        Me.Cursor = Cursors.WaitCursor
+        ValidarGuardadoEntradas()
         If (Me.esGuardadoValido) Then
             GuardarEditarEntradas()
         End If
+        Me.Cursor = Cursors.Default
 
     End Sub
 
     Private Sub btnEliminar_Click(sender As Object, e As EventArgs) Handles btnEliminar.Click
 
+        Me.Cursor = Cursors.WaitCursor
         EliminarEntradas(True)
+        Me.Cursor = Cursors.Default
 
     End Sub
 
@@ -174,7 +186,7 @@ Public Class Principal
 
     End Sub
 
-    Private Sub pnlEncabezado_MouseEnter(sender As Object, e As EventArgs) Handles pnlPie.MouseEnter, pnlEncabezado.MouseEnter, pnlCuerpo.MouseEnter
+    Private Sub pnlEncabezado_MouseEnter(sender As Object, e As EventArgs) Handles pnlEncabezado.MouseEnter, pnlCuerpo.MouseEnter
 
         AsignarTooltips(String.Empty)
 
@@ -199,13 +211,13 @@ Public Class Principal
 
     Private Sub spCatalogos_KeyDown(sender As Object, e As KeyEventArgs) Handles spCatalogos.KeyDown
 
-        If (e.KeyCode = Keys.Enter) Then 
+        If (e.KeyCode = Keys.Enter) Then
             Dim fila As Integer = spCatalogos.ActiveSheet.ActiveRowIndex
             If (Me.opcionCatalogoSeleccionada = OpcionCatalogo.almacen Or Me.opcionCatalogoSeleccionada = OpcionCatalogo.proveedor Or Me.opcionCatalogoSeleccionada = OpcionCatalogo.moneda Or Me.opcionCatalogoSeleccionada = OpcionCatalogo.tipoEntrada) Then
                 CargarDatosEnOtrosDeCatalogos(fila)
             Else
                 CargarDatosEnSpreadDeCatalogos(fila)
-            End If 
+            End If
         ElseIf (e.KeyCode = Keys.Escape) Then
             VolverFocoDeCatalogos()
         End If
@@ -222,7 +234,9 @@ Public Class Principal
 
     Private Sub btnAyuda_Click(sender As Object, e As EventArgs) Handles btnAyuda.Click
 
+        Me.Cursor = Cursors.WaitCursor
         MostrarAyuda()
+        Me.Cursor = Cursors.Default
 
     End Sub
 
@@ -276,7 +290,7 @@ Public Class Principal
 
     Private Sub cbMonedas_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbMonedas.SelectedIndexChanged
 
-        CargarTiposCambios()
+        CargarComboTiposCambios()
 
     End Sub
 
@@ -329,7 +343,7 @@ Public Class Principal
         End If
 
     End Sub
-     
+
     Private Sub cbAlmacenes_KeyDown(sender As Object, e As KeyEventArgs) Handles cbAlmacenes.KeyDown
 
         If (e.KeyData = Keys.Enter) Then
@@ -367,7 +381,7 @@ Public Class Principal
         If (e.KeyData = Keys.Enter) Then
             e.SuppressKeyPress = True
             If (cbProveedores.SelectedValue > 0) Then
-                AsignarFoco(spEntradas)
+                AsignarFoco(txtFactura)
             Else
                 cbProveedores.SelectedIndex = 0
             End If
@@ -433,7 +447,7 @@ Public Class Principal
 
     Private Sub btnListados_MouseEnter(sender As Object, e As EventArgs) Handles btnListados.MouseEnter
 
-        AsignarTooltips("Mostrar/Ocultar Listado.")
+        AsignarTooltips("Mostrar u Ocultar Listado.")
 
     End Sub
 
@@ -466,11 +480,88 @@ Public Class Principal
 
     End Sub
 
+    Private Sub pbMarca_MouseEnter(sender As Object, e As EventArgs) Handles pbMarca.MouseEnter
+
+        AsignarTooltips("Producido por Berry.")
+
+    End Sub
+
+    Private Sub pnlCapturaSuperior_MouseEnter(sender As Object, e As EventArgs) Handles pnlCapturaSuperior.MouseEnter
+
+        AsignarTooltips("Capturar Datos Generales.")
+
+    End Sub
+
+    Private Sub spEntradas_MouseEnter(sender As Object, e As EventArgs) Handles spEntradas.MouseEnter
+
+        AsignarTooltips("Capturar Datos Detallados.")
+
+    End Sub
+
+    Private Sub pnlPie_MouseEnter(sender As Object, e As EventArgs) Handles pnlPie.MouseEnter
+
+        AsignarTooltips("Opciones.")
+
+    End Sub
+
+    Private Sub cbTiposEntradas_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbTiposEntradas.SelectedIndexChanged
+
+        If (Me.estaMostrado) Then
+            If (cbTiposEntradas.SelectedValue = Me.idTipoEntradaTraspaso) Then
+                lblSucursal.Visible = True
+                cbSucursalesOrigen.Visible = True
+            Else
+                lblSucursal.Visible = False
+                cbSucursalesOrigen.Visible = False
+            End If
+        End If
+
+    End Sub
+
+    Private Sub cbSucursalesOrigen_KeyDown(sender As Object, e As KeyEventArgs) Handles cbSucursalesOrigen.KeyDown
+
+        If (e.KeyData = Keys.Enter) Then
+            e.SuppressKeyPress = True
+            If (cbSucursalesOrigen.SelectedValue > 0) Then
+                AsignarFoco(spEntradas)
+            Else
+                cbSucursalesOrigen.SelectedIndex = 0
+            End If
+        ElseIf (e.KeyData = Keys.Escape) Then
+            e.SuppressKeyPress = True
+            AsignarFoco(txtFactura)
+        ElseIf (e.KeyData = Keys.F5) Then ' Abrir catalogos.
+            Me.opcionCatalogoSeleccionada = OpcionCatalogo.sucursal
+            CargarCatalogoEnOtros()
+        End If
+
+    End Sub
+
+    Private Sub txtFactura_KeyDown(sender As Object, e As KeyEventArgs) Handles txtFactura.KeyDown
+
+        If (e.KeyData = Keys.Enter) Then
+            e.SuppressKeyPress = True
+            AsignarFoco(IIf(cbTiposEntradas.SelectedValue = Me.idTipoEntradaTraspaso, cbSucursalesOrigen, spEntradas))
+        ElseIf (e.KeyData = Keys.Escape) Then
+            e.SuppressKeyPress = True
+            AsignarFoco(cbProveedores)
+        End If
+
+    End Sub
+
 #End Region
 
 #Region "Métodos"
 
 #Region "Básicos"
+
+    Private Sub CargarEstilos()
+
+        pnlCapturaSuperior.BackColor = Principal.colorSpreadAreaGris
+        spEntradas.ActiveSheet.GrayAreaBackColor = Principal.colorSpreadAreaGris
+        pnlPie.BackColor = Principal.colorSpreadAreaGris
+
+    End Sub
 
     Private Sub BuscarCatalogos()
 
@@ -596,7 +687,7 @@ Public Class Principal
             txtAyuda.Width = pnlAyuda.Width - 10
             txtAyuda.Height = pnlAyuda.Height - 10
             txtAyuda.Location = New Point(5, 5)
-            txtAyuda.Text = "Sección de Ayuda: " & vbNewLine & vbNewLine & "* Teclas básicas: " & vbNewLine & "F5 sirve para mostrar catálogos. " & vbNewLine & "F6 sirve para eliminar un registro únicamente. " & vbNewLine & "Escape sirve para ocultar catálogos que se encuentren desplegados. " & vbNewLine & vbNewLine & "* Catálogos desplegados: " & vbNewLine & "Cuando se muestra algún catálogo, al seleccionar alguna opción de este, se va mostrando en tiempo real en la captura de donde se originó. Cuando se le da doble clic en alguna opción o a la tecla escape se oculta dicho catálogo. " & vbNewLine & vbNewLine & "* Datos obligatorios: " & vbNewLine & "Todos los que tengan el simbolo * son estrictamente obligatorios." & vbNewLine & vbNewLine & "* Captura:" & vbNewLine & "* Parte superior: " & vbNewLine & "En esta parte se capturarán todos los datos que son generales, tal cual como el número de la entrada, el almacén al que corresponde, etc." & vbNewLine & "* Parte inferior: " & vbNewLine & "En esta parte se capturarán todos los datos que pueden combinarse, por ejemplo los distintos artículos de ese número de entrada." & vbNewLine & vbNewLine & "* Existen los botones de guardar/editar y eliminar todo dependiendo lo que se necesite hacer. "
+            txtAyuda.Text = "Sección de Ayuda: " & vbNewLine & vbNewLine & "* Teclas básicas: " & vbNewLine & "F5 sirve para mostrar catálogos. " & vbNewLine & "F6 sirve para eliminar un registro únicamente. " & vbNewLine & "F7 sirve para mostrar listados." & vbNewLine & "Escape sirve para ocultar catálogos o listados que se encuentren desplegados. " & vbNewLine & vbNewLine & "* Catálogos o listados desplegados: " & vbNewLine & "Cuando se muestra algún catálogo o listado, al seleccionar alguna opción de este, se va mostrando en tiempo real en la captura de donde se originó. Cuando se le da doble clic en alguna opción o a la tecla escape se oculta dicho catálogo o listado. " & vbNewLine & vbNewLine & "* Datos obligatorios:" & vbNewLine & "Todos los que tengan el simbolo * son estrictamente obligatorios." & vbNewLine & vbNewLine & "* Captura:" & vbNewLine & "* Parte superior/izquierda: " & vbNewLine & "En esta parte se capturarán todos los datos que son generales, tal cual como el número de la entrada, el almacén al que corresponde, etc." & vbNewLine & "* Parte inferior/derecha: " & vbNewLine & "En esta parte se capturarán todos los datos que pueden combinarse, por ejemplo los distintos artículos de ese número de entrada." & vbNewLine & vbNewLine & "* Existen los botones de guardar/editar y eliminar todo dependiendo lo que se necesite hacer. "
             pnlAyuda.Controls.Add(txtAyuda)
         Else
             pnlCuerpo.Visible = True
@@ -660,7 +751,9 @@ Public Class Principal
         tp.SetToolTip(Me.btnSalir, "Salir.")
         tp.SetToolTip(Me.btnGuardar, "Guardar.")
         tp.SetToolTip(Me.btnEliminar, "Eliminar.")
-        tp.SetToolTip(Me.btnListados, "Mostrar/Ocultar Listado.")
+        tp.SetToolTip(Me.btnListados, "Mostrar u Ocultar Listado.")
+        tp.SetToolTip(Me.btnMostrarOcultar, "Mostrar u Ocultar.")
+        tp.SetToolTip(Me.pbMarca, "Producido por Berry.")
 
     End Sub
 
@@ -673,12 +766,11 @@ Public Class Principal
     Private Sub ConfigurarConexiones()
 
         If (Me.esDesarrollo) Then
-            ALMLogicaEntradas.Directorios.id = 1
+            ALMLogicaEntradas.Directorios.id = 2
             ALMLogicaEntradas.Directorios.instanciaSql = "BERRY1-DELL\SQLEXPRESS2008"
             ALMLogicaEntradas.Directorios.usuarioSql = "AdminBerry"
             ALMLogicaEntradas.Directorios.contrasenaSql = "@berry2017"
             pnlEncabezado.BackColor = Color.DarkRed
-            pnlPie.BackColor = Color.DarkRed
         Else
             ALMLogicaEntradas.Directorios.ObtenerParametros()
             ALMLogicaEntradas.Usuarios.ObtenerParametros()
@@ -708,7 +800,7 @@ Public Class Principal
         Dim lista As New List(Of ALMEntidadesEntradas.Usuarios)
         usuarios.EId = ALMLogicaEntradas.Usuarios.id
         lista = usuarios.ObtenerListado()
-        If (lista.Count = 1) Then
+        If (lista.Count > 0) Then
             ALMLogicaEntradas.Usuarios.id = lista(0).EId
             ALMLogicaEntradas.Usuarios.nombre = lista(0).ENombre
             ALMLogicaEntradas.Usuarios.contrasena = lista(0).EContrasena
@@ -720,10 +812,10 @@ Public Class Principal
 
     Private Sub CargarEncabezadosTitulos()
 
-        lblEncabezadoPrograma.Text = "Programa: " + Me.Text
-        lblEncabezadoEmpresa.Text = "Directorio: " + ALMLogicaEntradas.Directorios.nombre
-        lblEncabezadoUsuario.Text = "Usuario: " + ALMLogicaEntradas.Usuarios.nombre
-        Me.Text = "Programa:  " + Me.nombreEstePrograma + "              Directorio:  " + ALMLogicaEntradas.Directorios.nombre + "              Usuario:  " + ALMLogicaEntradas.Usuarios.nombre
+        lblEncabezadoPrograma.Text = "Programa: " & Me.Text
+        lblEncabezadoEmpresa.Text = "Directorio: " & ALMLogicaEntradas.Directorios.nombre
+        lblEncabezadoUsuario.Text = "Usuario: " & ALMLogicaEntradas.Usuarios.nombre
+        Me.Text = "Programa:  " & Me.nombreEstePrograma & "              Directorio:  " & ALMLogicaEntradas.Directorios.nombre & "              Usuario:  " & ALMLogicaEntradas.Usuarios.nombre
         hiloEncabezadosTitulos.Abort()
 
     End Sub
@@ -813,11 +905,13 @@ Public Class Principal
     Private Sub LimpiarPantalla()
 
         For Each c As Control In pnlCapturaSuperior.Controls
-            c.BackColor = Color.White
+            If ((Not TypeOf c Is Button) AndAlso (Not TypeOf c Is Label)) Then
+                c.BackColor = Principal.colorCaptura
+            End If
         Next
         For fila = 0 To spEntradas.ActiveSheet.Rows.Count - 1
             For columna = 0 To spEntradas.ActiveSheet.Columns.Count - 1
-                spEntradas.ActiveSheet.Cells(fila, columna).BackColor = Color.White
+                spEntradas.ActiveSheet.Cells(fila, columna).BackColor = Principal.colorCaptura
             Next
         Next
         If (Not chkMantenerDatos.Checked) Then
@@ -825,9 +919,11 @@ Public Class Principal
             cbMonedas.SelectedIndex = 0
             cbTiposEntradas.SelectedIndex = 0
             cbProveedores.SelectedIndex = 0
-            CargarTiposCambios()
+            CargarComboTiposCambios()
         End If
         txtIdExterno.Clear()
+        txtFactura.Clear()
+        cbSucursalesOrigen.SelectedIndex = 0
         spEntradas.ActiveSheet.DataSource = Nothing
         spEntradas.ActiveSheet.Rows.Count = 1
         spEntradas.ActiveSheet.SetActiveCell(0, 0)
@@ -841,16 +937,16 @@ Public Class Principal
 
     End Sub
 
-    Private Sub CargarMonedas()
+    Private Sub CargarComboMonedas()
 
         cbMonedas.DataSource = monedas.ObtenerListadoReporte()
         cbMonedas.DisplayMember = "IdNombre"
         cbMonedas.ValueMember = "Id"
-        CargarTiposCambios()
+        CargarComboTiposCambios()
 
     End Sub
 
-    Private Sub CargarTiposCambios()
+    Private Sub CargarComboTiposCambios()
 
         If (cbMonedas.Items.Count > 0) Then
             tiposCambios.EFecha = IIf(IsDate(dtpFecha.Value), dtpFecha.Value, Today)
@@ -869,7 +965,7 @@ Public Class Principal
 
     End Sub
 
-    Private Sub CargarTiposEntradas()
+    Private Sub CargarComboTiposEntradas()
 
         cbTiposEntradas.DataSource = tiposEntradas.ObtenerListadoReporte()
         cbTiposEntradas.DisplayMember = "IdNombre"
@@ -877,7 +973,7 @@ Public Class Principal
 
     End Sub
 
-    Private Sub CargarAlmacenes()
+    Private Sub CargarComboAlmacenes()
 
         cbAlmacenes.DataSource = almacenes.ObtenerListadoReporte()
         cbAlmacenes.DisplayMember = "IdNombre"
@@ -885,7 +981,7 @@ Public Class Principal
 
     End Sub
 
-    Private Sub CargarProveedores()
+    Private Sub CargarComboProveedores()
 
         cbProveedores.DataSource = proveedores.ObtenerListadoReporte()
         cbProveedores.DisplayMember = "IdNombre"
@@ -893,12 +989,20 @@ Public Class Principal
 
     End Sub
 
-    Private Sub CargarOrigenes()
+    Private Sub CargarComboOrigenes()
 
         cbOrigenes.DataSource = origenes.ObtenerListadoReporte()
         cbOrigenes.DisplayMember = "IdNombre"
         cbOrigenes.ValueMember = "Id"
         cbOrigenes.SelectedValue = 1 ' Siempre es almacén.
+
+    End Sub
+
+    Private Sub CargarComboSucursales()
+
+        cbSucursalesOrigen.DataSource = sucursales.ObtenerListadoReporte()
+        cbSucursalesOrigen.DisplayMember = "IdNombre"
+        cbSucursalesOrigen.ValueMember = "Id"
 
     End Sub
 
@@ -910,8 +1014,9 @@ Public Class Principal
         pnlCatalogos.Visible = False
         spEntradas.Skin = FarPoint.Win.Spread.DefaultSpreadSkins.Seashell
         spCatalogos.Skin = FarPoint.Win.Spread.DefaultSpreadSkins.Midnight
-        spListados.Skin = FarPoint.Win.Spread.DefaultSpreadSkins.Grayscale
-        spEntradas.ActiveSheet.GrayAreaBackColor = Principal.colorAreaGris
+        spListados.Skin = FarPoint.Win.Spread.DefaultSpreadSkins.Rose
+        spEntradas.ActiveSheet.GrayAreaBackColor = Principal.colorSpreadAreaGris
+        spListados.ActiveSheet.GrayAreaBackColor = Color.FromArgb(255, 230, 230)
         spEntradas.Font = New Font(Principal.tipoLetraSpread, Principal.tamañoLetraSpread, FontStyle.Regular)
         spCatalogos.Font = New Font(Principal.tipoLetraSpread, Principal.tamañoLetraSpread, FontStyle.Regular)
         spListados.Font = New Font(Principal.tipoLetraSpread, Principal.tamañoLetraSpread, FontStyle.Regular)
@@ -933,12 +1038,13 @@ Public Class Principal
 
     Private Sub EliminarRegistroDeSpread(ByVal spread As FarPoint.Win.Spread.FpSpread)
 
-        If (spread.ActiveSheet.ActiveRowIndex > 0) Then
-            spread.ActiveSheet.Rows.Remove(spread.ActiveSheet.ActiveRowIndex, 1)
-        Else
-            spread.ActiveSheet.ClearRange(spread.ActiveSheet.ActiveRowIndex, 0, 1, spread.ActiveSheet.Columns.Count, False)
-            spread.ActiveSheet.SetActiveCell(spread.ActiveSheet.ActiveRowIndex, 0)
-        End If
+        Dim idAlmacen As Integer = ALMLogicaEntradas.Funciones.ValidarNumeroACero(cbAlmacenes.SelectedValue)
+        Dim idFamilia As Integer = ALMLogicaEntradas.Funciones.ValidarNumeroACero(spread.ActiveSheet.Cells(spread.ActiveSheet.ActiveRowIndex, spread.ActiveSheet.Columns("idFamilia").Index).Text)
+        Dim idSubFamilia As Integer = ALMLogicaEntradas.Funciones.ValidarNumeroACero(spread.ActiveSheet.Cells(spread.ActiveSheet.ActiveRowIndex, spread.ActiveSheet.Columns("idSubFamilia").Index).Text)
+        Dim idArticulo As Integer = ALMLogicaEntradas.Funciones.ValidarNumeroACero(spread.ActiveSheet.Cells(spread.ActiveSheet.ActiveRowIndex, spread.ActiveSheet.Columns("idArticulo").Index).Text)
+        spread.ActiveSheet.Rows.Remove(spread.ActiveSheet.ActiveRowIndex, 1)
+        spread.ActiveSheet.Rows.Count += 1
+        CalcularSaldos(idAlmacen, idFamilia, idSubFamilia, idArticulo)
 
     End Sub
 
@@ -1028,6 +1134,8 @@ Public Class Principal
                             spEntradas.ActiveSheet.Cells(fila, spEntradas.ActiveSheet.Columns("nombreUnidadMedida").Index).Value = datos2.Rows(0).Item("Nombre")
                         End If
                         spEntradas.ActiveSheet.SetActiveCell(fila, spEntradas.ActiveSheet.ActiveColumnIndex + 2)
+                        ' Se calculan los saldos.
+                        CalcularSaldos(idAlmacen, idFamilia, idSubFamilia, idArticulo)
                     Else
                         spEntradas.ActiveSheet.Cells(fila, spEntradas.ActiveSheet.Columns("idArticulo").Index, fila, spEntradas.ActiveSheet.Columns("nombreUnidadMedida").Index).Value = String.Empty
                         spEntradas.ActiveSheet.SetActiveCell(fila, spEntradas.ActiveSheet.ActiveColumnIndex - 1)
@@ -1041,11 +1149,11 @@ Public Class Principal
                 Dim cantidad As Integer = ALMLogicaEntradas.Funciones.ValidarNumeroACero(spEntradas.ActiveSheet.Cells(fila, spEntradas.ActiveSheet.Columns("cantidad").Index).Value)
                 If (cantidad > 0) Then
                     Dim valorPrecio As String = ALMLogicaEntradas.Funciones.ValidarLetra(spEntradas.ActiveSheet.Cells(fila, spEntradas.ActiveSheet.Columns("precio").Index).Text)
+                    Dim idAlmacen As Integer = ALMLogicaEntradas.Funciones.ValidarNumeroACero(cbAlmacenes.SelectedValue)
+                    Dim idFamilia As Integer = ALMLogicaEntradas.Funciones.ValidarNumeroACero(spEntradas.ActiveSheet.Cells(fila, spEntradas.ActiveSheet.Columns("idFamilia").Index).Value)
+                    Dim idSubFamilia As Integer = ALMLogicaEntradas.Funciones.ValidarNumeroACero(spEntradas.ActiveSheet.Cells(fila, spEntradas.ActiveSheet.Columns("idSubFamilia").Index).Value)
+                    Dim idArticulo As Integer = ALMLogicaEntradas.Funciones.ValidarNumeroACero(spEntradas.ActiveSheet.Cells(fila, spEntradas.ActiveSheet.Columns("idArticulo").Index).Value)
                     If (String.IsNullOrEmpty(valorPrecio)) Then
-                        Dim idAlmacen As Integer = ALMLogicaEntradas.Funciones.ValidarNumeroACero(cbAlmacenes.SelectedValue)
-                        Dim idFamilia As Integer = ALMLogicaEntradas.Funciones.ValidarNumeroACero(spEntradas.ActiveSheet.Cells(fila, spEntradas.ActiveSheet.Columns("idFamilia").Index).Value)
-                        Dim idSubFamilia As Integer = ALMLogicaEntradas.Funciones.ValidarNumeroACero(spEntradas.ActiveSheet.Cells(fila, spEntradas.ActiveSheet.Columns("idSubFamilia").Index).Value)
-                        Dim idArticulo As Integer = ALMLogicaEntradas.Funciones.ValidarNumeroACero(spEntradas.ActiveSheet.Cells(fila, spEntradas.ActiveSheet.Columns("idArticulo").Index).Value)
                         Dim datos As New DataTable
                         articulos.EIdAlmacen = idAlmacen
                         articulos.EIdFamilia = idFamilia
@@ -1060,6 +1168,8 @@ Public Class Principal
                             spEntradas.ActiveSheet.Cells(fila, spEntradas.ActiveSheet.Columns("totalPesos").Index).Value = cantidad * precio * tipoCambio
                         End If
                     End If
+                    ' Se calculan los saldos.
+                    CalcularSaldos(idAlmacen, idFamilia, idSubFamilia, idArticulo)
                 Else
                     spEntradas.ActiveSheet.Cells(fila, spEntradas.ActiveSheet.Columns("cantidad").Index).Value = String.Empty
                     spEntradas.ActiveSheet.SetActiveCell(fila, spEntradas.ActiveSheet.ActiveColumnIndex - 1)
@@ -1096,6 +1206,56 @@ Public Class Principal
                 End If
             End If
         End If
+
+    End Sub
+
+    Private Function CalcularSaldos(ByVal idAlmacen As Integer, ByVal idFamilia As Integer, ByVal idSubFamilia As Integer, ByVal idArticulo As Integer) As Integer
+
+        ' Con esta instrucción siguiente se quita el bindeo de la columna saldo que le hace el datatable al spread.
+        spEntradas.ActiveSheet.BindDataColumn(spEntradas.ActiveSheet.Columns("saldoUnidades").Index, Nothing)
+        ' Se obtienen los saldos exceptuando esta entrada.
+        Dim id As Integer = ALMLogicaEntradas.Funciones.ValidarNumeroACero(txtId.Text)
+        entradas.EIdAlmacen = idAlmacen
+        entradas.EIdFamilia = idFamilia
+        entradas.EIdSubFamilia = idSubFamilia
+        entradas.EIdArticulo = idArticulo
+        entradas.EId = id
+        Dim unidadesRestantesExcepcion As Integer = entradas.ObtenerSaldos(False)
+        'Se obtiene la sumatoria de unidades escritas por el usuario.
+        Dim unidadesTemporales As Integer = 0
+        For fila As Integer = 0 To spEntradas.ActiveSheet.Rows.Count - 1
+            If (ALMLogicaEntradas.Funciones.ValidarNumeroACero(cbAlmacenes.SelectedValue) = idAlmacen AndAlso ALMLogicaEntradas.Funciones.ValidarNumeroACero(spEntradas.ActiveSheet.Cells(fila, spEntradas.ActiveSheet.Columns("idFamilia").Index).Value) = idFamilia AndAlso ALMLogicaEntradas.Funciones.ValidarNumeroACero(spEntradas.ActiveSheet.Cells(fila, spEntradas.ActiveSheet.Columns("idSubFamilia").Index).Value) = idSubFamilia AndAlso ALMLogicaEntradas.Funciones.ValidarNumeroACero(spEntradas.ActiveSheet.Cells(fila, spEntradas.ActiveSheet.Columns("idArticulo").Index).Value) = idArticulo) Then
+                unidadesTemporales += spEntradas.ActiveSheet.Cells(fila, spEntradas.ActiveSheet.Columns("cantidad").Index).Value
+            End If
+        Next
+        ' Se actualizan los saldos en pantalla.
+        Dim saldoTiempoReal As Integer = unidadesRestantesExcepcion + unidadesTemporales
+        For fila As Integer = 0 To spEntradas.ActiveSheet.Rows.Count - 1
+            If (ALMLogicaEntradas.Funciones.ValidarNumeroACero(cbAlmacenes.SelectedValue) = idAlmacen AndAlso ALMLogicaEntradas.Funciones.ValidarNumeroACero(spEntradas.ActiveSheet.Cells(fila, spEntradas.ActiveSheet.Columns("idFamilia").Index).Value) = idFamilia AndAlso ALMLogicaEntradas.Funciones.ValidarNumeroACero(spEntradas.ActiveSheet.Cells(fila, spEntradas.ActiveSheet.Columns("idSubFamilia").Index).Value) = idSubFamilia AndAlso ALMLogicaEntradas.Funciones.ValidarNumeroACero(spEntradas.ActiveSheet.Cells(fila, spEntradas.ActiveSheet.Columns("idArticulo").Index).Value) = idArticulo) Then
+                spEntradas.ActiveSheet.Cells(fila, spEntradas.ActiveSheet.Columns("saldoUnidades").Index).Value = saldoTiempoReal
+            End If
+        Next
+        Return saldoTiempoReal
+
+    End Function
+
+    Private Sub CalcularSaldosConExcepcion()
+
+        ' Con esta instrucción siguiente se quita el bindeo de la columna saldo que le hace el datatable al spread.
+        spEntradas.ActiveSheet.BindDataColumn(spEntradas.ActiveSheet.Columns("saldoUnidades").Index, Nothing)
+        ' Con esto se calculan todos los saldos de algún id.
+        For fila As Integer = 0 To spEntradas.ActiveSheet.Rows.Count - 1
+            Dim idAlmacen As Integer = ALMLogicaEntradas.Funciones.ValidarNumeroACero(cbAlmacenes.SelectedValue)
+            Dim idFamilia As Integer = ALMLogicaEntradas.Funciones.ValidarNumeroACero(spEntradas.ActiveSheet.Cells(fila, spEntradas.ActiveSheet.Columns("idFamilia").Index).Text)
+            Dim idSubFamilia As Integer = ALMLogicaEntradas.Funciones.ValidarNumeroACero(spEntradas.ActiveSheet.Cells(fila, spEntradas.ActiveSheet.Columns("idSubFamilia").Index).Text)
+            Dim idArticulo As Integer = ALMLogicaEntradas.Funciones.ValidarNumeroACero(spEntradas.ActiveSheet.Cells(fila, spEntradas.ActiveSheet.Columns("idArticulo").Index).Text)
+            entradas.EIdAlmacen = idAlmacen
+            entradas.EIdFamilia = idFamilia
+            entradas.EIdSubFamilia = idSubFamilia
+            entradas.EIdArticulo = idArticulo
+            Dim unidadesRestantes As Integer = entradas.ObtenerSaldos(True)
+            spEntradas.ActiveSheet.Cells(fila, spEntradas.ActiveSheet.Columns("saldoUnidades").Index).Value = unidadesRestantes
+        Next
 
     End Sub
 
@@ -1269,6 +1429,18 @@ Public Class Principal
                 pnlCapturaSuperior.Enabled = True
             End If
             FormatearSpreadCatalogos(OpcionPosicion.centro)
+        ElseIf (Me.opcionCatalogoSeleccionada = OpcionCatalogo.sucursal) Then
+            sucursales.EId = 0
+            Dim datos As New DataTable
+            datos = sucursales.ObtenerListadoReporteCatalogo()
+            If (datos.Rows.Count > 0) Then
+                spCatalogos.ActiveSheet.DataSource = datos
+            Else
+                spCatalogos.ActiveSheet.DataSource = Nothing
+                spCatalogos.ActiveSheet.Rows.Count = 0
+                pnlCapturaSuperior.Enabled = True
+            End If
+            FormatearSpreadCatalogos(OpcionPosicion.centro)
         End If
         AsignarFoco(txtBuscarCatalogo)
 
@@ -1277,10 +1449,10 @@ Public Class Principal
     Private Sub FormatearSpreadCatalogos(ByVal posicion As Integer)
 
         If (Me.opcionCatalogoSeleccionada = OpcionCatalogo.articulo) Then
-            spCatalogos.Width = 630
+            spCatalogos.Width = 640
             spCatalogos.ActiveSheet.Columns.Count = 3
         Else
-            spCatalogos.Width = 500
+            spCatalogos.Width = 510
             spCatalogos.ActiveSheet.Columns.Count = 2
         End If
         If (posicion = OpcionPosicion.izquierda) Then ' Izquierda.
@@ -1290,8 +1462,6 @@ Public Class Principal
         ElseIf (posicion = OpcionPosicion.derecha) Then ' Derecha.
             pnlCatalogos.Location = New Point(Me.anchoTotal - spCatalogos.Width, Me.arriba)
         End If
-        spCatalogos.ActiveSheet.ColumnHeader.Rows(0).Font = New Font(Principal.tipoLetraSpread, Principal.tamañoLetraSpread, FontStyle.Bold)
-        spCatalogos.ActiveSheet.ColumnHeader.Rows(0).Height = Principal.alturaFilasEncabezadosMedianosSpread
         spCatalogos.ActiveSheet.OperationMode = FarPoint.Win.Spread.OperationMode.SingleSelect
         Dim numeracion As Integer = 0
         spCatalogos.ActiveSheet.Columns(numeracion).Tag = "id" : numeracion += 1
@@ -1299,22 +1469,24 @@ Public Class Principal
         If (Me.opcionCatalogoSeleccionada = OpcionCatalogo.articulo) Then
             spCatalogos.ActiveSheet.Columns(numeracion).Tag = "unidadMedida" : numeracion += 1
         End If
-        spCatalogos.ActiveSheet.Columns("id").Width = 70
-        spCatalogos.ActiveSheet.Columns("nombre").Width = 370
-        If (Me.opcionCatalogoSeleccionada = OpcionCatalogo.articulo) Then
-            spCatalogos.ActiveSheet.Columns("unidadMedida").Width = 130
-        End If
+        spCatalogos.ActiveSheet.ColumnHeader.Rows(0).Font = New Font(Principal.tipoLetraSpread, Principal.tamañoLetraSpread, FontStyle.Bold)
+        spCatalogos.ActiveSheet.ColumnHeader.Rows(0).Height = Principal.alturaFilasEncabezadosMedianosSpread
         spCatalogos.ActiveSheet.ColumnHeader.Cells(0, spCatalogos.ActiveSheet.Columns("id").Index).Value = "No.".ToUpper
         spCatalogos.ActiveSheet.ColumnHeader.Cells(0, spCatalogos.ActiveSheet.Columns("nombre").Index).Value = "Nombre".ToUpper
         If (Me.opcionCatalogoSeleccionada = OpcionCatalogo.articulo) Then
             spCatalogos.ActiveSheet.ColumnHeader.Cells(0, spCatalogos.ActiveSheet.Columns("unidadMedida").Index).Value = "Unidad".ToUpper
         End If
+        spCatalogos.ActiveSheet.Columns("id").Width = 70
+        spCatalogos.ActiveSheet.Columns("nombre").Width = 370
+        If (Me.opcionCatalogoSeleccionada = OpcionCatalogo.articulo) Then
+            spCatalogos.ActiveSheet.Columns("unidadMedida").Width = 130
+        End If
+        spCatalogos.ActiveSheet.Columns(0, spCatalogos.ActiveSheet.Columns.Count - 1).AllowAutoFilter = True
+        spCatalogos.ActiveSheet.Columns(0, spCatalogos.ActiveSheet.Columns.Count - 1).AllowAutoSort = True
         pnlCatalogos.Height = spEntradas.Height
         pnlCatalogos.Width = spCatalogos.Width
         spCatalogos.Height = pnlCatalogos.Height - txtBuscarCatalogo.Height - 5
         spCatalogos.Width = pnlCatalogos.Width
-        spCatalogos.ActiveSheet.Columns(0, spCatalogos.ActiveSheet.Columns.Count - 1).AllowAutoFilter = True
-        spCatalogos.ActiveSheet.Columns(0, spCatalogos.ActiveSheet.Columns.Count - 1).AllowAutoSort = True
         pnlCatalogos.BringToFront()
         pnlCatalogos.Visible = True
         spCatalogos.Refresh()
@@ -1333,6 +1505,8 @@ Public Class Principal
             AsignarFoco(cbTiposEntradas)
         ElseIf (Me.opcionCatalogoSeleccionada = OpcionCatalogo.proveedor) Then
             AsignarFoco(cbProveedores)
+        ElseIf (Me.opcionCatalogoSeleccionada = OpcionCatalogo.sucursal) Then
+            AsignarFoco(cbSucursalesOrigen)
         Else
             AsignarFoco(spEntradas)
         End If
@@ -1340,18 +1514,18 @@ Public Class Principal
         pnlCatalogos.Visible = False
 
     End Sub
-     
+
     Private Sub CargarEntradas()
 
         Me.Cursor = Cursors.WaitCursor
-        entradas.EIdOrigen = cbOrigenes.SelectedValue
         Dim idAlmacen As Integer = ALMLogicaEntradas.Funciones.ValidarNumeroACero(cbAlmacenes.SelectedValue)
-        entradas.EIdAlmacen = idAlmacen
         Dim id As Integer = ALMLogicaEntradas.Funciones.ValidarNumeroACero(txtId.Text)
-        entradas.EId = id
         If (Me.idOrigen > 0 AndAlso idAlmacen > 0 AndAlso id > 0) Then
+            entradas.EIdOrigen = cbOrigenes.SelectedValue
+            entradas.EIdAlmacen = idAlmacen
+            entradas.EId = id
             Dim datos As New DataTable
-            datos = entradas.ObtenerListadoCargaSuperior()
+            datos = entradas.ObtenerListadoGeneral()
             If (datos.Rows.Count > 0) Then
                 txtIdExterno.Text = datos.Rows(0).Item("IdExterno")
                 dtpFecha.Value = datos.Rows(0).Item("Fecha")
@@ -1359,7 +1533,9 @@ Public Class Principal
                 txtTipoCambio.Text = datos.Rows(0).Item("TipoCambio")
                 cbTiposEntradas.SelectedValue = datos.Rows(0).Item("IdTipoEntrada")
                 cbProveedores.SelectedValue = datos.Rows(0).Item("IdProveedor")
-                spEntradas.ActiveSheet.DataSource = entradas.ObtenerListadoCargaInferior()
+                txtFactura.Text = datos.Rows(0).Item("Factura")
+                cbSucursalesOrigen.SelectedValue = datos.Rows(0).Item("IdSucursalOrigen")
+                spEntradas.ActiveSheet.DataSource = entradas.ObtenerListadoDetallado()
                 Me.cantidadFilas = spEntradas.ActiveSheet.Rows.Count + 1
                 FormatearSpreadEntradas()
                 If (cbOrigenes.SelectedValue > 1) Then ' Si es de origen externo.
@@ -1369,6 +1545,7 @@ Public Class Principal
                     btnGuardar.Enabled = True
                     btnEliminar.Enabled = True
                 End If
+                CalcularSaldosConExcepcion()
             Else
                 LimpiarPantalla()
             End If
@@ -1380,13 +1557,9 @@ Public Class Principal
 
     Private Sub FormatearSpreadEntradas()
 
-        spEntradas.ActiveSheet.ColumnHeader.RowCount = 2
-        spEntradas.ActiveSheet.ColumnHeader.Rows(0, spEntradas.ActiveSheet.ColumnHeader.Rows.Count - 1).Font = New Font(Principal.tipoLetraSpread, Principal.tamañoLetraSpread, FontStyle.Bold)
-        spEntradas.ActiveSheet.ColumnHeader.Rows(0).Height = Principal.alturaFilasEncabezadosChicosSpread
-        spEntradas.ActiveSheet.ColumnHeader.Rows(1).Height = Principal.alturaFilasEncabezadosMedianosSpread
-        spEntradas.ActiveSheet.OperationMode = FarPoint.Win.Spread.OperationMode.Normal
-        spEntradas.ActiveSheet.Rows.Count = Me.cantidadFilas
         ControlarSpreadEnterASiguienteColumna(spEntradas)
+        spEntradas.ActiveSheet.Rows.Count = Me.cantidadFilas
+        spEntradas.ActiveSheet.OperationMode = FarPoint.Win.Spread.OperationMode.Normal
         Dim numeracion As Integer = 0
         spEntradas.ActiveSheet.Columns(numeracion).Tag = "idFamilia" : numeracion += 1
         spEntradas.ActiveSheet.Columns(numeracion).Tag = "nombreFamilia" : numeracion += 1
@@ -1400,43 +1573,13 @@ Public Class Principal
         spEntradas.ActiveSheet.Columns(numeracion).Tag = "total" : numeracion += 1
         spEntradas.ActiveSheet.Columns(numeracion).Tag = "totalPesos" : numeracion += 1
         spEntradas.ActiveSheet.Columns(numeracion).Tag = "observaciones" : numeracion += 1
-        spEntradas.ActiveSheet.Columns(numeracion).Tag = "factura" : numeracion += 1
-        spEntradas.ActiveSheet.Columns(numeracion).Tag = "chofer" : numeracion += 1
-        spEntradas.ActiveSheet.Columns(numeracion).Tag = "camion" : numeracion += 1
-        spEntradas.ActiveSheet.Columns(numeracion).Tag = "noEconomico" : numeracion += 1
+        spEntradas.ActiveSheet.Columns.Count = numeracion + 1
+        spEntradas.ActiveSheet.Columns(numeracion).Tag = "saldoUnidades" : numeracion += 1
         spEntradas.ActiveSheet.Columns.Count = numeracion
-        spEntradas.ActiveSheet.Columns("idFamilia").Width = 50
-        spEntradas.ActiveSheet.Columns("nombreFamilia").Width = 140
-        spEntradas.ActiveSheet.Columns("idSubFamilia").Width = 50
-        spEntradas.ActiveSheet.Columns("nombreSubFamilia").Width = 140
-        spEntradas.ActiveSheet.Columns("idArticulo").Width = 50
-        spEntradas.ActiveSheet.Columns("nombreArticulo").Width = 200
-        spEntradas.ActiveSheet.Columns("nombreUnidadMedida").Width = 80
-        spEntradas.ActiveSheet.Columns("cantidad").Width = 100
-        spEntradas.ActiveSheet.Columns("precio").Width = 100
-        spEntradas.ActiveSheet.Columns("total").Width = 90
-        spEntradas.ActiveSheet.Columns("totalPesos").Width = 90
-        spEntradas.ActiveSheet.Columns("observaciones").Width = 200
-        spEntradas.ActiveSheet.Columns("factura").Width = 100
-        spEntradas.ActiveSheet.Columns("chofer").Width = 100
-        spEntradas.ActiveSheet.Columns("camion").Width = 100
-        spEntradas.ActiveSheet.Columns("noEconomico").Width = 100
-        spEntradas.ActiveSheet.Columns("idFamilia").CellType = tipoEntero
-        spEntradas.ActiveSheet.Columns("nombreFamilia").CellType = tipoTexto
-        spEntradas.ActiveSheet.Columns("idSubFamilia").CellType = tipoEntero
-        spEntradas.ActiveSheet.Columns("nombreSubFamilia").CellType = tipoTexto
-        spEntradas.ActiveSheet.Columns("idArticulo").CellType = tipoEntero
-        spEntradas.ActiveSheet.Columns("nombreArticulo").CellType = tipoTexto
-        spEntradas.ActiveSheet.Columns("nombreUnidadMedida").CellType = tipoTexto
-        spEntradas.ActiveSheet.Columns("cantidad").CellType = tipoEntero
-        spEntradas.ActiveSheet.Columns("precio").CellType = tipoDoble
-        spEntradas.ActiveSheet.Columns("total").CellType = tipoDoble
-        spEntradas.ActiveSheet.Columns("totalPesos").CellType = tipoDoble
-        spEntradas.ActiveSheet.Columns("observaciones").CellType = tipoTexto
-        spEntradas.ActiveSheet.Columns("factura").CellType = tipoTexto
-        spEntradas.ActiveSheet.Columns("chofer").CellType = tipoTexto
-        spEntradas.ActiveSheet.Columns("camion").CellType = tipoTexto
-        spEntradas.ActiveSheet.Columns("noEconomico").CellType = tipoTexto
+        spEntradas.ActiveSheet.ColumnHeader.RowCount = 2
+        spEntradas.ActiveSheet.ColumnHeader.Rows(0, spEntradas.ActiveSheet.ColumnHeader.Rows.Count - 1).Font = New Font(Principal.tipoLetraSpread, Principal.tamañoLetraSpread, FontStyle.Bold)
+        spEntradas.ActiveSheet.ColumnHeader.Rows(0).Height = Principal.alturaFilasEncabezadosChicosSpread
+        spEntradas.ActiveSheet.ColumnHeader.Rows(1).Height = Principal.alturaFilasEncabezadosMedianosSpread
         spEntradas.ActiveSheet.AddColumnHeaderSpanCell(0, spEntradas.ActiveSheet.Columns("idFamilia").Index, 1, 2)
         spEntradas.ActiveSheet.ColumnHeader.Cells(0, spEntradas.ActiveSheet.Columns("idFamilia").Index).Value = "F a m i l i a".ToUpper()
         spEntradas.ActiveSheet.ColumnHeader.Cells(1, spEntradas.ActiveSheet.Columns("idFamilia").Index).Value = "No. *".ToUpper()
@@ -1460,51 +1603,72 @@ Public Class Principal
         spEntradas.ActiveSheet.ColumnHeader.Cells(0, spEntradas.ActiveSheet.Columns("totalPesos").Index).Value = "Total Pesos *".ToUpper()
         spEntradas.ActiveSheet.AddColumnHeaderSpanCell(0, spEntradas.ActiveSheet.Columns("observaciones").Index, 2, 1)
         spEntradas.ActiveSheet.ColumnHeader.Cells(0, spEntradas.ActiveSheet.Columns("observaciones").Index).Value = "Observaciones".ToUpper()
-        spEntradas.ActiveSheet.AddColumnHeaderSpanCell(0, spEntradas.ActiveSheet.Columns("factura").Index, 2, 1)
-        spEntradas.ActiveSheet.ColumnHeader.Cells(0, spEntradas.ActiveSheet.Columns("factura").Index).Value = "Factura".ToUpper()
-        spEntradas.ActiveSheet.AddColumnHeaderSpanCell(0, spEntradas.ActiveSheet.Columns("chofer").Index, 2, 1)
-        spEntradas.ActiveSheet.ColumnHeader.Cells(0, spEntradas.ActiveSheet.Columns("chofer").Index).Value = "Chofer".ToUpper()
-        spEntradas.ActiveSheet.AddColumnHeaderSpanCell(0, spEntradas.ActiveSheet.Columns("camion").Index, 2, 1)
-        spEntradas.ActiveSheet.ColumnHeader.Cells(0, spEntradas.ActiveSheet.Columns("camion").Index).Value = "Camión".ToUpper()
-        spEntradas.ActiveSheet.AddColumnHeaderSpanCell(0, spEntradas.ActiveSheet.Columns("noEconomico").Index, 2, 1)
-        spEntradas.ActiveSheet.ColumnHeader.Cells(0, spEntradas.ActiveSheet.Columns("noEconomico").Index).Value = "No Económico".ToUpper()
+        spEntradas.ActiveSheet.AddColumnHeaderSpanCell(0, spEntradas.ActiveSheet.Columns("saldoUnidades").Index, 2, 1)
+        spEntradas.ActiveSheet.ColumnHeader.Cells(0, spEntradas.ActiveSheet.Columns("saldoUnidades").Index).Value = "Saldo".ToUpper()
+        spEntradas.ActiveSheet.Columns("idFamilia").Width = 50
+        spEntradas.ActiveSheet.Columns("nombreFamilia").Width = 130
+        spEntradas.ActiveSheet.Columns("idSubFamilia").Width = 50
+        spEntradas.ActiveSheet.Columns("nombreSubFamilia").Width = 130
+        spEntradas.ActiveSheet.Columns("idArticulo").Width = 50
+        spEntradas.ActiveSheet.Columns("nombreArticulo").Width = 180
+        spEntradas.ActiveSheet.Columns("nombreUnidadMedida").Width = 65
+        spEntradas.ActiveSheet.Columns("cantidad").Width = 80
+        spEntradas.ActiveSheet.Columns("precio").Width = 75
+        spEntradas.ActiveSheet.Columns("total").Width = 75
+        spEntradas.ActiveSheet.Columns("totalPesos").Width = 75
+        spEntradas.ActiveSheet.Columns("observaciones").Width = 150
+        spEntradas.ActiveSheet.Columns("saldoUnidades").Width = 60
+        spEntradas.ActiveSheet.Columns("idFamilia").CellType = tipoEntero
+        spEntradas.ActiveSheet.Columns("nombreFamilia").CellType = tipoTexto
+        spEntradas.ActiveSheet.Columns("idSubFamilia").CellType = tipoEntero
+        spEntradas.ActiveSheet.Columns("nombreSubFamilia").CellType = tipoTexto
+        spEntradas.ActiveSheet.Columns("idArticulo").CellType = tipoEntero
+        spEntradas.ActiveSheet.Columns("nombreArticulo").CellType = tipoTexto
+        spEntradas.ActiveSheet.Columns("nombreUnidadMedida").CellType = tipoTexto
+        spEntradas.ActiveSheet.Columns("cantidad").CellType = tipoEntero
+        spEntradas.ActiveSheet.Columns("precio").CellType = tipoDoble
+        spEntradas.ActiveSheet.Columns("total").CellType = tipoDoble
+        spEntradas.ActiveSheet.Columns("totalPesos").CellType = tipoDoble
+        spEntradas.ActiveSheet.Columns("observaciones").CellType = tipoTexto
+        spEntradas.ActiveSheet.Columns("saldoUnidades").CellType = tipoEntero
+        spEntradas.ActiveSheet.Columns("saldoUnidades").Locked = True
+        spEntradas.ActiveSheet.LockBackColor = Principal.colorCapturaBloqueada
         spEntradas.Refresh()
 
     End Sub
 
-    Private Sub ValidarGuardado()
+    Private Sub ValidarGuardadoEntradas()
 
-        Me.Cursor = Cursors.WaitCursor
         Me.esGuardadoValido = True
         ' Parte superior.
         Dim idAlmacen As Integer = ALMLogicaEntradas.Funciones.ValidarNumeroACero(cbAlmacenes.SelectedValue)
         If (idAlmacen <= 0) Then
-            cbAlmacenes.BackColor = Color.Orange
+            cbAlmacenes.BackColor = Principal.colorAdvertencia
             Me.esGuardadoValido = False
         End If
         Dim id As Integer = ALMLogicaEntradas.Funciones.ValidarNumeroACero(txtId.Text)
         If (id <= 0) Then
-            txtId.BackColor = Color.Orange
+            txtId.BackColor = Principal.colorAdvertencia
             Me.esGuardadoValido = False
         End If
         Dim idMoneda As Integer = ALMLogicaEntradas.Funciones.ValidarNumeroACero(cbMonedas.SelectedValue)
         If (idMoneda <= 0) Then
-            cbMonedas.BackColor = Color.Orange
+            cbMonedas.BackColor = Principal.colorAdvertencia
             Me.esGuardadoValido = False
         End If
         Dim tipoCambio As Double = ALMLogicaEntradas.Funciones.ValidarNumeroAUno(txtTipoCambio.Text)
         If (tipoCambio < 1) Then
-            txtTipoCambio.BackColor = Color.Orange
+            txtTipoCambio.BackColor = Principal.colorAdvertencia
             Me.esGuardadoValido = False
         End If
         Dim idTipoEntrada As Integer = ALMLogicaEntradas.Funciones.ValidarNumeroACero(cbTiposEntradas.SelectedValue)
         If (idTipoEntrada <= 0) Then
-            cbTiposEntradas.BackColor = Color.Orange
+            cbTiposEntradas.BackColor = Principal.colorAdvertencia
             Me.esGuardadoValido = False
         End If
         Dim idProveedor As Integer = ALMLogicaEntradas.Funciones.ValidarNumeroACero(cbProveedores.SelectedValue)
         If (idProveedor <= 0) Then
-            cbProveedores.BackColor = Color.Orange
+            cbProveedores.BackColor = Principal.colorAdvertencia
             Me.esGuardadoValido = False
         End If
         ' Parte inferior.
@@ -1515,36 +1679,42 @@ Public Class Principal
             If (idFamilia > 0 And idSubFamilia > 0 And idArticulo > 0) Then
                 Dim cantidad As Integer = ALMLogicaEntradas.Funciones.ValidarNumeroACero(spEntradas.ActiveSheet.Cells(fila, spEntradas.ActiveSheet.Columns("cantidad").Index).Text)
                 If (cantidad <= 0) Then
-                    spEntradas.ActiveSheet.Cells(fila, spEntradas.ActiveSheet.Columns("cantidad").Index).BackColor = Color.Orange
+                    spEntradas.ActiveSheet.Cells(fila, spEntradas.ActiveSheet.Columns("cantidad").Index).BackColor = Principal.colorAdvertencia
                     Me.esGuardadoValido = False
                 End If
                 Dim precio As String = spEntradas.ActiveSheet.Cells(fila, spEntradas.ActiveSheet.Columns("precio").Index).Text
                 Dim precio2 As Double = ALMLogicaEntradas.Funciones.ValidarNumeroACero(spEntradas.ActiveSheet.Cells(fila, spEntradas.ActiveSheet.Columns("precio").Index).Text)
                 If (String.IsNullOrEmpty(precio) Or precio2 < 0) Then
-                    spEntradas.ActiveSheet.Cells(fila, spEntradas.ActiveSheet.Columns("precio").Index).BackColor = Color.Orange
+                    spEntradas.ActiveSheet.Cells(fila, spEntradas.ActiveSheet.Columns("precio").Index).BackColor = Principal.colorAdvertencia
                     Me.esGuardadoValido = False
                 End If
                 Dim total As String = spEntradas.ActiveSheet.Cells(fila, spEntradas.ActiveSheet.Columns("total").Index).Text
                 Dim total2 As Double = ALMLogicaEntradas.Funciones.ValidarNumeroACero(spEntradas.ActiveSheet.Cells(fila, spEntradas.ActiveSheet.Columns("total").Index).Text)
                 If (String.IsNullOrEmpty(total) Or total2 < 0) Then
-                    spEntradas.ActiveSheet.Cells(fila, spEntradas.ActiveSheet.Columns("total").Index).BackColor = Color.Orange
+                    spEntradas.ActiveSheet.Cells(fila, spEntradas.ActiveSheet.Columns("total").Index).BackColor = Principal.colorAdvertencia
                     Me.esGuardadoValido = False
                 End If
                 Dim totalPesos As String = spEntradas.ActiveSheet.Cells(fila, spEntradas.ActiveSheet.Columns("totalPesos").Index).Text
                 Dim totalPesos2 As Double = ALMLogicaEntradas.Funciones.ValidarNumeroACero(spEntradas.ActiveSheet.Cells(fila, spEntradas.ActiveSheet.Columns("totalPesos").Index).Text)
                 If (String.IsNullOrEmpty(totalPesos) Or totalPesos2 < 0) Then
-                    spEntradas.ActiveSheet.Cells(fila, spEntradas.ActiveSheet.Columns("totalPesos").Index).BackColor = Color.Orange
+                    spEntradas.ActiveSheet.Cells(fila, spEntradas.ActiveSheet.Columns("totalPesos").Index).BackColor = Principal.colorAdvertencia
+                    Me.esGuardadoValido = False
+                End If
+                ' Se calculan los saldos.
+                CalcularSaldos(idAlmacen, idFamilia, idSubFamilia, idArticulo)
+                Dim saldoUnidades As String = spEntradas.ActiveSheet.Cells(fila, spEntradas.ActiveSheet.Columns("saldoUnidades").Index).Text
+                Dim saldoUnidades2 As Double = ALMLogicaEntradas.Funciones.ValidarNumeroACero(spEntradas.ActiveSheet.Cells(fila, spEntradas.ActiveSheet.Columns("saldoUnidades").Index).Text)
+                If (String.IsNullOrEmpty(saldoUnidades) Or saldoUnidades2 < 0) Then
+                    spEntradas.ActiveSheet.Cells(fila, spEntradas.ActiveSheet.Columns("cantidad").Index).BackColor = Principal.colorAdvertencia
                     Me.esGuardadoValido = False
                 End If
             End If
         Next
-        Me.Cursor = Cursors.Default
 
     End Sub
 
     Private Sub GuardarEditarEntradas()
 
-        Me.Cursor = Cursors.WaitCursor
         EliminarEntradas(False)
         ' Parte superior.
         Dim idAlmacen As Integer = ALMLogicaEntradas.Funciones.ValidarNumeroACero(cbAlmacenes.SelectedValue)
@@ -1555,6 +1725,8 @@ Public Class Principal
         Dim fecha As Date = dtpFecha.Value
         Dim idTipoEntrada As Integer = ALMLogicaEntradas.Funciones.ValidarNumeroACero(cbTiposEntradas.SelectedValue)
         Dim idProveedor As Integer = ALMLogicaEntradas.Funciones.ValidarNumeroACero(cbProveedores.SelectedValue)
+        Dim factura As String = txtFactura.Text
+        Dim idSucursalOrigen As Integer = ALMLogicaEntradas.Funciones.ValidarNumeroACero(cbSucursalesOrigen.SelectedValue)
         ' Parte inferior.
         For fila As Integer = 0 To spEntradas.ActiveSheet.Rows.Count - 1
             Dim idFamilia As Integer = ALMLogicaEntradas.Funciones.ValidarNumeroACero(spEntradas.ActiveSheet.Cells(fila, spEntradas.ActiveSheet.Columns("idFamilia").Index).Text)
@@ -1566,10 +1738,6 @@ Public Class Principal
             Dim totalPesos As Double = ALMLogicaEntradas.Funciones.ValidarNumeroACero(spEntradas.ActiveSheet.Cells(fila, spEntradas.ActiveSheet.Columns("totalPesos").Index).Text)
             Dim orden As Integer = fila
             Dim observaciones As String = spEntradas.ActiveSheet.Cells(fila, spEntradas.ActiveSheet.Columns("observaciones").Index).Text
-            Dim factura As String = spEntradas.ActiveSheet.Cells(fila, spEntradas.ActiveSheet.Columns("factura").Index).Text
-            Dim chofer As String = spEntradas.ActiveSheet.Cells(fila, spEntradas.ActiveSheet.Columns("chofer").Index).Text
-            Dim camion As String = spEntradas.ActiveSheet.Cells(fila, spEntradas.ActiveSheet.Columns("camion").Index).Text
-            Dim noEconomico As String = spEntradas.ActiveSheet.Cells(fila, spEntradas.ActiveSheet.Columns("noEconomico").Index).Text
             If (id > 0 AndAlso idAlmacen > 0 AndAlso idFamilia > 0 AndAlso idSubFamilia > 0 AndAlso idArticulo > 0 AndAlso idMoneda > 0 AndAlso idTipoEntrada > 0 AndAlso idProveedor > 0) Then
                 entradas.EIdOrigen = Me.idOrigen
                 entradas.EIdAlmacen = idAlmacen
@@ -1590,9 +1758,7 @@ Public Class Principal
                 entradas.EOrden = orden
                 entradas.EObservaciones = observaciones
                 entradas.EFactura = factura
-                entradas.EChofer = chofer
-                entradas.ECamion = camion
-                entradas.ENoEconomico = noEconomico
+                entradas.EIdSucursalOrigen = idSucursalOrigen
                 entradas.Guardar()
             End If
         Next
@@ -1600,13 +1766,11 @@ Public Class Principal
         LimpiarPantalla()
         CargarIdConsecutivo()
         AsignarFoco(txtId)
-        Me.Cursor = Cursors.Default
 
     End Sub
 
     Private Sub EliminarEntradas(ByVal conMensaje As Boolean)
 
-        Me.Cursor = Cursors.WaitCursor
         Dim respuestaSi As Boolean = False
         If (conMensaje) Then
             If (MessageBox.Show("Confirmas que deseas eliminar esta entrada?", "Confirmación.", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes) Then
@@ -1625,15 +1789,12 @@ Public Class Principal
             CargarIdConsecutivo()
             AsignarFoco(txtId)
         End If
-        Me.Cursor = Cursors.Default
 
     End Sub
 
     Private Sub FormatearSpreadListados(ByVal posicion As Integer)
 
         spListados.Width = 500
-        'spListados.ActiveSheet.NullBackColor = Color.Gray
-        spListados.ActiveSheet.Columns.Count = 5
         If (posicion = OpcionPosicion.izquierda) Then ' Izquierda.
             spListados.Location = New Point(Me.izquierda, Me.arriba)
         ElseIf (posicion = OpcionPosicion.centro) Then ' Centrar.
@@ -1641,8 +1802,7 @@ Public Class Principal
         ElseIf (posicion = OpcionPosicion.derecha) Then ' Derecha.
             spListados.Location = New Point(Me.anchoTotal - spListados.Width, Me.arriba)
         End If
-        spListados.ActiveSheet.ColumnHeader.Rows(0).Font = New Font(Principal.tipoLetraSpread, Principal.tamañoLetraSpread, FontStyle.Bold)
-        spListados.ActiveSheet.ColumnHeader.Rows(0).Height = Principal.alturaFilasEncabezadosMedianosSpread
+        spListados.ActiveSheet.Columns.Count = 5
         spListados.ActiveSheet.OperationMode = FarPoint.Win.Spread.OperationMode.SingleSelect
         Dim numeracion As Integer = 0
         spListados.ActiveSheet.Columns(numeracion).Tag = "idOrigen" : numeracion += 1
@@ -1650,20 +1810,21 @@ Public Class Principal
         spListados.ActiveSheet.Columns(numeracion).Tag = "idAlmacen" : numeracion += 1
         spListados.ActiveSheet.Columns(numeracion).Tag = "nombreAlmacen" : numeracion += 1
         spListados.ActiveSheet.Columns(numeracion).Tag = "id" : numeracion += 1
-        spListados.ActiveSheet.Columns("idOrigen").Width = 70
-        spListados.ActiveSheet.Columns("nombreOrigen").Width = 100
-        spListados.ActiveSheet.Columns("idAlmacen").Width = 70
-        spListados.ActiveSheet.Columns("nombreAlmacen").Width = 120
-        spListados.ActiveSheet.Columns("id").Width = 70
+        spListados.ActiveSheet.ColumnHeader.Rows(0).Font = New Font(Principal.tipoLetraSpread, Principal.tamañoLetraSpread, FontStyle.Bold)
+        spListados.ActiveSheet.ColumnHeader.Rows(0).Height = Principal.alturaFilasEncabezadosMedianosSpread
         spListados.ActiveSheet.ColumnHeader.Cells(0, spListados.ActiveSheet.Columns("idOrigen").Index).Value = "No.".ToUpper
         spListados.ActiveSheet.ColumnHeader.Cells(0, spListados.ActiveSheet.Columns("nombreOrigen").Index).Value = "Origen".ToUpper
         spListados.ActiveSheet.ColumnHeader.Cells(0, spListados.ActiveSheet.Columns("idAlmacen").Index).Value = "No.".ToUpper
         spListados.ActiveSheet.ColumnHeader.Cells(0, spListados.ActiveSheet.Columns("nombreAlmacen").Index).Value = "Almacén".ToUpper
         spListados.ActiveSheet.ColumnHeader.Cells(0, spListados.ActiveSheet.Columns("id").Index).Value = "No.".ToUpper
-        spListados.Height = spEntradas.Height
-        spListados.Width = spListados.Width
+        spListados.ActiveSheet.Columns("idOrigen").Width = 70
+        spListados.ActiveSheet.Columns("nombreOrigen").Width = 100
+        spListados.ActiveSheet.Columns("idAlmacen").Width = 70
+        spListados.ActiveSheet.Columns("nombreAlmacen").Width = 120
+        spListados.ActiveSheet.Columns("id").Width = 70
         spListados.ActiveSheet.Columns(0, spListados.ActiveSheet.Columns.Count - 1).AllowAutoFilter = True
         spListados.ActiveSheet.Columns(0, spListados.ActiveSheet.Columns.Count - 1).AllowAutoSort = True
+        spListados.Height = spEntradas.Height
         spListados.BringToFront()
         spListados.Visible = True
         spListados.Refresh()
@@ -1735,6 +1896,7 @@ Public Class Principal
         proveedor = 5
         moneda = 6
         tipoEntrada = 7
+        sucursal = 8
 
     End Enum
 

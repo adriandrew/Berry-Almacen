@@ -148,6 +148,7 @@ C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Activad
 C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Activador\Escritorio\bin\x86\Release\LogicaActivador.dll
 C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Activador\Escritorio\bin\x86\Release\EntidadesActivador.pdb
 C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Activador\Escritorio\bin\x86\Release\LogicaActivador.pdb
+C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Activador\Escritorio\obj\x86\Release\Escritorio.csprojResolveAssemblyReference.cache
 C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Activador\Escritorio\obj\x86\Release\Escritorio.Principal.resources
 C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Activador\Escritorio\obj\x86\Release\Activador.Properties.Resources.resources
 C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Activador\Escritorio\obj\x86\Release\Activador.Properties.Resource.resources
@@ -157,4 +158,3 @@ C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Activad
 C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Activador\Escritorio\obj\x86\Release\Activador.application
 C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Activador\Escritorio\obj\x86\Release\Activador.exe
 C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Activador\Escritorio\obj\x86\Release\Activador.pdb
-C:\Users\Berry 1\Desktop\Proyectos Berry\ERP Almacen\Fuentes Modificados\Activador\Escritorio\obj\x86\Release\Escritorio.csprojResolveAssemblyReference.cache

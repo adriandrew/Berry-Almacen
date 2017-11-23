@@ -164,20 +164,23 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Iconos Usados\angle_right-48.png" />
-    <Content Include="Iconos Usados\arrows_long_right-32.png" />
-    <Content Include="Iconos Usados\delete_file-48.png" />
-    <Content Include="Iconos Usados\exit_sign-48.png" />
-    <Content Include="Iconos Usados\PDF_2-48.png" />
-    <Content Include="Iconos Usados\print-48.png" />
-    <Content Include="Iconos Usados\save-48.png" />
-    <Content Include="Iconos Usados\user-48.png" />
-    <Content Include="Iconos Usados\XLS-48.png" />
+    <Content Include="Iconos\angle_right-48.png" />
+    <Content Include="Iconos\arrows_long_right-32.png" />
+    <Content Include="Iconos\delete_file-48.png" />
+    <Content Include="Iconos\exit_sign-48.png" />
+    <Content Include="Iconos\PDF_2-48.png" />
+    <Content Include="Iconos\print-48.png" />
+    <Content Include="Iconos\save-48.png" />
+    <Content Include="Iconos\user-48.png" />
+    <Content Include="Iconos\XLS-48.png" />
     <Content Include="Logos\Logo.ico" />
     <Content Include="Logos\Logo2.ico" />
     <Content Include="Logos\Logo3.ico" />
-    <None Include="Resources\bienvenida.png" />
-    <None Include="Resources\Logo3.png" />
+    <Content Include="Logos\Logo3.png" />
+    <Content Include="Logos\Producido_por.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
